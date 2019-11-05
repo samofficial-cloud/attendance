@@ -16,7 +16,7 @@ class AddColumnsToUsers extends Migration
         Schema::table('users_system', function (Blueprint $table) {
             $table->boolean('adminstration')->default(0);
             $table->boolean('student')->default(0);
-            $table->boolean('lecturer')->default(0);
+            $table->boolean('lecturer')->default();
         });
     }
 
