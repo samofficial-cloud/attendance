@@ -36,9 +36,26 @@ Route::get('/venue', function () {
 
 });
 
+Route::get('/edit', function () {
+     return View ('edit');
+
+});
+
+Route::get('/change_password', function () {
+     return View ('change_password');
+
+});
+
+
 Route::get('/report', function () {
      return View ('report');
 
 });
+
+Route::get('/profile', function () {
+     return View ('profile');
+
+});
+
 
 });
