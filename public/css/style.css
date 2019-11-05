@@ -129,9 +129,3 @@ a.ex1:hover, a.ex1:active {color: red;}
 .color_nav2{
   background-color: #e3f2fd;
   }
-
-.card_shadow {
-  -webkit-box-shadow:0 0 5px 0 rgba(43,43,43,0.1), 0 10px 6px -7px rgba(43,43,43,0.1);
-  box-shadow: 0 0 5px 0 rgba(43,43,43,0.1), 0 6px 6px -7px rgba(43,43,43,0.1);  
-
-}
