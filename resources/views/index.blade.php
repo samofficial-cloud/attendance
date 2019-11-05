@@ -15,7 +15,7 @@
   <div class="container">
  <ul class="nav nav-tabs">
   <li class="nav-item">
-   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+   <a class="nav-link active" style="color:#060606"href="/">HOME</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
@@ -27,7 +27,7 @@
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
 </ul>
- 
+
 </div>
 </nav>
 </div>
@@ -37,7 +37,7 @@
   <div class="row">
 
     <div class="flex_container">
-      <div style="flex-grow: 1" class="card flex_container_div">
+      <div style="flex-grow: 1" class="card shadow-sm p-4 mb-4 bg-white  flex_container_div">
         <div class="flex_container_inside">
 
           <div class="heading"><h3>TIMETABLE</h3></div>
@@ -53,7 +53,7 @@
       </div>
 
 
-      <div style="flex-grow: 1" class="card flex_container_div">
+      <div style="flex-grow: 1" class="card shadow-sm p-4 mb-4 bg-white  flex_container_div">
         <div class="flex_container_inside">
 
           <div class="heading"><h3>VENUE RESERVATION</h3></div>
@@ -70,7 +70,7 @@
 
 
 
-      <div style="flex-grow: 2" class="card flex_container_wide_div">
+      <div style="flex-grow: 2" class="card shadow-sm p-4 mb-4 bg-white  flex_container_wide_div">
 
         <div class="flex_container_inside">
 

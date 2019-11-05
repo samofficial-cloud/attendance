@@ -18,13 +18,13 @@ VENUE RESERVATION
     <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
     </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+    <a class="nav-link active" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
 </ul>
- 
+
 </div>
 </nav>
 </div>
@@ -121,7 +121,7 @@ VENUE RESERVATION
   </div>
 </div>
 
-   
+
 
 
   </div>

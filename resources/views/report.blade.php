@@ -24,10 +24,10 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link active" style="color:#060606"href="/report">REPORT</a>
   </li>
 </ul>
- 
+
 </div>
 </nav>
 </div>
@@ -51,7 +51,7 @@
     <div class="form-group row">
       <legend class="col-form-label col-sm-5 pt-0">For:</legend>
 
-      
+
   <!-- <div class="form-row align-items-center col-sm-7">
     <div class="col-auto my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
@@ -63,7 +63,7 @@
     </div>
   </div> -->
   <head>
-   
+
     <script src=
 "https://code.jquery.com/jquery-1.12.4.min.js">
     </script>
@@ -75,7 +75,7 @@
             width: 100%;
             background: green
         }
-       
+
        /* label {
             margin-right: 20px;
         }*/
@@ -83,24 +83,24 @@
 </head>
 
 <div>
-  
+
             <label>
                 <input type="radio" name="colorCheckbox"
                     value="D"> Lecturer </label>
-           
-        
+
+
 
          <div>
             <label>
                 <input type="radio" name="colorCheckbox"
                     value="E">Student </label>
-           
+
         </div>
         <div>
             <label>
                 <input type="radio" name="colorCheckbox"
                     value="C"> All Students </label>
-           
+
         </div>
 
 
@@ -129,7 +129,7 @@
     <div class="row">
       <legend class="col-form-label col-sm-2 pt-0">From:</legend>
 
-      
+
   <div class="form-row align-items-center col-sm-4">
     <div class="col-auto my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
