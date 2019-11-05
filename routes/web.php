@@ -22,7 +22,7 @@ Route::post('/login/custom', [
 
 Route::get('/', 'HomeController@index')->name('first');
 
-
+//Route::get('/', 'HomeController@index')->name('first');
 
 Route::group(['middleware' => 'auth'], function(){
 
