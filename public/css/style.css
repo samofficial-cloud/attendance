@@ -129,3 +129,12 @@ a.ex1:hover, a.ex1:active {color: red;}
 .color_nav2{
   background-color: #e3f2fd;
   }
+
+
+.select {
+      color: #fff;
+      padding: 30px;
+      margin-top: 30px;
+      width: 100%;
+      background: green
+  }
