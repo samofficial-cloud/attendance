@@ -134,6 +134,8 @@ a.ex1:hover, a.ex1:active {color: red;}
     max-width: 1392px;
   }
 
+
+
  
   table {
   counter-reset: tableCount;
@@ -143,6 +145,7 @@ a.ex1:hover, a.ex1:active {color: red;}
   content: counter(tableCount);
   counter-increment: tableCount;
   }
+
 
   .row2 {
     display: flex;
@@ -178,5 +181,9 @@ a.ex1:hover, a.ex1:active {color: red;}
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;*/
+
 }
+
+
+
 
