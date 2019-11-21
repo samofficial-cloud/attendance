@@ -138,3 +138,12 @@ a.ex1:hover, a.ex1:active {color: red;}
       width: 100%;
       background: green
   }
+
+  table {
+  counter-reset: tableCount;
+  }
+  
+  .counterCell:before {
+  content: counter(tableCount);
+  counter-increment: tableCount;
+  }

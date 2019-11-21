@@ -20,32 +20,25 @@ Route::post('/login/custom', [
 ]);
 
 
-Route::get('/', 'HomeController@index')->name('first');
-
-//Route::get('/', 'HomeController@index')->name('first');
-
 Route::group(['middleware' => 'auth'], function(){
+
+Route::get('/attendance_report', 'ReportController@showattendance_all')->name('report');
+
+Route::get('/', 'HomeController@index')->name('first');
 
 Route::get('/timetable', function () {
      return View ('timetable');
-
 });
+
 
 Route::get('/venue', function () {
      return View ('venue');
-
 });
 
 Route::get('/edit', function () {
      return View ('edit');
 
 });
-
-Route::get('/change_password', function () {
-     return View ('change_password');
-
-});
-
 
 Route::get('/report', function () {
      return View ('report');
