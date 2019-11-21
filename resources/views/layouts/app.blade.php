@@ -25,13 +25,13 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark color_navbar navbar-laravel">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark color_navbar navbar-laravel">
+            {{-- <div class=""> --}}
                 <a class="navbar-brand">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     <div class="d-flex flex-row">
-                     <div><img src="/img/logo_udsm.jpg" height="100px"}></img></div>
-                    <div class="pr-7 pt-3"><h2>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</h2><h4>UNIVERSITY OF DAR ES SALAAM</h4></div>
+                     <div class="pl-2"><img src="/img/logo_udsm.jpg" height="100px"}></img></div>
+                    <div class="pl-3 pt-3"><h2>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</h2><h4>UNIVERSITY OF DAR ES SALAAM</h4></div>
                 </div>
 
                 </a>
@@ -81,7 +81,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
+            {{-- </div> --}}
         </nav>
 
         <main >

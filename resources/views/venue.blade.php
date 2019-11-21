@@ -30,6 +30,13 @@ VENUE RESERVATION
 </div>
 <br>
 
+<?php
+
+use App\calendar;
+$Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('m'))->where('Year',date('Y'))->Value('Week');
+
+?>
+
 <div class="container">
   <div class="row">
 <div class="card bg-light">
@@ -42,33 +49,28 @@ VENUE RESERVATION
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B101</a>
-     <a href="#" class="list-group-item list-group-item-action dropdown-item">B102</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B103</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B104</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B105</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B106</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B201</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B202</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B203</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B204</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B205</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B206</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B207</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B208</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B208</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B208</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B208</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B208</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B301</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B302</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B303</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B304</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B305</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B306</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B307</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B308</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">B309</a>
+    <a href="/reservation?rid=B101&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B101</a>
+     <a href="/reservation?rid=B102&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B102</a>
+    <a href="/reservation?rid=B103&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B103</a>
+    <a href="/reservation?rid=B104&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B104</a>
+    <a href="/reservation?rid=B106&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B105</a>
+    <a href="/reservation?rid=B106&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B106</a>
+    <a href="/reservation?rid=B201&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B201</a>
+    <a href="/reservation?rid=B202&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B202</a>
+    <a href="/reservation?rid=B203&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B203</a>
+    <a href="/reservation?rid=B204&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B204</a>
+    <a href="/reservation?rid=B205&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B205</a>
+    <a href="/reservation?rid=B206&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B206</a>
+    <a href="/reservation?rid=B207&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B207</a>
+    <a href="/reservation?rid=B208&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B208</a>
+    <a href="/reservation?rid=B302&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B301</a>
+    <a href="/reservation?rid=B302&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B302</a>
+    <a href="/reservation?rid=B304&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B304</a>
+    <a href="/reservation?rid=B304&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B305</a>
+    <a href="/reservation?rid=B307&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B307</a>
+    <a href="/reservation?rid=B307&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B308</a>
+    <a href="/reservation?rid=B310&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B310</a>
+    <a href="/reservation?rid=B310&wid={{ $Cweek }}" class="list-group-item list-group-item-action dropdown-item">B311</a>
   </div>
 </div>
 

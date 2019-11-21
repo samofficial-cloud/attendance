@@ -31,10 +31,18 @@
 </nav>
 </div>
 
+<?php
+
+  use App\timetable;
+  // $timetabls = timetable::select('course')->where('time','16:00-17:00')->where('venue',$_GET['rid'])->where('day','Monday')->value('course');
+  $timetabled = timetable::where('venue',$_GET['rid'])->get();
+  
+  ?> 
+
 <br>
-<div class="container">
+<div class="container2">
   <div class="row2">
-<div class="col-2 ">
+<div class="col-2 bg-light rounded">
 <div class="card bg-light">
   <div class="card-body">
     <h5 class="card-title"><b>ROOMS</b></h5>
@@ -67,7 +75,6 @@
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
     <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
     <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B311</a>
-    
   </div>
 </div>
 
@@ -120,10 +127,6 @@
   </div>
 </div>
 
-
-
-
-  
 
 <br>
 <br>
@@ -182,34 +185,129 @@
 </div>
 </div>
 
+
+
+  </div>
 </div>
 
 </div>
 
-</div>
+<style>
+table {
+  border: 3px solid black;
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+}
+
+td {
+  height: 70px;
+  /*background-color: #e3f2fd;*/
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+    font-weight: bold;
+     border: 1px solid black
+}
+</style>
 
 
 <div class="col-10 bg-light rounded">
-  <div class="card hero-image" >
+  <div class="card hero-image">
   <div class="card-body">
-    <h5 class="card-title"><b>ROOM NO: #</b></h5>
+    <h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
 
-    <div align="center">
-    <h1 style="text-align: center;">CoICT TIMETABLE</h1>
-   <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
+<div style="color: #29234a"><H1><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H1></div>
+<table border="4" cellspacing="3" align="center" >
+<tr style="background-color:#afbbc5">
+<th align="center"></th>
+ <th>7:00-8:00</th>
+ <th>8:00-9:00</th>
+ <th>9:00-10:00</th>
+ <th>10:00-11:00</th>
+ <th>11:00-12:00</th>
+ <th>12:00-13:00</th>
+ <th>13:00-14:00</th>
+ <th>14:00-15:00</th>
+ <th>15:00-16:00</th>
+   <th>16:00-17:00</th>
+     <th>17:00-18:00</th>
+       <th>18:00-19:00</th>
+         <th>19:00-20:00</th>
+</tr>
+
+
+<tr align="center">
+ <th  style="background-color:#f79d45">M<br>O<br>N</th>
+  @foreach ($timetabled as $times)
+  @if ($times->day == 'Monday')
+  @if($times->course != '')
+<td bgcolor="#ffffff">{{ $times['course']}}</td>
+@else
+<td> </td>
+@endif
+@endif
+@endforeach
+</tr>
+
+
+<tr align="center">
+ <th style="background-color:#88eab2">T<br>U<br>E</th>
+  @foreach ($timetabled as $times)
+  @if ($times->day == 'Tuesday')
+   @if($times->course != '')
+<td bgcolor="#ffffff">{{ $times['course']}}</td>
+@else
+<td> </td>
+@endif
+@endif
+@endforeach
+</tr>
+
+<tr align="center">
+ <th style="background-color:#ef6c68">W<br>E<br>D</th>
+   @foreach ($timetabled as $times)
+  @if ($times->day == 'Wednesday')
+     @if($times->course != '')
+<td bgcolor="#ffffff">{{ $times['course']}}</td>
+@else
+<td> </td>
+@endif
+@endif
+@endforeach
+</tr>
+
+
+<tr align="center">
+ <th style="background-color:#b5f66d">T<br>H<br>U<br>R</th>
+   @foreach ($timetabled as $times)
+  @if ($times->day == 'Thursday')
+  @if($times->course != '')
+<td bgcolor="#ffffff">{{ $times['course']}}</td>
+@else
+<td> </td>
+@endif
+@endif
+@endforeach
+</tr>
+
+
+<tr align="center">
+ <th style="background-color:#ffed4a">F<br>R<br>I</th>
+   @foreach ($timetabled as $times)
+  @if ($times->day == 'Friday')
+   @if($times->course != '')
+<td bgcolor="#ffffff">{{ $times['course']}}</td>
+@else
+<td> </td>
+@endif
+@endif
+@endforeach
+</tr>
     
-    <h1 >SEMESTER 1 2019/20</h1><br>
-    <h2>WEEK: 1-15</h2>
-
-  
-</div>
-
+    
 
 </div>
 </div>
 </div>
 </div>
 </div>
-
-
 @endsection
