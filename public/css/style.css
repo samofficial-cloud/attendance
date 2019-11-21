@@ -130,15 +130,11 @@ a.ex1:hover, a.ex1:active {color: red;}
   background-color: #e3f2fd;
   }
 
-
-.select {
-      color: #fff;
-      padding: 30px;
-      margin-top: 30px;
-      width: 100%;
-      background: green
+  .container2{
+    max-width: 1392px;
   }
 
+ 
   table {
   counter-reset: tableCount;
   }
@@ -147,3 +143,40 @@ a.ex1:hover, a.ex1:active {color: red;}
   content: counter(tableCount);
   counter-increment: tableCount;
   }
+
+  .row2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -7px;
+    margin-left: 0px;
+}
+
+.button_color {
+  
+  color: blue;
+  padding: 15px 0px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.hero-image {
+  background-image: url("/img/texture2.jpg");
+  background-color: #cccccc;
+  /*height: 600px;*/
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  /*top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;*/
+}
+
