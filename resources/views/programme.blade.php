@@ -25,6 +25,9 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
 </ul>
 
 </div>
@@ -269,23 +272,28 @@
 table {
   border: 3px solid black;
   width: 100%;
+  font-family: "Times New Roman", Times, serif;
 }
 
 td {
   height: 70px;
-  
+  /*background-color: #e3f2fd;*/
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+    font-weight: bold;
+     border: 1px solid black
 }
 </style>
 
 
 <div class="col-10 bg-light rounded">
-  <div class="card" style="background-color:#f6fbff">
+  <div class="card hero-image">
   <div class="card-body">
     <h5 class="card-title"><b>PROGRAMME:{{ $_GET['rid'] }}</b></h5>
 
 <div style="color: #29234a"><H1><CENTER>{{ $_GET['rid'] }} TIME TABLE</CENTER></H1></div>
 <table border="4" cellspacing="3" align="center" >
-<tr>
+<tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
  <th>8:00-9:00</th>
@@ -305,7 +313,7 @@ td {
 
 <tr align="center">
 
- <td>MONDAY</td>
+ <th  style="background-color:#f79d45">M<br>O<br>N</th>
 <td>
   @foreach ($timetabled1 as $times)
 {{$times['venue']}}<br>{{$times['course']}}
@@ -388,7 +396,7 @@ td {
 
 <tr align="center">
 
- <td>TUESDAY</td>
+ <th style="background-color:#88eab2">T<br>U<br>E</th>
 <td>
   @foreach ($timetabled11 as $times)
 {{$times['venue']}}<br>{{$times['course']}}
@@ -471,7 +479,7 @@ td {
 
 <tr align="center">
 
- <td>WEDNESDAY</td>
+ <th style="background-color:#ef6c68">W<br>E<br>D</th>
 <td>
   @foreach ($timetabled21 as $times)
 {{$times['venue']}}<br>{{$times['course']}}
@@ -555,7 +563,7 @@ td {
 
 <tr align="center">
 
- <td>THURSDAY</td>
+ <th style="background-color:#b5f66d">T<br>H<br>U<br>R</th>
 <td>
   @foreach ($timetabled31 as $times)
 {{$times['venue']}}<br>{{$times['course']}}
@@ -639,7 +647,7 @@ td {
 
 <tr align="center">
 
- <td>FRIDAY</td>
+ <th style="background-color:#ffed4a">F<br>R<br>I</th>
 <td>
   @foreach ($timetabled41 as $times)
 {{$times['venue']}}<br>{{$times['course']}}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\reservation;
 
 class reservationsController extends Controller
@@ -69,6 +70,36 @@ public function changestatusb($id)
 
   }
 
+
+   public function index()
+    {
+        return view('form');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+   public function insert(Request $request){
+$Venue = $request->input('Venue');
+$Day = $request->input('Day');
+$Month = $request->input('Month');
+$Year = $request->input('Year');
+$Week = $request->input('wid');
+$Name=$request->input('Name');
+$Reason = $request->input('Reason');
+$Time = $request->input('Time');
+$Date =$request->input('Date');
+$Remarks = $request->input('remark');
+$Capacity = $request->input('capacity');
+$rstatus = '-1';
+$data=array('Venue'=>$Venue,"Day"=>$Day,"Month"=>$Month,"Year"=>$Year,"Week"=>$Week,"Name"=>$Name,"Reason"=>$Reason,"Time"=>$Time,"Date"=>$Date,"rstatus"=>$rstatus, "Capacity"=>$Capacity,"Remarks"=>$Remarks);
+DB::table('reservations')->insert($data);
+echo "Record inserted successfully.<br/>";
+echo '<a href = "/venue">Click Here</a> to go back.';
+}
 
 
 }

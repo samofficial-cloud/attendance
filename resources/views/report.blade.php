@@ -26,6 +26,9 @@
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
 </ul>
 
 </div>

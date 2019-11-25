@@ -25,6 +25,9 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
 </ul>
 
 </div>
@@ -35,7 +38,7 @@
 <div class="container">
   <div class="row2">
 <div class="col-2 ">
-<div class="card bg-light">
+<div class="card border-info">
   <div class="card-body">
     <h5 class="card-title"><b>ROOMS</b></h5>
 
@@ -189,7 +192,7 @@
 </div>
 
 
-<div class="col-10 bg-light rounded">
+<div class="col-10 border-info">
   <div class="card hero-image" >
   <div class="card-body">
     <h5 class="card-title"><b>ROOM NO: #</b></h5>

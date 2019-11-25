@@ -25,6 +25,9 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
 </ul>
 
 </div>
@@ -42,45 +45,69 @@
   </div>
    
   <div class="card-body">
-<form>
+<form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
     <div class="col-sm-7">
-      <input type="email" class="form-control" id="inputEmail3" value="{{ Auth::user()->name }}" readonly>
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputVenue"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="inputVenue" value="{{ $_GET['room'] }}" readonly>
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['room'] }}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputday"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="inputday" value="{{ $_GET['day'] }}" readonly>
+    <input type="text" class="form-control" id="Day" name="Day" value="{{ $_GET['day'] }}" readonly>
+  </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-7">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $_GET['dd'] }}/{{ $_GET['mm'] }}/{{ $_GET['yy'] }}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
     <label for="inputTime"  class="col-sm-3 col-form-label">Time</label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="inputTime" value="{{ $_GET['tim'] }}" readonly>
+    <input type="text" class="form-control" id="inputTime" name="Time" value="{{ $_GET['tim'] }}" readonly>
+  </div>
+  </div>
+<input type="hidden" id="Month" name="Month" value="{{ $_GET['mm'] }}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $_GET['yy'] }}">
+<input type="hidden" id="Date" name="Date" value="{{ $_GET['dd'] }}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-7">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Others">Other</option>
+  </select>
   </div>
   </div>
 
-  <div class="form-group row">
-    <label for="inputReason"  class="col-sm-3 col-form-label">Reason</label>
+  <div class="slidecontainer form-group row">
+        <label for="inputTime"  class="col-sm-3 col-form-label">No. of Participant</label>
+        <div class="col-sm-7">
+  <input type="range" min="1" max="99" name="capacity" value="demo" class="slider" id="myRange">
+  <center> <span id="demo"></span></center>
+</div>
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
     <div class="col-sm-7">
-   <select class="custom-select inputReason" id="inlineFormCustomSelectPref">
-    <option selected>Choose...</option>
-    <option value="1">Lecture</option>
-    <option value="2">Test</option>
-    <option value="3">Seminar</option>
-    <option value="4">Other</option>
-  </select>
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="2"></textarea>
   </div>
   </div>
   
@@ -96,5 +123,15 @@
 </div>
 </div>
 </div>
+
+<script>
+var slider = document.getElementById("myRange");
+var output = document.getElementById("demo");
+output.innerHTML = slider.value;
+
+slider.oninput = function() {
+  output.innerHTML = this.value;
+}
+</script>
 
 @endsection

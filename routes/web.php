@@ -54,6 +54,8 @@ Route::get('/form', function () {
 
 });
 
+Route::post('create','reservationsController@insert');
+
 
 Route::get('/edit', function () {
      return View ('edit');

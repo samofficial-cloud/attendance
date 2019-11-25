@@ -20,14 +20,36 @@ VENUE RESERVATION
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
+   
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
 </ul>
 
 </div>
 </nav>
 </div>
+
+<style>
+table {
+  border: 3px solid black;
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+}
+
+td {
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+    font-weight: bold;
+     border: 1px solid black
+     
+}
+
+</style>
+
 
 <?php
 
@@ -113,6 +135,9 @@ $timetabled = calendar::select('Date','Day','Month','Year')->where('Week',$_GET[
 $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('m'))->where('Year',date('Y'))->Value('Week');
 
   $today=date('d-m-Y');
+  $tdate=date('d');
+  $tmonth=date('m');
+  $tyear=date('Y');
 
    use App\reservation;
     $state = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','07:00-08:00')->get();
@@ -195,9 +220,10 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
 
 <br>
 
-<div class="container">
-  <div class="row">
-<div class="card bg-light">
+<div class="container2">
+  <div class="row2">
+    <div class="col-2 ">
+<div class="card border-info">
   <div class="card-body">
     <h5 class="card-title">Choose Room to View Free Slot</h5>
 
@@ -281,39 +307,16 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
   </div>
 </div>
 
-
+</div>
 
 
   </div>
 </div>
 
 
-</div>
-</div>
-<br>
-<br>
 
-<style>
-table {
-  border: 3px solid black;
-  width: 100%;
-  font-family: "Times New Roman", Times, serif;
-}
-
-td {
-  font-family: "Times New Roman", Times, serif;
-  font-style: normal;
-    font-weight: bold;
-     border: 1px solid black
-     
-}
-
-</style>
-
-
-<div class="container">
-  <div class="row">
-  <div class="card hero-image">
+    <div class="col-10">
+  <div class="card hero-image border-info">
   <div class="card-body">
     <div class="row">
     <div class="col"><h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5></div>
@@ -328,21 +331,21 @@ td {
   </a>
 
    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/reservation?rid={{$_GET['rid']}}&wid=Wk1" class="list-group-item list-group-item-action dropdown-item">Wk1</a>
-     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk2" class="list-group-item list-group-item-action dropdown-item">Wk2</a>
-    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk3" class="list-group-item list-group-item-action dropdown-item">Wk3</a>
-    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk4" class="list-group-item list-group-item-action dropdown-item">Wk4</a>
-     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk5" class="list-group-item list-group-item-action dropdown-item">Wk5</a>
-       <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk6" class="list-group-item list-group-item-action dropdown-item">Wk6</a>
-        <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk7" class="list-group-item list-group-item-action dropdown-item">Wk7</a>
-         <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk8" class="list-group-item list-group-item-action dropdown-item">Wk8</a>
-          <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk9" class="list-group-item list-group-item-action dropdown-item">Wk9</a>
-           <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk10" class="list-group-item list-group-item-action dropdown-item">Wk10</a>
-            <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk11" class="list-group-item list-group-item-action dropdown-item">Wk11</a>
-             <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk12" class="list-group-item list-group-item-action dropdown-item">Wk12</a>
-              <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk13" class="list-group-item list-group-item-action dropdown-item">Wk13</a>
-               <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk14" class="list-group-item list-group-item-action dropdown-item">Wk14</a>
-                <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk15" class="list-group-item list-group-item-action dropdown-item">Wk15</a>
+    <a href="/reservation?rid={{$_GET['rid']}}&wid=Wk1" class="list-group-item list-group-item-action dropdown-item">Wk1 (04/11-08/11)</a>
+     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk2" class="list-group-item list-group-item-action dropdown-item">Wk2 (11/11-15/11)</a>
+    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk3" class="list-group-item list-group-item-action dropdown-item">Wk3 (18/11-22/11)</a>
+    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk4" class="list-group-item list-group-item-action dropdown-item">Wk4 (25/11-29/11)</a>
+     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk5" class="list-group-item list-group-item-action dropdown-item">Wk5 (02/12-06/12)</a>
+       <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk6" class="list-group-item list-group-item-action dropdown-item">Wk6 (09/12-13/12)</a>
+        <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk7" class="list-group-item list-group-item-action dropdown-item">Wk7 (16/12-20/12)</a>
+         <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk8" class="list-group-item list-group-item-action dropdown-item">Wk8 (23/12-27/12)</a>
+          <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk9" class="list-group-item list-group-item-action dropdown-item">Wk9 (30/12-03/1)</a>
+           <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk10" class="list-group-item list-group-item-action dropdown-item">Wk10 (06/01-10/1)</a>
+            <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk11" class="list-group-item list-group-item-action dropdown-item">Wk11 (13/1-17/1)</a>
+             <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk12" class="list-group-item list-group-item-action dropdown-item">Wk12 (20/1-24/1)</a>
+              <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk13" class="list-group-item list-group-item-action dropdown-item">Wk13 (27/1-31/1)</a>
+               <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk14" class="list-group-item list-group-item-action dropdown-item">Wk14 (03/2-07/2)</a>
+                <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk15" class="list-group-item list-group-item-action dropdown-item">Wk15 (10/2-14/2)</a>
 
   </div>
 </div>
@@ -372,32 +375,46 @@ td {
   @foreach ($timetabled as $times)
   @if ($times->Day == 'Monday')
 {{ $times['Date']}}/{{ $times['Month']}}/{{ $times['Year']}}
+<?php
+$dd=$times['Date'];
+$mm=$times['Month'];
+$yy=$times['Year'];
+?>
 @endif
 @endforeach
 <br>
   MON
 </th>
  @foreach ($timetable as $timed)
-  @if ($timed->course == '')
+  @if ($timed->course== '')
+  @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($state as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($state)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=07:00-08:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
     @endif
+    @endif
+
      @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
     @endif
     @endforeach
     @foreach ($timetable1 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
 @foreach($state1 as $stat)
   @if( $stat->rstatus=='1') <td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state1)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=08:00-09:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state1)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  
   @else
@@ -406,12 +423,16 @@ td {
     @endforeach
  @foreach ($timetable2 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state2 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state2)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=09:00-10:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state2)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -419,12 +440,16 @@ td {
     @endforeach
   @foreach ($timetable3 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
      @foreach($state3 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state3)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=10:00-11:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state3)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
 
  @else
@@ -433,12 +458,16 @@ td {
     @endforeach
 @foreach ($timetable4 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state4 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state4)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=11:00-12:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state4)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -446,12 +475,16 @@ td {
     @endforeach
  @foreach ($timetable5 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
 @foreach($state5 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state5)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=12:00-13:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state5)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -459,12 +492,16 @@ td {
     @endforeach
 @foreach ($timetable6 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($state6 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state6)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=13:00-14:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state6)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -472,12 +509,16 @@ td {
     @endforeach
  @foreach ($timetable7 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state7 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state7)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=14:00-15:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state7)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -485,12 +526,16 @@ td {
     @endforeach
  @foreach ($timetable8 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state8 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state8)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=15:00-16:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state8)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -498,12 +543,16 @@ td {
     @endforeach
  @foreach ($timetable9 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state9 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state9)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=16:00-17:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state9)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -511,13 +560,17 @@ td {
     @endforeach
  @foreach ($timetable10 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state10 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td> 
     @else Reserve
    @endif
    @endforeach
-   @if(count($state10)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=17:00-18:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state10)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -525,28 +578,35 @@ td {
     @endforeach
  @foreach ($timetable11 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state11 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
     @else Reserve
    @endif
    @endforeach
-   @if(count($state11)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=18:00-19:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state11)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
     @endif
- 
+ @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable12 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state12 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
     @else Reserve
    @endif
    @endforeach
-   @if(count($state12)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=19:00-20:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state12)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -557,9 +617,14 @@ td {
 
 <tr align="center">
  <th  style="background-color:#88eab2">
-  @foreach ($timetabled as $times)
+ @foreach ($timetabled as $times)
   @if ($times->Day == 'Tuesday')
 {{ $times['Date']}}/{{ $times['Month']}}/{{ $times['Year']}}
+<?php
+$dd=$times['Date'];
+$mm=$times['Month'];
+$yy=$times['Year'];
+?>
 @endif
 @endforeach
 <br>
@@ -567,12 +632,16 @@ td {
 </th>
  @foreach ($timetableA2 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($stateA2 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($stateA2)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=07:00-08:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($stateA2)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
      @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -580,12 +649,16 @@ td {
     @endforeach
     @foreach ($timetable21 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
  @foreach($state21 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state21)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=08:00-09:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state21)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -593,12 +666,16 @@ td {
     @endforeach
  @foreach ($timetable22 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state22 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state22)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=09:00-10:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state22)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -606,12 +683,16 @@ td {
     @endforeach
   @foreach ($timetable23 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
      @foreach($state23 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state23)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=10:00-11:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state23)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -619,12 +700,16 @@ td {
     @endforeach
 @foreach ($timetable24 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state24 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state24)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=11:00-12:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state24)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -632,12 +717,16 @@ td {
     @endforeach
  @foreach ($timetable25 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
  @foreach($state25 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state25)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=12:00-13:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state25)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  
    @else
@@ -646,12 +735,16 @@ td {
     @endforeach
 @foreach ($timetable26 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state26 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state26)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=13:00-14:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state26)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -659,12 +752,16 @@ td {
     @endforeach
  @foreach ($timetable27 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state27 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state27)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=14:00-15:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state27)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -672,13 +769,17 @@ td {
     @endforeach
  @foreach ($timetable28 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state28 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
     @else Reserve
    @endif
    @endforeach
-   @if(count($state28)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=15:00-16:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state28)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -686,12 +787,16 @@ td {
     @endforeach
  @foreach ($timetable29 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state29 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state29)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=16:00-17:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state29)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -699,12 +804,16 @@ td {
     @endforeach
  @foreach ($timetable210 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state210 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state210)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=17:00-18:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state210)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -712,12 +821,16 @@ td {
     @endforeach
  @foreach ($timetable211 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state211 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state211)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=18:00-19:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state211)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -725,12 +838,16 @@ td {
     @endforeach
  @foreach ($timetable212 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state212 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state212)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=19:00-20:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state212)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -744,6 +861,11 @@ td {
   @foreach ($timetabled as $times)
   @if ($times->Day == 'Wednesday')
 {{ $times['Date']}}/{{ $times['Month']}}/{{ $times['Year']}}
+<?php
+$dd=$times['Date'];
+$mm=$times['Month'];
+$yy=$times['Year'];
+?>
 @endif
 @endforeach
 <br>
@@ -751,12 +873,16 @@ td {
 </th>
  @foreach ($timetableA3 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($stateA3 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($stateA3)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=07:00-08:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($stateA3)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
      @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -764,12 +890,16 @@ td {
     @endforeach
     @foreach ($timetable31 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($state31 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state31)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=08:00-09:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state31)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -777,12 +907,16 @@ td {
     @endforeach
  @foreach ($timetable32 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state32 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state32)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=09:00-10:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state32)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -790,12 +924,16 @@ td {
     @endforeach
   @foreach ($timetable33 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state33 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state33)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=10:00-11:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state33)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -803,12 +941,16 @@ td {
     @endforeach
 @foreach ($timetable34 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state34 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state34)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=11:00-12:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state34)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -816,12 +958,16 @@ td {
     @endforeach
  @foreach ($timetable35 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
 @foreach($state35 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state35)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=12:00-13:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state35)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -829,12 +975,16 @@ td {
     @endforeach
 @foreach ($timetable36 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state36 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state36)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=13:00-14:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state36)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -842,12 +992,16 @@ td {
     @endforeach
  @foreach ($timetable37 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state37 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state37)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=14:00-15:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state37)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -855,12 +1009,16 @@ td {
     @endforeach
  @foreach ($timetable38 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state38 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state38)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=15:00-16:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state38)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -868,12 +1026,16 @@ td {
     @endforeach
  @foreach ($timetable39 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state39 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state39)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=16:00-17:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state39)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -881,12 +1043,16 @@ td {
     @endforeach
  @foreach ($timetable310 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state310 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="##c7aeec">Pending </td>
    @endif
    @endforeach
-   @if(count($state310)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=17:00-18:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state310)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -894,12 +1060,16 @@ td {
     @endforeach
  @foreach ($timetable311 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state311 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state311)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=18:00-19:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state311)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -907,12 +1077,16 @@ td {
     @endforeach
  @foreach ($timetable312 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state312 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state312)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=19:00-20:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state312)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -927,6 +1101,11 @@ td {
   @foreach ($timetabled as $times)
   @if ($times->Day == 'Thursday')
 {{ $times['Date']}}/{{ $times['Month']}}/{{ $times['Year']}}
+<?php
+$dd=$times['Date'];
+$mm=$times['Month'];
+$yy=$times['Year'];
+?>
 @endif
 @endforeach
 <br>
@@ -934,13 +1113,16 @@ td {
 </th>
  @foreach ($timetableA4 as $timed)
   @if ($timed->course == '')
-  {{-- @if(count($state)!=0) --}}
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($stateA4 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($stateA4)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=07:00-08:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($stateA4)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
      @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -948,12 +1130,16 @@ td {
     @endforeach
     @foreach ($timetable41 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($state41 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state41)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=08:00-09:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state41)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -961,12 +1147,16 @@ td {
     @endforeach
  @foreach ($timetable42 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state42 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state42)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=09:00-10:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state42)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -974,12 +1164,16 @@ td {
     @endforeach
   @foreach ($timetable43 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
      @foreach($state43 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state43)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=10:00-11:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state43)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -987,12 +1181,16 @@ td {
     @endforeach
 @foreach ($timetable44 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state44 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state44)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=11:00-12:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state44)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1000,12 +1198,16 @@ td {
     @endforeach
  @foreach ($timetable45 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
 @foreach($state45 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state45)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=12:00-13:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state45)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1013,12 +1215,16 @@ td {
     @endforeach
 @foreach ($timetable46 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state46 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state46)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=13:00-14:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state46)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1026,12 +1232,16 @@ td {
     @endforeach
  @foreach ($timetable47 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state47 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state47)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=14:00-15:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state47)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1039,12 +1249,16 @@ td {
     @endforeach
  @foreach ($timetable48 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state48 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state48)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=15:00-16:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state48)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1052,12 +1266,16 @@ td {
     @endforeach
  @foreach ($timetable49 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state49 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state49)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=16:00-17:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state49)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1065,12 +1283,16 @@ td {
     @endforeach
  @foreach ($timetable410 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state410 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td> 
    @endif
    @endforeach
-   @if(count($state410)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=17:00-18:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state410)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1078,12 +1300,16 @@ td {
     @endforeach
  @foreach ($timetable411 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state411 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state411)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=18:00-19:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state411)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1091,12 +1317,16 @@ td {
     @endforeach
  @foreach ($timetable412 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state412 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state412)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=19:00-20:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state412)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1111,6 +1341,11 @@ td {
   @foreach ($timetabled as $times)
   @if ($times->Day == 'Friday')
 {{ $times['Date']}}/{{ $times['Month']}}/{{ $times['Year']}}
+<?php
+$dd=$times['Date'];
+$mm=$times['Month'];
+$yy=$times['Year'];
+?>
 @endif
 @endforeach
 <br>
@@ -1118,12 +1353,16 @@ td {
 </th>
  @foreach ($timetableA5 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($stateA5 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($stateA5)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=07:00-08:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($stateA5)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
      @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1131,12 +1370,16 @@ td {
     @endforeach
     @foreach ($timetable51 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
   @foreach($state51 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state51)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=08:00-09:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state51)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1144,12 +1387,16 @@ td {
     @endforeach
  @foreach ($timetable52 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state52 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state52)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=09:00-10:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state52)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1157,12 +1404,16 @@ td {
     @endforeach
   @foreach ($timetable53 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
       @foreach($state53 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state53)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=10:00-11:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state53)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1170,12 +1421,16 @@ td {
     @endforeach
 @foreach ($timetable54 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state54 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state54)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=11:00-12:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state54)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1183,12 +1438,16 @@ td {
     @endforeach
  @foreach ($timetable55 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
 @foreach($state55 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state55)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=12:00-13:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state55)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
    @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1196,12 +1455,16 @@ td {
     @endforeach
 @foreach ($timetable56 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state56 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state56)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=13:00-14:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state56)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1209,12 +1472,16 @@ td {
     @endforeach
  @foreach ($timetable57 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state57 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state57)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=14:00-15:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state57)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1222,12 +1489,16 @@ td {
     @endforeach
  @foreach ($timetable58 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state58 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state58)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=15:00-16:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state58)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1235,12 +1506,16 @@ td {
     @endforeach
  @foreach ($timetable59 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state59 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state59)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=16:00-17:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state59)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1248,12 +1523,16 @@ td {
     @endforeach
  @foreach ($timetable510 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
    @foreach($state510 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state510)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=17:00-18:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state510)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1261,13 +1540,17 @@ td {
     @endforeach
  @foreach ($timetable511 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state511 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
     @else Reserve
    @endif
    @endforeach
-   @if(count($state511)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=18:00-19:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state511)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
  
   @else
@@ -1276,12 +1559,16 @@ td {
     @endforeach
  @foreach ($timetable512 as $timed)
   @if ($timed->course == '')
+   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
+  <td>N/A</td>
+  @else
     @foreach($state512 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state512)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=19:00-20:00" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state512)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @endif
     @endif
   @else
 <td bgcolor="#ffffff">{{ $timed['course']}}</td>
@@ -1293,6 +1580,8 @@ td {
     
     
 </table>
+</div>
+</div>
 </div>
 </div>
 </div>
