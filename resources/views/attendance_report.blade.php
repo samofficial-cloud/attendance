@@ -35,7 +35,7 @@
 <div class="container">
 
   <div class="col-xs-9"><legend>
-    <p class="note"> Attendance report from  week {{$_GET['week_no']}}  to  week {{$_GET['week_no_2']}} </p></legend> </div>
+    <p class="note"> Attendance report for {{$_GET['course_id']}} </p></legend> </div>
 
 @if(!empty($_GET['reg_no']))
 
@@ -48,7 +48,6 @@
         <th>No</th>
         <th>Name</th>
         <th>Registration number</th>
-        <th>Course</th>
         <th>Percentage</th>
       </tr>
     </thead>
@@ -59,7 +58,6 @@
         <td class="counterCell"></td>
         <td>{{$name}}</td>
         <td>{{$reg_no}}</td>
-        <td> {{$course_name}}</td>
         <td> {{$percentage}}%</td>
       </tr>
 
@@ -91,7 +89,7 @@
         <td>{{ $var->name }}</td>
         <td>{{ $var->reg_no }}</td>
         <td> {{ $var->course }}</td>
-        <td> {{ $var->percentage }}%</td>
+        <td> {{ round($var->percentage)}}%</td>
       </tr>
       @endforeach
     </tbody>

@@ -69,64 +69,6 @@
 </div>
 
 
-
-<div class="row">
-      <legend class="col-form-label col-sm-2 pt-0">From:</legend>
-
-  <div class="form-row align-items-center col-sm-4">
-    <div class="col-auto my-1">
-      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select name="week_no" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Wk...</option>
-        <option value="1">wk1</option>
-        <option value="2">wk2</option>
-        <option value="3">wk3</option>
-        <option value="4">wk4</option>
-        <option value="5">wk5</option>
-        <option value="6">wk6</option>
-        <option value="7">wk7</option>
-        <option value="8">wk8</option>
-        <option value="9">wk9</option>
-        <option value="10">wk10</option>
-        <option value="11">wk11</option>
-        <option value="12">wk12</option>
-        <option value="13">wk13</option>
-        <option value="14">wk14</option>
-        <option value="15">wk15</option>
-      </select>
-    </div>
-  </div>
-  <legend class="col-form-label col-sm-2 pt-0">To:</legend>
-  <div class="form-row align-items-center col-sm-4">
-    <div class="col-auto my-1">
-      <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select name="week_no_2" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-        <option selected>Wk...</option>
-        <option value="1">wk1</option>
-        <option value="2">wk2</option>
-        <option value="3">wk3</option>
-        <option value="4">wk4</option>
-        <option value="5">wk5</option>
-        <option value="6">wk6</option>
-        <option value="7">wk7</option>
-        <option value="8">wk8</option>
-        <option value="9">wk9</option>
-        <option value="10">wk10</option>
-        <option value="11">wk11</option>
-        <option value="12">wk12</option>
-        <option value="13">wk13</option>
-        <option value="14">wk14</option>
-        <option value="15">wk15</option>
-      </select>
-    </div>
-  </div>
-
-</div>
-
-
-
-
-
  <center><button class="btn btn-primary" type="submit">Generate Report</button></center>
 </form>
 </div>
