@@ -142,13 +142,14 @@
 </div>
 
 
-<div class="col-10 border-info">
-  <div class="card hero-image" >
+<div class="col-10">
+  <div class="card hero-image border-info" >
   <div class="card-body">
     <h5 class="card-title"><b>ROOM NO: #</b></h5>
 
     <div align="center">
-    <h1 style="text-align: center;"><b>TIMETABLE  MANAGEMENT</b></h1>
+      <h1 style="text-align: center;"><b>UNIVERSITY OF DAR ES SALAAM</b></h1>
+    <h2 style="text-align: center;"><b>COLLEGE OF ICT TIMETABLE  MANAGEMENT</b></h2>
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
     
     <h1 >SEMESTER 1 2019/20</h1><br>

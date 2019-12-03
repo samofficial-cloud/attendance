@@ -91,7 +91,7 @@
   <div class="form-group row">
     <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{ $_GET['cid'] }}">
   </div>
   </div>
 
