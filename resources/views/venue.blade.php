@@ -23,6 +23,15 @@ VENUE RESERVATION
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+  </li>
 </ul>
 
 </div>
@@ -37,9 +46,10 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
 
 ?>
 
-<div class="container">
+<div class="container ">
   <div class="row">
-<div class="card bg-light">
+<div class="col-2 ">
+<div class="card border-info">
   <div class="card-body">
     <h5 class="card-title">Choose Room to View Free Slot</h5>
 
@@ -129,9 +139,32 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
   </div>
 </div>
 
+</div>
+
+<br>
+
+<div class="col-10 hero-image">
+  <div class="card-transparent" >
+  <div class="card-body">
+    <center><h1 class="card-title"><b>WELCOME TO ROOM RESERVATION PORTAL</b></h1></center>
+
+    <div align="center">
+    <h1 style="text-align: center;">UDSM CoICT</h1>
+   <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
+    
+    <h1 >SEMESTER 1 2019/20</h1><br>
+    <h2>WEEK: 1-15</h2>
+
+  
+</div>
+
 
 </div>
 </div>
+</div>
+</div>
+</div>
+
 
 
 

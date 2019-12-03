@@ -25,6 +25,15 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+  </li>
 </ul>
 
 </div>
@@ -35,7 +44,7 @@
 <div class="container">
   <div class="row2">
 <div class="col-2 ">
-<div class="card bg-light">
+<div class="card border-info">
   <div class="card-body">
     <h5 class="card-title"><b>ROOMS</b></h5>
 
@@ -61,8 +70,8 @@
     <a href="/room?rid=B208" class="list-group-item list-group-item-action dropdown-item">B208</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
-    <a href="/room?rid=B304" class="list-group-item list-group-item-action dropdown-item">B304</a>
-    <a href="/room?rid=B304" class="list-group-item list-group-item-action dropdown-item">B305</a>
+    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
+    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
     <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
@@ -128,7 +137,7 @@
 <br>
 <br>
 <br>
- <h5><b>PROGRAMS</b></h5>
+ <h5><b>PROGRAM</b></h5>
 
  <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
@@ -189,7 +198,7 @@
 </div>
 
 
-<div class="col-10 bg-light rounded">
+<div class="col-10 border-info">
   <div class="card hero-image" >
   <div class="card-body">
     <h5 class="card-title"><b>ROOM NO: #</b></h5>

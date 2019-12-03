@@ -25,6 +25,15 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+  </li>
 </ul>
 
 </div>
@@ -36,78 +45,78 @@
 
   use App\timetable;
   
-  $timetabled1 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Monday')->get();
-  $timetabled2 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Monday')->get();
-  $timetabled3 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Monday')->get();
-  $timetabled4 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Monday')->get();
-  $timetabled5 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Monday')->get();
-  $timetabled6 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Monday')->get();
-  $timetabled7 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Monday')->get();
-  $timetabled8 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Monday')->get();
-  $timetabled9 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Monday')->get();
-  $timetabled10 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Monday')->get();
-  $timetabledC = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Monday')->get();
-  $timetabledA = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Monday')->get();
-  $timetabledB = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Monday')->get();
+  $timetabled1 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Monday')->get();
+  $timetabled2 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Monday')->get();
+  $timetabled3 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Monday')->get();
+  $timetabled4 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Monday')->get();
+  $timetabled5 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Monday')->get();
+  $timetabled6 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Monday')->get();
+  $timetabled7 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Monday')->get();
+  $timetabled8 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Monday')->get();
+  $timetabled9 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Monday')->get();
+  $timetabled10 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Monday')->get();
+  $timetabledC = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Monday')->get();
+  $timetabledA = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Monday')->get();
+  $timetabledB = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Monday')->get();
 
 
 
-  $timetabled11 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Tuesday')->get();
-  $timetabled12 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Tuesday')->get();
-  $timetabled13 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Tuesday')->get();
-  $timetabled14 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Tuesday')->get();
-  $timetabled15 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Tuesday')->get();
-  $timetabled16 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Tuesday')->get();
-  $timetabled17 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Tuesday')->get();
-  $timetabled18 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Tuesday')->get();
-  $timetabled19 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Tuesday')->get();
-  $timetabled110 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Tuesday')->get();
-  $timetabled111 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Tuesday')->get();
-  $timetabled112 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Tuesday')->get();
-  $timetabled113 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Tuesday')->get();
+  $timetabled11 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Tuesday')->get();
+  $timetabled12 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Tuesday')->get();
+  $timetabled13 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Tuesday')->get();
+  $timetabled14 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Tuesday')->get();
+  $timetabled15 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Tuesday')->get();
+  $timetabled16 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Tuesday')->get();
+  $timetabled17 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Tuesday')->get();
+  $timetabled18 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Tuesday')->get();
+  $timetabled19 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Tuesday')->get();
+  $timetabled110 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Tuesday')->get();
+  $timetabled111 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Tuesday')->get();
+  $timetabled112 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Tuesday')->get();
+  $timetabled113 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Tuesday')->get();
 
 
-  $timetabled21 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Wednesday')->get();
-  $timetabled22 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Wednesday')->get();
-  $timetabled23 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Wednesday')->get();
-  $timetabled24 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Wednesday')->get();
-  $timetabled25 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Wednesday')->get();
-  $timetabled26 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Wednesday')->get();
-  $timetabled27 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Wednesday')->get();
-  $timetabled28 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Wednesday')->get();
-  $timetabled29 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Wednesday')->get();
-  $timetabled210 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Wednesday')->get();
-  $timetabled211 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Wednesday')->get();
-  $timetabled212 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Wednesday')->get();
-  $timetabled213 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Wednesday')->get();
+  $timetabled21 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Wednesday')->get();
+  $timetabled22 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Wednesday')->get();
+  $timetabled23 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Wednesday')->get();
+  $timetabled24 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Wednesday')->get();
+  $timetabled25 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Wednesday')->get();
+  $timetabled26 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Wednesday')->get();
+  $timetabled27 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Wednesday')->get();
+  $timetabled28 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Wednesday')->get();
+  $timetabled29 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Wednesday')->get();
+  $timetabled210 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Wednesday')->get();
+  $timetabled211 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Wednesday')->get();
+  $timetabled212 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Wednesday')->get();
+  $timetabled213 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Wednesday')->get();
 
-  $timetabled31 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Thursday')->get();
-  $timetabled32 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Thursday')->get();
-  $timetabled33 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Thursday')->get();
-  $timetabled34 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Thursday')->get();
-  $timetabled35 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Thursday')->get();
-  $timetabled36 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Thursday')->get();
-  $timetabled37 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Thursday')->get();
-  $timetabled38 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Thursday')->get();
-  $timetabled39 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Thursday')->get();
-  $timetabled310 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Thursday')->get();
-  $timetabled311 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Thursday')->get();
-  $timetabled312 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Thursday')->get();
-  $timetabled313 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Thursday')->get();
+  $timetabled31 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Thursday')->get();
+  $timetabled32 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Thursday')->get();
+  $timetabled33 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Thursday')->get();
+  $timetabled34 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Thursday')->get();
+  $timetabled35 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Thursday')->get();
+  $timetabled36 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Thursday')->get();
+  $timetabled37 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Thursday')->get();
+  $timetabled38 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Thursday')->get();
+  $timetabled39 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Thursday')->get();
+  $timetabled310 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Thursday')->get();
+  $timetabled311 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Thursday')->get();
+  $timetabled312 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Thursday')->get();
+  $timetabled313 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Thursday')->get();
 
-  $timetabled41 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Friday')->get();
-  $timetabled42 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Friday')->get();
-  $timetabled43 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Friday')->get();
-  $timetabled44 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Friday')->get();
-  $timetabled45 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Friday')->get();
-  $timetabled46 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Friday')->get();
-  $timetabled47 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Friday')->get();
-  $timetabled48 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Friday')->get();
-  $timetabled49 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Friday')->get();
-  $timetabled410 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Friday')->get();
-  $timetabled411 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Friday')->get();
-  $timetabled412 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Friday')->get();
-  $timetabled413 = timetable::select('course','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Friday')->get();
+  $timetabled41 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Friday')->get();
+  $timetabled42 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Friday')->get();
+  $timetabled43 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Friday')->get();
+  $timetabled44 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Friday')->get();
+  $timetabled45 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Friday')->get();
+  $timetabled46 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Friday')->get();
+  $timetabled47 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Friday')->get();
+  $timetabled48 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Friday')->get();
+  $timetabled49 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Friday')->get();
+  $timetabled410 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Friday')->get();
+  $timetabled411 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Friday')->get();
+  $timetabled412 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Friday')->get();
+  $timetabled413 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Friday')->get();
 
 
 
@@ -143,8 +152,8 @@
     <a href="/room?rid=B208" class="list-group-item list-group-item-action dropdown-item">B208</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
-    <a href="/room?rid=B304" class="list-group-item list-group-item-action dropdown-item">B304</a>
-    <a href="/room?rid=B304" class="list-group-item list-group-item-action dropdown-item">B305</a>
+    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
+    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
     <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
@@ -204,7 +213,7 @@
 <br>
 <br>
 <br>
- <h5><b>PROGRAMME</b></h5>
+ <h5><b>PROGRAM</b></h5>
 
  <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
@@ -269,23 +278,28 @@
 table {
   border: 3px solid black;
   width: 100%;
+  font-family: "Times New Roman", Times, serif;
 }
 
 td {
   height: 70px;
-  
+  /*background-color: #e3f2fd;*/
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+    font-weight: bold;
+     border: 1px solid black
 }
 </style>
 
 
 <div class="col-10 bg-light rounded">
-  <div class="card" style="background-color:#f6fbff">
+  <div class="card hero-image">
   <div class="card-body">
-    <h5 class="card-title"><b>PROGRAMME:{{ $_GET['rid'] }}</b></h5>
+    <h5 class="card-title"><b>PROGRAM:{{ $_GET['rid'] }}</b></h5>
 
 <div style="color: #29234a"><H1><CENTER>{{ $_GET['rid'] }} TIME TABLE</CENTER></H1></div>
-<table border="4" cellspacing="3" align="center" >
-<tr>
+<table border="4" cellspacing="3" align="center" id="tid">
+<tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
  <th>8:00-9:00</th>
@@ -305,419 +319,555 @@ td {
 
 <tr align="center">
 
- <td>MONDAY</td>
-<td>
+ <th  style="background-color:#f79d45">M<br>O<br>N</th>
+@if(count($timetabled1)==0)
+<td></td>
+@else
   @foreach ($timetabled1 as $times)
-{{$times['venue']}}<br>{{$times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+
+@if(count($timetabled2)==0)
+<td></td>
+@else
   @foreach ($timetabled2 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled3)==0)
+<td></td>
+@else
   @foreach ($timetabled3 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+
+@if(count($timetabled4)==0)
+<td></td>
+@else
   @foreach ($timetabled4 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+
+
+  @if(count($timetabled5)==0)
+<td></td>
+@else
   @foreach ($timetabled5 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
-  @foreach ($timetabled6 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+@if(count($timetabled6)==0)
+<td></td>
+@else
+ @foreach ($timetabled6 as $times)
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+
+@if(count($timetabled7)==0)
+<td></td>
+@else
   @foreach ($timetabled7 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled8)==0)
+<td></td>
+@else
   @foreach ($timetabled8 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled9)==0)
+<td></td>
+@else
   @foreach ($timetabled9 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+
+@if(count($timetabled10)==0)
+<td></td>
+@else
   @foreach ($timetabled10 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabledC)==0)
+<td></td>
+@else
   @foreach ($timetabledC as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+
+@if(count($timetabledA)==0)
+<td></td>
+@else
   @foreach ($timetabledA as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabledB)==0)
+<td></td>
+@else
   @foreach ($timetabledB as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
 </tr>
 
 <tr align="center">
 
- <td>TUESDAY</td>
-<td>
+ <th style="background-color:#88eab2">T<br>U<br>E</th>
+@if(count($timetabled11)==0)
+<td></td>
+@else
   @foreach ($timetabled11 as $times)
-{{$times['venue']}}<br>{{$times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled12)==0)
+<td></td>
+@else
   @foreach ($timetabled12 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled13)==0)
+<td></td>
+@else
   @foreach ($timetabled13 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled14)==0)
+<td></td>
+@else
   @foreach ($timetabled14 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled15)==0)
+<td></td>
+@else
   @foreach ($timetabled15 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled16)==0)
+<td></td>
+@else
   @foreach ($timetabled16 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled17)==0)
+<td></td>
+@else
   @foreach ($timetabled17 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled18)==0)
+<td></td>
+@else
   @foreach ($timetabled18 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled19)==0)
+<td></td>
+@else
   @foreach ($timetabled19 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled110)==0)
+<td></td>
+@else
   @foreach ($timetabled110 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled111)==0)
+<td></td>
+@else
   @foreach ($timetabled111 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled112)==0)
+<td></td>
+@else
   @foreach ($timetabled112 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled113)==0)
+<td></td>
+@else
   @foreach ($timetabled113 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
 </tr>
 
 <tr align="center">
 
- <td>WEDNESDAY</td>
-<td>
+ <th style="background-color:#ef6c68">W<br>E<br>D</th>
+@if(count($timetabled21)==0)
+<td></td>
+@else
   @foreach ($timetabled21 as $times)
-{{$times['venue']}}<br>{{$times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled22)==0)
+<td></td>
+@else
   @foreach ($timetabled22 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled23)==0)
+<td></td>
+@else
   @foreach ($timetabled23 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled24)==0)
+<td></td>
+@else
   @foreach ($timetabled24 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled25)==0)
+<td></td>
+@else
   @foreach ($timetabled25 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled26)==0)
+<td></td>
+@else
   @foreach ($timetabled26 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled27)==0)
+<td></td>
+@else
   @foreach ($timetabled27 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled28)==0)
+<td></td>
+@else
   @foreach ($timetabled28 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled29)==0)
+<td></td>
+@else
   @foreach ($timetabled29 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled210)==0)
+<td></td>
+@else
   @foreach ($timetabled210 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled211)==0)
+<td></td>
+@else
   @foreach ($timetabled211 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled212)==0)
+<td></td>
+@else
   @foreach ($timetabled212 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled213)==0)
+<td></td>
+@else
   @foreach ($timetabled213 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
 </tr>
 
 
 <tr align="center">
 
- <td>THURSDAY</td>
-<td>
+ <th style="background-color:#b5f66d">T<br>H<br>U<br>R</th>
+@if(count($timetabled31)==0)
+<td></td>
+@else
   @foreach ($timetabled31 as $times)
-{{$times['venue']}}<br>{{$times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled32)==0)
+<td></td>
+@else
   @foreach ($timetabled32 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled33)==0)
+<td></td>
+@else
   @foreach ($timetabled33 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled34)==0)
+<td></td>
+@else
   @foreach ($timetabled34 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled35)==0)
+<td></td>
+@else
   @foreach ($timetabled35 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled36)==0)
+<td></td>
+@else
   @foreach ($timetabled36 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled37)==0)
+<td></td>
+@else
   @foreach ($timetabled37 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled38)==0)
+<td></td>
+@else
   @foreach ($timetabled38 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled39)==0)
+<td></td>
+@else
   @foreach ($timetabled39 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled310)==0)
+<td></td>
+@else
   @foreach ($timetabled310 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled311)==0)
+<td></td>
+@else
   @foreach ($timetabled311 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled312)==0)
+<td></td>
+@else
   @foreach ($timetabled312 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled313)==0)
+<td></td>
+@else
   @foreach ($timetabled313 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
 </tr>
 
 
 <tr align="center">
 
- <td>FRIDAY</td>
-<td>
+ <th style="background-color:#ffed4a">F<br>R<br>I</th>
+@if(count($timetabled41)==0)
+<td></td>
+@else
   @foreach ($timetabled41 as $times)
-{{$times['venue']}}<br>{{$times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled42)==0)
+<td></td>
+@else
   @foreach ($timetabled42 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled43)==0)
+<td></td>
+@else
   @foreach ($timetabled43 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled44)==0)
+<td></td>
+@else
   @foreach ($timetabled44 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled45)==0)
+<td></td>
+@else
   @foreach ($timetabled45 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled46)==0)
+<td></td>
+@else
   @foreach ($timetabled46 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled47)==0)
+<td></td>
+@else
   @foreach ($timetabled47 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled48)==0)
+<td></td>
+@else
   @foreach ($timetabled48 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled49)==0)
+<td></td>
+@else
   @foreach ($timetabled49 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled410)==0)
+<td></td>
+@else
   @foreach ($timetabled410 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled411)==0)
+<td></td>
+@else
   @foreach ($timetabled411 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled412)==0)
+<td></td>
+@else
   @foreach ($timetabled412 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
+@endif
 
-<td>
+@if(count($timetabled413)==0)
+<td></td>
+@else
   @foreach ($timetabled413 as $times)
-{{ $times['venue']}}<br>{{ $times['course']}}
+<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @endforeach
-</td>
-
+@endif
 </tr>
 
 </table>

@@ -31,7 +31,7 @@
                 <a class="navbar-brand">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     <div class="d-flex flex-row">
-                     <div class="pl-2"><img src="/img/logo_udsm.jpg" height="100px"}></img></div>
+                     <div class="pl-2"><img src="/img/logo_udsm.jpg" height="100px"></img></div>
                     <div class="pl-3 pt-3"><h2>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</h2><h4>UNIVERSITY OF DAR ES SALAAM</h4></div>
                 </div>
 
@@ -67,7 +67,9 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="/edit">Edit Profile</a>
+                                    <a class="dropdown-item" href="/Password">Change Password</a>
                                     <a class="dropdown-item" href="/profile">View Profile</a>
+                                     <a class="dropdown-item" href="/myreservations">My Reservations</a>
                                      <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

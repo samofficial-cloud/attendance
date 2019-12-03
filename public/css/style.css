@@ -177,6 +177,59 @@ a.ex1:hover, a.ex1:active {color: red;}
 .hero-text {
   text-align: center;
   position: absolute;
+<<<<<<< HEAD
+}
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #6cb2eb;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background:#6cb2eb;
+  cursor: pointer;
+}
+
+
+#tid {
+  border: 3px solid black;
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+#ex1Slider .slider-selection {
+  background: #BABABA;
+}
+=======
   /*top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -186,4 +239,5 @@ a.ex1:hover, a.ex1:active {color: red;}
 
 
 
+>>>>>>> e79b11e8d38ab05fc51f5a61d25a55a67ba5a056
 
