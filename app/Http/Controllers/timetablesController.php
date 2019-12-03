@@ -24,8 +24,46 @@ class timetablesController extends Controller
     	//return $timetab;
 
 
-    	return view('room',['timetab'=> $timetab]);
+    	return view('room');
     }
+
+
+    public function showUpdateTimetable(){
+        return view('UpdateTimetable');
+    }
+
+     public function TimetableManagement(){
+        return view('UpdateTimetable1');
+    }
+
+
+
+    public function updatecourse (Request $request){
+    $timetables = timetable::where('id', $request['id'])->first();
+
+    if(is_null($request['courseid'])){
+    $timetables->course ='';
+    $timetables->program='';
+    $timetables->criteria ='';
 }
+    else{
+    $timetables->course = $request['courseid'];
+     $timetables->program= $request['program'];
+    $timetables->criteria = $request['Reason'];
+}
+
+    $timetables->save();
+
+    return redirect()->back()
+                    ->with('success', 'Timetable updated successfully');
+
+    }
+
+
+
+
+
+  }
+
 
 
