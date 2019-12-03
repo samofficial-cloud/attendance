@@ -28,12 +28,23 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 </ul>
 
 </div>
 </nav>
 </div>
 <br>
+<?php
+use App\capacityvenue;
+ $capacity = capacityvenue::select('capacity')->where('venue',$_GET['room'])->value('capacity');
+
+?>
+
+
+​
 
 <div class="row2 justify-content-center">
   <div class="col-sm-6">
@@ -91,23 +102,28 @@
     <option value="Lecture">Lecture</option>
     <option value="Test">Test</option>
     <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
     <option value="Others">Other</option>
   </select>
   </div>
   </div>
 
   <div class="slidecontainer form-group row">
-        <label for="inputTime"  class="col-sm-3 col-form-label">No. of Participant</label>
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant</label>
         <div class="col-sm-7">
-  <input type="range" min="1" max="99" name="capacity" value="demo" class="slider" id="myRange">
-  <center> <span id="demo"></span></center>
+  <input  class="form-control-lg" type="number" value=$("input[type='number']").inputSpinner() min="0" max={{ $capacity}} step="1" name="capacity" required />
 </div>
+<script src="./src/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner()
+</script>
 </div>
 
    <div class="form-group row">
     <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
     <div class="col-sm-7">
-    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="2"></textarea>
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
   </div>
   </div>
   
@@ -124,6 +140,9 @@
 </div>
 </div>
 
+
+
+
 <script>
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
@@ -133,5 +152,8 @@ slider.oninput = function() {
   output.innerHTML = this.value;
 }
 </script>
+
+
+
 
 @endsection

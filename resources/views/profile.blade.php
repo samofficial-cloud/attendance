@@ -31,5 +31,56 @@
 </nav>
 </div>
 
+</br>
+
+<div class="row2 justify-content-center">
+  <div class="col-sm-6">
+
+<div class="card">
+
+  <div class="card-header" style="text-align: center;">
+    <h4>My Profile</h4>
+  </div>
+  <div class="card-body">
+        
+
+      <form>
+        <div class="form-group row">
+          <div class="col-sm-3"><strong>Name :</strong></div>
+          <div class="col-sm-7">
+            <input type="text" name="name" class="form-control" value="{{ Auth::user()->name }}"  readonly>
+          </div>
+          </div>
+
+          <div class="form-group row">
+          <div class="col-sm-3"><strong>ID NO. :</strong></div>
+          <div class="col-sm-7"><input type="text" name="email" class="form-control" value="{{ Auth::user()->reg_no }}"  readonly>
+          </div>
+          </div>
+
+          <div class="form-group row">
+          <div class="col-sm-3"><strong>Email Address :</strong></div>
+          <div class="col-sm-7"><input type="text" name="email" class="form-control" value="{{ Auth::user()->email }}" readonly>
+          </div>
+          </div>
+
+
+          {{-- <div class="form-group row">
+          <div class="col-sm-3"><strong>Mobile number :</strong></div>
+          <div class="col-sm-7">
+            <input type="text" name="phone" class="form-control" value="{{ Auth::user()->phone }}" readonly>
+          </div>
+          </div> --}}
+        </form>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 @endsection

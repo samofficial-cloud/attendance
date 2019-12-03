@@ -27,6 +27,12 @@ VENUE RESERVATION
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+  </li>
 </ul>
 
 </div>
@@ -34,19 +40,16 @@ VENUE RESERVATION
 </div>
 
 <style>
-table {
-  border: 3px solid black;
-  width: 100%;
-  font-family: "Times New Roman", Times, serif;
-}
 
 td {
+  height: 70px;
+  /*background-color: #e3f2fd;*/
   font-family: "Times New Roman", Times, serif;
   font-style: normal;
     font-weight: bold;
-     border: 1px solid black
-     
+     border: 1px solid black !important;
 }
+
 
 </style>
 
@@ -54,79 +57,79 @@ td {
 <?php
 
   use App\timetable;
-  $timetable = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','07:00-08:00')->get();
- $timetable1 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','08:00-09:00')->get();
- $timetable2 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','09:00-10:00')->get();
- $timetable3 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','10:00-11:00')->get();
- $timetable4 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','11:00-12:00')->get();
- $timetable5 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','12:00-13:00')->get();
- $timetable6 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','13:00-14:00')->get();
- $timetable7 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','14:00-15:00')->get();
- $timetable8 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','15:00-16:00')->get();
- $timetable9 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','16:00-17:00')->get();
- $timetable10 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','17:00-18:00')->get();
- $timetable11 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','18:00-19:00')->get();
- $timetable12 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','19:00-20:00')->get();
+  $timetable = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','07:00-08:00')->get();
+ $timetable1 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','08:00-09:00')->get();
+ $timetable2 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','09:00-10:00')->get();
+ $timetable3 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','10:00-11:00')->get();
+ $timetable4 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','11:00-12:00')->get();
+ $timetable5 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','12:00-13:00')->get();
+ $timetable6 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','13:00-14:00')->get();
+ $timetable7 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','14:00-15:00')->get();
+ $timetable8 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','15:00-16:00')->get();
+ $timetable9 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','16:00-17:00')->get();
+ $timetable10 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','17:00-18:00')->get();
+ $timetable11 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','18:00-19:00')->get();
+ $timetable12 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','19:00-20:00')->get();
 
 
- $timetableA2 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','07:00-08:00')->get();
- $timetable21 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','08:00-09:00')->get();
- $timetable22 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','09:00-10:00')->get();
- $timetable23 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','10:00-11:00')->get();
- $timetable24 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','11:00-12:00')->get();
- $timetable25 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','12:00-13:00')->get();
- $timetable26 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','13:00-14:00')->get();
- $timetable27 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','14:00-15:00')->get();
- $timetable28 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','15:00-16:00')->get();
- $timetable29 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','16:00-17:00')->get();
- $timetable210 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','17:00-18:00')->get();
- $timetable211 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','18:00-19:00')->get();
- $timetable212 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','19:00-20:00')->get();
+ $timetableA2 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','07:00-08:00')->get();
+ $timetable21 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','08:00-09:00')->get();
+ $timetable22 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','09:00-10:00')->get();
+ $timetable23 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','10:00-11:00')->get();
+ $timetable24 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','11:00-12:00')->get();
+ $timetable25 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','12:00-13:00')->get();
+ $timetable26 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','13:00-14:00')->get();
+ $timetable27 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','14:00-15:00')->get();
+ $timetable28 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','15:00-16:00')->get();
+ $timetable29 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','16:00-17:00')->get();
+ $timetable210 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','17:00-18:00')->get();
+ $timetable211 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','18:00-19:00')->get();
+ $timetable212 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','19:00-20:00')->get();
 
 
- $timetableA3 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','07:00-08:00')->get();
- $timetable31 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','08:00-09:00')->get();
- $timetable32 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','09:00-10:00')->get();
- $timetable33 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','10:00-11:00')->get();
- $timetable34 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','11:00-12:00')->get();
- $timetable35 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','12:00-13:00')->get();
- $timetable36 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','13:00-14:00')->get();
- $timetable37 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','14:00-15:00')->get();
- $timetable38 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','15:00-16:00')->get();
- $timetable39 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','16:00-17:00')->get();
- $timetable310 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','17:00-18:00')->get();
- $timetable311 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','18:00-19:00')->get();
- $timetable312 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','19:00-20:00')->get();
+ $timetableA3 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','07:00-08:00')->get();
+ $timetable31 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','08:00-09:00')->get();
+ $timetable32 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','09:00-10:00')->get();
+ $timetable33 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','10:00-11:00')->get();
+ $timetable34 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','11:00-12:00')->get();
+ $timetable35 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','12:00-13:00')->get();
+ $timetable36 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','13:00-14:00')->get();
+ $timetable37 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','14:00-15:00')->get();
+ $timetable38 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','15:00-16:00')->get();
+ $timetable39 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','16:00-17:00')->get();
+ $timetable310 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','17:00-18:00')->get();
+ $timetable311 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','18:00-19:00')->get();
+ $timetable312 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','19:00-20:00')->get();
 
 
- $timetableA4 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','07:00-08:00')->get();
- $timetable41 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','08:00-09:00')->get();
- $timetable42 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','09:00-10:00')->get();
- $timetable43 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','10:00-11:00')->get();
- $timetable44 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','11:00-12:00')->get();
- $timetable45 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','12:00-13:00')->get();
- $timetable46 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','13:00-14:00')->get();
- $timetable47 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','14:00-15:00')->get();
- $timetable48 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','15:00-16:00')->get();
- $timetable49 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','16:00-17:00')->get();
- $timetable410 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','17:00-18:00')->get();
- $timetable411 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','18:00-19:00')->get();
- $timetable412 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','19:00-20:00')->get();
+ $timetableA4 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','07:00-08:00')->get();
+ $timetable41 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','08:00-09:00')->get();
+ $timetable42 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','09:00-10:00')->get();
+ $timetable43 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','10:00-11:00')->get();
+ $timetable44 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','11:00-12:00')->get();
+ $timetable45 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','12:00-13:00')->get();
+ $timetable46 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','13:00-14:00')->get();
+ $timetable47 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','14:00-15:00')->get();
+ $timetable48 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','15:00-16:00')->get();
+ $timetable49 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','16:00-17:00')->get();
+ $timetable410 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','17:00-18:00')->get();
+ $timetable411 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','18:00-19:00')->get();
+ $timetable412 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','19:00-20:00')->get();
 
 
- $timetableA5 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','07:00-08:00')->get();
- $timetable51 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','08:00-09:00')->get();
- $timetable52 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','09:00-10:00')->get();
- $timetable53 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','10:00-11:00')->get();
- $timetable54 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','11:00-12:00')->get();
- $timetable55 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','12:00-13:00')->get();
- $timetable56 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','13:00-14:00')->get();
- $timetable57 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','14:00-15:00')->get();
- $timetable58 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','15:00-16:00')->get();
- $timetable59 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','16:00-17:00')->get();
- $timetable510 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','17:00-18:00')->get();
- $timetable511 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','18:00-19:00')->get();
- $timetable512 = timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','19:00-20:00')->get();
+ $timetableA5 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','07:00-08:00')->get();
+ $timetable51 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','08:00-09:00')->get();
+ $timetable52 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','09:00-10:00')->get();
+ $timetable53 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','10:00-11:00')->get();
+ $timetable54 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','11:00-12:00')->get();
+ $timetable55 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','12:00-13:00')->get();
+ $timetable56 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','13:00-14:00')->get();
+ $timetable57 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','14:00-15:00')->get();
+ $timetable58 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','15:00-16:00')->get();
+ $timetable59 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','16:00-17:00')->get();
+ $timetable510 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','17:00-18:00')->get();
+ $timetable511 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','18:00-19:00')->get();
+ $timetable512 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','19:00-20:00')->get();
 
 
   use App\calendar;
@@ -351,7 +354,7 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
 </div>
 
 <div style="color: #29234a"><H1><CENTER>{{ $_GET['rid'] }} TIME TABLE</CENTER></H1></div>
-<table border="4" cellspacing="3" align="center" >
+<table border="4" cellspacing="3" align="center" id="tid">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
@@ -387,8 +390,11 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetable as $timed)
   @if ($timed->course== '')
-  @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($state as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -400,13 +406,16 @@ $yy=$times['Year'];
     @endif
 
      @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
     @foreach ($timetable1 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+   @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
 @foreach($state1 as $stat)
   @if( $stat->rstatus=='1') <td bgcolor="##c7aeec">Reserved</td>
@@ -418,13 +427,16 @@ $yy=$times['Year'];
     @endif
  
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable2 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state2 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -435,13 +447,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
   @foreach ($timetable3 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
      @foreach($state3 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -453,13 +468,16 @@ $yy=$times['Year'];
     @endif
 
  @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
 @foreach ($timetable4 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state4 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -470,13 +488,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable5 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
 @foreach($state5 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -487,13 +508,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
 @foreach ($timetable6 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($state6 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -504,13 +528,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable7 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state7 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -521,13 +548,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable8 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state8 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -538,13 +568,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable9 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state9 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -555,13 +588,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable10 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state10 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -573,13 +609,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable11 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state11 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -591,13 +630,16 @@ $yy=$times['Year'];
     @endif
  @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable12 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state12 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -609,7 +651,7 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
     
@@ -632,8 +674,11 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA2 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($stateA2 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -644,13 +689,16 @@ $yy=$times['Year'];
     @endif
     @endif
      @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
     @foreach ($timetable21 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
  @foreach($state21 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -661,13 +709,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable22 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state22 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -678,13 +729,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
   @foreach ($timetable23 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
      @foreach($state23 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -695,13 +749,16 @@ $yy=$times['Year'];
     @endif
     @endif
  @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
 @foreach ($timetable24 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state24 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -712,13 +769,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable25 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
  @foreach($state25 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -730,13 +790,16 @@ $yy=$times['Year'];
     @endif
  
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
 @foreach ($timetable26 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state26 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -747,13 +810,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable27 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state27 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -764,13 +830,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable28 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state28 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -782,13 +851,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable29 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state29 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -799,13 +871,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable210 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state210 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -816,13 +891,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable211 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state211 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -833,13 +911,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable212 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state212 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -850,7 +931,7 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
     
@@ -873,8 +954,11 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA3 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($stateA3 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -885,13 +969,16 @@ $yy=$times['Year'];
     @endif
     @endif
      @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
     @foreach ($timetable31 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($state31 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -902,13 +989,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable32 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state32 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -919,13 +1009,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
   @foreach ($timetable33 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state33 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -936,13 +1029,16 @@ $yy=$times['Year'];
     @endif
     @endif
  @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
 @foreach ($timetable34 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state34 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -953,13 +1049,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable35 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
 @foreach($state35 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -970,13 +1069,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
 @foreach ($timetable36 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state36 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -987,13 +1089,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable37 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state37 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1004,13 +1109,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable38 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state38 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1021,13 +1129,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable39 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state39 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1038,13 +1149,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable310 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state310 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1055,13 +1169,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable311 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state311 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -1072,13 +1189,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable312 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state312 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1089,7 +1209,7 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
     
@@ -1113,8 +1233,11 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA4 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($stateA4 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1125,13 +1248,16 @@ $yy=$times['Year'];
     @endif
     @endif
      @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
     @foreach ($timetable41 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($state41 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1142,13 +1268,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable42 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state42 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1159,13 +1288,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
   @foreach ($timetable43 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
      @foreach($state43 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -1176,13 +1308,16 @@ $yy=$times['Year'];
     @endif
     @endif
  @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
 @foreach ($timetable44 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state44 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1193,13 +1328,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable45 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
 @foreach($state45 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1210,13 +1348,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
 @foreach ($timetable46 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state46 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
@@ -1227,13 +1368,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable47 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state47 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1244,13 +1388,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable48 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state48 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1261,13 +1408,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable49 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state49 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1278,13 +1428,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable410 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state410 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1295,13 +1448,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable411 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state411 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
@@ -1312,13 +1468,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable412 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state412 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
@@ -1329,7 +1488,7 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
     
@@ -1353,8 +1512,11 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA5 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($stateA5 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
@@ -1365,13 +1527,16 @@ $yy=$times['Year'];
     @endif
     @endif
      @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
     @foreach ($timetable51 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
   @foreach($state51 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1382,13 +1547,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable52 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state52 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1399,13 +1567,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
   @foreach ($timetable53 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
       @foreach($state53 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1416,13 +1587,16 @@ $yy=$times['Year'];
     @endif
     @endif
  @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
 @foreach ($timetable54 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state54 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1433,13 +1607,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable55 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
 @foreach($state55 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1450,13 +1627,16 @@ $yy=$times['Year'];
     @endif
     @endif
    @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
 @foreach ($timetable56 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state56 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1467,13 +1647,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable57 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state57 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1484,13 +1667,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable58 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state58 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1501,13 +1687,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable59 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state59 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1518,13 +1707,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable510 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
    @foreach($state510 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1535,13 +1727,16 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable511 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state511 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -1554,13 +1749,16 @@ $yy=$times['Year'];
     @endif
  
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
  @foreach ($timetable512 as $timed)
   @if ($timed->course == '')
-   @if($dd<$tdate && $mm<=$tmonth &&$yy<=$tyear)
-  <td>N/A</td>
+  @if($mm<$tmonth)
+  <td><br><br>N/A</td>
+  @if($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
+  @endif
   @else
     @foreach($state512 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -1571,7 +1769,7 @@ $yy=$times['Year'];
     @endif
     @endif
   @else
-<td bgcolor="#ffffff">{{ $timed['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
     

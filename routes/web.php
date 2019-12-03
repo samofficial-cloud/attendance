@@ -20,6 +20,7 @@ Route::post('/login/custom', [
 ]);
 
 
+
 Route::get('/', 'HomeController@index')->name('first');
 
 //Route::get('/', 'HomeController@index')->name('first');
@@ -29,25 +30,41 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/approval', 'reservationsController@showReservations')->name('approval');
 
+// Route::get('/edit', 'usersystemController@showedit')->name('edit');
+
 
 Route::get('/timetable', function () {
      return View ('timetable');
 
 });
 
+Route::get('/test', function () {
+     return View ('test');
+
+});
+
+
+
+Route::get('/update', 'timetablesController@showUpdateTimetable');
+
+Route::get('/TimetableManagement', 'timetablesController@TimetableManagement');
+
+Route::get('/VenueCapacity', 'CapacityvenuesController@index');
+
+Route::get('/myreservations', 'reservationsController@myreservations')->name('myreservations');
+
  Route::get('/approval/changestatus/{id}', 'reservationsController@changestatus')->name('changestatus');
 
+Route::get('/approvald/changestatus/{id}', 'reservationsController@changestatusd')->name('changestatusd');
 
 Route::get('/approvalb/changestatus/{id}', 'reservationsController@changestatusb')->name('changestatusb');
 
 
 Route::get('/approvalc/changestatus/{id}', 'reservationsController@changestatusc')->name('changestatusc');
 
+Route::get('/venue', 'reservationsController@venue')->name('venue');
 
-Route::get('/venue', function () {
-     return View ('venue');
 
-});
 
 Route::get('/form', function () {
      return View ('form');
@@ -55,17 +72,13 @@ Route::get('/form', function () {
 });
 
 Route::post('create','reservationsController@insert');
+Route::post('/edit1/{id}','usersystemController@update');
+Route::post('/changepassword','usersystemController@changePassword');
+Route::post('/u_course','timetablesController@updatecourse')->name('u_course');
 
 
-Route::get('/edit', function () {
-     return View ('edit');
+Route::get('/edit', 'usersystemController@edit')->name('edit');
 
-});
-
-Route::get('/change_password', function () {
-     return View ('change_password');
-
-});
 
 
 
@@ -90,13 +103,22 @@ Route::get('/programme', function () {
 
 });
 
+Route::get('/form2', function () {
+     return View ('form2');
+
+});
+
+
+
+
 
 
 Route::get('/room', 'timetablesController@index');
 
-// Route::get('/reservation', 'reservationsController@index');
+Route::get('/Password','usersystemController@showPassword');
 
 Route::get('/calendar', 'calendarsController@index');
+Route::get('/email', 'calendarsController@email');
 
 
 });

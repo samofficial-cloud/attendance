@@ -25,6 +25,12 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+  </li>
 </ul>
 
 </div>
@@ -69,8 +75,8 @@
     <a href="/room?rid=B208" class="list-group-item list-group-item-action dropdown-item">B208</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
-    <a href="/room?rid=B304" class="list-group-item list-group-item-action dropdown-item">B304</a>
-    <a href="/room?rid=B304" class="list-group-item list-group-item-action dropdown-item">B305</a>
+    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
+    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
     <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
     <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
@@ -216,7 +222,7 @@ td {
     <h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
 
 <div style="color: #29234a"><H1><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H1></div>
-<table border="4" cellspacing="3" align="center" >
+<table border="4" cellspacing="3" align="center" id="tid">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
@@ -240,7 +246,7 @@ td {
   @foreach ($timetabled as $times)
   @if ($times->day == 'Monday')
   @if($times->course != '')
-<td bgcolor="#ffffff">{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @else
 <td> </td>
 @endif
@@ -254,7 +260,7 @@ td {
   @foreach ($timetabled as $times)
   @if ($times->day == 'Tuesday')
    @if($times->course != '')
-<td bgcolor="#ffffff">{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @else
 <td> </td>
 @endif
@@ -267,7 +273,7 @@ td {
    @foreach ($timetabled as $times)
   @if ($times->day == 'Wednesday')
      @if($times->course != '')
-<td bgcolor="#ffffff">{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @else
 <td> </td>
 @endif
@@ -281,7 +287,7 @@ td {
    @foreach ($timetabled as $times)
   @if ($times->day == 'Thursday')
   @if($times->course != '')
-<td bgcolor="#ffffff">{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @else
 <td> </td>
 @endif
@@ -295,7 +301,7 @@ td {
    @foreach ($timetabled as $times)
   @if ($times->day == 'Friday')
    @if($times->course != '')
-<td bgcolor="#ffffff">{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
 @else
 <td> </td>
 @endif

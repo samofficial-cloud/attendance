@@ -28,6 +28,12 @@
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+  </li>
 </ul>
 
 </div>
@@ -46,7 +52,10 @@ use App\reservation;
 ?>
 <div class="container2">
   <h4>PENDING REQUESTS</h4>
-<table class="table table-striped table-bordered">
+  @if(count($pending)==0)
+  <h5>You have no any pending request.</h5>
+  @else
+<table class="table table-striped table-bordered" style="width: 108%">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -79,7 +88,7 @@ use App\reservation;
       
       <td><a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a>
         
-<a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a>
+<a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a></td>
 
       </tr>
       <?php
@@ -90,22 +99,25 @@ use App\reservation;
 
 </tbody>
 </table>
-</div>
+@endif
 
 <br>
-<div class="container2">
   <h4>APPROVED REQUESTS</h4>
-<table class="table table-striped table-bordered">
+   @if(count($approved)==0)
+  <h5>You have no any approved request.</h5>
+  @else
+<table class="table table-striped table-bordered" style="width: 108%">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Name</th>
       <th scope="col">Venue</th>
       <th scope="col">Day</th>
       <th scope="col">Date</th>
       <th scope="col">Week</th>
-      <th scope="col">Name</th>
-      <th scope="col">Reason</th>
       <th scope="col">Time</th>
+      <th scope="col">Capacity</th>
+       <th scope="col">Reason</th>
       <th scope="col">Approval</th>
     </tr>
   </thead>
@@ -114,13 +126,14 @@ use App\reservation;
       @foreach($approved as $approved)
       <tr>
       <th scope="row">{{ $j }}</th>
+      <td>{{ $approved->Name}}</td>
       <td>{{$approved->Venue}}</td>
       <td>{{ $approved->Day }}</td>
       <td>{{ $approved->Date }}/{{ $approved->Month}}/{{ $approved->Year}}</td>
        <td>{{$approved->Week}}</td>
-      <td>{{ $approved->Name}}</td>
+     <td>{{ $approved->Time}}</td>
+     <td>{{ $approved->Capacity}}</td>
       <td>{{ $approved->Reason}}</td>
-      <td>{{ $approved->Time}}</td>
       <td>
        <a class="btn btn-sm btn-success" href="{{route('changestatusb',$approved->id)}}">Change</a>
         </td>
@@ -133,6 +146,7 @@ use App\reservation;
 
 </tbody>
 </table>
+@endif
 </div>
 
 
