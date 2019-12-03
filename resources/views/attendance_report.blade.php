@@ -34,11 +34,65 @@
 <br>
 <div class="container">
 
+
+@if(!empty($_GET['checkbox']))
+<div class="col-xs-9"><legend>
+  <p class="note"> Attendance report for {{$name}} </p></legend> </div>
+@elseif($_GET['selection']=='All courses')
   <div class="col-xs-9"><legend>
-    <p class="note"> Attendance report for {{$_GET['course_id']}} </p></legend> </div>
+    <p class="note"> Attendance report for {{$name}} (All courses) </p></legend> </div>
 
-@if(!empty($_GET['reg_no']))
+@else
+<div class="col-xs-9"><legend>
+  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
+@endif
 
+@if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
+
+
+<div class="col-xs-6">
+  @if(count($dataSingle_all)>0)
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>No</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Attendance status</th>
+        <th>Arrival time</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @foreach ($dataSingle_all as $var)
+      <tr>
+        <td class="counterCell"></td>
+        <td>{{date("d-m-Y",strtotime($var->datetime))  }}</td>
+        <td>{{ date("H:i",strtotime($var->datetime))}}</td>
+        <td>@if($var->status==1)
+          PRESENT
+          @else
+          NOT PRESENT
+          @endif
+        </td>
+        <td>@if($var->validity=='VALID')
+          EARLY
+          @else
+          LATE
+          @endif
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+
+  </table>
+  @else
+  <h4>Sorry!! No data to display at the moment</h4>
+  @endif
+</div>
+
+
+@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
 <div class="col-xs-6">
 
@@ -47,7 +101,7 @@
       <tr>
         <th>No</th>
         <th>Name</th>
-        <th>Registration number</th>
+        <th>Identification number</th>
         <th>Percentage</th>
       </tr>
     </thead>
@@ -67,6 +121,39 @@
 
 </div>
 
+
+
+
+@elseif ($_GET['selection']=='All courses')
+
+<div class="col-xs-6">
+  @if(count($data)>0)
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>No</th>
+        <th>Course</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @foreach ($data as $var)
+      <tr>
+        <td class="counterCell"></td>
+        <td>{{ $var->course }}</td>
+        <td> {{ round($var->percentage)}}%</td>
+      </tr>
+      @endforeach
+    </tbody>
+
+  </table>
+  @else
+  <h4>Sorry!! No data to display at the moment</h4>
+  @endif
+</div>
+
+
 @else
 
 <div class="col-xs-6">
@@ -76,8 +163,7 @@
       <tr>
         <th>No</th>
         <th>Name</th>
-        <th>Registration number</th>
-        <th>Course</th>
+        <th>Identification number</th>
         <th>Percentage</th>
       </tr>
     </thead>
@@ -88,8 +174,7 @@
         <td class="counterCell"></td>
         <td>{{ $var->name }}</td>
         <td>{{ $var->reg_no }}</td>
-        <td> {{ $var->course }}</td>
-        <td> {{ round($var->percentage)}}%</td>
+        <td> {{round($var->percentage)}}%</td>
       </tr>
       @endforeach
     </tbody>

@@ -136,11 +136,11 @@ a.ex1:hover, a.ex1:active {color: red;}
 
 
 
- 
+
   table {
   counter-reset: tableCount;
   }
-  
+
   .counterCell:before {
   content: counter(tableCount);
   counter-increment: tableCount;
@@ -155,7 +155,7 @@ a.ex1:hover, a.ex1:active {color: red;}
 }
 
 .button_color {
-  
+
   color: blue;
   padding: 15px 0px;
   text-align: center;
@@ -184,6 +184,10 @@ a.ex1:hover, a.ex1:active {color: red;}
 
 }
 
+.for_label {
+  display: inline;
+}
 
-
-
+.input_radio {
+display:inline-block;  
+}
