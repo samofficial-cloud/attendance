@@ -134,6 +134,19 @@ a.ex1:hover, a.ex1:active {color: red;}
     max-width: 1392px;
   }
 
+
+
+ 
+  table {
+  counter-reset: tableCount;
+  }
+  
+  .counterCell:before {
+  content: counter(tableCount);
+  counter-increment: tableCount;
+  }
+
+
   .row2 {
     display: flex;
     flex-wrap: wrap;
@@ -164,6 +177,7 @@ a.ex1:hover, a.ex1:active {color: red;}
 .hero-text {
   text-align: center;
   position: absolute;
+<<<<<<< HEAD
 }
 
 .slidecontainer {
@@ -215,4 +229,15 @@ a.ex1:hover, a.ex1:active {color: red;}
 #ex1Slider .slider-selection {
   background: #BABABA;
 }
+=======
+  /*top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;*/
+
+}
+
+
+
+>>>>>>> e79b11e8d38ab05fc51f5a61d25a55a67ba5a056
 

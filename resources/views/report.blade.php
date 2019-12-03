@@ -47,13 +47,15 @@
   <div class="card border-light mb-3">
      <div class="card-header card text-center border-light bg-info"><b>{{ __('Fill the Form Below to Generate Report.') }}</b></div>
                 <div class="card-body">
-                  <form>
+
+                  <form action="{{ route('report')}}" class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
                     <div class="form-group row">
                       <label for="" class="col-sm-4 col-form-label">For:</label>
-                      <select id="getFname" onchange="SelectCheck(this)">
-                         <option value="1">All students</option>
-                         <option value="2" id="Option">One student</option>
-                         <option value="3">Lecturer</option>
+                      <select name="category" id="getFname" onchange="SelectCheck(this)">
+                        <option value="2" >One student</option>
+                         <option value="1" id="Option">All students</option>
+                         <option value="2">Lecturer</option>
                      </select>
                   </div>
 
@@ -62,29 +64,28 @@
   <div class="form-group row">
     <label for="inputEmail3" class="col-sm-4 col-form-label">Course ID:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="Course ID" required>
+      <input type="text" name="course_id" class="form-control" id="inputEmail3" placeholder="Course ID" required>
     </div>
   </div>
 
-<div id="DivCheck" style="display:none;">
+<div id="DivCheck" style="display:block;">
   <div class="form-group row" >
-    <label for="inputEmail3" class="col-sm-4 col-form-label">Registration No:</label>
+    <label for="inputEmail3" class="col-sm-4 col-form-label">Identification Number:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="inputEmail3" placeholder="Registration No">
+      <input type="text" name="reg_no" class="form-control" id="inputEmail3" placeholder="Registration number or Employee id">
     </div>
   </div>
 </div>
 
 
 
-    <div class="row">
+<div class="row">
       <legend class="col-form-label col-sm-2 pt-0">From:</legend>
-
 
   <div class="form-row align-items-center col-sm-4">
     <div class="col-auto my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <select name="week_no" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
         <option selected>Wk...</option>
         <option value="1">wk1</option>
         <option value="2">wk2</option>
@@ -108,7 +109,7 @@
   <div class="form-row align-items-center col-sm-4">
     <div class="col-auto my-1">
       <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+      <select name="week_no_2" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
         <option selected>Wk...</option>
         <option value="1">wk1</option>
         <option value="2">wk2</option>
@@ -149,14 +150,14 @@ function SelectCheck(nameSelect){
   if(nameSelect){
       OptionValue = document.getElementById("Option").value;
       if(OptionValue == nameSelect.value){
-          document.getElementById("DivCheck").style.display = "block";
+          document.getElementById("DivCheck").style.display = "none";
       }
       else{
-          document.getElementById("DivCheck").style.display = "none";
+          document.getElementById("DivCheck").style.display = "block";
       }
   }
   else{
-      document.getElementById("DivCheck").style.display = "none";
+      document.getElementById("DivCheck").style.display = "block";
   }
 }
 </script>
