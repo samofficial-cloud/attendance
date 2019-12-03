@@ -143,13 +143,15 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
 
 <br>
 
-<div class="col-10 hero-image">
-  <div class="card-transparent" >
+<div class="col-10">
+  <div class="card hero-image border-info" >
   <div class="card-body">
-    <center><h1 class="card-title"><b>WELCOME TO ROOM RESERVATION PORTAL</b></h1></center>
+     <h5 class="card-title"><b>ROOM NO: #</b></h5>
+    <center><h1 class="card-title"><b>WELCOME TO COLLEGE OF ICT</b></h1></center>
+    <center><h2 class="card-title"><b>ROOM RESERVATION PORTAL</b></h2></center>
 
     <div align="center">
-    <h1 style="text-align: center;">UDSM CoICT</h1>
+    
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
     
     <h1 >SEMESTER 1 2019/20</h1><br>

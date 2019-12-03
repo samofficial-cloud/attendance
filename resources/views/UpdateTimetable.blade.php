@@ -146,8 +146,8 @@
 
 </div>
 
-<div class="col-10 bg-light rounded">
-  <div class="card hero-image">
+<div class="col-10">
+  <div class="card hero-image border-info">
   <div class="card-body">
     <h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
 
@@ -176,9 +176,9 @@
   @foreach ($timetabled as $times)
   @if ($times->day == 'Monday')
   @if($times->course != '')
-  <td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+  <td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
 @else
-<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
+<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
 @endif
 @endif
 @endforeach
@@ -190,9 +190,9 @@
   @foreach ($timetabled as $times)
   @if ($times->day == 'Tuesday')
    @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
 @else
-<td><a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a> </td>
+<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
 @endif
 @endif
 @endforeach
@@ -203,9 +203,9 @@
    @foreach ($timetabled as $times)
   @if ($times->day == 'Wednesday')
      @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
 @else
-<td><a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a> </td>
+<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
 @endif
 @endif
 @endforeach
@@ -217,9 +217,9 @@
    @foreach ($timetabled as $times)
   @if ($times->day == 'Thursday')
   @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
 @else
-<td><a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a> </td>
+<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
 @endif
 @endif
 @endforeach
@@ -231,9 +231,9 @@
    @foreach ($timetabled as $times)
   @if ($times->day == 'Friday')
    @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
 @else
-<td><a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a> </td>
+<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
 @endif
 @endif
 @endforeach

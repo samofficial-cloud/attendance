@@ -74,11 +74,6 @@ Route::get('/venue', 'reservationsController@venue')->name('venue');
 
 
 
-Route::get('/venue', function () {
-     return View ('venue');
-});
-
-
 Route::get('/form', function () {
      return View ('form');
 

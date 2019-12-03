@@ -126,7 +126,7 @@
 <div class="container2">
   <div class="row2">
 <div class="col-2 bg-light rounded">
-<div class="card bg-light">
+<div class="card bg-light border-info">
   <div class="card-body">
     <h5 class="card-title"><b>ROOMS</b></h5>
 
@@ -293,7 +293,7 @@ td {
 
 
 <div class="col-10 bg-light rounded">
-  <div class="card hero-image">
+  <div class="card hero-image border-info">
   <div class="card-body">
     <h5 class="card-title"><b>PROGRAM:{{ $_GET['rid'] }}</b></h5>
 
