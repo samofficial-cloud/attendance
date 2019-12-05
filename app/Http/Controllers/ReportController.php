@@ -11,13 +11,22 @@ class ReportController extends Controller
     $dataSingle="";
     $data="";
     $course=strtoupper($request->get('course_id'));
+    $lectures_no=30;
     $reg_no=$request->get('reg_no');
 
 
     if ($request->get('category')== 1) {
       //echo "All students";
-      $data = DB::table('attendance_all')->where([['course', '=', $course],['title', '=','student']])->get();
-      return View('attendance_report')->with('data',$data);
+      $all = DB::table('attendance')->select('reg_no')->where([['courseId', '=', $course],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('reg_no')->get();
+      // $all_students = array();
+
+      foreach ($all as $val) {
+        $values=[$course,$val->reg_no,$lectures_no];
+        $all_students[] = DB::select('EXEC getAttendanceAll ?,?,?',$values);
+      }
+      return View('attendance_report')->with('all_students',$all_students);
+
+
 
     }elseif ($request->get('category')== 2) {
       //echo one lecturer
@@ -43,11 +52,24 @@ class ReportController extends Controller
 
 
       }
-      //echo lecturer all courses
+      //echo one lecturer all courses
        else {
-        $data = DB::table('attendance_all')->where([['reg_no', '=', $reg_no],['title', '=','staff']])->get();
-        $name = DB::table('attendance_all')->where([['reg_no', '=', $reg_no],['title', '=','staff']])->limit(1)->value('name');
-        return View('attendance_report')->with('data',$data)->with('name',$name);
+
+
+
+       $all = DB::table('attendance')->select('courseId')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['validity', '=', 'VALID']])->groupBy('courseId')->get();
+       $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['validity', '=', 'VALID']])->limit(1)->value('name');
+       foreach ($all as $val) {
+         $values=[$reg_no,$val->courseId,$lectures_no];
+         $all_courses[] = DB::select('EXEC getAllCoursesStaff ?,?,?',$values);
+       }
+       return View('attendance_report')->with('all_courses',$all_courses)->with('name',$name);
+// dd($all_courses);
+
+
+        // $data = DB::table('attendance_all')->where([['reg_no', '=', $reg_no],['title', '=','staff']])->get();
+        // $name = DB::table('attendance_all')->where([['reg_no', '=', $reg_no],['title', '=','staff']])->limit(1)->value('name');
+        // return View('attendance_report')->with('data',$data)->with('name',$name);
       }
 
 
@@ -75,13 +97,27 @@ class ReportController extends Controller
         } else {
           $percentage=round($CountSingle*100/60);
         }
-        return View('attendance_report')->with('dataSingle',$dataSingle)->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
+        return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
+        // return View('attendance_report')->with('dataSingle',$dataSingle)->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
 
 
       } else {
-        $data = DB::table('attendance_all')->where('reg_no',$reg_no)->get();
-        $name = DB::table('attendance_all')->where('reg_no',$reg_no)->limit(1)->value('name');
-        return View('attendance_report')->with('data',$data)->with('name',$name);
+
+          //echo one student all courses
+        $all = DB::table('attendance')->select('courseId')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('courseId')->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID']])->limit(1)->value('name');
+        foreach ($all as $val) {
+          $values=[$reg_no,$val->courseId,$lectures_no];
+          $all_courses[] = DB::select('EXEC getAllCourses ?,?,?',$values);
+        }
+        return View('attendance_report')->with('all_courses',$all_courses)->with('name',$name);
+// dd($all);
+
+
+        //
+        // $all = DB::table('attendance_all')->where('reg_no',$reg_no)->get();
+        // $name = DB::table('attendance_all')->where('reg_no',$reg_no)->limit(1)->value('name');
+        // return View('attendance_report')->with('all_courses',$all_courses)->with('name',$name);
       }
 
     }
