@@ -47,8 +47,8 @@
   <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
 @endif
 
+<!-- Show also invalid cases -->
 @if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
-
 
 <div class="col-xs-6">
   @if(count($dataSingle_all)>0)
@@ -127,7 +127,7 @@
 @elseif ($_GET['selection']=='All courses')
 
 <div class="col-xs-6">
-  @if(count($data)>0)
+  @if(count($all_courses)>0)
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -138,13 +138,14 @@
     </thead>
 
     <tbody>
-      @foreach ($data as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{ $var->course }}</td>
-        <td> {{ round($var->percentage)}}%</td>
-      </tr>
-      @endforeach
+      <?php
+  foreach($all_courses as $values){
+       $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+       $val = (iterator_to_array($iterator,true));
+       print('<tr><td class="counterCell"></td>'.'<td>'.$val['courseId'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+
+}
+?>
     </tbody>
 
   </table>
@@ -157,7 +158,7 @@
 @else
 
 <div class="col-xs-6">
-  @if(count($data)>0)
+  @if(count($all_students)>0)
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -169,14 +170,15 @@
     </thead>
 
     <tbody>
-      @foreach ($data as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{ $var->name }}</td>
-        <td>{{ $var->reg_no }}</td>
-        <td> {{round($var->percentage)}}%</td>
-      </tr>
-      @endforeach
+      <?php
+foreach($all_students as $values){
+       $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+       $val = (iterator_to_array($iterator,true));
+       print('<tr><td class="counterCell"></td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+
+}
+?>
+
     </tbody>
 
   </table>
