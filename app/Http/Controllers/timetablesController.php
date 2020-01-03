@@ -19,9 +19,9 @@ class timetablesController extends Controller
 
     	// $timetab = timetable::select('time','venue')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Monday')->get();
 
-    		$timetab = timetable::select('course')->where('time','08:00-09:00')->where('venue','B302')->where('day','Monday')->get();
 
-    	//return $timetab;
+
+    	//return $timetablede[0][11]->course;
 
 
     	return view('room');
@@ -32,6 +32,10 @@ class timetablesController extends Controller
         return view('UpdateTimetable');
     }
 
+    public function showUpdateTimetable2(){
+        return view('UpdateTimetable2');
+    }
+
      public function TimetableManagement(){
         return view('UpdateTimetable1');
     }
@@ -39,25 +43,33 @@ class timetablesController extends Controller
 
 
     public function updatecourse (Request $request){
-    $timetables = timetable::where('id', $request['id'])->first();
+    $timetables = timetable::find($request['id']);
 
     if(is_null($request['courseid'])){
-    $timetables->course ='';
-    $timetables->program='';
-    $timetables->criteria ='';
+    $timetables->course =NULL;    
+    $timetables->criteria =NULL;
 }
     else{
     $timetables->course = $request['courseid'];
-     $timetables->program= $request['program'];
     $timetables->criteria = $request['Reason'];
 }
 
-    $timetables->save();
+ if ( $timetables->save()) {
 
-    return redirect()->back()
+   return redirect()->back()
                     ->with('success', 'Timetable updated successfully');
+                }
+
+                else{
+                     return redirect()->back()
+                    ->with('Whoops!', 'Something went wrong');
+                }
 
     }
+
+
+
+
 
 
 

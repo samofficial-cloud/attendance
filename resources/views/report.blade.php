@@ -145,19 +145,24 @@
                   <div class="col-sm-8">
                     <input id="one_courset" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
                     <input id="All_coursest" type="radio" name="selection" value="All courses">All courses
+
                   </div>
                 </div>
               </div>
 
+
+                
               <div id="DivCheckboxt" style="display:block;">
                 <div class="form-group row" >
                   <label for="inputEmail3" class="col-sm-4 col-form-label">Show invalid attendances:</label>
                   <div class="col-sm-8">
                     <input id="show_allt" type="checkbox" name="checkbox" value="all cases">
+
                   </div>
                 </div>
               </div>
 
+ 
     <div id="coursedivt" class="form-group row" style="display:block;">
     <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
     <div class="input_radio col-sm-8">
@@ -171,6 +176,7 @@
     <div class="col-sm-8">
     <input type="text" name="reg_no" class="form-control" id="inputRegNot" placeholder="Registration number or Employee id">
     </div>
+
     </div>
     </div>
 
@@ -186,6 +192,7 @@
 
 <!-- UE -->
   <div class="modal fade" id="ue" role="dialog">
+
 
          <div class="modal-dialog" role="document">
      <div class="modal-content">
@@ -231,6 +238,7 @@
     <div class="col-sm-8">
     <input type="text" name="reg_no" class="form-control" id="inputRegNou" placeholder="Registration number or Employee id">
     </div>
+
     </div>
     </div>
 

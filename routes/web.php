@@ -11,6 +11,10 @@
 |
 */
 
+if(version_compare(PHP_VERSION, '7.2.0', '>=')) {
+    error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
+}
+
 Auth::routes();
 
 
@@ -42,8 +46,17 @@ Route::get('/approval', 'reservationsController@showReservations')->name('approv
 // Route::get('/edit', 'usersystemController@showedit')->name('edit');
 
 
+Route::post('/u_course1','examsController@updateexam')->name('u_course1');
+
+Route::post('/addtest','testsController@updatetest')->name('addtest');
+
+
 Route::get('/timetable', function () {
      return View ('timetable');
+});
+
+Route::get('/mytests', function () {
+     return View ('mytest');
 });
 
 
@@ -53,10 +66,32 @@ Route::get('/test', function () {
 });
 
 
+Route::get('/examupdate', function () {
+     return View ('ExamTimetableManagement');
+
+});
+
+Route::get('/exam', function () {
+     return View ('ExamTimetable');
+
+});
+
+Route::get('/examwelcome', function () {
+     return View ('ExamWelcome');
+
+});
+
+
+
+Route::get('/join', 'coursesController@index');
+
+Route::get('/examcourse', 'examsController@index')->name('examcourse');
 
 Route::get('/update', 'timetablesController@showUpdateTimetable');
 
-Route::get('/TimetableManagement', 'timetablesController@TimetableManagement');
+Route::get('/Update2', 'timetablesController@showUpdateTimetable2')->name('update2');
+
+Route::get('/TimetableManagement', 'timetablesController@TimetableManagement')->name('TimetableManagement');
 
 Route::get('/VenueCapacity', 'CapacityvenuesController@index');
 
@@ -66,6 +101,7 @@ Route::get('/myreservations', 'reservationsController@myreservations')->name('my
 
 
 
+Route::get('/mytests/cancel/{id}', 'testsController@canceltest')->name('canceltest');
 
  Route::get('/approval/changestatus/{id}', 'reservationsController@changestatus')->name('changestatus');
 
@@ -75,6 +111,8 @@ Route::get('/approvalb/changestatus/{id}', 'reservationsController@changestatusb
 
 
 Route::get('/approvalc/changestatus/{id}', 'reservationsController@changestatusc')->name('changestatusc');
+
+Route::get('/approvale/changestatus/{id}', 'reservationsController@DeleteRequest')->name('DeleteRequest');
 
 Route::get('/venue', 'reservationsController@venue')->name('venue');
 
@@ -89,7 +127,10 @@ Route::get('/form', function () {
 Route::post('create','reservationsController@insert');
 Route::post('/edit1/{id}','usersystemController@update');
 Route::post('/changepassword','usersystemController@changePassword');
+
 Route::post('/u_course','timetablesController@updatecourse')->name('u_course');
+
+// Route::post('/ucourse2/{id}','timetablesController@ucourse2')->name('ucourse2');
 
 
 Route::get('/edit', 'usersystemController@edit')->name('edit');
@@ -102,7 +143,6 @@ Route::get('/change_password', function () {
      return View ('change_password');
 
 });
-
 
 
 
@@ -133,7 +173,16 @@ Route::get('/form2', function () {
 
 });
 
+Route::get('/conflicts', function () {
+     return View ('conflicts');
 
+});
+
+
+Route::get('/LectureConflicts', function () {
+     return View ('LectureCollision');
+
+});
 
 
 

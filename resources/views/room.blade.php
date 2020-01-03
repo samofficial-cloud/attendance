@@ -26,6 +26,9 @@
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
   </li>
    <li class="nav-item">
@@ -40,9 +43,14 @@
 <?php
 
   use App\timetable;
-  // $timetabls = timetable::select('course')->where('time','16:00-17:00')->where('venue',$_GET['rid'])->where('day','Monday')->value('course');
   $timetabled = timetable::where('venue',$_GET['rid'])->get();
-  
+   $timetabled1[] = timetable::where('venue',$_GET['rid'])->where('day','Monday')->get();
+  $timetablede[] = timetable::where('venue',$_GET['rid'])->where('day','Tuesday')->get();
+  $timetabled2[] = timetable::where('venue',$_GET['rid'])->where('day','Wednesday')->get();
+  $timetabled3[] = timetable::where('venue',$_GET['rid'])->where('day','Thursday')->get();
+  $timetabled4[] = timetable::where('venue',$_GET['rid'])->where('day','Friday')->get();
+
+
   ?> 
 
 <br>
@@ -52,6 +60,7 @@
 <div class="card bg-light border-info">
   <div class="card-body">
     <h5 class="card-title"><b>ROOMS</b></h5>
+    
 
     <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
@@ -198,22 +207,6 @@
 
 </div>
 
-<style>
-table {
-  border: 3px solid black;
-  width: 100%;
-  font-family: "Times New Roman", Times, serif;
-}
-
-td {
-  height: 70px;
-  /*background-color: #e3f2fd;*/
-  font-family: "Times New Roman", Times, serif;
-  font-style: normal;
-    font-weight: bold;
-     border: 1px solid black
-}
-</style>
 
 
 <div class="col-10 ">
@@ -222,7 +215,7 @@ td {
     <h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
 
 <div style="color: #29234a"><H1><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H1></div>
-<table border="4" cellspacing="3" align="center" id="tid">
+<table border="4" align="center" id="tid">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
@@ -240,35 +233,158 @@ td {
          <th>19:00-20:00</th>
 </tr>
 
-
 <tr align="center">
- <th  style="background-color:#f79d45">M<br>O<br>N</th>
-  @foreach ($timetabled as $times)
-  @if ($times->day == 'Monday')
-  @if($times->course != '')
-<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
-@else
-<td> </td>
-@endif
-@endif
-@endforeach
+  <?php
+  $n=1;
+  $p=1;
+  $z=0;
+  ?>
+  <th  style="background-color:#f79d45">M<br>O<br>N</th>
+ @for ($l = 0; $l <13; $l++)
+ @if($timetabled1[0][$l]->course==$timetabled1[0][$n]->course)
+ <?php
+ $p++;
+ ?>
+ @elseif($timetabled1[0][$l]->course!=$timetabled1[0][$n]->course)
+ @if($z==0)
+ @if($timetabled1[0][0]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled1[0][0]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled1[0][0]->criteria}}</font><br>{{ $timetabled1[0][0]->course }}</td>
+  @endif
+ <?php
+ $z=1;
+ $p=1;
+ ?>
+ @elseif($z!=0)
+ @if($timetabled1[0][$l]->course=='')
+ <td colspan="{{ $p}}">{{ $timetabled1[0][$l]->course }}</td>
+ @else
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled1[0][$l]->criteria}}</font><br> {{ $timetabled1[0][$l]->course }}</td>
+ @endif
+ <?php
+ $p=1;
+ ?>
+ @endif
+ @endif
+ <?php
+ $n=$n+1;
+ ?>
+ @if ($n>12)
+ @if($timetabled1[0][12]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled1[0][12]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled1[0][12]->criteria}}</font><br>{{ $timetabled1[0][12]->course }}</td>
+  @endif
+ @break;
+ @endif
+ 
+@endfor
 </tr>
 
 
+
+
+
 <tr align="center">
+  <?php
+  $n=1;
+  $p=1;
+  $z=0;
+  ?>
  <th style="background-color:#88eab2">T<br>U<br>E</th>
-  @foreach ($timetabled as $times)
-  @if ($times->day == 'Tuesday')
-   @if($times->course != '')
-<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
-@else
-<td> </td>
-@endif
-@endif
-@endforeach
+ @for ($l = 0; $l <13; $l++)
+ @if($timetablede[0][$l]->course==$timetablede[0][$n]->course)
+ <?php
+ $p++;
+ ?>
+ @elseif($timetablede[0][$l]->course!=$timetablede[0][$n]->course)
+ @if($z==0)
+ @if($timetablede[0][0]->course=='')
+ <td colspan="{{ $p }}">{{ $timetablede[0][0]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetablede[0][0]->criteria}}</font><br>{{ $timetablede[0][0]->course }}</td>
+  @endif
+ <?php
+ $z=1;
+ $p=1;
+ ?>
+ @elseif($z!=0)
+ @if($timetablede[0][$l]->course=='')
+ <td colspan="{{ $p}}">{{ $timetablede[0][$l]->course }}</td>
+ @else
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetablede[0][$l]->criteria}}</font><br> {{ $timetablede[0][$l]->course }}</td>
+ @endif
+ <?php
+ $p=1;
+ ?>
+ @endif
+ @endif
+ <?php
+ $n=$n+1;
+ ?>
+ @if ($n>12)
+ @if($timetablede[0][12]->course=='')
+ <td colspan="{{ $p }}">{{ $timetablede[0][12]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetablede[0][12]->criteria}}</font><br>{{ $timetablede[0][12]->course }}</td>
+  @endif
+ @break;
+ @endif
+ 
+@endfor
 </tr>
 
 <tr align="center">
+  <?php
+  $n=1;
+  $p=1;
+  $z=0;
+  ?>
+ <th style="background-color:#ef6c68">W<br>E<br>D</th>
+ @for ($l = 0; $l <13; $l++)
+ @if($timetabled2[0][$l]->course==$timetabled2[0][$n]->course)
+ <?php
+ $p++;
+ ?>
+ @elseif($timetabled2[0][$l]->course!=$timetabled2[0][$n]->course)
+ @if($z==0)
+ @if($timetabled2[0][0]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled2[0][0]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled2[0][0]->criteria}}</font><br>{{ $timetabled2[0][0]->course }}</td>
+  @endif
+ <?php
+ $z=1;
+ $p=1;
+ ?>
+ @elseif($z!=0)
+ @if($timetabled2[0][$l]->course=='')
+ <td colspan="{{ $p}}">{{ $timetabled2[0][$l]->course }}</td>
+ @else
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled2[0][$l]->criteria}}</font><br> {{ $timetabled2[0][$l]->course }}</td>
+ @endif
+ <?php
+ $p=1;
+ ?>
+ @endif
+ @endif
+ <?php
+ $n=$n+1;
+ ?>
+ @if ($n>12)
+ @if($timetabled2[0][12]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled2[0][12]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled2[0][12]->criteria}}</font><br>{{ $timetabled2[0][12]->course }}</td>
+  @endif
+ @break;
+ @endif
+ 
+@endfor
+</tr>
+
+{{-- <tr align="center">
  <th style="background-color:#ef6c68">W<br>E<br>D</th>
    @foreach ($timetabled as $times)
   @if ($times->day == 'Wednesday')
@@ -280,34 +396,105 @@ td {
 @endif
 @endforeach
 </tr>
-
-
+ --}}
 <tr align="center">
- <th style="background-color:#b5f66d">T<br>H<br>U<br>R</th>
-   @foreach ($timetabled as $times)
-  @if ($times->day == 'Thursday')
-  @if($times->course != '')
-<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
-@else
-<td> </td>
-@endif
-@endif
-@endforeach
+  <?php
+  $n=1;
+  $p=1;
+  $z=0;
+  ?>
+  <th style="background-color:#b5f66d">T<br>H<br>U<br>R</th>
+ @for ($l = 0; $l <13; $l++)
+ @if($timetabled3[0][$l]->course==$timetabled3[0][$n]->course)
+ <?php
+ $p++;
+ ?>
+ @elseif($timetabled3[0][$l]->course!=$timetabled3[0][$n]->course)
+ @if($z==0)
+ @if($timetabled3[0][0]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled3[0][0]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled3[0][0]->criteria}}</font><br>{{ $timetabled3[0][0]->course }}</td>
+  @endif
+ <?php
+ $z=1;
+ $p=1;
+ ?>
+ @elseif($z!=0)
+ @if($timetabled3[0][$l]->course=='')
+ <td colspan="{{ $p}}">{{ $timetabled3[0][$l]->course }}</td>
+ @else
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled3[0][$l]->criteria}}</font><br> {{ $timetabled3[0][$l]->course }}</td>
+ @endif
+ <?php
+ $p=1;
+ ?>
+ @endif
+ @endif
+ <?php
+ $n=$n+1;
+ ?>
+ @if ($n>12)
+ @if($timetabled3[0][12]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled3[0][12]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled3[0][12]->criteria}}</font><br>{{ $timetabled3[0][12]->course }}</td>
+  @endif
+ @break;
+ @endif
+ 
+@endfor
 </tr>
 
-
 <tr align="center">
- <th style="background-color:#ffed4a">F<br>R<br>I</th>
-   @foreach ($timetabled as $times)
-  @if ($times->day == 'Friday')
-   @if($times->course != '')
-<td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
-@else
-<td> </td>
-@endif
-@endif
-@endforeach
+  <?php
+  $n=1;
+  $p=1;
+  $z=0;
+  ?>
+  <th style="background-color:#ffed4a">F<br>R<br>I</th>
+ @for ($l = 0; $l <13; $l++)
+ @if($timetabled4[0][$l]->course==$timetabled4[0][$n]->course)
+ <?php
+ $p++;
+ ?>
+ @elseif($timetabled4[0][$l]->course!=$timetabled4[0][$n]->course)
+ @if($z==0)
+ @if($timetabled4[0][0]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled4[0][0]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled4[0][0]->criteria}}</font><br>{{ $timetabled4[0][0]->course }}</td>
+  @endif
+ <?php
+ $z=1;
+ $p=1;
+ ?>
+ @elseif($z!=0)
+ @if($timetabled4[0][$l]->course=='')
+ <td colspan="{{ $p}}">{{ $timetabled4[0][$l]->course }}</td>
+ @else
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled4[0][$l]->criteria}}</font><br> {{ $timetabled4[0][$l]->course }}</td>
+ @endif
+ <?php
+ $p=1;
+ ?>
+ @endif
+ @endif
+ <?php
+ $n=$n+1;
+ ?>
+ @if ($n>12)
+ @if($timetabled4[0][12]->course=='')
+ <td colspan="{{ $p }}">{{ $timetabled4[0][12]->course }}</td>
+ @else
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled4[0][12]->criteria}}</font><br>{{ $timetabled4[0][12]->course }}</td>
+  @endif
+ @break;
+ @endif
+ 
+@endfor
 </tr>
+
     
     
 

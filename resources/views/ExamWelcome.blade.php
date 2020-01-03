@@ -54,28 +54,18 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/room?rid=B101" class="list-group-item list-group-item-action dropdown-item">B101</a>
-     <a href="/room?rid=B102" class="list-group-item list-group-item-action dropdown-item">B102</a>
-    <a href="/room?rid=B103" class="list-group-item list-group-item-action dropdown-item">B103</a>
-    <a href="/room?rid=B104" class="list-group-item list-group-item-action dropdown-item">B104</a>
-    <a href="/room?rid=B106" class="list-group-item list-group-item-action dropdown-item">B105</a>
-    <a href="/room?rid=B106" class="list-group-item list-group-item-action dropdown-item">B106</a>
-    <a href="/room?rid=B201" class="list-group-item list-group-item-action dropdown-item">B201</a>
-    <a href="/room?rid=B202" class="list-group-item list-group-item-action dropdown-item">B202</a>
-    <a href="/room?rid=B203" class="list-group-item list-group-item-action dropdown-item">B203</a>
-    <a href="/room?rid=B204" class="list-group-item list-group-item-action dropdown-item">B204</a>
-    <a href="/room?rid=B205" class="list-group-item list-group-item-action dropdown-item">B205</a>
-    <a href="/room?rid=B206" class="list-group-item list-group-item-action dropdown-item">B206</a>
-    <a href="/room?rid=B207" class="list-group-item list-group-item-action dropdown-item">B207</a>
-    <a href="/room?rid=B208" class="list-group-item list-group-item-action dropdown-item">B208</a>
-    <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
-    <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
-    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
-    <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
-    <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
-    <a href="/room?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
-    <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
-    <a href="/room?rid=B310" class="list-group-item list-group-item-action dropdown-item">B311</a>
+    <a href="/exam?rid=B106" class="list-group-item list-group-item-action dropdown-item">B105</a>
+    <a href="/exam?rid=B106" class="list-group-item list-group-item-action dropdown-item">B106</a>
+    <a href="/exam?rid=B205" class="list-group-item list-group-item-action dropdown-item">B205</a>
+    <a href="/exam?rid=B206" class="list-group-item list-group-item-action dropdown-item">B206</a>
+    <a href="/exam?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
+    <a href="/exam?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
+    <a href="/exam?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
+    <a href="/exam?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
+    <a href="/exam?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
+    <a href="/exam?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
+    <a href="/exam?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
+    <a href="/exam?rid=B310" class="list-group-item list-group-item-action dropdown-item">B311</a>
     
   </div>
 </div>
@@ -129,13 +119,6 @@
   </div>
 </div>
 
-
-
-
-  
-
-<br>
-<br>
 <br>
  <h5><b>PROGRAM</b></h5>
 
@@ -145,9 +128,9 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/programme?rid=CS1" class="list-group-item list-group-item-action dropdown-item">CS1</a>
-     <a href="/programme?rid=CS2" class="list-group-item list-group-item-action dropdown-item">CS2</a>
-    <a href="/programme?rid=CS3" class="list-group-item list-group-item-action dropdown-item">CS3</a>
+    <a href="/examcourse?cid=CS1" class="list-group-item list-group-item-action dropdown-item">CS1</a>
+     <a href="/examcourse?cid=CS2" class="list-group-item list-group-item-action dropdown-item">CS2</a>
+    <a href="/examcourse?cid=CS3" class="list-group-item list-group-item-action dropdown-item">CS3</a>
 </div>
 </div>
 
@@ -157,10 +140,10 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/programme?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
-     <a href="/programme?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
-    <a href="/programme?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
-    <a href="/programme?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
+    <a href="/examcourse?cid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
+     <a href="/examcourse?cid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
+    <a href="/examcourse?cid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
+    <a href="/examcourse?cid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
 </div>
 </div>
 
@@ -170,9 +153,9 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/programme?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
-     <a href="/programme?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
-    <a href="/programme?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
+    <a href="/examcourse?cid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
+     <a href="/examcourse?cid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
+    <a href="/examcourse?cid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
   </div>
 </div>
 
@@ -184,15 +167,16 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/programme?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/programme?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/programme?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/programme?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/examcourse?cid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
+     <a href="/examcourse?cid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
+    <a href="/examcourse?cid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
+    <a href="/examcourse?cid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
 </div>
 </div>
+
 <br>
 <br>
-<a class="btn btn-light" href="/examwelcome" role="button" style="background-color: #d6d6d6;"> <b>University Examinations</b></a>
+<a class="btn btn-light" href="/timetable" role="button" style="background-color: #d6d6d6;"> <b>Lectures Timetable</b></a>
 
 </div>
 
@@ -208,12 +192,12 @@
 
     <div align="center">
       <h1 style="text-align: center;"><b>UNIVERSITY OF DAR ES SALAAM</b></h1>
-    <h2 style="text-align: center;"><b>COLLEGE OF ICT TIMETABLE</b></h2>
+    <h2 style="text-align: center;"><b>COLLEGE OF ICT UNIVERSITY EXAMINATION TIMETABLE</b></h2>
     
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
     
     <h1>SEMESTER 1 2019/20</h1>
-    <h2>WEEK: 1-15</h2>
+    <h2>WEEK: 16-17</h2>
 
   
 </div>

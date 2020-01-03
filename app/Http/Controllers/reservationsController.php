@@ -51,7 +51,7 @@ public function changestatus($id)
     $month=$reservations->Month;
     $year=$reservations->Year;
     $day=$reservations->Day;
-    $time=$reservations->Time;
+    $time=$reservations->fromTime;
 
       $user=User::where('name',$name)->first();
       $user->notify(new DeclineStatus($venue, $date, $month, $year, $day, $time));
@@ -59,10 +59,10 @@ public function changestatus($id)
     $reservations->delete();
     
     
-      return redirect()->route('approval');
+       return redirect()->route('approval')
+                  ->with('success', 'Request Successfully Declined');
     
     
-
 
   }
 
@@ -74,7 +74,8 @@ public function changestatus($id)
     $reservations->delete();
     
     
-      return redirect()->route('myreservations');
+       return redirect()->route('myreservations')
+                  ->with('success', 'Request Successfully Deleted.');
   }
 
 
@@ -94,7 +95,8 @@ public function changestatusb($id)
     if ($reservations->save()) {
       $user=User::where('name',$name)->first();
       $user->notify(new PendingStatus($venue, $date,$month,$year,$day));
-      return redirect()->route('approval');
+       return redirect()->route('approval')
+                  ->with('success', 'Request has been Changed Successfully.');
     }
     else{
       return redirect(route('changestatusb'));
@@ -119,13 +121,26 @@ public function changestatusb($id)
        $user=User::where('name',$name)->first();
       $user->notify(new ApprovalStatus($venue, $date,$month,$year,$day));
       
-      return redirect()->route('approval');
+      return redirect()->route('approval')
+                  ->with('success', 'Request Successfully Approved.');
     }
     else{
       return redirect(route('changestatusc'));
     }
 
 
+  }
+
+
+  public function DeleteRequest($id)
+  {
+    $reservations = reservation::find($id);
+
+    $reservations->delete();
+    
+    
+      return redirect()->route('approval')
+                  ->with('success', 'Request Deleted Successfully.');
   }
 
 
@@ -148,14 +163,15 @@ $Year = $request->input('Year');
 $Week = $request->input('wid');
 $Name=$request->input('Name');
 $Reason = $request->input('Reason');
-$Time = $request->input('Time');
+$fromTime = $request->input('fromTime');
+$toTime = $request->input('toTime');
 $Date =$request->input('Date');
 $Remarks = $request->input('remark');
 $Capacity = $request->input('capacity');
 $rstatus = '-1';
-$data=array('Venue'=>$Venue,"Day"=>$Day,"Month"=>$Month,"Year"=>$Year,"Week"=>$Week,"Name"=>$Name,"Reason"=>$Reason,"Time"=>$Time,"Date"=>$Date,"rstatus"=>$rstatus, "Capacity"=>$Capacity,"Remarks"=>$Remarks);
+$data=array('Venue'=>$Venue,"Day"=>$Day,"Month"=>$Month,"Year"=>$Year,"Week"=>$Week,"Name"=>$Name,"Reason"=>$Reason,"fromTime"=>$fromTime,"toTime"=>$toTime,"Date"=>$Date,"rstatus"=>$rstatus, "Capacity"=>$Capacity,"Remarks"=>$Remarks);
 DB::table('reservations')->insert($data);
-return redirect()->route('venue');
+ return redirect()->back()->with('success', 'Request Submitted Successfully');
 }
 
 

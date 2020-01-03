@@ -84,18 +84,8 @@
           </div>
 
 
-           <div class="form-group row">
-          <div class="col-sm-3"><strong>Mobile number :</strong></div>
-          <div class="col-sm-7">
-            <input type="text" name="phone" class="form-control" value="{{ Auth::user()->phone }}">
-          </div>
-          </div>
-
-
-
-
-
           <div class="form-group">
+
           <center><button type="submit" class="btn btn-sm btn-primary">Save</button>
           </center>
           </div>

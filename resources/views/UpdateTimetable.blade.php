@@ -147,6 +147,22 @@
 </div>
 
 <div class="col-10">
+   @if ($errors->any())
+          <div class="alert alert-danger">
+            <strong>Sorry!!</strong> Something went Wrong<br>
+            <ul>
+              @foreach ($errors as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+    @endif
   <div class="card hero-image border-info">
   <div class="card-body">
     <h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
@@ -176,9 +192,155 @@
   @foreach ($timetabled as $times)
   @if ($times->day == 'Monday')
   @if($times->course != '')
-  <td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+  <td bgcolor="#ffffff">
+   <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}
+   </a>
+   <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+ </td>
 @else
-<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
+<td>
+  <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+
+  <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+</td>
 @endif
 @endif
 @endforeach
@@ -190,9 +352,155 @@
   @foreach ($timetabled as $times)
   @if ($times->day == 'Tuesday')
    @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff">
+   <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}
+   </a>
+   <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+ </td>
 @else
-<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
+<td>
+  <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+
+  <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+</td>
 @endif
 @endif
 @endforeach
@@ -203,9 +511,155 @@
    @foreach ($timetabled as $times)
   @if ($times->day == 'Wednesday')
      @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff">
+   <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}
+   </a>
+   <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title">Complete the Form Below</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+ </td>
 @else
-<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
+<td>
+  <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+
+  <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+</td>
 @endif
 @endif
 @endforeach
@@ -217,9 +671,155 @@
    @foreach ($timetabled as $times)
   @if ($times->day == 'Thursday')
   @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff">
+   <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}
+   </a>
+   <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title">Complete the Form Below</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+ </td>
 @else
-<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
+<td>
+  <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+
+  <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+</td>
 @endif
 @endif
 @endforeach
@@ -231,16 +831,162 @@
    @foreach ($timetabled as $times)
   @if ($times->day == 'Friday')
    @if($times->course != '')
-<td bgcolor="#ffffff"> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</a></td>
+<td bgcolor="#ffffff">
+   <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}
+   </a>
+   <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+           <h5 class="modal-title">Complete the form below</h5>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+ </td>
 @else
-<td> <a href="/form2?day={{ $times['day']}}&room={{ $_GET['rid'] }}&tim={{ $times['time'] }}&id={{$times['id']}}&cid={{$times['course']}}" class="btn button_color active" role="button" aria-pressed="true">Update</a></td>
+<td>
+  <a data-toggle="modal" data-target="#id{{$times->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+
+  <div class="modal fade" id="id{{$times->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="post" action="{{route('u_course' )}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+  </div>
+  </div>
+
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+  </div>
+  </div>
+
+  
+
+
+<input type="text" name="id" value="{{$times->id}}" hidden>
+  <div class="form-group row">
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    <option value="Practical">Practical</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="form-group">
+    <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+  </form>
+</div>
+
+</div>
+</div>
+</div>
+</td>
 @endif
 @endif
 @endforeach
 </tr>
     
     
-
+</table>
 </div>
 </div>
 </div>

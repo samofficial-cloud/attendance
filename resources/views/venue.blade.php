@@ -144,6 +144,22 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
 <br>
 
 <div class="col-10">
+   @if ($errors->any())
+          <div class="alert alert-danger">
+            <strong>Sorry!!</strong> Something went Wrong<br>
+            <ul>
+              @foreach ($errors as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+    @endif
   <div class="card hero-image border-info" >
   <div class="card-body">
      <h5 class="card-title"><b>ROOM NO: #</b></h5>

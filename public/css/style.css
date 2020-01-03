@@ -186,6 +186,8 @@ a.ex1:hover, a.ex1:active {color: red;}
   width: 100%;
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
+  border-collapse: separate;
+   border-spacing: 3px;
 }
 
 #ex1Slider .slider-selection {
@@ -212,6 +214,25 @@ display:inline-block;
 background-color: #72b4ea;
 padding: 5px;
 
+}
+
+
+
+.form-control2 {
+    /*display: block;
+    width: 57%;
+    height: calc(1.6em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;*/
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #000000;
+    background-color:transparent;
+    /* background-clip: padding-box; */
+    border: 0px solid #ced4da;
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .styling:hover {
