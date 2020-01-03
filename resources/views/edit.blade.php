@@ -26,7 +26,7 @@
     <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
   </li>
 </ul>
- 
+
 </div>
 </nav>
 </div>
@@ -63,7 +63,7 @@
 @endforeach
       <form  method="post" action="{{url('edit1',$user)}}" >
         {{csrf_field()}}
-      {{--   @method('PUT') --}}
+      
         <div class="form-group row">
           <div class="col-sm-3"><strong>Name :</strong></div>
           <div class="col-sm-7">
@@ -83,11 +83,13 @@
           </div>
           </div>
 
-         <div class="form-group">
+
+          <div class="form-group">
+
           <center><button type="submit" class="btn btn-sm btn-primary">Save</button>
           </center>
           </div>
-          
+
         </div>
       </form>
       </div>

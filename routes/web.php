@@ -26,12 +26,17 @@ Route::post('/login/custom', [
 
 
 
-Route::get('/', 'HomeController@index')->name('first');
+
 
 Route::group(['middleware' => 'auth'], function(){
 
 
 Route::get('/attendance_report', 'ReportController@showattendance_all')->name('report');
+
+Route::get('/attendance_report_tests', 'ReportController@showattendance_all_tests')->name('report_tests');
+
+Route::get('/attendance_report_ue', 'ReportController@showattendance_all_ue')->name('report_ue');
+
 
 Route::get('/', 'HomeController@index')->name('first');
 
@@ -89,6 +94,8 @@ Route::get('/Update2', 'timetablesController@showUpdateTimetable2')->name('updat
 Route::get('/TimetableManagement', 'timetablesController@TimetableManagement')->name('TimetableManagement');
 
 Route::get('/VenueCapacity', 'CapacityvenuesController@index');
+
+Route::view('/ue_and_test_report', 'ue_and_test_report');
 
 Route::get('/myreservations', 'reservationsController@myreservations')->name('myreservations');
 

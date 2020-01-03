@@ -118,7 +118,7 @@ width:100%;
     background-color: #9c9cd2;
 }
 
- .scroll overflow:auto;
+ /* .scroll overflow:auto; */
 
 a.ex1:hover, a.ex1:active {color: red;}
 
@@ -177,7 +177,7 @@ a.ex1:hover, a.ex1:active {color: red;}
 .hero-text {
   text-align: center;
   position: absolute;
- 
+
 }
 
 
@@ -198,7 +198,7 @@ a.ex1:hover, a.ex1:active {color: red;}
   transform: translate(-50%, -50%);
   color: white;*/
 
-}
+
 
 .for_label {
   display: inline;
@@ -206,8 +206,16 @@ a.ex1:hover, a.ex1:active {color: red;}
 
 
 .input_radio {
-display:inline-block;  
+display:inline-block;
 }
+
+.styling {
+
+background-color: #72b4ea;
+padding: 5px;
+
+}
+
 
 
 .form-control2 {
@@ -225,4 +233,9 @@ display:inline-block;
     border-radius: 0.25rem;
     -webkit-transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.styling:hover {
+background-color: #9561e2;
+
 }
