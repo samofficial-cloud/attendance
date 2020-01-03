@@ -44,80 +44,471 @@
 <?php
 
   use App\timetable;
+  $timetabled1 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','07:00')
+       ->get();
+  $timetabled2 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','08:00')
+       ->get();
+       $timetabled3 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','09:00')
+       ->get();
+       $timetabled4 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','10:00')
+       ->get();
+       $timetabled5 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','11:00')
+       ->get();
+       $timetabled6 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','12:00')
+       ->get();
+       $timetabled7 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','13:00')
+       ->get();
+       $timetabled8 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','14:00')
+       ->get();
+       $timetabled9 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','15:00')
+       ->get();
+       $timetabled10 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','16:00')
+       ->get();
+       $timetabledC = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','17:00')
+       ->get();
+       $timetabledA = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','18:00')
+       ->get();
+       $timetabledB = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Monday')
+       ->where('timetables.fromTime','19:00')
+       ->get();
   
-  $timetabled1 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Monday')->get();
-  $timetabled2 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Monday')->get();
-  $timetabled3 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Monday')->get();
-  $timetabled4 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Monday')->get();
-  $timetabled5 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Monday')->get();
-  $timetabled6 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Monday')->get();
-  $timetabled7 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Monday')->get();
-  $timetabled8 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Monday')->get();
-  $timetabled9 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Monday')->get();
-  $timetabled10 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Monday')->get();
-  $timetabledC = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Monday')->get();
-  $timetabledA = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Monday')->get();
-  $timetabledB = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Monday')->get();
+
+  $timetabled11 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','07:00')
+       ->get();
+  $timetabled12 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','08:00')
+       ->get();
+       $timetabled13 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','09:00')
+       ->get();
+       $timetabled14 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','10:00')
+       ->get();
+       $timetabled15 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','11:00')
+       ->get();
+       $timetabled16 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','12:00')
+       ->get();
+       $timetabled17 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','13:00')
+       ->get();
+       $timetabled18 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','14:00')
+       ->get();
+       $timetabled19 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','15:00')
+       ->get();
+       $timetabled110 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','16:00')
+       ->get();
+       $timetabled111 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','17:00')
+       ->get();
+       $timetabled112 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','18:00')
+       ->get();
+       $timetabled113 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Tuesday')
+       ->where('timetables.fromTime','19:00')
+       ->get();
 
 
 
-  $timetabled11 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Tuesday')->get();
-  $timetabled12 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Tuesday')->get();
-  $timetabled13 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Tuesday')->get();
-  $timetabled14 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Tuesday')->get();
-  $timetabled15 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Tuesday')->get();
-  $timetabled16 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Tuesday')->get();
-  $timetabled17 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Tuesday')->get();
-  $timetabled18 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Tuesday')->get();
-  $timetabled19 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Tuesday')->get();
-  $timetabled110 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Tuesday')->get();
-  $timetabled111 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Tuesday')->get();
-  $timetabled112 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Tuesday')->get();
-  $timetabled113 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Tuesday')->get();
+       $timetabled21 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','07:00')
+       ->get();
+  $timetabled22 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','08:00')
+       ->get();
+       $timetabled23 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','09:00')
+       ->get();
+       $timetabled24 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','10:00')
+       ->get();
+       $timetabled25 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','11:00')
+       ->get();
+       $timetabled26 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','12:00')
+       ->get();
+       $timetabled27 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','13:00')
+       ->get();
+       $timetabled28 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','14:00')
+       ->get();
+       $timetabled29 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','15:00')
+       ->get();
+       $timetabled210 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','16:00')
+       ->get();
+       $timetabled211 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','17:00')
+       ->get();
+       $timetabled212 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','18:00')
+       ->get();
+       $timetabled213 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Wednesday')
+       ->where('timetables.fromTime','19:00')
+       ->get();
 
 
-  $timetabled21 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Wednesday')->get();
-  $timetabled22 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Wednesday')->get();
-  $timetabled23 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Wednesday')->get();
-  $timetabled24 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Wednesday')->get();
-  $timetabled25 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Wednesday')->get();
-  $timetabled26 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Wednesday')->get();
-  $timetabled27 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Wednesday')->get();
-  $timetabled28 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Wednesday')->get();
-  $timetabled29 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Wednesday')->get();
-  $timetabled210 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Wednesday')->get();
-  $timetabled211 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Wednesday')->get();
-  $timetabled212 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Wednesday')->get();
-  $timetabled213 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Wednesday')->get();
 
-  $timetabled31 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Thursday')->get();
-  $timetabled32 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Thursday')->get();
-  $timetabled33 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Thursday')->get();
-  $timetabled34 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Thursday')->get();
-  $timetabled35 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Thursday')->get();
-  $timetabled36 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Thursday')->get();
-  $timetabled37 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Thursday')->get();
-  $timetabled38 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Thursday')->get();
-  $timetabled39 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Thursday')->get();
-  $timetabled310 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Thursday')->get();
-  $timetabled311 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Thursday')->get();
-  $timetabled312 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Thursday')->get();
-  $timetabled313 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Thursday')->get();
+       $timetabled31 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','07:00')
+       ->get();
+  $timetabled32 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','08:00')
+       ->get();
+       $timetabled33 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','09:00')
+       ->get();
+       $timetabled34 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','10:00')
+       ->get();
+       $timetabled35 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','11:00')
+       ->get();
+       $timetabled36 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','12:00')
+       ->get();
+       $timetabled37 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','13:00')
+       ->get();
+       $timetabled38 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','14:00')
+       ->get();
+       $timetabled39 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','15:00')
+       ->get();
+       $timetabled310 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','16:00')
+       ->get();
+       $timetabled311 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','17:00')
+       ->get();
+       $timetabled312 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','18:00')
+       ->get();
+       $timetabled313 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Thursday')
+       ->where('timetables.fromTime','19:00')
+       ->get();
 
-  $timetabled41 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','07:00-08:00')->where('day','Friday')->get();
-  $timetabled42 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','08:00-09:00')->where('day','Friday')->get();
-  $timetabled43 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','09:00-10:00')->where('day','Friday')->get();
-  $timetabled44 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','10:00-11:00')->where('day','Friday')->get();
-  $timetabled45 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','11:00-12:00')->where('day','Friday')->get();
-  $timetabled46 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','12:00-13:00')->where('day','Friday')->get();
-  $timetabled47 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','13:00-14:00')->where('day','Friday')->get();
-  $timetabled48 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','14:00-15:00')->where('day','Friday')->get();
-  $timetabled49 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','15:00-16:00')->where('day','Friday')->get();
-  $timetabled410 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','16:00-17:00')->where('day','Friday')->get();
-  $timetabled411 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','17:00-18:00')->where('day','Friday')->get();
-  $timetabled412 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','18:00-19:00')->where('day','Friday')->get();
-  $timetabled413 = timetable::select('course','venue','criteria')->where('program','LIKE', '%'.$_GET['rid'].'%')->where('time','19:00-20:00')->where('day','Friday')->get();
 
+       $timetabled41 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','07:00')
+       ->get();
+  $timetabled42 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','08:00')
+       ->get();
+       $timetabled43 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','09:00')
+       ->get();
+       $timetabled44 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','10:00')
+       ->get();
+       $timetabled45 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','11:00')
+       ->get();
+       $timetabled46 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','12:00')
+       ->get();
+       $timetabled47 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','13:00')
+       ->get();
+       $timetabled48 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','14:00')
+       ->get();
+       $timetabled49 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','15:00')
+       ->get();
+       $timetabled410 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','16:00')
+       ->get();
+       $timetabled411 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','17:00')
+       ->get();
+       $timetabled412= timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','18:00')
+       ->get();
+       $timetabled413 = timetable::select ('timetables.course', 'timetables.venue', 'timetables.criteria')
+      ->join('courses','timetables.course','LIKE', DB::RAW("'%'+dbo.courses.course+'%'"))
+       ->where ('courses.program' ,$_GET['rid'])
+       ->where ('courses.semester' ,'1')
+       ->where('timetables.day','Friday')
+       ->where('timetables.fromTime','19:00')
+       ->get();
 
 
   ?> 

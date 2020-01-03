@@ -43,7 +43,7 @@
 <br>
 <div class="container">
  <div class="row justify-content-center">
-<div class="col-md-5 shadow-lg p-3 bg-light rounded">
+<div class="col-7 shadow-lg p-3 bg-light rounded">
   <div class="card border-light mb-3">
      <div class="card-header card text-center border-light bg-info"><b>{{ __('Fill the Form Below to Generate Report.') }}</b></div>
                 <div class="card-body">
@@ -51,17 +51,19 @@
                   <form action="{{ route('report')}}" class="form-container form-horizontal" method="get">
                     {{csrf_field()}}
                     <div class="form-group row">
-                      <label for="" class="col-sm-4 col-form-label">For:</label>
+                      <label for="" class="col-sm-3 col-form-label"><b>For:</b></label>
+                      <div class="col-sm-6">
                       <select name="category" id="getFname" onchange="SelectCheck(this)">
                         <option value="3" >One student</option>
                          <option value="1" id="Option">All students</option>
                          <option value="2">Lecturer</option>
                      </select>
+                   </div>
                   </div>
 
                   <div id="DivCheckRadio" style="display:block;">
                     <div class="form-group row" >
-                      <label for="inputEmail3" class="col-sm-4 col-form-label">Specification:</label>
+                      <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Specification:</b></label>
                       <div class="col-sm-8">
                         <input id="one_course" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
                         <input id="All_courses" type="radio" name="selection" value="All courses">All courses
@@ -71,7 +73,7 @@
 
                   <div id="DivCheckbox" style="display:block;">
                     <div class="form-group row" >
-                      <label for="inputEmail3" class="col-sm-4 col-form-label">Show invalid attendances:</label>
+                      <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Include Invalid Attendances:</b></label>
                       <div class="col-sm-8">
                         <input id="show_all" type="checkbox" name="checkbox" value="all cases">
                       </div>
@@ -79,16 +81,16 @@
                   </div>
 
   <div id="coursediv" class="form-group row" style="display:block;">
-    <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
-    <div class="input_radio col-sm-8">
+    <label for="inputEmail3" class="col-sm-3 for_label col-form-label"><b>Course ID:</b></label>
+    <div class="input_radio col-sm-6">
       <input type="text" name="course_id" class="form-control" id="inputEmail3" placeholder="Course ID">
     </div>
   </div>
 
 <div id="DivCheck" style="display:block;">
   <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-4 col-form-label">Identification Number:</label>
-    <div class="col-sm-8">
+    <label for="inputEmail3" class="col-sm-3 col-form-label"><b>Identification Number:</b></label>
+    <div class="col-sm-6">
       <input type="text" name="reg_no" class="form-control" id="inputEmail3" placeholder="Registration number or Employee id">
     </div>
   </div>

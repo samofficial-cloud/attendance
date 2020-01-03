@@ -47,10 +47,29 @@
 use App\reservation;
  $pending = reservation::where('rstatus','-1')->get();
   $approved = reservation::where('rstatus','1')->get();
+  $today=date('d');
+  $tmonth=date('m');
+  $tyear=date('Y');
  $i='1';
  $j='1';
 ?>
 <div class="container2">
+   @if ($errors->any())
+          <div class="alert alert-danger">
+            <strong>Sorry!!</strong> Something went Wrong<br>
+            <ul>
+              @foreach ($errors as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+    @endif
   <h4>PENDING REQUESTS</h4>
   @if(count($pending)==0)
   <h5>You have no any pending request.</h5>
@@ -81,14 +100,26 @@ use App\reservation;
       <td>{{ $pending->Day }}</td>
       <td>{{ $pending->Date }}/{{ $pending->Month}}/{{ $pending->Year}}</td>
        <td>{{$pending->Week}}</td>
-      <td>{{ $pending->Time}}</td>
+      <td>{{ $pending->fromTime}}-{{ $pending->toTime}}</td>
       <td>{{ $pending->Capacity}}</td>
       <td>{{ $pending->Reason}}</td>
       <td>{{ $pending->Remarks}}</td>
       
-      <td><a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a>
+      <td>
+        @if($pending->Year<$tyear)
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        @elseif($pending->Year==$tyear)
+        @if($pending->Month<$tmonth)
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        @elseif($pending->Month==$tmonth and $pending->Date<$today)
+         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE <i class='fas fa-trash-alt'></i></a>
+         @else
+        <a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a>
         
-<a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a></td>
+<a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a>
+@endif
+@endif
+</td>
 
       </tr>
       <?php
@@ -131,11 +162,21 @@ use App\reservation;
       <td>{{ $approved->Day }}</td>
       <td>{{ $approved->Date }}/{{ $approved->Month}}/{{ $approved->Year}}</td>
        <td>{{$approved->Week}}</td>
-     <td>{{ $approved->Time}}</td>
+     <td>{{ $approved->fromTime}}-{{ $approved->toTime}}</td>
      <td>{{ $approved->Capacity}}</td>
       <td>{{ $approved->Reason}}</td>
       <td>
+         @if($approved->Year<$tyear)
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        @elseif($approved->Year==$tyear)
+        @if($approved->Month<$tmonth)
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        @elseif($approved->Month==$tmonth and $approved->Date<$today)
+         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE <i class='fas fa-trash-alt'></i></a>
+         @else
        <a class="btn btn-sm btn-success" href="{{route('changestatusb',$approved->id)}}">Change</a>
+       @endif
+       @endif
         </td>
       </tr>
       <?php
@@ -148,6 +189,6 @@ use App\reservation;
 </table>
 @endif
 </div>
-
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
 @endsection

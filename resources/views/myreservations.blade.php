@@ -48,6 +48,24 @@ use App\reservation;
 ?>
 
 <div class="container">
+  @if ($errors->any())
+          <div class="alert alert-danger">
+            <strong>Sorry!!</strong> Something went Wrong<br>
+            <ul>
+              @foreach ($errors as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+    @endif
+   <a href="/venue"><i class="fa fa-plus" style="font-size:36px;color:green"></i></a>
+   <br>
   <h4>PENDING REQUESTS</h4>
    @if(count($pending)==0)
   <h5>You have no any pending request.</h5>
@@ -137,7 +155,8 @@ use App\reservation;
 @endif
 </div>
 
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 @endsection

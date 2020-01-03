@@ -57,79 +57,79 @@ td {
 <?php
 
   use App\timetable;
-  $timetable = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','07:00-08:00')->get();
- $timetable1 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','08:00-09:00')->get();
- $timetable2 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','09:00-10:00')->get();
- $timetable3 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','10:00-11:00')->get();
- $timetable4 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','11:00-12:00')->get();
- $timetable5 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','12:00-13:00')->get();
- $timetable6 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','13:00-14:00')->get();
- $timetable7 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','14:00-15:00')->get();
- $timetable8 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','15:00-16:00')->get();
- $timetable9 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','16:00-17:00')->get();
- $timetable10 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','17:00-18:00')->get();
- $timetable11 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','18:00-19:00')->get();
- $timetable12 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Monday')->where('Time','19:00-20:00')->get();
+  $timetable = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','07:00')->get();
+ $timetable1 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','08:00')->get();
+ $timetable2 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','09:00')->get();
+ $timetable3 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','10:00')->get();
+ $timetable4 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','11:00')->get();
+ $timetable5 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','12:00')->get();
+ $timetable6 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','13:00')->get();
+ $timetable7 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','14:00')->get();
+ $timetable8 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','15:00')->get();
+ $timetable9 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','16:00')->get();
+ $timetable10 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','17:00')->get();
+ $timetable11 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','18:00')->get();
+ $timetable12 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','19:00')->get();
 
 
- $timetableA2 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','07:00-08:00')->get();
- $timetable21 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','08:00-09:00')->get();
- $timetable22 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','09:00-10:00')->get();
- $timetable23 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','10:00-11:00')->get();
- $timetable24 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','11:00-12:00')->get();
- $timetable25 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','12:00-13:00')->get();
- $timetable26 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','13:00-14:00')->get();
- $timetable27 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','14:00-15:00')->get();
- $timetable28 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','15:00-16:00')->get();
- $timetable29 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','16:00-17:00')->get();
- $timetable210 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','17:00-18:00')->get();
- $timetable211 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','18:00-19:00')->get();
- $timetable212 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('Time','19:00-20:00')->get();
+ $timetableA2 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','07:00')->get();
+ $timetable21 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','08:00')->get();
+ $timetable22 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','09:00')->get();
+ $timetable23 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','10:00')->get();
+ $timetable24 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','11:00')->get();
+ $timetable25 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','12:00')->get();
+ $timetable26 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','13:00')->get();
+ $timetable27 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','14:00')->get();
+ $timetable28 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','15:00')->get();
+ $timetable29 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','16:00')->get();
+ $timetable210 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','17:00')->get();
+ $timetable211 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','18:00')->get();
+ $timetable212 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','19:00')->get();
 
 
- $timetableA3 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','07:00-08:00')->get();
- $timetable31 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','08:00-09:00')->get();
- $timetable32 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','09:00-10:00')->get();
- $timetable33 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','10:00-11:00')->get();
- $timetable34 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','11:00-12:00')->get();
- $timetable35 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','12:00-13:00')->get();
- $timetable36 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','13:00-14:00')->get();
- $timetable37 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','14:00-15:00')->get();
- $timetable38 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','15:00-16:00')->get();
- $timetable39 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','16:00-17:00')->get();
- $timetable310 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','17:00-18:00')->get();
- $timetable311 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','18:00-19:00')->get();
- $timetable312 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('Time','19:00-20:00')->get();
+ $timetableA3 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','07:00')->get();
+ $timetable31 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','08:00')->get();
+ $timetable32 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','09:00')->get();
+ $timetable33 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','10:00')->get();
+ $timetable34 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','11:00')->get();
+ $timetable35 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','12:00')->get();
+ $timetable36 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','13:00')->get();
+ $timetable37 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','14:00')->get();
+ $timetable38 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','15:00')->get();
+ $timetable39 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','16:00')->get();
+ $timetable310 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','17:00')->get();
+ $timetable311 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','18:00')->get();
+ $timetable312 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','19:00')->get();
 
 
- $timetableA4 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','07:00-08:00')->get();
- $timetable41 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','08:00-09:00')->get();
- $timetable42 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','09:00-10:00')->get();
- $timetable43 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','10:00-11:00')->get();
- $timetable44 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','11:00-12:00')->get();
- $timetable45 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','12:00-13:00')->get();
- $timetable46 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','13:00-14:00')->get();
- $timetable47 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','14:00-15:00')->get();
- $timetable48 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','15:00-16:00')->get();
- $timetable49 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','16:00-17:00')->get();
- $timetable410 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','17:00-18:00')->get();
- $timetable411 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','18:00-19:00')->get();
- $timetable412 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('Time','19:00-20:00')->get();
+ $timetableA4 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','07:00')->get();
+ $timetable41 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','08:00')->get();
+ $timetable42 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','09:00')->get();
+ $timetable43 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','10:00')->get();
+ $timetable44 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','11:00')->get();
+ $timetable45 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','12:00')->get();
+ $timetable46 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','13:00')->get();
+ $timetable47 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','14:00')->get();
+ $timetable48 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','15:00')->get();
+ $timetable49 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','16:00')->get();
+ $timetable410 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','17:00')->get();
+ $timetable411 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','18:00')->get();
+ $timetable412 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','19:00')->get();
 
 
- $timetableA5 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','07:00-08:00')->get();
- $timetable51 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','08:00-09:00')->get();
- $timetable52 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','09:00-10:00')->get();
- $timetable53 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','10:00-11:00')->get();
- $timetable54 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','11:00-12:00')->get();
- $timetable55 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','12:00-13:00')->get();
- $timetable56 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','13:00-14:00')->get();
- $timetable57 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','14:00-15:00')->get();
- $timetable58 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','15:00-16:00')->get();
- $timetable59 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','16:00-17:00')->get();
- $timetable510 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','17:00-18:00')->get();
- $timetable511 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','18:00-19:00')->get();
- $timetable512 = timetable::select('course','criteria')->where('venue',$_GET['rid'])->where('Day','Friday')->where('Time','19:00-20:00')->get();
+ $timetableA5 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','07:00')->get();
+ $timetable51 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','08:00')->get();
+ $timetable52 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','09:00')->get();
+ $timetable53 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','10:00')->get();
+ $timetable54 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','11:00')->get();
+ $timetable55 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','12:00')->get();
+ $timetable56 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','13:00')->get();
+ $timetable57 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','14:00')->get();
+ $timetable58 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','15:00')->get();
+ $timetable59 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','16:00')->get();
+ $timetable510 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','17:00')->get();
+ $timetable511 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','18:00')->get();
+ $timetable512 = timetable::select('course','criteria','id','fromTime','toTime')->where('venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','19:00')->get();
 
 
   use App\calendar;
@@ -143,81 +143,84 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
   $tyear=date('Y');
 
    use App\reservation;
-    $state = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','07:00-08:00')->get();
-     $state1 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','08:00-09:00')->get();
-      $state2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','09:00-10:00')->get();
-       $state3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','10:00-11:00')->get();
-        $state4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','11:00-12:00')->get();
-         $state5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','12:00-13:00')->get();
-          $state6 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','13:00-14:00')->get();
-           $state7 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','14:00-15:00')->get();
-            $state8 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','15:00-16:00')->get();
-             $state9 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','16:00-17:00')->get();
-              $state10 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','17:00-18:00')->get();
-               $state11 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','18:00-19:00')->get();
-                $state12 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('Time','19:00-20:00')->get();
+    $state = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','07:00')->get();
+     $state1 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','08:00')->get();
+      $state2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','09:00')->get();
+       $state3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','10:00')->get();
+        $state4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','11:00')->get();
+         $state5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','12:00')->get();
+          $state6 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','13:00')->get();
+           $state7 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','14:00')->get();
+            $state8 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','15:00')->get();
+             $state9 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','16:00')->get();
+              $state10 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','17:00')->get();
+               $state11 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','18:00')->get();
+                $state12 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('fromTime','19:00')->get();
     $stat = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->get();
    $states = reservation::where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('rstatus','-1')->get();
 
 
-   $stateA2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','07:00-08:00')->get();
-     $state21 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','08:00-09:00')->get();
-      $state22 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','09:00-10:00')->get();
-       $state23 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','10:00-11:00')->get();
-        $state24 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','11:00-12:00')->get();
-         $state25 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','12:00-13:00')->get();
-          $state26 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','13:00-14:00')->get();
-           $state27 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','14:00-15:00')->get();
-            $state28 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','15:00-16:00')->get();
-             $state29 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','16:00-17:00')->get();
-              $state210 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','17:00-18:00')->get();
-               $state211 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','18:00-19:00')->get();
-                $state212 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('Time','19:00-20:00')->get();
+   $stateA2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','07:00')->get();
+     $state21 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','08:00')->get();
+      $state22 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','09:00')->get();
+       $state23 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','10:00')->get();
+        $state24 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','11:00')->get();
+         $state25 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','12:00')->get();
+          $state26 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','13:00')->get();
+           $state27 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','14:00')->get();
+            $state28 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','15:00')->get();
+             $state29 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','16:00')->get();
+              $state210 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','17:00')->get();
+               $state211 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','18:00')->get();
+                $state212 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('Month',date('m'))->where('fromTime','19:00')->get();
 
 
-                $stateA3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','07:00-08:00')->get();
-     $state31 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','08:00-09:00')->get();
-      $state32 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','09:00-10:00')->get();
-       $state33 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','10:00-11:00')->get();
-        $state34 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','11:00-12:00')->get();
-         $state35 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','12:00-13:00')->get();
-          $state36 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','13:00-14:00')->get();
-           $state37 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','14:00-15:00')->get();
-            $state38 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','15:00-16:00')->get();
-             $state39 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','16:00-17:00')->get();
-              $state310 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','17:00-18:00')->get();
-               $state311 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','18:00-19:00')->get();
-                $state312 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('Time','19:00-20:00')->get();
+                $stateA3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','07:00')->get();
+     $state31 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','08:00')->get();
+      $state32 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','09:00')->get();
+       $state33 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','10:00')->get();
+        $state34 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','11:00')->get();
+         $state35 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','12:00')->get();
+          $state36 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','13:00')->get();
+           $state37 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','14:00')->get();
+            $state38 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','15:00')->get();
+             $state39 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','16:00')->get();
+              $state310 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','17:00')->get();
+               $state311 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','18:00')->get();
+                $state312 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('Month',date('m'))->where('fromTime','19:00')->get();
 
 
-                $stateA4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','07:00-08:00')->get();
-     $state41 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','08:00-09:00')->get();
-      $state42 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','09:00-10:00')->get();
-       $state43 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','10:00-11:00')->get();
-        $state44 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','11:00-12:00')->get();
-         $state45 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','12:00-13:00')->get();
-          $state46 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','13:00-14:00')->get();
-           $state47 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','14:00-15:00')->get();
-            $state48 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','15:00-16:00')->get();
-             $state49 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','16:00-17:00')->get();
-              $state410 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','17:00-18:00')->get();
-               $state411 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','18:00-19:00')->get();
-                $state412 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('Time','19:00-20:00')->get();
+                $stateA4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','07:00')->get();
+     $state41 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','08:00')->get();
+      $state42 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','09:00')->get();
+       $state43 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','10:00')->get();
+        $state44 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','11:00')->get();
+         $state45 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','12:00')->get();
+          $state46 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','13:00')->get();
+           $state47 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','14:00')->get();
+            $state48 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','15:00')->get();
+             $state49 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','16:00')->get();
+              $state410 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','17:00')->get();
+               $state411 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','18:00')->get();
+                $state412 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('Month',date('m'))->where('fromTime','19:00')->get();
 
 
-                $stateA5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','07:00-08:00')->get();
-     $state51 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','08:00-09:00')->get();
-      $state52 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','09:00-10:00')->get();
-       $state53 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','10:00-11:00')->get();
-        $state54 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','11:00-12:00')->get();
-         $state55 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','12:00-13:00')->get();
-          $state56 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','13:00-14:00')->get();
-           $state57 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','14:00-15:00')->get();
-            $state58 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','15:00-16:00')->get();
-             $state59 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','16:00-17:00')->get();
-              $state510 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','17:00-18:00')->get();
-               $state511 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','18:00-19:00')->get();
-                $state512 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('Time','19:00-20:00')->get();
+                $stateA5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','07:00')->get();
+     $state51 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','08:00')->get();
+      $state52 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','09:00')->get();
+       $state53 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','10:00')->get();
+        $state54 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','11:00')->get();
+         $state55 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','12:00')->get();
+          $state56 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','13:00')->get();
+           $state57 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','14:00')->get();
+            $state58 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','15:00')->get();
+             $state59 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','16:00')->get();
+              $state510 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','17:00')->get();
+               $state511 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','18:00')->get();
+                $state512 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('Month',date('m'))->where('fromTime','19:00')->get();
+
+                use App\capacityvenue;
+ $capacity = capacityvenue::select('capacity')->where('venue',$_GET['rid'])->value('capacity');
 
   ?> 
 
@@ -319,6 +322,22 @@ $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('
 
 
     <div class="col-10">
+      @if ($errors->any())
+          <div class="alert alert-danger">
+            <strong>Sorry!!</strong> Something went Wrong<br>
+            <ul>
+              @foreach ($errors as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </ul>
+          </div>
+        @endif
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+    @endif
   <div class="card hero-image border-info">
   <div class="card-body">
     <div class="row">
@@ -390,80 +409,486 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetable as $timed)
   @if ($timed->course== '')
+  @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
   @foreach($state as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($state)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
+    @if(count($state)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
 
-     @else
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+ </td>
+@endif
+@endif
+@endif
+
+@else
 <td bgcolor="#ffffff"><font color="green">{{ $times['criteria']}}</font><br>{{ $timed['course']}}</td>
-    @endif
-    @endforeach
-    @foreach ($timetable1 as $timed)
+@endif
+@endforeach
+
+
+  @foreach ($timetable1 as $timed)
   @if ($timed->course == '')
-   @if($mm<$tmonth)
+  @if($yy<$tyear)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($yy==$tyear)
+  @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @endif
+  @elseif($mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
   @else
 @foreach($state1 as $stat)
   @if( $stat->rstatus=='1') <td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state1)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
+   @if(count($state1)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+</td>
+@endif
+@endif
+@endif
  
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
-    @endforeach
+  @endforeach
+
+
  @foreach ($timetable2 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state2 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state2)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state2)==0)
+    <td>
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
   @foreach ($timetable3 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
      @foreach($state3 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state3)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state3)==0)
+ <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
 
@@ -471,120 +896,732 @@ $yy=$times['Year'];
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
+
+
 @foreach ($timetable4 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state4 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state4)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state4)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable5 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
 @foreach($state5 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state5)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state5)==0)
+    <td>
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
 @foreach ($timetable6 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
   @foreach($state6 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state6)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state6)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable7 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state7 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state7)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state7)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable8 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state8 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state8)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state8)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable9 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state9 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state9)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state9)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
@@ -593,11 +1630,13 @@ $yy=$times['Year'];
     @endforeach
  @foreach ($timetable10 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state10 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -605,7 +1644,105 @@ $yy=$times['Year'];
     @else Reserve
    @endif
    @endforeach
-   @if(count($state10)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state10)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
@@ -614,11 +1751,13 @@ $yy=$times['Year'];
     @endforeach
  @foreach ($timetable11 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state11 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -626,20 +1765,121 @@ $yy=$times['Year'];
     @else Reserve
    @endif
    @endforeach
-   @if(count($state11)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state11)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
- @endif
+    @endif
+    @endif
   @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+ <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
  @foreach ($timetable12 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state12 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
@@ -647,14 +1887,111 @@ $yy=$times['Year'];
     @else Reserve
    @endif
    @endforeach
-   @if(count($state12)==0)<td><a href="/form?day=Monday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state12)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Monday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
-    
 </tr>
 
 <tr align="center">
@@ -674,266 +2011,1599 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA2 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
   @foreach($stateA2 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($stateA2)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-     @else
+    @if(count($stateA2)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+</td>
+@endif
+@endif
+@endif
+
+@else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+@endif
+@endforeach
+
+
+   @foreach ($timetable21 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+    @foreach($state21 as $stat)
+    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
     @endif
     @endforeach
-    @foreach ($timetable21 as $timed)
-  @if ($timed->course == '')
+   @if(count($state21)==0)
+   <td>
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+ </td>
+  @endif
+  @endif
+  @endif
+
+  @else
+  <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+  @endif
+  @endforeach
+
+
+   @foreach ($timetable22 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
- @foreach($state21 as $stat)
-  @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+    @foreach($state22 as $stat)
+    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
+    @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+    @endif
+    @endforeach
+  @if(count($state22)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+  @endif
+  @endif
+  @endif
+
+   @else
+   <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
    @endforeach
-   @if(count($state21)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-  @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
-    @endforeach
- @foreach ($timetable22 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-   @foreach($state22 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
-    @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-   @endif
-    @endforeach
-    @if(count($state22)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-   @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-   @endif
-    @endforeach
+
+
   @foreach ($timetable23 as $timed)
   @if ($timed->course == '')
+  @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
      @foreach($state23 as $stat)
-   @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+  @if(count($state23)==0)
+  <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+  </td>
+  @endif
+  @endif
+  @endif
+
+  @else
+  <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+  @endif
+  @endforeach
+
+
+   @foreach ($timetable24 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state24 as $stat)
+     @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+     @if(count($state24)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+  </td>
    @endif
+   @endif
+   @endif
+
+@else
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+@endif
 @endforeach
-@if(count($state23)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
- @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
- @endif
-    @endforeach
-@foreach ($timetable24 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-   @foreach($state24 as $stat)
-   @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+
+
+   @foreach ($timetable25 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state25 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+  @if(count($state25)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+   </td>
    @endif
-   @endforeach
-   @if(count($state24)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-  @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
-    @endforeach
- @foreach ($timetable25 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
- @foreach($state25 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
-    @endforeach
-    @if(count($state25)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @endif
+ 
+@else
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+@endif
+@endforeach
+
+   @foreach ($timetable26 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state26 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+  @if(count($state26)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
  
+@else
+<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+@endif
+@endforeach
+
+
+   @foreach ($timetable27 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
    @else
+     @foreach($state27 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+   @if(count($state27)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
+    @endif
+    @endif
+
+@else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-   @endif
-    @endforeach
-@foreach ($timetable26 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-    @foreach($state26 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+@endif
+@endforeach
+
+   @foreach ($timetable28 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state28 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @else Reserve
+     @endif
+     @endforeach
+   @if(count($state28)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
+    @endif
+    @endif 
+
+ @else
+ <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
    @endforeach
-   @if(count($state26)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+
+
+   @foreach ($timetable29 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state29 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+   @if(count($state29)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
+    @endif
+
   @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
-    @endforeach
- @foreach ($timetable27 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-    @foreach($state27 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+   <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
    @endforeach
-   @if(count($state27)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+
+
+   @foreach ($timetable210 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state210 as $stat)
+     @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+    @endforeach
+   @if(count($state210)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
-    @endforeach
- @foreach ($timetable28 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
+  @endforeach
+
+
+   @foreach ($timetable211 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state211 as $stat)
+     @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+   @if(count($state211)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
+    @endif
+    @endif
+
   @else
-    @foreach($state28 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-    @else Reserve
+  <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
-   @endforeach
-   @if(count($state28)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-  @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
     @endforeach
- @foreach ($timetable29 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-    @foreach($state29 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-   @endif
-   @endforeach
-   @if(count($state29)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-  @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
-    @endforeach
- @foreach ($timetable210 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-   @foreach($state210 as $stat)
-   @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-   @endif
-   @endforeach
-   @if(count($state210)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-  @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
-    @endforeach
- @foreach ($timetable211 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-    @foreach($state211 as $stat)
-   @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-   @endif
-   @endforeach
-   @if(count($state211)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
-    @endif
-    @endif
-  @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
-  @endif
-    @endforeach
+
+
  @foreach ($timetable212 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-    @foreach($state212 as $stat)
-   @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-   @endif
-   @endforeach
-   @if(count($state212)==0)<td><a href="/form?day=Tuesday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state212 as $stat)
+     @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
+     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+     @if(count($state212)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Tuesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
+    @endif
+
   @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+  <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
-    @endforeach
+  @endforeach
     
 </tr>
 
@@ -954,258 +3624,1584 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA3 as $timed)
   @if ($timed->course == '')
+  @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
-  @foreach($stateA3 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+   @foreach($stateA3 as $stat)
+    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
-    @endforeach
-    @if(count($stateA3)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+     @endforeach
+
+   @if(count($stateA3)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
-     @else
-<td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
-    @endforeach
-    @foreach ($timetable31 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
+
+ @else
+ <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
+ @endif
+ @endforeach
+
+   @foreach ($timetable31 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
   @else
   @foreach($state31 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state31)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state31)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
-    @endforeach
+  @endforeach
+
+
  @foreach ($timetable32 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state32 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state32)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state32)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
+    @endif
+
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
   @foreach ($timetable33 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state33 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state33)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state33)==0)
+ <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
  @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
+
+
 @foreach ($timetable34 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state34 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state34)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state34)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable35 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
 @foreach($state35 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state35)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state35)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
 @foreach ($timetable36 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state36 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state36)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state36)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable37 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state37 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state37)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state37)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable38 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state38 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state38)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state38)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable39 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state39 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state39)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state39)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable310 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state310 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="##c7aeec">Pending </td>
    @endif
    @endforeach
-   @if(count($state310)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state310)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable311 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state311 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state311)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state311)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable312 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state312 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state312)==0)<td><a href="/form?day=Wednesday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state312)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Wednesday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
@@ -1233,258 +5229,1582 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA4 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
-  @foreach($stateA4 as $stat)
-   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @foreach($stateA4 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
-    @endforeach
-    @if(count($stateA4)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+     @endforeach
+  @if(count($stateA4)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
      @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
-    @foreach ($timetable41 as $timed)
-  @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
-  <td><br><br>N/A</td>
-  @endif
-  @else
-  @foreach($state41 as $stat)
-  @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
-   @endif
-   @endforeach
-   @if(count($state41)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+
+
+   @foreach ($timetable41 as $timed)
+   @if ($timed->course == '')
+   @if($yy<$tyear)
+   <td><br><br>N/A</td>
+   @elseif($yy==$tyear)
+   @if($mm<$tmonth)
+   <td><br><br>N/A</td>
+   @elseif($mm==$tmonth and $dd<$tdate)
+   <td><br><br>N/A</td>
+   @else
+     @foreach($state41 as $stat)
+     @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
+     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+     @endif
+     @endforeach
+   @if(count($state41)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable42 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state42 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state42)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state42)==0)
+ <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
   @foreach ($timetable43 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
      @foreach($state43 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state43)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state43)==0)
+ <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
  @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
+
+
 @foreach ($timetable44 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state44 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state44)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state44)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable45 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
 @foreach($state45 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state45)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state45)==0)
+ <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
 @foreach ($timetable46 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state46 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state46)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state46)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable47 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state47 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state47)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state47)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable48 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state48 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state48)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state48)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable49 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state49 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state49)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state49)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable410 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state410 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td> 
    @endif
    @endforeach
-   @if(count($state410)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state410)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable411 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state411 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif(  $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state411)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state411)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable412 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state412 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state412)==0)<td><a href="/form?day=Thursday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state412)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Thursday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
@@ -1512,231 +6832,1356 @@ $yy=$times['Year'];
 </th>
  @foreach ($timetableA5 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
   @foreach($stateA5 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved </td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
      @endif
     @endforeach
-    @if(count($stateA5)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=07:00-08:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($stateA5)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
+    @endif
+
      @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
     @endif
     @endforeach
+
+
     @foreach ($timetable51 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
   @foreach($state51 as $stat)
   @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state51)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=08:00-09:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state51)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable52 as $timed)
   @if ($timed->course == '')
-  @if($mm<$tmonth)
-  <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+ @if($yy<$tyear)
   <td><br><br>N/A</td>
   @endif
+  @if($yy==$tyear and $mm<$tmonth)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear and $mm==$tmonth and $dd<$tdate)
+  <td><br><br>N/A</td>
   @else
    @foreach($state52 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
-    @elseif( $$stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
+    @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
-    @endforeach
-    @if(count($state52)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=09:00-10:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @endforeach
+    @if(count($state52)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
-    @endforeach
+   @endforeach
+
+
   @foreach ($timetable53 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
       @foreach($state53 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
 @endforeach
-@if(count($state53)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=10:00-11:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+@if(count($state53)==0)
+<td>
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
     @endif
     @endif
+    @endif
+
  @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
  @endif
     @endforeach
+
+
 @foreach ($timetable54 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state54 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state54)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=11:00-12:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state54)==0)
+   <td>
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable55 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
 @foreach($state55 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
     @endforeach
-    @if(count($state55)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=12:00-13:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+    @if(count($state55)==0)
+     <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
    @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
    @endif
     @endforeach
+
+
 @foreach ($timetable56 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state56 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state56)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=13:00-14:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state56)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable57 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state57 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state57)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=14:00-15:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state57)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable58 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state58 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state58)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=15:00-16:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state58)==0)
+   <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable59 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state59 as $stat)
    @if( $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif($stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state59)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=16:00-17:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state59)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable510 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
    @foreach($state510 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state510)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=17:00-18:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state510)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable511 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state511 as $stat)
    @if(  $stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td> 
@@ -1744,7 +8189,105 @@ $yy=$times['Year'];
     @else Reserve
    @endif
    @endforeach
-   @if(count($state511)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=18:00-19:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state511)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
  
@@ -1752,20 +8295,122 @@ $yy=$times['Year'];
 <td bgcolor="#ffffff"><font color="green">{{ $timed['criteria']}}</font><br>{{ $timed['course']}}</td>
   @endif
     @endforeach
+
+
  @foreach ($timetable512 as $timed)
   @if ($timed->course == '')
+ @if($yy<$tyear)
+  <td><br><br>N/A</td>
+  @elseif($yy==$tyear)
   @if($mm<$tmonth)
   <td><br><br>N/A</td>
-  @if($mm==$tmonth and $dd<$tdate)
+  @elseif($mm==$tmonth and $dd<$tdate)
   <td><br><br>N/A</td>
-  @endif
   @else
     @foreach($state512 as $stat)
    @if($stat->rstatus=='1')<td bgcolor="##c7aeec">Reserved</td>
     @elseif( $stat->rstatus=='-1')<td bgcolor="#81ecaf">Pending</td>
    @endif
    @endforeach
-   @if(count($state512)==0)<td><a href="/form?day=Friday&room={{ $_GET['rid'] }}&tim=19:00-20:00&dd={{ $dd }}&mm={{ $mm }}&yy={{ $yy }}&wid={{$_GET['wid']}}" class="btn button_color active" role="button" aria-pressed="true">Reserve</a></td>
+   @if(count($state512)==0)
+    <td height="100">
+      <a data-toggle="modal" data-target="#id{{$timed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Reserve</font></a>
+      <div class="modal fade" id="id{{$timed->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <form method="post" action="{{url('create')}}">
+  {{csrf_field()}}
+  <div class="form-group row">
+    <label for="InputName" class="col-sm-3 col-form-label">Employee ID</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="InputName" name="Name" value="{{ Auth::user()->name }}" readonly>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue" name="Venue" value="{{ $_GET['rid'] }}" readonly>
+  </div>
+  </div>
+   <div class="form-group row">
+    <label for="Day"  class="col-sm-3 col-form-label">Day</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day" name="Day" value="Friday" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputdate"  class="col-sm-3 col-form-label">Date</label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="inputday" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$timed->fromTime}}" readonly>
+  </div>
+   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$timed->toTime}}" readonly>
+  </div>
+  </div>
+
+<input type="hidden" id="Month" name="Month" value="{{ $mm}}">
+<input type="hidden" id="Year" name="wid" value="{{ $_GET['wid'] }}">
+<input type="hidden" id="Year" name="Year" value="{{ $yy }}">
+<input type="hidden" id="Date" name="Date" value="{{ $dd}}">
+  <div class="form-group row">
+    <label for="Reason"  class="col-sm-3 col-form-label">Reason</label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+    <option value="Lecture">Lecture</option>
+    <option value="Test">Test</option>
+    <option value="Seminar">Seminar</option>
+    <option value="Meeting">Meeting</option>
+    <option value="Practical">Practical</option>
+    <option value="Others">Other</option>
+  </select>
+  </div>
+  </div>
+
+  <div class="slidecontainer form-group row">
+        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant:</label>
+        <div class="col-sm-8">
+  <input  class="form-control-lg" type="number" value=$(input[type=number]).inputSpinner() min="0" max={{ $capacity}} step=1 name="capacity" required />
+</div>
+
+</div>
+
+   <div class="form-group row">
+    <label for="exampleFormControlTextarea1" class="col-sm-3">Remarks</label>
+    <div class="col-sm-8">
+    <textarea class="form-control" name="remark" id="exampleFormControlTextarea1" rows="1" maxlength="80"></textarea>
+  </div>
+  </div>
+  
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+     </form>
+</div>
+
+</div>
+</div>
+</div>
+
+    </td>
+    @endif
     @endif
     @endif
   @else
@@ -1774,7 +8419,7 @@ $yy=$times['Year'];
     @endforeach
     
 </tr>
-
+ 
     
     
 </table>
@@ -1785,6 +8430,12 @@ $yy=$times['Year'];
 </div>
 </div>
 
+<script src="./src/bootstrap-input-spinner.js"></script>
+<script>
+    $("input[type='number']").inputSpinner()
+</script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @endsection

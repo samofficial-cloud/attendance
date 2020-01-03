@@ -70,6 +70,7 @@
                                     <a class="dropdown-item" href="/Password">Change Password</a>
                                     <a class="dropdown-item" href="/profile">View Profile</a>
                                      <a class="dropdown-item" href="/myreservations">My Reservations</a>
+                                      <a class="dropdown-item" href="/mytests">My Tests</a>
                                      <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

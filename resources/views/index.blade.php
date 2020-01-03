@@ -32,6 +32,7 @@
 <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
   </li>
+  
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
   </li>
