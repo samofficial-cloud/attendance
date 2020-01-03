@@ -34,53 +34,45 @@
 <br>
 <div class="container">
 
+@if($_GET['selection']=='All courses')
+    <div class="col-xs-9"><legend>
+      <p class="note"> Attendance report for {{$name}} (All courses) </p></legend> </div>
 
-@if(!empty($_GET['checkbox']))
-<div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{$name}} ({{strtoupper($_GET['course_id'])}})</p></legend> </div>
-@elseif($_GET['selection']=='All courses')
-  <div class="col-xs-9"><legend>
-    <p class="note"> Attendance report for {{$name}} (All courses) </p></legend> </div>
-
+@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
+      <div class="col-xs-9"><legend>
+        <p class="note">Test attendance report for {{$name}} </p>
+      <h5 class="note">Course: {{strtoupper($_GET['course_id'])}} </h5>
+      </legend> </div>
 @else
 <div class="col-xs-9"><legend>
   <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
 @endif
 
-<!-- Show also invalid cases -->
-@if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
+
+
+@if ($_GET['selection']=='All courses')
 
 <div class="col-xs-6">
-  @if(count($dataSingle_all)>0)
+  @if(count($all_courses)>0)
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Attendance status</th>
-        <th>Arrival time</th>
+        <th>NO</th>
+        <th>COURSE</th>
+        <th>TYPE OF TEST</th>
+        <th>DATE</th>
+        <th>STATUS</th>
       </tr>
     </thead>
 
     <tbody>
-      @foreach ($dataSingle_all as $var)
+      @foreach ($all_courses as $var)
       <tr>
         <td class="counterCell"></td>
-        <td>{{date("d-m-Y",strtotime($var->datetime))  }}</td>
-        <td>{{ date("H:i",strtotime($var->datetime))}}</td>
-        <td>@if($var->status==1)
-          PRESENT
-          @else
-          NOT PRESENT
-          @endif
-        </td>
-        <td>@if($var->validity=='VALID')
-          EARLY
-          @else
-          LATE
-          @endif
-        </td>
+        <td>{{$var->courseId}}</td>
+        <td>{{$var->category}}</td>
+        <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
+        <td>PRESENT</td>
       </tr>
       @endforeach
     </tbody>
@@ -92,60 +84,30 @@
 </div>
 
 
+
 @elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
 <div class="col-xs-6">
-
+  @if(count($data)>0)
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Identification number</th>
-        <th>Percentage</th>
+        <th>NO</th>
+        <th>TYPE OF TEST</th>
+        <th>DATE</th>
+        <th>STATUS</th>
       </tr>
     </thead>
 
     <tbody>
-
+      @foreach ($data as $var)
       <tr>
         <td class="counterCell"></td>
-        <td>{{$name}}</td>
-        <td>{{$reg_no}}</td>
-        <td> {{$percentage}}%</td>
+        <td>{{$var->category}}</td>
+        <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+        <td>PRESENT</td>
       </tr>
-
-    </tbody>
-
-  </table>
-
-</div>
-
-
-
-
-@elseif ($_GET['selection']=='All courses')
-
-<div class="col-xs-6">
-  @if(count($all_courses)>0)
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>No</th>
-        <th>Course</th>
-        <th>Percentage</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <?php
-      foreach($all_courses as $values){
-       $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
-       $val = (iterator_to_array($iterator,true));
-       print('<tr><td class="counterCell"></td>'.'<td>'.$val['courseId'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
-
-}
-?>
+      @endforeach
     </tbody>
 
   </table>
