@@ -24,8 +24,9 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
@@ -37,7 +38,7 @@
   </li>
 
 
- 
+
 </ul>
 
 </div>
@@ -91,7 +92,7 @@
             <p>Here is where attendance reports for both students and lecturers can be requested for each and every course. Also there is an option for generating students' attendance reports for tests and examinations.  </p>
 
           </div>
-          
+
           <div class="photo"><img class="image_size_wide" src="{{ asset('img/report.png') }}"></img></div>
           <div class="down_bar"><center><button class="btn btn-primary" onclick="location.href='/report';" type="button">Generate Report</button></center></div>
 
