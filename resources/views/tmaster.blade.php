@@ -23,7 +23,7 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606" href="/approval">APPROVAL</a>
@@ -149,6 +149,7 @@ use App\reservation;
       <th scope="col">Time</th>
       <th scope="col">Capacity</th>
        <th scope="col">Reason</th>
+       <th scope="col">Remarks</th>
       <th scope="col">Approval</th>
     </tr>
   </thead>
@@ -165,14 +166,15 @@ use App\reservation;
      <td>{{ $approved->fromTime}}-{{ $approved->toTime}}</td>
      <td>{{ $approved->Capacity}}</td>
       <td>{{ $approved->Reason}}</td>
+      <td>{{ $approved->Remarks}}</td>
       <td>
          @if($approved->Year<$tyear)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
         @elseif($approved->Year==$tyear)
         @if($approved->Month<$tmonth)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
         @elseif($approved->Month==$tmonth and $approved->Date<$today)
-         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE <i class='fas fa-trash-alt'></i></a>
+         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">OBSOLETE <i class='fas fa-trash-alt'></i></a>
          @else
        <a class="btn btn-sm btn-success" href="{{route('changestatusb',$approved->id)}}">Change</a>
        @endif

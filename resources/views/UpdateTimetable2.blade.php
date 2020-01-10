@@ -23,7 +23,7 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>

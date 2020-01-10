@@ -79,7 +79,7 @@
 
           <div class="form-group row">
           <div class="col-sm-3"><strong>Email Address :</strong></div>
-          <div class="col-sm-7"><input type="text" name="email" class="form-control" value="{{ Auth::user()->email }}">
+          <div class="col-sm-7"><input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}">
           </div>
           </div>
 

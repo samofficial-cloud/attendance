@@ -23,7 +23,7 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
@@ -209,34 +209,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -244,10 +244,11 @@
 
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
+
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -284,34 +285,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -320,9 +321,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -369,34 +370,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -405,9 +406,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -444,34 +445,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text"  onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -480,9 +481,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -528,34 +529,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -564,9 +565,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -603,34 +604,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text"  onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -639,9 +640,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -688,34 +689,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -724,9 +725,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -763,34 +764,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text"  onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -799,9 +800,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -848,34 +849,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -884,9 +885,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -923,34 +924,34 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <label for="Venue{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$times->venue}}" readonly>
+    <input type="text" class="form-control" id="Venue{{$times->id}}" name="Venue" value="{{$times->venue}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <label for="Day{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$times->day}}" readonly>
+    <input type="text" class="form-control" id="Day{{$times->id}}" name="Day" value="{{$times->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputTimeFrom{{$times->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="{{$times->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeFrom{{$times->id}}" name="fromTime" value="{{$times->fromTime}}" readonly>
   </div>
-   <label for="inputTimeTo"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
+   <label for="inputTimeTo{{$times->id}}"  class="col-sm-2 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="{{$times->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputTimeTo{{$times->id}}" name="toTime" value="{{$times->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$times->course}}">
+    <input type="text"  onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$times->id}}" name="courseid" value="{{$times->course}}">
   </div>
   </div>
 
@@ -959,9 +960,9 @@
 
 <input type="text" name="id" value="{{$times->id}}" hidden>
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
+    <label for="Select{{$times->id}}"  class="col-sm-3 col-form-label"><strong>Select:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectPref">
+   <select class="custom-select Reason" name="Reason" id="Select{{$times->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Tutorial">Tutorial</option>
     <option value="Practical">Practical</option>
@@ -998,4 +999,14 @@
 </div>
 </div>
 
+@endsection
+
+
+@section('pagescript')
+
+<script language="javascript" type="text/javascript">
+function removeSpaces(string) {
+ return string.split(' ').join('');
+}
+</script>
 @endsection

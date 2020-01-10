@@ -85,12 +85,25 @@
                         @endguest
                     </ul>
                 </div>
-            {{-- </div> --}}
         </nav>
+
 
         <main >
             @yield('content')
         </main>
     </div>
+    @yield('pagescript')
 </body>
+<br>
+<footer class="footer">
+
+  <?php
+  $year=date('Y');
+
+  ?>
+
+  <div class="footer-copyright text-center py-3"> © {{$year}} College of Communication and Information Technologies. All Rights Reserved.
+  </div>
+
+</footer>
 </html>

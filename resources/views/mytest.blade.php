@@ -23,7 +23,7 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
@@ -67,6 +67,7 @@ $mytest=test::where('name', Auth::user()->name)->get();
         <p>{{$message}}</p>
       </div>
     @endif
+    
 <a data-toggle="modal" data-target="#mytest" class="btn button_color active" role="button" aria-pressed="true"><i class="fa fa-plus" style="font-size:36px;color:green"></i></a>
 
  <div class="modal fade" id="mytest" role="dialog">
@@ -92,32 +93,32 @@ $mytest=test::where('name', Auth::user()->name)->get();
    <div class="form-group row">
     <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="Date" name="Date" placeholder="{{$date}}" required>
+    <input type="date" class="form-control" id="Date" name="Date" placeholder="{{$date}}" required>
   </div>
   </div>
 
   <div class="form-group row">
     <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue(s):</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="" required>
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="Venue" name="Venue" value="" required>
   </div>
   </div>
 
   <div class="form-group row">
     <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeFrom" name="fromTime" value="" required>
+    <input type="time" class="form-control" id="inputTimeFrom" name="fromTime" value="" required>
   </div>
    <label for="inputTimeTo"  class="col-sm-1 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTimeTo" name="toTime" value="" required>
+    <input type="time" class="form-control" id="inputTimeTo" name="toTime" value="" required>
   </div>
   </div>
 
   <div class="form-group row">
     <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="" required>
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid" name="courseid" value="" required>
   </div>
   </div>
 
@@ -185,4 +186,15 @@ $mytest=test::where('name', Auth::user()->name)->get();
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+@endsection
+
+@section('pagescript')
+
+<script language="javascript" type="text/javascript">
+function removeSpaces(string) {
+ return string.split(' ').join('');
+}
+</script>
 @endsection
