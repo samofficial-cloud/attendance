@@ -66,7 +66,7 @@
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 

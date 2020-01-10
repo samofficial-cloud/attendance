@@ -59,7 +59,7 @@
         <td class="counterCell"></td>
         <td>{{$var->name}}</td>
         <td>{{$var->reg_no}}</td>
-        <td>{{$var->category}}</td>
+        <td>{{$var->test_type}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>PRESENT </td>
       </tr>
@@ -68,7 +68,7 @@
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 

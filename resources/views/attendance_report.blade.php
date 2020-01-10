@@ -87,7 +87,7 @@
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -95,7 +95,7 @@
 @elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
 <div class="col-xs-6">
-
+@if (!empty($percentage))
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
@@ -118,7 +118,9 @@
     </tbody>
 
   </table>
-
+  @else
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  @endif
 </div>
 
 
@@ -150,7 +152,7 @@
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -183,7 +185,7 @@ foreach($all_students as $values){
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 
