@@ -14,7 +14,7 @@ class ReportController extends Controller
 
     $reg_no=$request->get('reg_no');
 
-$lectures_no = DB::table('programme')->where([['course', '=', $course]])->value('lectures_no');
+$lectures_no = DB::table('courses')->where([['course', '=', $course]])->value('lectures_no');
 
     if ($request->get('category')== 1) {
       //echo "All students";
@@ -33,15 +33,15 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
     }elseif ($request->get('category')== 2) {
       //echo one lecturer
       if ($request->get('checkbox')=='all cases') {
-      $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','staff']])->orderBy('id', 'desc')->limit(1)->value('name');
-      $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','staff']])->get();
+      $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','staff'],['category', '=','CLASS']])->orderBy('id', 'desc')->limit(1)->value('name');
+      $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','staff'],['category', '=','CLASS']])->get();
       return View('attendance_report')->with('dataSingle_all',$dataSingle_all)->with('name',$name);
       }
       elseif($request->get('selection')=='One course') {
-        $CountSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->count('status');
-        $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
-        $dataSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->get();
+        $CountSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff'],['category', '=','CLASS']])->count('status');
+        $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff'],['category', '=','CLASS']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff'],['category', '=','CLASS']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+        $dataSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff'],['category', '=','CLASS']])->get();
 
 
       $percentage=round($CountSingle*100/$lectures_no);
@@ -55,7 +55,7 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
 
       $all = DB::select('EXEC getAllCoursesAndLectures_noStaff ?',[$reg_no]);
        // $all = DB::table('attendance')->select('courseId')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['validity', '=', 'VALID']])->groupBy('courseId')->get();
-       $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['validity', '=', 'VALID']])->limit(1)->value('name');
+       $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['validity', '=', 'VALID'],['category', '=','CLASS']])->limit(1)->value('name');
        foreach ($all as $val) {
          $values=[$reg_no,$val->courseId,$val->lectures_no];
          $all_courses[] = DB::select('EXEC getAllCoursesStaff ?,?,?',$values);
@@ -75,17 +75,17 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
       //echo one student
 
       if ($request->get('checkbox')=='all cases') {
-      $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-      $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','student']])->get();
+      $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','CLASS']])->orderBy('id', 'desc')->limit(1)->value('name');
+      $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','CLASS']])->get();
       return View('attendance_report')->with('dataSingle_all',$dataSingle_all)->with('name',$name);
       }
 
       elseif($request->get('selection')=='One course') {
 
-        $CountSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->count('status');
-        $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
-        $dataSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->get();
+        $CountSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','CLASS']])->count('status');
+        $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','CLASS']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','CLASS']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+        $dataSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','CLASS']])->get();
 
 
           $percentage=round($CountSingle*100/$lectures_no);
@@ -99,7 +99,7 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
           //echo one student all courses
         $all = DB::select('EXEC getAllCoursesAndLectures_noStudent ?',[$reg_no]);
         // $all = DB::table('attendance')->select('courseId')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('courseId')->get();
-        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID']])->limit(1)->value('name');
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID'],['category', '=','CLASS']])->limit(1)->value('name');
         foreach ($all as $val) {
           $values=[$reg_no,$val->courseId,$val->lectures_no];
           $all_courses[] = DB::select('EXEC getAllCourses ?,?,?',$values);
@@ -128,7 +128,7 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
 
     if ($request->get('category')== 1) {
       //echo "All students";
-      $all_test = DB::table('attendance')->where([['courseId', '=', $course],['validity', '=', 'VALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->get();
+      $all_test = DB::table('attendance')->where([['courseId', '=', $course],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->get();
       // $all = DB::table('attendance')->select('reg_no')->where([['courseId', '=', $course],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('reg_no')->get();
       // $all_students = array();
 
@@ -144,25 +144,25 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
       if($request->get('checkbox')=='all cases' AND $request->get('selection')=='All courses'){
 
 
-        $checkbox_all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'INVALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->get();
-        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+        $checkbox_all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'INVALID'],['title', '=','student'],['category', '=','TEST']])->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
 
         return View('test_report_invalid')->with('checkbox_all_courses',$checkbox_all_courses)->with('name',$name)->with('reg_no',$reg_no);
       }elseif($request->get('checkbox')=='all cases') {
-        $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'INVALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->get();
-        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+        $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'INVALID'],['title', '=','student'],['category', '=','TEST']])->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
       return View('test_report_invalid')->with('dataSingle_all',$dataSingle_all)->with('name',$name);
 
     }
 
       elseif($request->get('selection')=='One course') {
 
-        $data = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->get();
-        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+        $data = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
         // return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
         return View('test_report')->with('data',$data)->with('reg_no',$reg_no)->with('name',$name);
@@ -172,9 +172,9 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
 
           //echo one student all courses
 
-          $all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->get();
-          $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->orderBy('id', 'desc')->limit(1)->value('name');
-          $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->whereRaw("category LIKE '%test%'")->orderBy('id', 'desc')->limit(1)->value('reg_no');
+          $all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->get();
+          $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+          $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
           return View('test_report')->with('all_courses',$all_courses)->with('name',$name)->with('reg_no',$reg_no);
     // dd($all);
@@ -217,8 +217,6 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
 
       //echo one student
 
-
-
       if($request->get('selection')=='One course') {
 
         $data = DB::table('attendance_ue')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->get();
@@ -239,7 +237,6 @@ $lectures_no = DB::table('programme')->where([['course', '=', $course]])->value(
 
         return View('ue_report')->with('all_courses',$all_courses)->with('name',$name)->with('reg_no',$reg_no);
     // dd($all);
-
 
         //
         // $all = DB::table('attendance_all')->where('reg_no',$reg_no)->get();
