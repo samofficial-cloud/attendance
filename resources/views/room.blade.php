@@ -68,10 +68,6 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/room?rid=B101" class="list-group-item list-group-item-action dropdown-item">B101</a>
-     <a href="/room?rid=B102" class="list-group-item list-group-item-action dropdown-item">B102</a>
-    <a href="/room?rid=B103" class="list-group-item list-group-item-action dropdown-item">B103</a>
-    <a href="/room?rid=B104" class="list-group-item list-group-item-action dropdown-item">B104</a>
     <a href="/room?rid=B106" class="list-group-item list-group-item-action dropdown-item">B105</a>
     <a href="/room?rid=B106" class="list-group-item list-group-item-action dropdown-item">B106</a>
     <a href="/room?rid=B201" class="list-group-item list-group-item-action dropdown-item">B201</a>
@@ -80,8 +76,6 @@
     <a href="/room?rid=B204" class="list-group-item list-group-item-action dropdown-item">B204</a>
     <a href="/room?rid=B205" class="list-group-item list-group-item-action dropdown-item">B205</a>
     <a href="/room?rid=B206" class="list-group-item list-group-item-action dropdown-item">B206</a>
-    <a href="/room?rid=B207" class="list-group-item list-group-item-action dropdown-item">B207</a>
-    <a href="/room?rid=B208" class="list-group-item list-group-item-action dropdown-item">B208</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
     <a href="/room?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
     <a href="/room?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
