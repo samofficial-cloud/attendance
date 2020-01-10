@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\calendar;
 use App\Notifications\ApprovalStatus;
 use App\User;
+use PDF;
+use Illuminate\Support\Facades\DB;
 
 class calendarsController extends Controller
 {
@@ -26,12 +28,12 @@ class calendarsController extends Controller
     }
 
 
-    // public function email(){
-    // 	 $user=User::first();
-    
-    //   $user ->notify(new ApprovalStatus);
-    //  return 'Done';
-
-    // }
+     public function generatePDF(Request $request)
+    {
+        $data = ['title' => 'Welcome to HDTuto.com'];
+        $pdf = PDF::loadView('testpdf', $data);
+  
+        return $pdf->stream('class attendance.pdf');
+    }
 
 }

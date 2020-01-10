@@ -23,7 +23,7 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">REPORT</a>
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
@@ -92,7 +92,7 @@ use App\reservation;
       <td>{{ $pending->Day }}</td>
       <td>{{ $pending->Date }}/{{ $pending->Month}}/{{ $pending->Year}}</td>
        <td>{{$pending->Week}}</td>
-      <td>{{ $pending->Time}}</td>
+      <td>{{ $pending->fromTime}}-{{ $pending->toTime}}</td>
       <td>{{ $pending->Reason}}</td>
       
       <td><a class="btn btn-sm btn-success" href="{{route('changestatusd',$pending->id)}}">Cancel</a>
@@ -137,7 +137,7 @@ use App\reservation;
       <td>{{ $approved->Day }}</td>
       <td>{{ $approved->Date }}/{{ $approved->Month}}/{{ $approved->Year}}</td>
        <td>{{$approved->Week}}</td>
-      <td>{{ $approved->Time}}</td>
+      <td>{{ $approved->fromTime}}-{{ $approved->toTime}}</td>
       <td>{{ $approved->Reason}}</td>
      
       <td>

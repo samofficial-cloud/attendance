@@ -24,7 +24,7 @@
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+    <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
 
@@ -43,7 +43,13 @@
 </nav>
 </div>
 <br>
+<br>
 <div class="container">
+  <div class="row">
+<div class="col-2 ">
+<div class="card border-info">
+  <div class="card-body">
+    <h5 class="card-title">Choose Type of Report</h5>
 
   <a data-toggle="modal" data-target="#class" class="btn styling button_color active" role="button" aria-pressed="true">Class attendance reports</a> &nbsp;
   <a data-toggle="modal" data-target="#test" class="btn styling button_color active" role="button" aria-pressed="true">Test attendance reports</a>&nbsp;
@@ -55,7 +61,7 @@
           <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-            <b><h5 class="modal-title">Fill the Form Below to Generate Report</h5></b>
+            <b><h5 class="modal-title">Fill the Form Below to Generate Class Report</h5></b>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -64,12 +70,14 @@
                  {{csrf_field()}}
                  <div class="form-group row">
                    <label for="" class="col-sm-4 col-form-label">For:</label>
+                   <div class="col-sm-8">
                    <select name="category" id="getSelection" onchange="SelectCheck(this)">
 
                      <option value="3" id="Option" >One student</option>
                     <option value="1" id="Option">All students</option>
                       <option value="2" id="Option">Lecturer</option>
                   </select>
+                </div>
                </div>
 
                <div id="DivCheckRadio" style="display:block;">
@@ -91,11 +99,13 @@
                  </div>
                </div>
 
-     <div id="coursediv" class="form-group row" style="display:block;">
+     <div id="coursediv"  style="display:block;">
+      <div class="form-group row">
      <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
      <div class="input_radio col-sm-8">
-     <input type="text" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">
+     <input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">
      </div>
+   </div>
      </div>
 
      <div id="DivCheck" style="display:block;">
@@ -122,7 +132,7 @@
          <div class="modal-dialog" role="document">
      <div class="modal-content">
          <div class="modal-header">
-           <b><h5 class="modal-title">Fill the Form Below to Generate Report</h5></b>
+           <b><h5 class="modal-title">Fill the Form Below to Generate Tests Report</h5></b>
            <button type="button" class="close" data-dismiss="modal">&times;</button>
            </div>
 
@@ -131,12 +141,13 @@
                 {{csrf_field()}}
                 <div class="form-group row">
                   <label for="" class="col-sm-4 col-form-label">For:</label>
+                   <div class="col-sm-8">
                   <select name="category" id="getSelectiont" onchange="SelectCheckTest(this)">
 
                     <option value="3" id="Option" >One student</option>
                      <option value="1" id="Option">All students</option>
-
                  </select>
+               </div>
               </div>
 
               <div id="DivCheckRadiot" style="display:block;">
@@ -163,11 +174,13 @@
               </div>
 
  
-    <div id="coursedivt" class="form-group row" style="display:block;">
+    <div id="coursedivt" style="display:block;">
+      <div class="form-group row">
     <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
     <div class="input_radio col-sm-8">
-    <input type="text" name="course_id" class="form-control" id="inputCourset"  placeholder="Course ID">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourset"  placeholder="Course ID">
     </div>
+  </div>
     </div>
 
     <div id="DivCheckt" style="display:block;">
@@ -197,7 +210,7 @@
          <div class="modal-dialog" role="document">
      <div class="modal-content">
          <div class="modal-header">
-           <b><h5 class="modal-title">Fill the Form Below to Generate Report</h5></b>
+           <b><h5 class="modal-title">Fill the Form Below to Generate Examinations Report</h5></b>
            <button type="button" class="close" data-dismiss="modal">&times;</button>
            </div>
 
@@ -206,11 +219,13 @@
                 {{csrf_field()}}
                 <div class="form-group row">
                   <label for="" class="col-sm-4 col-form-label">For:</label>
+                  <div class="col-sm-8">
                   <select name="category" id="getSelectionu" onchange="SelectCheckUe(this)">
 
                     <option value="3" id="Option" >One student</option>
                      <option value="1" id="Option">All students</option>
                  </select>
+               </div>
               </div>
 
               <div id="DivCheckRadiou" style="display:block;">
@@ -225,11 +240,13 @@
 
 
 
-    <div id="coursedivu" class="form-group row" style="display:block;">
+    <div id="coursedivu"  style="display:block;">
+      <div class="form-group row">
     <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
     <div class="input_radio col-sm-8">
-    <input type="text" name="course_id" class="form-control" id="inputCourseu"  placeholder="Course ID">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourseu"  placeholder="Course ID">
     </div>
+  </div>
     </div>
 
     <div id="DivChecku" style="display:block;">
@@ -254,7 +271,35 @@
 
 </div>
 </div>
+</div>
+<div class="col-10">
+   
+  <div class="card hero-image border-info" >
+  <div class="card-body">
+    <center><h1 class="card-title"><b>WELCOME TO COLLEGE OF ICT</b></h1></center>
+    <center><h2 class="card-title"><b>ATTENDANCE REPORTS GENERATION PORTAL</b></h2></center>
 
+    <div align="center">
+    
+   <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
+    
+    <h1 >SEMESTER 1 2019/20</h1><br>
+    <h2>WEEK: 1-17</h2>
+
+  
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+@endsection
+
+
+
+@section('pagescript')
 <script type="text/javascript">
 
 //Normal classes
@@ -542,5 +587,13 @@ $("#getSelection").trigger('change');
 
 </script>
 
+<script language="javascript" type="text/javascript">
+function removeSpaces(string) {
+ return string.split(' ').join('');
+}
+</script>
 
 @endsection
+
+
+

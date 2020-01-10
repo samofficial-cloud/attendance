@@ -266,41 +266,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -341,41 +341,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -401,12 +401,12 @@
 
 <tr align="center">
  <th style="background-color:#88eab2">TUE<br>18/02/2020</th>
-  @foreach ($exams2 as $examed2)
-   @if(!is_null($examed2->course))
+  @foreach ($exams2 as $examed)
+   @if(!is_null($examed->course))
 <td bgcolor="#ffffff">
-   <a data-toggle="modal" data-target="#id{{$examed2->id}}" class="btn button_color active" role="button" aria-pressed="true">{{ $examed2['course']}}
+   <a data-toggle="modal" data-target="#id{{$examed->id}}" class="btn button_color active" role="button" aria-pressed="true">{{ $examed['course']}}
    </a>
-   <div class="modal fade" id="id{{$examed2->id}}" role="dialog">
+   <div class="modal fade" id="id{{$examed->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -420,44 +420,44 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed2->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed2->Date}}/{{$examed2->Month}}/{{$examed2->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed2->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed2->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed2->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed2->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
- <input type="text" name="id" value="{{$examed2->id}}" hidden> 
+ <input type="text" name="id" value="{{$examed->id}}" hidden> 
 
 <input type="text" name="Week" value="Wk16" hidden>
 
@@ -477,9 +477,9 @@
 
  @else
 <td>
-  <a data-toggle="modal" data-target="#id{{$examed2->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+  <a data-toggle="modal" data-target="#id{{$examed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
 
-  <div class="modal fade" id="id{{$examed2->id}}" role="dialog">
+  <div class="modal fade" id="id{{$examed->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -493,45 +493,45 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed2->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed2->Date}}/{{$examed2->Month}}/{{$examed2->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed2->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed2->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed2->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed2->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
-  <input type="text" name="id" value="{{$examed2->id}}" hidden> 
+  <input type="text" name="id" value="{{$examed->id}}" hidden> 
 
 <input type="text" name="Week" value="Wk16" hidden>
 
@@ -574,41 +574,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -646,43 +646,42 @@
            <div class="modal-body">
         <form method="post" action="{{route('u_course1' )}}">
   {{csrf_field()}}
-{{$examed->id}}
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -731,41 +730,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -805,41 +804,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -889,41 +888,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -963,41 +962,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1059,41 +1058,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1133,41 +1132,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1197,13 +1196,13 @@
 
 <tr align="center">
  <th style="background-color:#88eab2">TUE<br>25/02/2020</th>
-  @foreach ($exams3 as $examed2)
-  @if ($examed2->day == 'Tuesday')
-   @if(!is_null($examed2->course))
+  @foreach ($exams3 as $examed)
+  @if ($examed->day == 'Tuesday')
+   @if(!is_null($examed->course))
 <td bgcolor="#ffffff">
-   <a data-toggle="modal" data-target="#id{{$examed2->id}}" class="btn button_color active" role="button" aria-pressed="true">{{ $examed2['course']}}
+   <a data-toggle="modal" data-target="#id{{$examed->id}}" class="btn button_color active" role="button" aria-pressed="true">{{ $examed['course']}}
    </a>
-   <div class="modal fade" id="id{{$examed2->id}}" role="dialog">
+   <div class="modal fade" id="id{{$examed->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -1217,44 +1216,44 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed2->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed2->Date}}/{{$examed2->Month}}/{{$examed2->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed2->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed2->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed2->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed2->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
-  <input type="text" name="id" value="{{$examed2->id}}" hidden> 
+  <input type="text" name="id" value="{{$examed->id}}" hidden> 
 
 <input type="text" name="Week" value="Wk17" hidden>
 
@@ -1274,9 +1273,9 @@
  </td>
 @else
 <td>
-  <a data-toggle="modal" data-target="#id{{$examed2->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
+  <a data-toggle="modal" data-target="#id{{$examed->id}}" class="btn button_color active" role="button" aria-pressed="true"><font color="blue">Update</font></a>
 
-  <div class="modal fade" id="id{{$examed2->id}}" role="dialog">
+  <div class="modal fade" id="id{{$examed->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -1290,45 +1289,45 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed2->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed2->Date}}/{{$examed2->Month}}/{{$examed2->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed2->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed2->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed2->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed2->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
-  <input type="text" name="id" value="{{$examed2->id}}" hidden> 
+  <input type="text" name="id" value="{{$examed->id}}" hidden> 
 
 <input type="text" name="Week" value="Wk17" hidden>
 
@@ -1373,41 +1372,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1447,41 +1446,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1531,41 +1530,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1605,41 +1604,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1689,41 +1688,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1763,41 +1762,41 @@
   {{csrf_field()}}
 
    <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Venue" name="Venue" value="{{$examed->venue}}" readonly>
+    <label for="Venue{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Venue{{$examed->id}}" name="Venue" value="{{$examed->venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
+    <label for="Date{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Date{{$examed->id}}" name="Date" value="{{$examed->Date}}/{{$examed->Month}}/{{$examed->Year}}" readonly>
   </div>
   </div>
 
    <div class="form-group row">
-    <label for="Day"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="Day" name="Day" value="{{$examed->day}}" readonly>
+    <label for="Day{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Day:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="Day{{$examed->id}}" name="Day" value="{{$examed->day}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputTime"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <label for="inputFromTime{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="fromTime" value="{{$examed->fromTime}}" readonly>
+    <input type="text" class="form-control" id="inputFromTime{{$examed->id}}" name="fromTime" value="{{$examed->fromTime}}" readonly>
   </div>
-  <label for="inputTime"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
+  <label for="inputToTime{{$examed->id}}"  class="col-sm-2 col-form-label"><strong>TO:</strong></label>
     <div class="col-sm-3">
-    <input type="text" class="form-control" id="inputTime" name="toTime" value="{{$examed->toTime}}" readonly>
+    <input type="text" class="form-control" id="inputToTime{{$examed->id}}" name="toTime" value="{{$examed->toTime}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="courseid" name="courseid" value="{{$examed->course}}">
+    <label for="courseid{{$examed->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid{{$examed->id}}" name="courseid" value="{{$examed->course}}">
   </div>
   </div>
 
@@ -1832,10 +1831,13 @@
 
 </div>
 </div>
+@endsection
 
+@section('pagescript')
 
-
-
-
-
+<script language="javascript" type="text/javascript">
+function removeSpaces(string) {
+ return string.split(' ').join('');
+}
+</script>
 @endsection

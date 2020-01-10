@@ -17,7 +17,7 @@
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link active" style="color:#060606" href="/timetable">TIMETABLE</a>
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
     </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
@@ -29,7 +29,7 @@
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+    <a class="nav-link active" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
   </li>
    <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
@@ -383,8 +383,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+      @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -420,8 +421,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -457,8 +459,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -494,8 +497,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -530,8 +534,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -566,8 +571,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -602,8 +608,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -638,8 +645,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -674,8 +682,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -710,8 +719,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -746,8 +756,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -782,8 +793,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -818,8 +830,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -854,8 +867,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -890,8 +904,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -927,8 +942,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -964,8 +980,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1001,8 +1018,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1038,8 +1056,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1074,8 +1093,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1110,8 +1130,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1146,8 +1167,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1182,8 +1204,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1218,8 +1241,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1254,8 +1278,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1290,8 +1315,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1326,8 +1352,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1362,8 +1389,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1398,8 +1426,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 
@@ -1434,8 +1463,9 @@ for($a=0; $a<count($program);$a++){
       <?php
       $i=$i+1;
       ?>
+       @endfor
       </tbody>
-@endfor
+    </table>
 @endif
 @endfor
 

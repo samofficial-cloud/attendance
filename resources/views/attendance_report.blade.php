@@ -34,7 +34,6 @@
 <br>
 <div class="container">
 
-
 @if(!empty($_GET['checkbox']))
 <div class="col-xs-9"><legend>
   <p class="note"> Attendance report for {{$name}} ({{strtoupper($_GET['course_id'])}})</p></legend> </div>
@@ -189,13 +188,9 @@ foreach($all_students as $values){
 
 @endif
 
-    <div class="col-xs-3">
-      <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
-    </div>
-
+<br>
+<a href="{{ URL::to('/generate-pdf') }}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Download</a>
 </div>
-</div>
-
 
 
 
