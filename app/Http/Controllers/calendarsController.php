@@ -28,12 +28,6 @@ class calendarsController extends Controller
     }
 
 
-     public function generatePDF(Request $request)
-    {
-        $data = ['title' => 'Welcome to HDTuto.com'];
-        $pdf = PDF::loadView('testpdf', $data);
-  
-        return $pdf->stream('class attendance.pdf');
-    }
+    
 
 }

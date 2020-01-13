@@ -1,4 +1,3 @@
-
 <html>
 <head>
 	<title>Report</title>
@@ -12,225 +11,188 @@ table {
 table, td, th {
   border: 1px solid black;
 }
+table {
+  counter-reset: tableCount;
+  }
+
+  .counterCell:before {
+  content: counter(tableCount);
+  counter-increment: tableCount;
+  }
 </style>
 
 <body>
-	
-	<?php
-	 $dataSingle="";
+  <?php
+use Illuminate\Support\Facades\DB;
+$dataSingle="";
     $data="";
     $course=strtoupper($_GET['course_id']);
 
-    $reg_no=$_GET['course_id'];
+    $reg_no=$_GET['reg_no'];
 
-$lectures_no = DB::table('programme')->where([['course', '=', $course]])->value('lectures_no');
 
     if ($_GET['category']== 1) {
       //echo "All students";
-      $all = DB::select('EXEC getAllCoursesAndLectures_noAllStudents ?',[$course]);
-      // $all = DB::table('attendance')->select('reg_no')->where([['courseId', '=', $course],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('reg_no')->get();
-      // $all_students = array();
+      $all_test = DB::table('attendance')->where([['courseId', '=', $course],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->get();
+      
 
-      foreach ($all as $val) {
-        $values=[$course,$val->reg_no,$val->lectures_no];
-        $all_students[] = DB::select('EXEC getAttendanceAll ?,?,?',$values);
-      }
-
-      }elseif ($_GET['category']== 2) {
-      //echo one lecturer
-      if ($_GET['checkbox']=='all cases') {
-      $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','staff']])->orderBy('id', 'desc')->limit(1)->value('name');
-      $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','staff']])->get();
-      return View('testpdf')->with('dataSingle_all',$dataSingle_all)->with('name',$name);
-      }
-      elseif ($_GET['selection'] =="One course") {
-        $CountSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->count('status');
-        $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
-        $dataSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff']])->get();
-
-
-      $percentage=round($CountSingle*100/$lectures_no);
-
-        }
-
-         else {
-
-      $all = DB::select('EXEC getAllCoursesAndLectures_noStaff ?',[$reg_no]);
-       $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['validity', '=', 'VALID']])->limit(1)->value('name');
-       foreach ($all as $val) {
-         $values=[$reg_no,$val->courseId,$val->lectures_no];
-         $all_courses[] = DB::select('EXEC getAllCoursesStaff ?,?,?',$values);
-       }
-      }
-
-       }else {
 
       
 
-      if ($_GET['checkbox']=='all cases') {
-      $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-      $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['title', '=','student']])->get();
+
+
+    }else {
+
+      //echo one student
+
+      if($_GET['checkbox']=='all cases' AND $_GET['selection']=='All courses'){
+
+
+        $checkbox_all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'INVALID'],['title', '=','student'],['category', '=','TEST']])->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+
+
+        return View('test_report_invalid')->with('checkbox_all_courses',$checkbox_all_courses)->with('name',$name)->with('reg_no',$reg_no);
+      }elseif($_GET['checkbox']=='all cases') {
+        $dataSingle_all = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'INVALID'],['title', '=','student'],['category', '=','TEST']])->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
       
-      }
+
+    }
+
       elseif($_GET['selection']=='One course') {
 
-        $CountSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->count('status');
-        $name = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
-        $reg_no = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
-        $dataSingle = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->get();
+        $data = DB::table('attendance')->where([['courseId', '=', $course],['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->get();
+        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
+        // return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
+        
 
-          $percentage=round($CountSingle*100/$lectures_no);
 
       } else {
-      	 //echo one student all courses
-        $all = DB::select('EXEC getAllCoursesAndLectures_noStudent ?',[$reg_no]);
-        // $all = DB::table('attendance')->select('courseId')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('courseId')->get();
-        $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['validity', '=', 'VALID']])->limit(1)->value('name');
-        foreach ($all as $val) {
-          $values=[$reg_no,$val->courseId,$val->lectures_no];
-          $all_courses[] = DB::select('EXEC getAllCourses ?,?,?',$values);
-        }
-        
+
+          //echo one student all courses
+
+          $all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->get();
+          $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
+          $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
+
+          
+
+
+       
       }
 
     }
 
-	?>
-	<div class="container">
+?>
+<br>
+<div class="container">
 
-@if(!empty($_GET['checkbox']))
-<div class="col-xs-9 pt-3"><legend>
-  <p class="note">
-  	<center>UNIVERSITY OF DAR ES SALAAM<br>
-  		<br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="100px"></img>
-<br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM<br> 
-ATTENDANCE REPORT FOR {{$name}} ({{strtoupper($_GET['course_id'])}})
-  	</center>
-  </p>
-</legend> 
-</div>
-@elseif($_GET['selection']=='All courses')
-  <div class="col-xs-9 pt-3"><legend>
-    <p class="note">
-    	<center>UNIVERSITY OF DAR ES SALAAM<br><br>
-    		<img src="{{public_path('/img/logo_udsm.jpg')}}" height="100px"></img><br>
-CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM<br> ATTENDANCE REPORT FOR {{$name}} (All courses)
-</center> </p></legend> </div>
-
-@else
-<div class="col-xs-9 pt-3"><h3><legend>
-  <p class="note"><center>UNIVERSITY OF DAR ES SALAAM<br>
-  	<br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="100px"></img>
-
-  	<br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM<br> ATTENDANCE REPORT FOR {{strtoupper($_GET['course_id'])}} </center></p></legend> </div>
-@endif
-
-<!-- Show also invalid cases -->
-@if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
-
-<div class="col-xs-6">
-  @if(count($dataSingle_all)>0)
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>No</th>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Attendance status</th>
-        <th>Arrival time</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach ($dataSingle_all as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{date("d-m-Y",strtotime($var->datetime))  }}</td>
-        <td>{{ date("H:i",strtotime($var->datetime))}}</td>
-        <td>@if($var->status==1)
-          PRESENT
-          @else
-          NOT PRESENT
-          @endif
-        </td>
-        <td>@if($var->validity=='VALID')
-          EARLY
-          @else
-          LATE
-          @endif
-        </td>
-      </tr>
-      @endforeach
-    </tbody>
-
-  </table>
-  @else
-  <h4>Sorry!! No data to display at the moment</h4>
-  @endif
-</div>
-
+@if($_GET['selection']=='All courses')
+    <div class="col-xs-9">
+      <legend>
+        <center><b>UNIVERSITY OF DAR ES SALAAM
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+      <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
+    </b></center>
+      <p class="note"> Attendance report for {{$name}} (All courses) 
+      </p>
+    </legend>
+     </div>
 
 @elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
-
-<div class="col-xs-6">
-
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Identification number</th>
-        <th>Percentage</th>
-      </tr>
-    </thead>
-
-    <tbody>
-
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{$name}}</td>
-        <td>{{$reg_no}}</td>
-        <td> {{$percentage}}%</td>
-      </tr>
-
-    </tbody>
-
-  </table>
-
-</div>
+      <div class="col-xs-9">
+        <legend>
+          <center><b>UNIVERSITY OF DAR ES SALAAM
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+      <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
+    </b></center>
+        <p class="note">Test attendance report for {{$name}} </p>
+      <h5 class="note">Course: {{strtoupper($_GET['course_id'])}} </h5>
+      </legend> </div>
+@else
+<div class="col-xs-9"><legend>
+  <p class="note"> 
+    <center><b>UNIVERSITY OF DAR ES SALAAM
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+      <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
+    </b></center>
+  Attendance report for {{strtoupper($_GET['course_id'])}} 
+</p></legend> </div>
+@endif
 
 
 
-
-@elseif ($_GET['selection']=='All courses')
+@if ($_GET['selection']=='All courses')
 
 <div class="col-xs-6">
   @if(count($all_courses)>0)
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
-        <th>Course</th>
-        <th>Percentage</th>
+        <th>NO</th>
+        <th>COURSE</th>
+        <th>TYPE OF TEST</th>
+        <th>DATE</th>
+        <th>STATUS</th>
       </tr>
     </thead>
 
     <tbody>
-      <?php
-      foreach($all_courses as $values){
-       $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
-       $val = (iterator_to_array($iterator,true));
-       print('<tr><td class="counterCell"></td>'.'<td>'.$val['courseId'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
-
-}
-?>
+      @foreach ($all_courses as $var)
+      <tr>
+        <td class="counterCell"></td>
+        <td>{{$var->courseId}}</td>
+        <td>{{$var->test_type}}</td>
+        <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
+        <td>PRESENT</td>
+      </tr>
+      @endforeach
     </tbody>
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  @endif
+</div>
+
+
+
+@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
+
+<div class="col-xs-6">
+  @if(count($data)>0)
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>NO</th>
+        <th>TYPE OF TEST</th>
+        <th>DATE</th>
+        <th>STATUS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @foreach ($data as $var)
+      <tr>
+        <td class="counterCell"></td>
+        <td>{{$var->test_type}}</td>
+        <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+        <td>PRESENT</td>
+      </tr>
+      @endforeach
+    </tbody>
+
+  </table>
+  @else
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -263,12 +225,11 @@ foreach($all_students as $values){
 
   </table>
   @else
-  <h4>Sorry!! No data to display at the moment</h4>
+  <h4>Sorry!! No data could be found for the specified parameters</h4>
   @endif
 </div>
 
 @endif
-
 </div>
 </body>
 </html>
