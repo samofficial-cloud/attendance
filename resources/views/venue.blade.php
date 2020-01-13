@@ -42,7 +42,7 @@ VENUE RESERVATION
 <?php
 
 use App\calendar;
-$Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('m'))->where('Year',date('Y'))->Value('Week');
+$Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('n'))->where('Year',date('Y'))->Value('Week');
 
 ?>
 

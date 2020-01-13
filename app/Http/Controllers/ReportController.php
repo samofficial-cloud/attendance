@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use PDF;
 
 class ReportController extends Controller
 
@@ -247,5 +248,21 @@ $lectures_no = DB::table('courses')->where([['course', '=', $course]])->value('l
     }
 
   }
+
+
+
+   public function classPDF(){
+       
+        $pdf = PDF::loadView('classpdf');
+  
+        return $pdf->stream('class attendance.pdf');
+    }
+
+    public function testPDF(){
+       
+        $pdf = PDF::loadView('testpdf');
+  
+        return $pdf->stream('Test attendance.pdf');
+    }
 
 }

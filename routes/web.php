@@ -31,7 +31,7 @@ Route::post('/login/custom', [
 Route::group(['middleware' => 'auth'], function(){
 
 
-Route::get('/attendance_report', 'ReportController@showattendance_all')->name('report2');
+Route::get('/attendance_report', 'ReportController@showattendance_all')->name('report');
 
 Route::get('/attendance_report_tests', 'ReportController@showattendance_all_tests')->name('report_tests');
 
@@ -184,7 +184,10 @@ Route::get('/LectureConflicts', function () {
 
 });
 
-Route::get('generate-pdf','calendarsController@generatePDF')->name('report');
+Route::get('generate-pdf','ReportController@classPDF')->name('classpdf');
+
+Route::get('generate-pdf1','ReportController@testPDF')->name('testpdf');
+
 Route::get('/reservation', 'reservationsController@show');
 
 Route::get('/room', 'timetablesController@index');
