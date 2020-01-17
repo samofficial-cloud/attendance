@@ -49,7 +49,7 @@ public function changePassword(Request $request){
     $users = User::find($id);
     $users->name = $request->get('name');
     $users->email = $request->get('email');
-    // $users->phone = $request->get('phone');
+    $users->phone_number = $request->get('phoneNumber');
     $users->save();
     return redirect()->back()
                     ->with('success', 'User profile updated successfully');

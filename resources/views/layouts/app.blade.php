@@ -22,6 +22,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+     @yield('style')
 </head>
 <body>
     <div id="app">
@@ -92,6 +94,8 @@
         </main>
     </div>
     @yield('pagescript')
+
+
 </body>
 <br>
 <footer class="footer">

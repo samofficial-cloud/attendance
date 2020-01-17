@@ -50,6 +50,10 @@ Route::post('/u_course1','examsController@updateexam')->name('u_course1');
 
 Route::post('/addtest','testsController@updatetest')->name('addtest');
 
+Route::get('/instructors-ETE','lecturesController@index')->name('lecturers');
+
+Route::get('/instructors-CSE','lecturesController@indexCSE')->name('lecturers1');
+
 
 Route::get('/timetable', function () {
      return View ('timetable');
@@ -103,7 +107,7 @@ Route::get('/myreservations', 'reservationsController@myreservations')->name('my
 
 Route::get('/mytests/cancel/{id}', 'testsController@canceltest')->name('canceltest');
 
- Route::get('/approval/changestatus/{id}', 'reservationsController@changestatus')->name('changestatus');
+ Route::get('/approval/changestatus', 'reservationsController@changestatus')->name('changestatus');
 
 Route::get('/approvald/changestatus/{id}', 'reservationsController@changestatusd')->name('changestatusd');
 
@@ -115,6 +119,15 @@ Route::get('/approvalc/changestatus/{id}', 'reservationsController@changestatusc
 Route::get('/approvale/changestatus/{id}', 'reservationsController@DeleteRequest')->name('DeleteRequest');
 
 Route::get('/venue', 'reservationsController@venue')->name('venue');
+
+Route::get('/venues/edit', 'CapacityvenuesController@edit')->name('editvenue');
+
+Route::get('/venues/add', 'CapacityvenuesController@add')->name('newcapacity');
+
+Route::get('/instructors/edit', 'lecturesController@edit')->name('editinstructor');
+
+Route::get('/instructors/add', 'lecturesController@add')->name('newinstructor');
+
 
 
 
@@ -186,9 +199,29 @@ Route::get('/LectureConflicts', function () {
 
 Route::get('generate-pdf','ReportController@classPDF')->name('classpdf');
 
+Route::get('generate-timetable-pdf','timetablesController@programPDF')->name('programpdf');
+
+Route::get('generate-timetable1-pdf','timetablesController@roomPDF')->name('roompdf');
+
 Route::get('generate-pdf1','ReportController@testPDF')->name('testpdf');
 
+Route::get('generate-testpdf','ReportController@testallPDF')->name('testallpdf');
+
+Route::get('generate-test-invalidpdf','ReportController@testinvalidPDF')->name('testinvalidpdf');
+
+Route::get('generate-UEpdf','ReportController@UEPDF')->name('UEpdf');
+
+Route::get('generate-UE-Allpdf','ReportController@UEAllPDF')->name('UEAllpdf');
+
+Route::get('generate-ETE-pdf','lecturesController@ETEPDF')->name('ETEpdf');
+
+Route::get('generate-CSE-pdf','lecturesController@CSEPDF')->name('CSEpdf');
+
+
+
 Route::get('/reservation', 'reservationsController@show');
+
+Route::get('/courses', 'coursesController@index');
 
 Route::get('/room', 'timetablesController@index');
 

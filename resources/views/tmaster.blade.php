@@ -107,14 +107,49 @@ use App\reservation;
       
       <td>
         @if($pending->Year<$tyear)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">Obsolete  </a>
         @elseif($pending->Year==$tyear)
         @if($pending->Month<$tmonth)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">Obsolete  </a>
         @elseif($pending->Month==$tmonth and $pending->Date<$today)
-         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">OBSOLETE <i class='fas fa-trash-alt'></i></a>
+         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">Obsolete </a>
          @else
-        <a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a>
+        {{-- <a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a> --}}
+
+        <a data-toggle="modal" data-target="#Decline{{$pending->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Decline</a>
+        <div class="modal fade" id="Decline{{$pending->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Complete the Form Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+        <form method="get" action="{{route('changestatus')}}">
+  {{csrf_field()}}
+
+   <div class="form-group row">
+    <label for="Reason{{$pending->id}}"  class="col-sm-2 col-form-label"><strong>Reason(s):</strong></label>
+    <div class="col-sm-10">
+    <textarea class="form-control" name="Reason" id="Reason{{$pending->id}}" rows="5" required></textarea>
+  </div>
+  </div>
+
+  <input type="hidden" id="id{{$pending->id}}" name="id" value="{{$pending->id}}"/>
+
+  <div class="form-group">
+     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
+
         
 <a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a>
 @endif
@@ -169,12 +204,12 @@ use App\reservation;
       <td>{{ $approved->Remarks}}</td>
       <td>
          @if($approved->Year<$tyear)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete  
         @elseif($approved->Year==$tyear)
         @if($approved->Month<$tmonth)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">OBSOLETE  <i class='fas fa-trash-alt'></i></a>
+        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete
         @elseif($approved->Month==$tmonth and $approved->Date<$today)
-         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">OBSOLETE <i class='fas fa-trash-alt'></i></a>
+         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete 
          @else
        <a class="btn btn-sm btn-success" href="{{route('changestatusb',$approved->id)}}">Change</a>
        @endif
@@ -191,6 +226,10 @@ use App\reservation;
 </table>
 @endif
 </div>
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 
+
+@endsection
+
+@section('pagescript')
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 @endsection

@@ -206,10 +206,15 @@
   </div>
 </div>
 <br>
+<a class="btn btn-light" href="/instructors" role="button" style="background-color: #d6d6d6;"> <b>Instructors</b></a>
+<br>
+<br>
 <a class="btn btn-light" href="/LectureConflicts" role="button" style="background-color: #d6d6d6;"> <b>Lecture Collisions</b></a>
 <br>
 <br>
 <a class="btn btn-light" href="/conflicts" role="button" style="background-color: #d6d6d6;"> <b>Exam Collisions</b></a>
+
+
 
 </div>
 

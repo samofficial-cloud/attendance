@@ -300,4 +300,32 @@ class ReportController extends Controller
         return $pdf->stream('Test attendance.pdf');
     }
 
+    public function testallPDF(){
+       
+        $pdf = PDF::loadView('testallpdf');
+  
+        return $pdf->stream('Test All attendance.pdf');
+    }
+
+    public function testinvalidPDF(){
+       
+        $pdf = PDF::loadView('testinvalidpdf');
+  
+        return $pdf->stream('Test Invalid attendance.pdf');
+    }
+
+    public function UEPDF(){
+       
+        $pdf = PDF::loadView('UEpdf');
+  
+        return $pdf->stream('UE attendance.pdf');
+    }
+
+    public function UEAllPDF(){
+       
+        $pdf = PDF::loadView('UEAllpdf');
+  
+        return $pdf->stream('UE All attendance.pdf');
+    }
+
 }

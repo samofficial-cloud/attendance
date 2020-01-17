@@ -167,6 +167,8 @@ return [
          */
 
         Barryvdh\DomPDF\ServiceProvider::class,
+        Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
+        
 
         /*
          * Application Service Providers...

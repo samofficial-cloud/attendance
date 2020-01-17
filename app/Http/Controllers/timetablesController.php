@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\timetable;
+use PDF;
 
 class timetablesController extends Controller
 {
@@ -51,6 +52,23 @@ class timetablesController extends Controller
                 }
 
     }
+
+
+    public function roomPDF(){
+       
+        $pdf = PDF::loadView('roompdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('Room.pdf');
+    }
+
+
+    public function programPDF(){
+       
+        $pdf = PDF::loadView('programpdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('Program.pdf');
+    }
+
 
 
 

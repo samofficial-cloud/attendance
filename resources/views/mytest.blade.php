@@ -42,12 +42,15 @@
 
 </br>
 <?php
-  $date=date('d/m/Y');
+  $date=date('Y-m-d');
   $time=date("h:i");
    $i='1';
 
 use App\test;
 $mytest=test::where('name', Auth::user()->name)->get();
+
+use App\lecturer;
+$mycourse=lecturer::select('course')->where('instructor',Auth::user()->name)->orWhere('technical_staff',Auth::user()->name)->get();
 
 ?>
 <div class="container">
@@ -80,7 +83,7 @@ $mytest=test::where('name', Auth::user()->name)->get();
           </div>
 
            <div class="modal-body">
-        <form method="post" action="{{route('addtest')}}">
+        <form method="post" action="{{route('addtest')}}" onsubmit="return getdata()"  name="myForm">
   {{csrf_field()}}
 
    <div class="form-group row">
@@ -93,7 +96,7 @@ $mytest=test::where('name', Auth::user()->name)->get();
    <div class="form-group row">
     <label for="Date"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
     <div class="col-sm-7">
-    <input type="date" class="form-control" id="Date" name="Date" placeholder="{{$date}}" required>
+    <input type="date" min="{{$date}}"class="form-control" id="Date" name="Date" max="2020-12-31" required>
   </div>
   </div>
 
@@ -107,21 +110,27 @@ $mytest=test::where('name', Auth::user()->name)->get();
   <div class="form-group row">
     <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
     <div class="col-sm-3">
-    <input type="time" class="form-control" id="inputTimeFrom" name="fromTime" value="" required>
+    <input type="time" min="07:00" max="19:00"class="form-control" id="inputTimeFrom" name="fromTime" value="" required>
   </div>
    <label for="inputTimeTo"  class="col-sm-1 col-form-label"><strong>To:</strong></label>
     <div class="col-sm-3">
-    <input type="time" class="form-control" id="inputTimeTo" name="toTime" value="" required>
+    <input type="time" min="08:00" max="20:00"class="form-control" id="inputTimeTo" name="toTime" value="" required>
   </div>
   </div>
 
-  <div class="form-group row">
+  <span id="message"></span>
+
+ 
+<div class="form-group row">
     <label for="courseid"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-7">
-    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="courseid" name="courseid" value="" required>
+   <select class="custom-select Reason" name="courseid" id="courseid">
+    @foreach($mycourse as $mycourse)
+    <option value="{{$mycourse->course}}">{{$mycourse->course}}</option>
+    @endforeach
+  </select>
   </div>
   </div>
-
 
 
 
@@ -197,4 +206,20 @@ function removeSpaces(string) {
  return string.split(' ').join('');
 }
 </script>
+
+<script>
+function getdata(){
+       var txtone = document.forms["myForm"]["toTime"].value;
+        var txttwo = document.forms["myForm"]["fromTime"].value;
+
+
+      if (txtone<txttwo) {
+        var message=document.getElementById('message');
+        message.style.color='red';
+        message.innerHTML="To time cannot be less than From time";
+        return false;
+      }
+}
+</script>
+
 @endsection

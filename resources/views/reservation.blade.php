@@ -44,11 +44,11 @@ VENUE RESERVATION
   use App\calendar;
 $timetabled = calendar::select('Date','Day','Month','Year')->where('Week',$_GET['wid'])->get();
 
-$Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('m'))->where('Year',date('Y'))->Value('Week');
+$Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('n'))->where('Year',date('Y'))->Value('Week');
 
   $today=date('d-m-Y');
-  $tdate=date('d');
-  $tmonth=date('m');
+  $tdate=date('j');
+  $tmonth=date('n');
   $tyear=date('Y');
 
    use App\reservation;
@@ -333,6 +333,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -480,6 +481,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -634,6 +636,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -793,6 +796,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -959,6 +963,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -1130,6 +1135,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -1308,6 +1314,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -1492,6 +1499,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -1683,6 +1691,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -1879,6 +1888,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -2081,6 +2091,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -2288,6 +2299,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -2501,6 +2513,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -2661,6 +2674,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -2808,6 +2822,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -2962,6 +2977,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -3121,6 +3137,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -3287,6 +3304,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -3458,6 +3476,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -3636,6 +3655,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -3820,6 +3840,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -4011,6 +4032,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -4207,6 +4229,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -4409,6 +4432,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -4616,6 +4640,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -4829,6 +4854,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -4991,6 +5017,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -5138,6 +5165,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -5292,6 +5320,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -5451,6 +5480,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -5617,6 +5647,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -5788,6 +5819,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -5966,6 +5998,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -6150,6 +6183,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -6341,6 +6375,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -6537,6 +6572,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -6739,6 +6775,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -6946,6 +6983,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -7159,6 +7197,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -7317,6 +7356,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -7464,6 +7504,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -7618,6 +7659,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -7777,6 +7819,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -7943,6 +7986,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -8114,6 +8158,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -8292,6 +8337,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -8476,6 +8522,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -8667,6 +8714,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -8863,6 +8911,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -9065,6 +9114,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -9272,6 +9322,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -9485,6 +9536,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -9643,6 +9695,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -9790,6 +9843,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -9944,6 +9998,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -10103,6 +10158,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -10269,6 +10325,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -10440,6 +10497,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -10618,6 +10676,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -10802,6 +10861,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -10993,6 +11053,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -11189,6 +11250,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -11391,6 +11453,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -11598,6 +11661,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
@@ -11811,6 +11875,7 @@ $yy=$times['Year'];
 <input type="hidden" id="wid{{$timed->id}}" name="wid" value="{{ $_GET['wid'] }}">
 <input type="hidden" id="Year{{$timed->id}}" name="Year" value="{{ $yy }}">
 <input type="hidden" id="Date{{$timed->id}}" name="Date" value="{{ $dd}}">
+<input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
     <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>

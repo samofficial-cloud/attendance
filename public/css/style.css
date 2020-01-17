@@ -131,7 +131,9 @@ a.ex1:hover, a.ex1:active {color: red;}
   }
 
   .container2{
-    max-width: 1392px;
+    max-width: 1415px;
+    padding-left:21px;
+    padding-right: 21px;
   }
 
 
@@ -248,4 +250,14 @@ background-color: #9561e2;
   background-color: #ffffff;
   color: black;
   text-align: center;
+}
+
+ .nav1{
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    width: 109%;
 }

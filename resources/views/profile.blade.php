@@ -65,12 +65,12 @@
           </div>
 
 
-          {{-- <div class="form-group row">
-          <div class="col-sm-3"><strong>Mobile number :</strong></div>
+          <div class="form-group row">
+          <div class="col-sm-3"><strong>Phone number :</strong></div>
           <div class="col-sm-7">
-            <input type="text" name="phone" class="form-control" value="{{ Auth::user()->phone }}" readonly>
+            <input type="text" name="phone" class="form-control" value="{{ Auth::user()->phone_number }}" readonly>
           </div>
-          </div> --}}
+          </div>
         </form>
 
 
