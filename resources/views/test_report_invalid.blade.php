@@ -41,12 +41,21 @@
 <div class="col-xs-9"><legend>
   <p class="note"> Attendance report for {{$name}} (All courses) </p></legend> </div>
 @elseif(!empty($_GET['checkbox']))
+@if(count($dataSingle_all)>0)
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{$name}} ({{strtoupper($_GET['course_id'])}})</p></legend> </div>
+  <p class="note"> Test attendance report for {{$name}} ({{$reg_no}})</p>
+  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+</legend> </div>
+
+@else
+
+@endif
 
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
+  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p>
+
+</legend> </div>
 @endif
 
 @if($_GET['selection']=='All courses' AND $_GET['checkbox']=='all cases')
@@ -56,7 +65,7 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
+        <th>S/N</th>
         <th>COURSE</th>
         <th>TYPE OF TEST</th>
         <th>DATE</th>
@@ -78,7 +87,7 @@
 
   </table>
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
@@ -91,9 +100,12 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
+        <th>S/N</th>
         <th>TYPE OF TEST</th>
         <th>DATE</th>
+        <th>FROM TIME</th>
+        <th>TO TIME</th>
+        <th>SIGN IN TIME</th>
         <th>STATUS</th>
       </tr>
     </thead>
@@ -104,21 +116,28 @@
         <td class="counterCell"></td>
         <td>{{$var->test_type}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
-        <td>ARRIVED LATE </td>
+        <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+        <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+        <td>{{ date("H:i",strtotime($var->datetime))}}</td>
+        <td>@if($var->validity=='VALID')
+          ARRIVED EARLY
+          @else
+          ARRIVED LATE
+          @endif</td>
       </tr>
       @endforeach
     </tbody>
 
   </table>
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
 @else
 <div></div>
 @endif
-
+<br>
     <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
     </div>
@@ -128,5 +147,21 @@
 
 
 
+
+@endsection
+
+
+@section('pagescript')
+<script>
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+</script>
 
 @endsection

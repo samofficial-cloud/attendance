@@ -34,21 +34,30 @@
 <br>
 <div class="container">
 
-
-<div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
-
-
-<div class="col-xs-6">
   @if(count($all_test)>0)
+  <div class="col-xs-9"><legend>
+    <p class="note"> Test attendance report for all students</p>
+    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+  </legend> </div>
+
+  @else
+
+  @endif
+
+<br>
+
+<!-- TEST 1 -->
+<div class="col-xs-6">
+<h5>TEST 1 </h5>
+  @if(count($all_test)>0)
+Date: {{date("d/m/Y",strtotime($date)) }}
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
+        <th>S/N</th>
         <th>NAME</th>
         <th>REGISTRATION NUMBER</th>
-        <th>TYPE OF TEST</th>
-        <th>DATE</th>
+
         <th>STATUS</th>
       </tr>
     </thead>
@@ -59,8 +68,8 @@
         <td class="counterCell"></td>
         <td>{{$var->name}}</td>
         <td>{{$var->reg_no}}</td>
-        <td>{{$var->test_type}}</td>
-        <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
+
+
         <td>PRESENT </td>
       </tr>
       @endforeach
@@ -68,9 +77,85 @@
 
   </table>
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
+<br>
+<br>
+
+<!-- TEST 2 -->
+<div class="col-xs-6">
+<h5>TEST 2</h5>
+  @if(count($all_test2)>0)
+Date: {{date("d/m/Y",strtotime($date2)) }}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>S/N</th>
+        <th>NAME</th>
+        <th>REGISTRATION NUMBER</th>
+
+
+        <th>STATUS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @foreach ($all_test2 as $var)
+      <tr>
+        <td class="counterCell"></td>
+        <td>{{$var->name}}</td>
+        <td>{{$var->reg_no}}</td>
+
+
+        <td>PRESENT </td>
+      </tr>
+      @endforeach
+    </tbody>
+
+  </table>
+  @else
+  <h4>No data to display</h4>
+  @endif
+</div>
+
+<br>
+<br>
+<!-- TEST 3 -->
+<div class="col-xs-6">
+
+<h5>TEST 3 </h5>
+  @if(count($all_test3)>0)
+Date: {{date("d/m/Y",strtotime($date3)) }}
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th>S/N</th>
+        <th>NAME</th>
+        <th>REGISTRATION NUMBER</th>
+
+
+        <th>STATUS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @foreach ($all_test3 as $var)
+      <tr>
+        <td class="counterCell"></td>
+        <td>{{$var->name}}</td>
+        <td>{{$var->reg_no}}</td>
+        <td>PRESENT </td>
+      </tr>
+      @endforeach
+    </tbody>
+
+  </table>
+  @else
+  <h4>No data to display</h4>
+  @endif
+</div>
+
 
 
 
@@ -83,5 +168,20 @@
 
 
 
+
+@endsection
+
+@section('pagescript')
+<script>
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+</script>
 
 @endsection
