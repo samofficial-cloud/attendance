@@ -33,17 +33,56 @@
 </div>
 <br>
 <div class="container">
-
+<!-- Detailed case -->
 @if(!empty($_GET['checkbox']))
+
+@if(count($dataSingle_all)>0)
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{$name}} ({{strtoupper($_GET['course_id'])}})</p></legend> </div>
-@elseif($_GET['selection']=='All courses')
-  <div class="col-xs-9"><legend>
-    <p class="note"> Attendance report for {{$name}} (All courses) </p></legend> </div>
+  <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
+  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+</legend> </div>
 
 @else
+
+@endif
+
+<!-- One student all courses -->
+@elseif($_GET['selection']=='All courses')
+@if(count($all_courses)>0)
+    <div class="col-xs-9"><legend>
+      <p class="note">Class attendance report for {{$name}} ({{$reg_no}}) </p>
+    <h5 class="note">Course(s): All </h5>
+    </legend> </div>
+
+    @else
+
+    @endif
+
+<!-- All students for a particular course -->
+@elseif ($_GET['category']== 1)
+
+
+@if(count($all_students)>0)
+    <div class="col-xs-9"><legend>
+      <p class="note">Class attendance report for all students </p>
+    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}</h5>
+    </legend> </div>
+
+    @else
+
+    @endif
+
+
+<!-- Last case -->
+@else
+@if(!empty($name))
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
+  <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
+<h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+</legend> </div>
+  @else
+
+  @endif
 @endif
 
 <!-- Show also invalid cases -->
@@ -54,11 +93,10 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
+        <th>S/N</th>
         <th>Date</th>
-        <th>Time</th>
-        <th>Attendance status</th>
-        <th>Arrival time</th>
+        <th>Sign in time</th>
+        <th>Status</th>
       </tr>
     </thead>
 
@@ -66,18 +104,13 @@
       @foreach ($dataSingle_all as $var)
       <tr>
         <td class="counterCell"></td>
-        <td>{{date("d-m-Y",strtotime($var->datetime))  }}</td>
+        <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
         <td>{{ date("H:i",strtotime($var->datetime))}}</td>
-        <td>@if($var->status==1)
-          PRESENT
-          @else
-          NOT PRESENT
-          @endif
-        </td>
+
         <td>@if($var->validity=='VALID')
-          EARLY
+          ARRIVED EARLY
           @else
-          LATE
+          ARRIVED LATE
           @endif
         </td>
       </tr>
@@ -85,8 +118,31 @@
     </tbody>
 
   </table>
+
+
+  <br>
+
+  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
+
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
+
+
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
@@ -94,31 +150,35 @@
 @elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
 <div class="col-xs-6">
-@if (!empty($percentage))
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>No</th>
-        <th>Name</th>
-        <th>Identification number</th>
-        <th>Percentage</th>
-      </tr>
-    </thead>
 
-    <tbody>
 
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{$name}}</td>
-        <td>{{$reg_no}}</td>
-        <td> {{$percentage}}%</td>
-      </tr>
+@if (!empty($name))
+<p>Percentage: {{$percentage}}% </p>
 
-    </tbody>
 
-  </table>
+  <br>
+
+  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
+
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
+
+
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
@@ -132,7 +192,7 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
+        <th>S/N</th>
         <th>Course</th>
         <th>Percentage</th>
       </tr>
@@ -150,8 +210,31 @@
     </tbody>
 
   </table>
+
+
+  <br>
+
+  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
+
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
+
+
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
@@ -160,12 +243,12 @@
 
 <div class="col-xs-6">
   @if(count($all_students)>0)
-  <table class="table table-striped">
+  <table class="table table-striped" >
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
+        <th>S/N</th>
         <th>Name</th>
-        <th>Identification number</th>
+        <th>Registration number</th>
         <th>Percentage</th>
       </tr>
     </thead>
@@ -183,31 +266,37 @@ foreach($all_students as $values){
     </tbody>
 
   </table>
+
+  <br>
+
+  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
+
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
+
+
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
 @endif
 
-<br>
-<form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                 {{csrf_field()}}
-                 
-    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-                          
-    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-                
-      <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-               
-  <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-               
-              
-  <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-                
 
-     <center><button class="btn btn-primary" type="submit">Download</button></center>
-     </form>
+
 
       <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
@@ -216,5 +305,20 @@ foreach($all_students as $values){
 </div>
 
 
+
+@endsection
+
+@section('pagescript')
+<script>
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+</script>
 
 @endsection

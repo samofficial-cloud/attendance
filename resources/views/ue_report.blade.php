@@ -35,14 +35,23 @@
 <div class="container">
 
 @if($_GET['selection']=='All courses')
-    <div class="col-xs-9"><legend>
-      <p class="note"> UE attendance report for {{$name}} (All courses) </p></legend> </div>
-
-@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
+@if(count($all_courses)>0)
       <div class="col-xs-9"><legend>
-        <p class="note">UE attendance report for {{$name}}  </p>
-
+        <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
+      <h5 class="note">Course(s): All </h5>
       </legend> </div>
+@else
+
+@endif
+@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
+@if(count($data)>0)
+      <div class="col-xs-9"><legend>
+        <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
+      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+      </legend> </div>
+@else
+
+@endif
 @else
 <div class="col-xs-9"><legend>
   <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
@@ -57,9 +66,11 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
+        <th>S/N</th>
         <th>COURSE</th>
         <th>DATE</th>
+        <th>FROM TIME</th>
+        <th>TO TIME</th>
         <th>STATUS</th>
       </tr>
     </thead>
@@ -70,6 +81,8 @@
         <td class="counterCell"></td>
         <td>{{$var->courseId}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
+        <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+        <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
         <td>PRESENT</td>
       </tr>
       @endforeach
@@ -77,7 +90,7 @@
 
   </table>
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
@@ -85,34 +98,44 @@
 
 @elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
+
 <div class="col-xs-6">
-  @if(count($data)>0)
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>NO</th>
-        <th>COURSE</th>
-        <th>DATE</th>
-        <th>STATUS</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      @foreach ($data as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{$var->courseId}}</td>
-        <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-        <td>PRESENT</td>
-      </tr>
-      @endforeach
-    </tbody>
 
-  </table>
+@if (!empty($FromTime))
+<p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
+<p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
+<p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
+
+<p>STATUS: PRESENT</p>
+
+
+  <br>
+
+  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
+
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
+
+
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
+
 
 
 @else
@@ -122,7 +145,7 @@
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>No</th>
+        <th>S/N</th>
         <th>Name</th>
         <th>Identification number</th>
         <th>Percentage</th>
@@ -143,11 +166,12 @@ foreach($all_students as $values){
 
   </table>
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
 @endif
+
 
 <form action="{{route('UEpdf')}}" class="form-container form-horizontal" method="get">
                  {{csrf_field()}}
@@ -167,6 +191,8 @@ foreach($all_students as $values){
      <center><button class="btn btn-primary" type="submit">Download</button></center>
      </form>
 
+<br>
+
     <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
     </div>
@@ -176,5 +202,20 @@ foreach($all_students as $values){
 
 
 
+
+@endsection
+
+@section('pagescript')
+<script>
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+</script>
 
 @endsection
