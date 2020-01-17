@@ -21,14 +21,18 @@ class PendingStatus extends Notification
     protected $month;
     protected $year;
     protected $day;
-    public function __construct($venue, $date, $month, $year,$day)
+    protected $ReservationDate;
+    protected $name;
+    public function __construct($venue, $date, $month, $year,$day,$name,$ReservationDate)
     {
         //
+        $this->name=$name;
         $this->venue = $venue;
            $this->date=$date;
             $this->month=$month;
              $this->year=$year;
               $this->day=$day;
+               $this->ReservationDate=$ReservationDate;
     }
 
     /**
@@ -51,6 +55,7 @@ class PendingStatus extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->greeting('Dear '.($this->name).',')
                     ->subject('VENUE_RESERVATION')
                     ->line('The Venue <strong>'. ($this->venue).'</strong> which was already approved for you for <strong>'.($this->date). '/'.($this->month).'/'. ($this->year).'</strong> has been reversed to pending status.')
                     ->line('For any inquiries please contact the Timetable Master.')

@@ -137,9 +137,9 @@ $dataSingle="";
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
+        <th>SN</th>
         <th>COURSE</th>
-        <th>TYPE OF TEST</th>
+        <th>TEST TYPE</th>
         <th>DATE</th>
         <th>STATUS</th>
       </tr>
@@ -172,8 +172,8 @@ $dataSingle="";
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
-        <th>TYPE OF TEST</th>
+        <th>SN</th>
+        <th>TEST TYPE</th>
         <th>DATE</th>
         <th>STATUS</th>
       </tr>

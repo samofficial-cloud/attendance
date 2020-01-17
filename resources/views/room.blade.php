@@ -494,6 +494,13 @@
 </table>
 </div>
 </div>
+<br>
+<form action="{{route('roompdf')}}" class="form-container form-horizontal" method="get">
+                 {{csrf_field()}}
+                 
+    <input type="text" class="form-control" id="rid" name="rid" value="{{$_GET['rid']}}" hidden>
+    <center><button class="btn btn-success" type="submit">Print</button></center>
+     </form>
 </div>
 </div>
 </div>

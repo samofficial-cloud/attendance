@@ -83,6 +83,12 @@
           </div>
           </div>
 
+          <div class="form-group row">
+          <div class="col-sm-3"><strong>Phone Number :</strong></div>
+          <div class="col-sm-7"><input type="text" name="phoneNumber" class="form-control" value="{{ Auth::user()->phone_number }}">
+          </div>
+          </div>
+
 
           <div class="form-group">
 

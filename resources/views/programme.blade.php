@@ -511,6 +511,10 @@
        ->get();
 
 
+       Use App\program;
+       $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
+
+
   ?> 
 
   <br>
@@ -680,9 +684,11 @@ td {
 <div class="col-10 bg-light rounded">
   <div class="card hero-image border-info">
   <div class="card-body">
-    <h5 class="card-title"><b>PROGRAM:{{ $_GET['rid'] }}</b></h5>
 
-<div style="color: #29234a"><H1><CENTER>{{ $_GET['rid'] }} TIME TABLE</CENTER></H1></div>
+    {{-- <h5 class="card-title"><b>PROGRAM:{{$full}}</b></h5> --}}
+    
+
+<div style="color: #29234a"><H1><CENTER>{{$full}} timetable</CENTER></H1></div>
 <table border="4" cellspacing="3" align="center" id="tid">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
@@ -1262,9 +1268,17 @@ td {
 
 </div>
 </div>
+<br>
+ <form action="{{route('programpdf')}}" class="form-container form-horizontal" method="get">
+                 {{csrf_field()}}
+                 
+    <input type="text" class="form-control" id="rid" name="rid" value="{{$_GET['rid']}}" hidden>
+    <center><button class="btn btn-success" type="submit">Print</button></center>
+     </form>
 </div>
 </div>
 </div>
+
 
 
 @endsection
