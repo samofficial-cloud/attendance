@@ -35,19 +35,26 @@
 <div class="container">
 
 
-<div class="col-xs-9"><legend>
-  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
+  @if(count($all_test)>0)
+        <div class="col-xs-9"><legend>
+          <p class="note">UE attendance report for all students</p>
+        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+        </legend> </div>
+  @else
 
-
+  @endif
 <div class="col-xs-6">
   @if(count($all_test)>0)
+
+  <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
+  <p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
+  <p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th>NO</th>
+        <th>S/N</th>
         <th>NAME</th>
         <th>REGISTRATION NUMBER</th>
-        <th>DATE</th>
         <th>STATUS</th>
       </tr>
     </thead>
@@ -58,7 +65,6 @@
         <td class="counterCell"></td>
         <td>{{$var->name}}</td>
         <td>{{$var->reg_no}}</td>
-        <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>PRESENT </td>
       </tr>
       @endforeach
@@ -66,11 +72,11 @@
 
   </table>
   @else
-  <h4>Sorry!! No data could be found for the specified parameters</h4>
+  <h4>No data to display</h4>
   @endif
 </div>
 
-
+<br>
 
     <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
@@ -81,5 +87,20 @@
 
 
 
+
+@endsection
+
+@section('pagescript')
+<script>
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+</script>
 
 @endsection

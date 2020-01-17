@@ -66,7 +66,7 @@
             </div>
 
              <div class="modal-body">
-               <form action="{{ route('report')}}" class="form-container form-horizontal" method="get">
+               <form id="class_form" action="{{ route('report')}}" class="form-container form-horizontal" method="get">
                  {{csrf_field()}}
                  <div class="form-group row">
                    <label for="" class="col-sm-4 col-form-label">For:</label>
@@ -80,11 +80,12 @@
                 </div>
                </div>
 
+
                <div id="DivCheckRadio" style="display:block;">
                  <div class="form-group row" >
                    <label for="inputEmail3" class="col-sm-4 col-form-label">Specification:</label>
                    <div class="col-sm-8">
-                     <input id="one_course" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
+                     <input id="one_course" class="italian" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
                      <input id="All_courses" type="radio" name="selection" value="All courses">All courses
                    </div>
                  </div>
@@ -92,7 +93,7 @@
 
                <div id="DivCheckbox" style="display:block;">
                  <div class="form-group row" >
-                   <label for="inputEmail3" class="col-sm-4 col-form-label">Show invalid attendances:</label>
+                   <label for="inputEmail3" class="col-sm-4 col-form-label">Show detailed information of the attendances:</label>
                    <div class="col-sm-8">
                      <input id="show_all" type="checkbox" name="checkbox" value="all cases">
                    </div>
@@ -137,7 +138,7 @@
            </div>
 
             <div class="modal-body">
-              <form action="{{ route('report_tests')}}" class="form-container form-horizontal" method="get">
+              <form id="test_form"  action="{{ route('report_tests')}}" class="form-container form-horizontal" method="get">
                 {{csrf_field()}}
                 <div class="form-group row">
                   <label for="" class="col-sm-4 col-form-label">For:</label>
@@ -162,10 +163,10 @@
               </div>
 
 
-                
+
               <div id="DivCheckboxt" style="display:block;">
                 <div class="form-group row" >
-                  <label for="inputEmail3" class="col-sm-4 col-form-label">Show invalid attendances:</label>
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Show detailed information of the attendances:</label>
                   <div class="col-sm-8">
                     <input id="show_allt" type="checkbox" name="checkbox" value="all cases">
 
@@ -173,7 +174,7 @@
                 </div>
               </div>
 
- 
+
     <div id="coursedivt" style="display:block;">
       <div class="form-group row">
     <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
@@ -215,7 +216,7 @@
            </div>
 
             <div class="modal-body">
-              <form action="{{ route('report_ue')}}" class="form-container form-horizontal" method="get">
+              <form id="ue_form"  action="{{ route('report_ue')}}" class="form-container form-horizontal" method="get">
                 {{csrf_field()}}
                 <div class="form-group row">
                   <label for="" class="col-sm-4 col-form-label">For:</label>
@@ -238,7 +239,14 @@
                 </div>
               </div>
 
-
+              <div id="DivCheckboxu" style="display:block;">
+                <div class="form-group row" >
+                  <label for="inputEmail3" class="col-sm-4 col-form-label">Show detailed information of the attendances:</label>
+                  <div class="col-sm-8">
+                    <input id="show_allu" type="checkbox" name="checkbox" value="all cases">
+                  </div>
+                </div>
+              </div>
 
     <div id="coursedivu"  style="display:block;">
       <div class="form-group row">
@@ -273,20 +281,20 @@
 </div>
 </div>
 <div class="col-10">
-   
+
   <div class="card hero-image border-info" >
   <div class="card-body">
     <center><h1 class="card-title"><b>WELCOME TO COLLEGE OF ICT</b></h1></center>
     <center><h2 class="card-title"><b>ATTENDANCE REPORTS GENERATION PORTAL</b></h2></center>
 
     <div align="center">
-    
+
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
-    
+
     <h1 >SEMESTER 1 2019/20</h1><br>
     <h2>WEEK: 1-17</h2>
 
-  
+
 </div>
 
 
@@ -300,6 +308,8 @@
 
 
 @section('pagescript')
+
+
 <script type="text/javascript">
 
 //Normal classes
@@ -312,6 +322,7 @@ function SelectCheck(nameSelect){
 
           var ele = document.getElementById("one_course");
           ele.checked = true;
+
 
           var ele2 = document.getElementById("show_all");
           ele2.checked = false;
@@ -432,12 +443,13 @@ function SelectCheckUe(nameSelect){
       if(nameSelect.value== 1){
           document.getElementById("DivChecku").style.display = "none";
           document.getElementById("DivCheckRadiou").style.display = "none";
-
+          document.getElementById("DivCheckboxu").style.display = "none";
 
           var ele = document.getElementById("one_courseu");
           ele.checked = true;
 
-
+          var ele2 = document.getElementById("show_allu");
+                    ele2.checked = false;
 
           var ele3 = document.getElementById("inputCourseu");
           ele3.required = true;
@@ -449,12 +461,13 @@ function SelectCheckUe(nameSelect){
 
         document.getElementById("DivChecku").style.display = "block";
         document.getElementById("DivCheckRadiou").style.display = "block";
-
+        document.getElementById("DivCheckboxu").style.display = "block";
         document.getElementById("coursedivu").style.display = "block";
         var ele = document.getElementById("one_courseu");
         ele.checked = true;
 
-
+        var ele2 = document.getElementById("show_allu");
+                ele2.checked = false;
 
         var ele3 = document.getElementById("inputCourseu");
         ele3.required = true;
@@ -467,12 +480,13 @@ function SelectCheckUe(nameSelect){
       else {
           document.getElementById("DivChecku").style.display = "block";
           document.getElementById("DivCheckRadiou").style.display = "block";
-
+          document.getElementById("DivCheckboxu").style.display = "block";
           document.getElementById("coursedivu").style.display = "block";
           var ele = document.getElementById("one_courseu");
           ele.checked = true;
 
-
+          var ele2 = document.getElementById("show_allu");
+                    ele2.checked = false;
 
           var ele3 = document.getElementById("inputCourseu");
           ele3.required = true;
@@ -488,6 +502,30 @@ function SelectCheckUe(nameSelect){
 
 
 $(document).ready(function() {
+
+
+//RESET ON CLOSE FOR CLASS
+  $(".modal").on("hidden.bs.modal", function(){
+    // $('select').prop('selectedIndex', 0);
+    $('#class_form').trigger("reset");
+    $("#getSelection").trigger('change');
+  });
+
+  //RESET ON CLOSE FOR TEST
+    $(".modal").on("hidden.bs.modal", function(){
+      // $('select').prop('selectedIndex', 0);
+      $('#test_form').trigger("reset");
+      $("#getSelectiont").trigger('change');
+    });
+
+    //RESET ON CLOSE FOR UE
+      $(".modal").on("hidden.bs.modal", function(){
+        // $('select').prop('selectedIndex', 0);
+        $('#ue_form').trigger("reset");
+        $("#getSelectionu").trigger('change');
+      });
+
+
 //class
 $("#getSelection").trigger('change');
 
@@ -560,7 +598,7 @@ $("#getSelection").trigger('change');
                                 OptionValue = document.getElementById("Option").value;
                                   if( $('#All_coursesu').prop('checked')){
                                     document.getElementById("coursedivu").style.display = "none";
-
+                                    document.getElementById("DivCheckboxu").style.display = "none";
                                       var ele4 = document.getElementById("inputCourseu");
                                       ele4.required = false;
 
@@ -572,13 +610,19 @@ $("#getSelection").trigger('change');
                                   $('#one_courseu').change(function(){
                                       if( $('#one_courseu').prop('checked') ){
                                         document.getElementById("coursedivu").style.display = "block";
+                                        document.getElementById("DivCheckboxu").style.display = "block";
 
                                       } else {
                                         document.getElementById("coursedivu").style.display = "none";}
                                       });
 
 
-                                    
+                                      $('#show_allu').change(function(){
+                                                                if( $('#show_allu').prop('checked') ){
+                                                                  document.getElementById("DivCheckRadiou").style.display = "none";
+                                                                } else {
+                                                                  document.getElementById("DivCheckRadiou").style.display = "block";}
+                                                                });
 
 
 
@@ -593,7 +637,23 @@ function removeSpaces(string) {
 }
 </script>
 
+<script>
+window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted ||
+                         ( typeof window.performance != "undefined" &&
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+});
+</script>
+
+
+
+
+
+
+
+
 @endsection
-
-
-

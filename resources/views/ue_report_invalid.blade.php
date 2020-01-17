@@ -34,17 +34,8 @@
 <br>
 <div class="container">
 
-@if($_GET['selection']=='All courses')
-@if(count($all_courses)>0)
-      <div class="col-xs-9"><legend>
-        <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
-      <h5 class="note">Course(s): All </h5>
-      </legend> </div>
-@else
 
-@endif
-@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
-@if(count($data)>0)
+@if(!empty($FromTime))
       <div class="col-xs-9"><legend>
         <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
       <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
@@ -52,51 +43,6 @@
 @else
 
 @endif
-@else
-<div class="col-xs-9"><legend>
-  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
-@endif
-
-
-
-@if ($_GET['selection']=='All courses')
-
-<div class="col-xs-6">
-  @if(count($all_courses)>0)
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>S/N</th>
-        <th>COURSE</th>
-        <th>DATE</th>
-        <th>FROM TIME</th>
-        <th>TO TIME</th>
-        <th>STATUS</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach ($all_courses as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{$var->courseId}}</td>
-        <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
-        <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-        <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-        <td>PRESENT</td>
-      </tr>
-      @endforeach
-    </tbody>
-
-  </table>
-  @else
-  <h4>No data to display</h4>
-  @endif
-</div>
-
-
-
-@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
 
 <div class="col-xs-6">
@@ -106,7 +52,11 @@
 <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
 <p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
 <p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
-
+<p>Sign in time: {{ date("H:i",strtotime($date))}} (@if($validity=='VALID')
+ARRIVED EARLY
+  @else
+  ARRIVED LATE
+  @endif)</p>
 <p>STATUS: PRESENT</p>
 
 
@@ -138,39 +88,7 @@
 
 
 
-@else
 
-<div class="col-xs-6">
-  @if(count($all_students)>0)
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>S/N</th>
-        <th>Name</th>
-        <th>Identification number</th>
-        <th>Percentage</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <?php
-foreach($all_students as $values){
-       $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
-       $val = (iterator_to_array($iterator,true));
-       print('<tr><td class="counterCell"></td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
-
-}
-?>
-
-    </tbody>
-
-  </table>
-  @else
-  <h4>No data to display</h4>
-  @endif
-</div>
-
-@endif
 <br>
     <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
