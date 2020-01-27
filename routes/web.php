@@ -128,6 +128,15 @@ Route::get('/instructors/edit', 'lecturesController@edit')->name('editinstructor
 
 Route::get('/instructors/add', 'lecturesController@add')->name('newinstructor');
 
+Route::get('/instructors/delete/{id}', 'lecturesController@DeleteLecturer')->name('DeleteLecturer');
+
+Route::get('/courses/add', 'coursesController@add')->name('newcourses');
+
+Route::get('/courses/edit', 'coursesController@edit')->name('editcourse');
+
+Route::get('/courses/delete/{id}', 'coursesController@DeleteCourse')->name('DeleteCourse');
+
+
 
 
 
@@ -217,11 +226,69 @@ Route::get('generate-ETE-pdf','lecturesController@ETEPDF')->name('ETEpdf');
 
 Route::get('generate-CSE-pdf','lecturesController@CSEPDF')->name('CSEpdf');
 
+Route::get('generate-CS1-pdf','coursesController@CS1PDF')->name('CS1pdf');
+
+Route::get('generate-CS2-pdf','coursesController@CS2PDF')->name('CS2pdf');
+
+Route::get('generate-CS3-pdf','coursesController@CS3PDF')->name('CS3pdf');
+
+Route::get('generate-TE1-pdf','coursesController@TE1PDF')->name('TE1pdf');
+
+Route::get('generate-TE2-pdf','coursesController@TE2PDF')->name('TE2pdf');
+
+Route::get('generate-TE3-pdf','coursesController@TE3PDF')->name('TE3pdf');
+
+Route::get('generate-TE4-pdf','coursesController@TE4PDF')->name('TE4pdf');
+
+Route::get('generate-ESC1-pdf','coursesController@ESC1PDF')->name('ESC1pdf');
+
+Route::get('generate-ESC2-pdf','coursesController@ESC2PDF')->name('ESC2pdf');
+
+Route::get('generate-ESC3-pdf','coursesController@ESC3PDF')->name('ESC3pdf');
+
+Route::get('generate-CEIT1-pdf','coursesController@CEIT1PDF')->name('CEIT1pdf');
+
+Route::get('generate-CEIT2-pdf','coursesController@CEIT2PDF')->name('CEIT2pdf');
+
+Route::get('generate-CEIT3-pdf','coursesController@CEIT3PDF')->name('CEIT3pdf');
+
+Route::get('generate-CEIT4-pdf','coursesController@CEIT4PDF')->name('CEIT4pdf');
+
 
 
 Route::get('/reservation', 'reservationsController@show');
 
 Route::get('/courses', 'coursesController@index');
+
+Route::get('/coursesCS1', 'coursesController@showCS1');
+
+Route::get('/coursesCS2', 'coursesController@showCS2');
+
+Route::get('/coursesCS3', 'coursesController@showCS3');
+
+Route::get('/coursesTE1', 'coursesController@showTE1');
+
+Route::get('/coursesTE2', 'coursesController@showTE2');
+
+Route::get('/coursesTE3', 'coursesController@showTE3');
+
+Route::get('/coursesTE4', 'coursesController@showTE4');
+
+Route::get('/coursesESC1', 'coursesController@showESC1');
+
+Route::get('/coursesESC2', 'coursesController@showESC2');
+
+Route::get('/coursesESC3', 'coursesController@showESC3');
+
+Route::get('/coursesCEIT1', 'coursesController@showCEIT1');
+
+Route::get('/coursesCEIT2', 'coursesController@showCEIT2');
+
+Route::get('/coursesCEIT3', 'coursesController@showCEIT3');
+
+Route::get('/coursesCEIT4', 'coursesController@showCEIT4');
+
+
 
 Route::get('/room', 'timetablesController@index');
 

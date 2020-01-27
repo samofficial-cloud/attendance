@@ -73,4 +73,15 @@ DB::table('lecturers')->insert($data);
                     ->with('success', 'Details added successfully');
 
    }
+
+    public function DeleteLecturer($id)
+  {
+    $lecturer = lecturer::find($id);
+
+    $lecturer->delete();
+    
+    
+      return redirect()->back()
+                  ->with('success', 'Details Deleted Successfully');
+  }
 }

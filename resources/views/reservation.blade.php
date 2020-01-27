@@ -9,8 +9,8 @@ VENUE RESERVATION
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container">
- <ul class="nav nav-tabs">
+  <div class="container2">
+ <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -20,19 +20,36 @@ VENUE RESERVATION
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606" href="/venue">VENUE RESERVATION</a>
   </li>
-   
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
   </li>
-   <li class="nav-item">
+  
+  <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
   </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INSTRUCTORS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
+          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+  </li>
+
+
+
 </ul>
 
 </div>
@@ -186,7 +203,7 @@ $Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('
     </div>
 
      <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff;">
+  <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff;">
     {{ $_GET['wid'] }}
   </a>
 
