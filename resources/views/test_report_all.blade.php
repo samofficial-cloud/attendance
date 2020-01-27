@@ -37,7 +37,7 @@
   @if(count($all_test)>0)
   <div class="col-xs-9"><legend>
     <p class="note"> Test attendance report for all students</p>
-    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
   </legend> </div>
 
   @else
@@ -51,11 +51,11 @@
 <h5>TEST 1 </h5>
   @if(count($all_test)>0)
 Date: {{date("d/m/Y",strtotime($date)) }}
-  <table class="table table-striped">
+  <table id="myTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>NAME</th>
+        <th class="order">Name</th>
         <th>REGISTRATION NUMBER</th>
 
         <th>STATUS</th>
@@ -88,11 +88,11 @@ Date: {{date("d/m/Y",strtotime($date)) }}
 <h5>TEST 2</h5>
   @if(count($all_test2)>0)
 Date: {{date("d/m/Y",strtotime($date2)) }}
-  <table class="table table-striped">
+  <table id="myTable2" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>NAME</th>
+        <th class="order">Name</th>
         <th>REGISTRATION NUMBER</th>
 
 
@@ -127,11 +127,11 @@ Date: {{date("d/m/Y",strtotime($date2)) }}
 <h5>TEST 3 </h5>
   @if(count($all_test3)>0)
 Date: {{date("d/m/Y",strtotime($date3)) }}
-  <table class="table table-striped">
+  <table id="myTable3" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>NAME</th>
+        <th class="order">Name</th>
         <th>REGISTRATION NUMBER</th>
 
 
@@ -159,18 +159,18 @@ Date: {{date("d/m/Y",strtotime($date3)) }}
 
 <form action="{{route('testallpdf')}}" class="form-container form-horizontal" method="get">
                  {{csrf_field()}}
-                 
+
     <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-                          
+
     <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-                
+
       <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-               
+
   <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-               
-              
+
+
   <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-                
+
 
      <center><button class="btn btn-primary" type="submit">Download</button></center>
      </form>
@@ -190,6 +190,18 @@ Date: {{date("d/m/Y",strtotime($date3)) }}
 @endsection
 
 @section('pagescript')
+
+<script>
+        $(document).ready( function () {
+                $("#myTable").tablesorter();
+                $("#myTable2").tablesorter();
+                $("#myTable3").tablesorter();
+        });
+</script>
+
+
+
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||

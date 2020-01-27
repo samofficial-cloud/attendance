@@ -15,6 +15,8 @@ class ReportController extends Controller
 
     $reg_no=$request->get('reg_no');
 
+    $course_name= DB::table('courses')->whereRaw("course LIKE '%$course%'")->value('course_name');
+
     $lectures_no = DB::table('courses')->whereRaw("course LIKE '%$course%'")->value('lectures_no');
 
     if ($request->get('category')== 1) {
@@ -29,7 +31,7 @@ class ReportController extends Controller
         $all_students[] = DB::select('EXEC getAttendanceAll ?,?,?',$values);
         array_multisort($all_students);
       }
-      return View('attendance_report')->with('all_students',$all_students);
+      return View('attendance_report')->with('all_students',$all_students)->with('course_name',$course_name);
 
 
 
@@ -41,7 +43,7 @@ class ReportController extends Controller
       $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('name');
       $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('reg_no');
       $dataSingle_all = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
-      return View('attendance_report')->with('dataSingle_all',$dataSingle_all)->with('name',$name)->with('reg_no',$reg_no);
+      return View('attendance_report')->with('dataSingle_all',$dataSingle_all)->with('name',$name)->with('reg_no',$reg_no)->with('course_name',$course_name);
       }
       elseif($request->get('selection')=='One course') {
         $CountSingle = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
@@ -52,7 +54,7 @@ class ReportController extends Controller
 
       $percentage=round($CountSingle*100/$lectures_no);
 
-        return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
+        return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name)->with('course_name',$course_name);
 
 
       }
@@ -67,6 +69,7 @@ class ReportController extends Controller
          $values=[$reg_no,$val->courseId,$val->lectures_no];
          $all_courses[] = DB::select('EXEC getAllCoursesStaff ?,?,?',$values);
        }
+
        return View('attendance_report')->with('all_courses',$all_courses)->with('name',$name)->with('reg_no',$reg_no);
 // dd($all_courses);
 
@@ -85,7 +88,7 @@ class ReportController extends Controller
       $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('name');
         $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('reg_no');
       $dataSingle_all = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
-      return View('attendance_report')->with('dataSingle_all',$dataSingle_all)->with('name',$name)->with('reg_no',$reg_no);
+      return View('attendance_report')->with('dataSingle_all',$dataSingle_all)->with('name',$name)->with('reg_no',$reg_no)->with('course_name',$course_name);
       }
 
       elseif($request->get('selection')=='One course') {
@@ -98,7 +101,7 @@ class ReportController extends Controller
 
           $percentage=round($CountSingle*100/$lectures_no);
 
-        return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
+        return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name)->with('course_name',$course_name);
         // return View('attendance_report')->with('dataSingle',$dataSingle)->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
 
 
@@ -113,6 +116,7 @@ class ReportController extends Controller
           $values=[$reg_no,$val->courseId,$val->lectures_no];
           $all_courses[] = DB::select('EXEC getAllCourses ?,?,?',$values);
         }
+        // dd($all_courses);
         return View('attendance_report')->with('all_courses',$all_courses)->with('name',$name)->with('reg_no',$reg_no);
 // dd($all);
 
@@ -131,7 +135,7 @@ class ReportController extends Controller
     $dataSingle="";
     $data="";
     $course=strtoupper($request->get('course_id'));
-
+    $course_name= DB::table('courses')->whereRaw("course LIKE '%$course%'")->value('course_name');
     $reg_no=$request->get('reg_no');
 
 
@@ -148,7 +152,7 @@ class ReportController extends Controller
       // $all_students = array();
 
 
-      return View('test_report_all')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3);
+      return View('test_report_all')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name);
 
 
 
@@ -164,12 +168,12 @@ class ReportController extends Controller
         $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
 
-        return View('test_report_invalid')->with('checkbox_all_courses',$checkbox_all_courses)->with('name',$name)->with('reg_no',$reg_no);
+        return View('test_report_invalid')->with('checkbox_all_courses',$checkbox_all_courses)->with('name',$name)->with('reg_no',$reg_no)->with('course_name',$course_name);
       }elseif($request->get('checkbox')=='all cases') {
         $dataSingle_all = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->whereRaw("courseId LIKE '%$course%'")->get();
         $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
         $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
-      return View('test_report_invalid')->with('dataSingle_all',$dataSingle_all)->with('name',$name)->with('reg_no',$reg_no);
+      return View('test_report_invalid')->with('dataSingle_all',$dataSingle_all)->with('name',$name)->with('reg_no',$reg_no)->with('course_name',$course_name);
 
     }
 
@@ -180,16 +184,20 @@ class ReportController extends Controller
         $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
         // return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
-        return View('test_report')->with('data',$data)->with('reg_no',$reg_no)->with('name',$name);
+        return View('test_report')->with('data',$data)->with('reg_no',$reg_no)->with('name',$name)->with('course_name',$course_name);
 
 
       } else {
 
           //echo one student all courses
 
-          $all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST'],['test_type', '=','Test 1']])->get();
-          $all_courses2 = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST'],['test_type', '=','Test 2']])->get();
-          $all_courses3 = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST'],['test_type', '=','Test 3']])->get();
+          // $all_courses = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST'],['test_type', '=','Test 1']])->get();
+          // $all_courses2 = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST'],['test_type', '=','Test 2']])->get();
+          // $all_courses3 = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST'],['test_type', '=','Test 3']])->get();
+
+          $all_courses = DB::select('EXEC getAllCoursesTest1 ?',[$reg_no]);
+          $all_courses2 = DB::select('EXEC getAllCoursesTest2 ?',[$reg_no]);
+          $all_courses3 = DB::select('EXEC getAllCoursesTest3 ?',[$reg_no]);
 
           $name = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('name');
           $reg_no = DB::table('attendance')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student'],['category', '=','TEST']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
@@ -216,7 +224,7 @@ class ReportController extends Controller
     $dataSingle="";
     $data="";
     $course=strtoupper($request->get('course_id'));
-
+    $course_name= DB::table('courses')->whereRaw("course LIKE '%$course%'")->value('course_name');
     $reg_no=$request->get('reg_no');
 
 
@@ -231,7 +239,7 @@ class ReportController extends Controller
       // $all_students = array();
 
 
-      return View('ue_report_all')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime);
+      return View('ue_report_all')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name);
 
 
 
@@ -247,7 +255,7 @@ class ReportController extends Controller
         $validity=DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['title', '=','student']])->whereRaw("courseId LIKE '%$course%'")->value('validity');
         $name = DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
         $reg_no = DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
-      return View('ue_report_invalid')->with('reg_no',$reg_no)->with('name',$name)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('validity',$validity);
+      return View('ue_report_invalid')->with('reg_no',$reg_no)->with('name',$name)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('validity',$validity)->with('course_name',$course_name);
 
     }else if($request->get('selection')=='One course') {
 
@@ -260,7 +268,7 @@ class ReportController extends Controller
         $reg_no = DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
         // return View('attendance_report')->with('percentage',$percentage)->with('reg_no',$reg_no)->with('name',$name);
-        return View('ue_report')->with('data',$data)->with('reg_no',$reg_no)->with('name',$name)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('validity',$validity);
+        return View('ue_report')->with('data',$data)->with('reg_no',$reg_no)->with('name',$name)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('validity',$validity)->with('course_name',$course_name);
 
 
       } else {
@@ -268,10 +276,12 @@ class ReportController extends Controller
           //echo one student all courses
 
           $all_courses = DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->get();
+          $all_courses_names = DB::select('EXEC getAllCoursesUe ?',[$reg_no]);
+
           $name = DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('name');
           $reg_no = DB::table('attendance_ue')->where([['reg_no', '=', $reg_no],['validity', '=', 'VALID'],['title', '=','student']])->orderBy('id', 'desc')->limit(1)->value('reg_no');
 
-        return View('ue_report')->with('all_courses',$all_courses)->with('name',$name)->with('reg_no',$reg_no);
+        return View('ue_report')->with('all_courses',$all_courses)->with('all_courses_names',$all_courses_names)->with('name',$name)->with('reg_no',$reg_no);
     // dd($all);
 
         //
@@ -301,30 +311,30 @@ class ReportController extends Controller
     }
 
     public function testallPDF(){
-       
+
         $pdf = PDF::loadView('testallpdf');
-  
+
         return $pdf->stream('Test All attendance.pdf');
     }
 
     public function testinvalidPDF(){
-       
+
         $pdf = PDF::loadView('testinvalidpdf');
-  
+
         return $pdf->stream('Test Invalid attendance.pdf');
     }
 
     public function UEPDF(){
-       
+
         $pdf = PDF::loadView('UEpdf');
-  
+
         return $pdf->stream('UE attendance.pdf');
     }
 
     public function UEAllPDF(){
-       
+
         $pdf = PDF::loadView('UEAllpdf');
-  
+
         return $pdf->stream('UE All attendance.pdf');
     }
 

@@ -46,7 +46,7 @@
   <div class="card-header" style="text-align: center;">
     <h4>Complete the Following Form</h4>
   </div>
-   
+
   <div class="card-body">
    @if ($errors->any())
           <div class="alert alert-danger">
@@ -95,6 +95,7 @@
   </div>
   </div>
 
+
   <div class="form-group row">
     <label for="program"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
     <div class="col-sm-7">
@@ -116,12 +117,12 @@
   </select>
   </div>
   </div>
-  
+
 
   <div class="form-group">
-    
+
      <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
-    
+
   </div>
 </form>
 

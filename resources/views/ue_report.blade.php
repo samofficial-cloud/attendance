@@ -5,6 +5,10 @@
 @endsection
 
 
+<!-- @section('style')
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+@endsection -->
+
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -47,14 +51,14 @@
 @if(count($data)>0)
       <div class="col-xs-9"><legend>
         <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
-      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
       </legend> </div>
 @else
 
 @endif
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
+  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p></legend> </div>
 @endif
 
 
@@ -89,6 +93,40 @@
     </tbody>
 
   </table>
+
+  <br>
+  <br>
+  <h6><u>KEY</u></h6>
+  <?php
+  foreach($all_courses_names as $values){
+   $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+   $val = (iterator_to_array($iterator,true));
+   print($val['courseId'].' - '.$val['course_name'].'<br>');
+
+  }
+  ?>
+
+  <br>
+   <form action="{{route('UEpdf')}}" class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+       <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+       <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+         <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+     <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+     <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+        <center><button class="btn btn-primary" type="submit">Download</button></center>
+        </form>
+
+   <br>
+
   @else
   <h4>No data to display</h4>
   @endif
@@ -104,10 +142,8 @@
 
 @if (!empty($FromTime))
 <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
-<p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
-<p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
-
-<p>STATUS: PRESENT</p>
+<p>Time: {{ date("H:i",strtotime($FromTime))}}  to  {{ date("H:i",strtotime($ToTime))}} </p>
+<span>STATUS: PRESENT</span> <span><i class="fa fa-check-square-o" style="font-size:18px;color:#3e8ed0"></i></span>
 
 
   <br>
@@ -142,11 +178,11 @@
 
 <div class="col-xs-6">
   @if(count($all_students)>0)
-  <table class="table table-striped">
+  <table id="myTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>Name</th>
+        <th class="order">Name</th>
         <th>Identification number</th>
         <th>Percentage</th>
       </tr>
@@ -165,6 +201,26 @@ foreach($all_students as $values){
     </tbody>
 
   </table>
+ <br>
+  <form action="{{route('UEpdf')}}" class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
+
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
+
+  <br>
   @else
   <h4>No data to display</h4>
   @endif
@@ -173,25 +229,7 @@ foreach($all_students as $values){
 @endif
 
 
-<form action="{{route('UEpdf')}}" class="form-container form-horizontal" method="get">
-                 {{csrf_field()}}
-                 
-    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-                          
-    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-                
-      <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-               
-  <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-               
-              
-  <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-                
 
-     <center><button class="btn btn-primary" type="submit">Download</button></center>
-     </form>
-
-<br>
 
     <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
@@ -206,6 +244,13 @@ foreach($all_students as $values){
 @endsection
 
 @section('pagescript')
+
+<script>
+        $(document).ready( function () {
+                $("#myTable").tablesorter();
+        });
+    </script>
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||
