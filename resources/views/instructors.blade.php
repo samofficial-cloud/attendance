@@ -52,8 +52,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container">
- <ul class="nav nav-tabs">
+  <div class="container2">
+ <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -66,15 +66,33 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+<li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
   </li>
-   <li class="nav-item">
+  
+  <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
   </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link active dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INSTRUCTORS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
+          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+  </li>
+
+
+
 </ul>
 
 </div>
@@ -91,6 +109,7 @@ $j='1';
 
 <br>
 <div class="container2">
+  <h4><b>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING</b></h4>
    @if ($errors->any())
           <div class="alert alert-danger">
             <strong>Sorry!!</strong> Something went Wrong<br>
@@ -123,6 +142,13 @@ $j='1';
   {{csrf_field()}}
 
   <div class="form-group row">
+    <label for="dept"  class="col-sm-3 col-form-label">Department:</label>
+    <div class="col-sm-7">
+    <input type="text" class="form-control" id="dept" name="dept" value="ETE" readonly>
+  </div>
+  </div>
+
+  <div class="form-group row">
     <label for="course"  class="col-sm-3 col-form-label">Course ID:</label>
     <div class="col-sm-7">
     <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="course" name="course" value="" required="">
@@ -150,15 +176,6 @@ $j='1';
   </div>
   </div>
 
-  <div class="form-group row">
-    <label for="dept"  class="col-sm-3 col-form-label">Department:</label>
-    <div class="col-sm-7">
-   <select class="custom-select Reason" name="dept" id="dept">
-    <option value="ETE">ETE</option>
-    <option value="CSE">CSE</option>
-  </select>
-  </div>
-  </div>
 
   <div class="form-group row">
     <label for="course_type"  class="col-sm-3 col-form-label">Course Type:</label>
@@ -191,9 +208,9 @@ $j='1';
 </div>
 </div>
 
-  <h4>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING</h4>
+  
 
-  <input type="text" onblur="this.value=removeSpaces(this.value);" id="myInput" onkeyup="myFunction()" placeholder="Search for Course ID.." title="Type in a name">
+  <input type="text" onblur="this.value=removeSpaces(this.value);" id="myInput" onkeyup="myFunction()" placeholder="Search for Course ID.." title="Type in Course ID">
   <br>
   <br>
   
@@ -221,7 +238,7 @@ $j='1';
       <td>{{ $instructors->technical_staff }}</td>
       <td>{{ $instructors->course_type}}</td>
       <td>{{ $instructors->semester}}</td>
-      <td width="10%"><center><a data-toggle="modal" data-target="#edit{{$instructors->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a></center>
+      <td><a data-toggle="modal" data-target="#edit{{$instructors->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a>
 
         <div class="modal fade" id="edit{{$instructors->id}}" role="dialog">
 
@@ -277,7 +294,7 @@ $j='1';
 </div>
 
 
-
+<a class="btn btn-sm btn-danger" href="{{route('DeleteLecturer',$instructors->id)}}">Delete</a>
 
 
       </td>
