@@ -38,7 +38,7 @@
 @if(!empty($FromTime))
       <div class="col-xs-9"><legend>
         <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
-      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
       </legend> </div>
 @else
 

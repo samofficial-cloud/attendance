@@ -5,6 +5,8 @@
 @endsection
 
 
+
+
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -39,7 +41,7 @@
 @if(count($dataSingle_all)>0)
 <div class="col-xs-9"><legend>
   <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
-  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
 </legend> </div>
 
 @else
@@ -65,7 +67,7 @@
 @if(count($all_students)>0)
     <div class="col-xs-9"><legend>
       <p class="note">Class attendance report for all students </p>
-    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}</h5>
+    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
     </legend> </div>
 
     @else
@@ -78,7 +80,7 @@
 @if(!empty($name))
 <div class="col-xs-9"><legend>
   <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
-<h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+<h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
 </legend> </div>
   @else
 
@@ -153,12 +155,16 @@
 
 
 @if (!empty($name))
-<p>Percentage: {{$percentage}}% </p>
+<p>Minimum required percentage: 75% </p>
+<center><span class="chart " data-percent="{{$percentage}}">
+		<span class="percent"></span>
+	</span></center>
+<br>
 
-
+<div class="center location"><p>Your current percantage so far</p></div>
   <br>
 
-  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+  <!-- <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
 
       <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
@@ -174,7 +180,7 @@
 
 
        <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
+       </form> -->
 
 
   @else
@@ -210,6 +216,19 @@
     </tbody>
 
   </table>
+<br>
+<br>
+<!-- course key -->
+
+<h6><u>KEY</u></h6>
+<?php
+foreach($all_courses as $values){
+ $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+ $val = (iterator_to_array($iterator,true));
+ print($val['courseId'].' - '.$val['course_name'].'<br>');
+
+}
+?>
 
 
   <br>
@@ -243,11 +262,11 @@
 
 <div class="col-xs-6">
   @if(count($all_students)>0)
-  <table class="table table-striped" >
+  <table id="myTable" class="table table-bordered table-striped" >
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>Name</th>
+        <th class="order">Name</th>
         <th>Registration number</th>
         <th>Percentage</th>
       </tr>
@@ -309,6 +328,39 @@ foreach($all_students as $values){
 @endsection
 
 @section('pagescript')
+<script src="{{ asset('js/jquery.easing.min.js') }}" defer></script>
+<script src="{{ asset('js/jquery.easypiechart.min.js') }}" defer></script>
+
+<script>
+	$(function() {
+		$('.chart').easyPieChart({
+			easing: 'easeOutBounce',
+      scaleColor:	false,
+      trackColor:	'#e9ecef',
+      barColor: '#72b4ea',
+      lineCap:	'square',
+      lineWidth:	'20',
+      size: '160',
+      animate:{
+					duration:2000,
+					enabled:true
+				},
+			onStep: function(from, to, percent) {
+				$(this.el).find('.percent').text(Math.round(percent));
+			}
+		});
+
+	});
+	</script>
+
+<script>
+        $(document).ready( function () {
+                $("#myTable").tablesorter();
+        });
+</script>
+
+
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||

@@ -44,7 +44,7 @@
 @if(count($dataSingle_all)>0)
 <div class="col-xs-9"><legend>
   <p class="note"> Test attendance report for {{$name}} ({{$reg_no}})</p>
-  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
 </legend> </div>
 
 @else
@@ -53,7 +53,7 @@
 
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p>
+  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p>
 
 </legend> </div>
 @endif
@@ -141,18 +141,18 @@
 
 <form action="{{route('testinvalidpdf')}}" class="form-container form-horizontal" method="get">
                  {{csrf_field()}}
-                 
+
     <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-                          
+
     <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-                
+
       <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-               
+
   <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-               
-              
+
+
   <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-                
+
 
      <center><button class="btn btn-primary" type="submit">Download</button></center>
      </form>

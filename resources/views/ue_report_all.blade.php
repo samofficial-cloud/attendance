@@ -38,7 +38,7 @@
   @if(count($all_test)>0)
         <div class="col-xs-9"><legend>
           <p class="note">UE attendance report for all students</p>
-        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
         </legend> </div>
   @else
 
@@ -49,11 +49,11 @@
   <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
   <p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
   <p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
-  <table class="table table-striped">
+  <table id="myTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>NAME</th>
+        <th class="order">Name</th>
         <th>REGISTRATION NUMBER</th>
         <th>STATUS</th>
       </tr>
@@ -79,18 +79,18 @@
 
 <form action="{{route('UEAllpdf')}}" class="form-container form-horizontal" method="get">
                  {{csrf_field()}}
-                 
+
     <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-                          
+
     <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-                
+
       <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-               
+
   <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-               
-              
+
+
   <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-                
+
 
      <center><button class="btn btn-primary" type="submit">Download</button></center>
      </form>
@@ -112,6 +112,13 @@
 @endsection
 
 @section('pagescript')
+
+<script>
+        $(document).ready( function () {
+                $("#myTable").tablesorter();
+        });
+    </script>
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||

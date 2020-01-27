@@ -261,3 +261,83 @@ background-color: #9561e2;
     list-style: none;
     width: 109%;
 }
+
+
+.order {
+           background-image: url('../img/white-desc.gif');
+
+           background-repeat: no-repeat;
+           background-position: center right;
+       }
+
+
+.order.headerSortUp {
+           background-image: url('../img/white-asc.gif');
+
+           background-repeat: no-repeat;
+           background-position: center right;
+       }
+       .order.headerSortDown {
+           background-image: url('../img/white-desc.gif');
+
+           background-repeat: no-repeat;
+           background-position: center right;
+       }
+
+       .order2 {
+                  background-image: url('../img/white-desc.gif');
+
+                  background-repeat: no-repeat;
+                  background-position: center right;
+              }
+
+
+       .order2.headerSortUp {
+                  background-image: url('../img/white-asc.gif');
+
+                  background-repeat: no-repeat;
+                  background-position: center right;
+              }
+              .order2.headerSortDown {
+                  background-image: url('../img/white-desc.gif');
+
+                  background-repeat: no-repeat;
+                  background-position: center right;
+              }
+
+
+       .chart {
+         position: relative;
+         display: inline-block;
+         width: 110px;
+         height: 110px;
+         margin-top: 20px;
+         margin-bottom: 50px;
+         text-align: center;
+       }
+
+       .chart canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+  .percent {
+  display: inline-block;
+  line-height: 110px;
+  z-index: 2;
+  margin-left: 54%;
+    margin-top: 20%;
+}
+.percent:after {
+  content: '%';
+  margin-left: 0.1em;
+  font-size: .8em;
+}
+
+.location {
+
+width: 20%;
+margin-left: 43.5%;
+
+}

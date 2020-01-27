@@ -47,14 +47,14 @@
 @if(count($data)>0)
       <div class="col-xs-9"><legend>
         <p class="note">Test attendance report for {{$name}} ({{$reg_no}})</p>
-      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} </h5>
+      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
       </legend> </div>
 @else
 
 @endif
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} </p></legend> </div>
+  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p></legend> </div>
 @endif
 
 <br>
@@ -87,6 +87,18 @@
     </tbody>
 
   </table>
+<br>
+<br>
+<h6><u>KEY</u></h6>
+<?php
+foreach($all_courses as $values){
+ $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+ $val = (iterator_to_array($iterator,true));
+ print($val['courseId'].' - '.$val['course_name'].'<br>');
+
+}
+?>
+
 
   <br>
       <form action="{{route('testpdf')}}" class="form-container form-horizontal" method="get">
@@ -145,6 +157,18 @@
   </table>
 
   <br>
+  <br>
+  <h6><u>KEY</u></h6>
+  <?php
+  foreach($all_courses as $values){
+   $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+   $val = (iterator_to_array($iterator,true));
+   print($val['courseId'].' - '.$val['course_name'].'<br>');
+
+  }
+  ?>
+
+  <br>
       <form action="{{route('testpdf')}}" class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
 
@@ -198,6 +222,18 @@
     </tbody>
 
   </table>
+
+  <br>
+  <br>
+  <h6><u>KEY</u></h6>
+  <?php
+  foreach($all_courses as $values){
+   $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+   $val = (iterator_to_array($iterator,true));
+   print($val['courseId'].' - '.$val['course_name'].'<br>');
+
+  }
+  ?>
 
   <br>
       <form action="{{route('testpdf')}}" class="form-container form-horizontal" method="get">
@@ -283,11 +319,11 @@
 
 <div class="col-xs-6">
   @if(count($all_students)>0)
-  <table class="table table-striped">
+  <table id="myTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>Name</th>
+        <th class="order">Name</th>
         <th>Identification number</th>
         <th>Percentage</th>
       </tr>
@@ -329,6 +365,13 @@ foreach($all_students as $values){
 
 
 @section('pagescript')
+
+<script>
+        $(document).ready( function () {
+                $("#myTable").tablesorter();
+        });
+    </script>
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||
