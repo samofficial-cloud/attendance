@@ -180,7 +180,7 @@
 <div class="container">
 
 @if($_GET['selection']=='All courses')
-@if(count($all_courses)>0)
+@if((count($all_courses)>0) OR (count($all_courses2)>0) OR (count($all_courses3)>0))
       <div class="col-xs-9"><legend>
         <p class="note">Test attendance report for {{$name}} ({{$reg_no}})</p>
       <h5 class="note">Course(s): All </h5>
@@ -305,7 +305,7 @@ foreach($all_courses as $values){
   <br>
   <h6><u>KEY</u></h6>
   <?php
-  foreach($all_courses as $values){
+  foreach($all_courses2 as $values){
    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
    $val = (iterator_to_array($iterator,true));
    print($val['courseId'].' - '.$val['course_name'].'<br>');
@@ -372,7 +372,7 @@ foreach($all_courses as $values){
   <br>
   <h6><u>KEY</u></h6>
   <?php
-  foreach($all_courses as $values){
+  foreach($all_courses3 as $values){
    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
    $val = (iterator_to_array($iterator,true));
    print($val['courseId'].' - '.$val['course_name'].'<br>');

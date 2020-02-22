@@ -685,11 +685,35 @@ $("#getSelection").trigger('change');
           });
 
 
+
+
           $('#show_all').change(function(){
-              if( $('#show_all').prop('checked') ){
-                document.getElementById("DivCheckRadio").style.display = "none";
-              } else {
-                document.getElementById("DivCheckRadio").style.display = "block";}
+              OptionValua = document.getElementById("getSelection").value;
+              if(OptionValua== 2) {
+
+                  if( $('#show_all').prop('checked') ){
+                      document.getElementById("DivCheckRadio").style.display = "none";
+                      document.getElementById("DivCheck").style.display = "none";
+                      var ele21 = document.getElementById("inputRegNo");
+                      ele21.required = false;
+                  } else {
+                      document.getElementById("DivCheckRadio").style.display = "block";
+                      document.getElementById("DivCheck").style.display = "block";
+                      var ele21 = document.getElementById("inputRegNo");
+                      ele21.required = true;
+                  }
+
+
+              }else{
+
+                  if( $('#show_all').prop('checked') ){
+                      document.getElementById("DivCheckRadio").style.display = "none";
+                  } else {
+                      document.getElementById("DivCheckRadio").style.display = "block";}
+
+              }
+
+
               });
 
 //Test

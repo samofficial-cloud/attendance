@@ -6,7 +6,6 @@
 
 
 
-
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -188,6 +187,7 @@
     <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
@@ -226,21 +226,24 @@
 </div>
 <br>
 <div class="container">
-<!-- Detailed case -->
-@if(!empty($_GET['checkbox']))
 
-@if(count($dataSingle_all)>0)
-<div class="col-xs-9"><legend>
-  <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
-  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
-</legend> </div>
+    <!-- Detailed case -->
+    @if(!empty($_GET['checkbox']))
 
-@else
+        @if((count($instructor_data)>0) OR (count($instructor2_data)>0) OR (count($instructor3_data)>0) OR (count($instructor4_data)>0) OR (count($instructor5_data)>0) OR (count($Tutorial_Assistant_data)>0) OR (count($technical_staff_data)>0) OR (count($Technical_Staff_2_data)>0) OR (count($Technical_Staff_3_data)>0))
+            <div class="col-xs-9"><legend>
+                    <p class="note"> Class attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p>
 
-@endif
+                </legend> </div>
+
+        @else
+
+        @endif
+
 
 <!-- One student all courses -->
 @elseif($_GET['selection']=='All courses')
+
 @if(count($all_courses)>0)
     <div class="col-xs-9"><legend>
       <p class="note">Class attendance report for {{$name}} ({{$reg_no}}) </p>
@@ -278,34 +281,144 @@
   @endif
 @endif
 
-<!-- Show also invalid cases -->
-@if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
 
-<div class="col-xs-6">
-  @if(count($dataSingle_all)>0)
-  <table class="table table-striped">
+
+<!-- Show also invalid cases -->
+    @if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
+
+        <div class="col-xs-6">
+            @if(count($dataSingle_all)>0)
+                <div class="col-xs-9"><legend>
+                        <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
+                        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
+                    </legend> </div>
+
+            <br>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($dataSingle_all as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+                <h4>No data to display</h4>
+            @endif
+        </div>
+
+
+
+
+
+
+
+
+<!-- Show also invalid cases staff -->
+@elseif(!empty($_GET['checkbox']))
+
+    <!-- instructor -->
+
+            <div class="col-xs-6">
+            @if(count($instructor_data)>0)
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Instructor:  {{$instructor}} ({{$instructor_reg}}) </p>
+
+                        </legend> </div>
+                <br>
+
+  <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>Date</th>
-        <th>Sign in time</th>
-        <th>Status</th>
+        <th>DATE</th>
+        <th>COURSE START TIME</th>
+        <th>COURSE END TIME</th>
+        <th>SIGNING TIME</th>
+        <th>STATUS</th>
       </tr>
     </thead>
 
     <tbody>
-      @foreach ($dataSingle_all as $var)
+      @foreach ($instructor_data as $var)
       <tr>
         <td class="counterCell"></td>
         <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-        <td>{{ date("H:i",strtotime($var->datetime))}}</td>
-
-        <td>@if($var->validity=='VALID')
-          ARRIVED EARLY
+        <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+        <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+        <td>
+          @if($var->status==1)
+          @if($var->validity=='VALID')
+          {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
           @else
-          ARRIVED LATE
+          {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
           @endif
+            @else
+            N/A
+            @endif
         </td>
+        <td>@if($var->status==1)
+          PRESENT
+          @else
+          ABSENT
+          @endif </td>
       </tr>
       @endforeach
     </tbody>
@@ -335,10 +448,635 @@
 
 
   @else
-  <h4>No data to display</h4>
+
   @endif
 </div>
 
+        <!-- instructor2 -->
+        <div class="col-xs-6">
+            @if(count($instructor2_data)>0)
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Instructor:  {{$instructor_2}} ({{$instructor2_reg}}) </p>
+
+                    </legend> </div>
+                <br>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($instructor2_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+
+        <!-- instructor3 -->
+        <div class="col-xs-6">
+            @if(count($instructor3_data)>0)
+
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Instructor:  {{$instructor_3}} ({{$instructor3_reg}}) </p>
+                    </legend> </div>
+                <br>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($instructor3_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+        <!-- instructor4 -->
+        <div class="col-xs-6">
+            @if(count($instructor4_data)>0)
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Instructor:  {{$instructor_4}} ({{$instructor4_reg}})</p>
+                    </legend> </div>
+                <br>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($instructor4_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+
+        <!-- instructor5 -->
+        <div class="col-xs-6">
+            @if(count($instructor5_data)>0)
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Instructor:  {{$instructor_5}} ({{$instructor5_reg}})</p>
+                    </legend> </div>
+                <br>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($instructor5_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+
+        <!-- Tutorial_assistant -->
+        <div class="col-xs-6">
+            @if(count($Tutorial_Assistant_data)>0)
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Tutorial Assistant:  {{$Tutorial_Assistant}} ({{ $Tutorial_Assistant_reg}})</p>
+                    </legend> </div>
+                <br>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($Tutorial_Assistant_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+        <!-- technical_staff -->
+        <div class="col-xs-6">
+            @if(count($technical_staff_data)>0)
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Technical staff:  {{$technical_staff}} ({{ $technical_staff_reg}})</p>
+                    </legend> </div>
+                <br>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($technical_staff_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+
+        <!-- Techinal_staff 2 -->
+        <div class="col-xs-6">
+            @if(count($Technical_Staff_2_data)>0)
+
+                <div class="col-xs-9"><legend>
+                        <p class="note">Technical staff:  {{$Technical_Staff_2}} ({{ $Technical_Staff_2_reg}})</p>
+                    </legend> </div>
+                <br>
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($Technical_Staff_2_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
+
+
+        <!-- Technical staff3 -->
+        <div class="col-xs-6">
+            @if(count($Technical_Staff_3_data)>0)
+                <div class="col-xs-9"><legend>
+                        <p class="note">Technical staff:  {{$Technical_Staff_3}} ({{ $Technical_Staff_3_reg}})</p>
+                    </legend> </div>
+                <br>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>S/N</th>
+                        <th>DATE</th>
+                        <th>COURSE START TIME</th>
+                        <th>COURSE END TIME</th>
+                        <th>SIGNING TIME</th>
+                        <th>STATUS</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    @foreach ($Technical_Staff_3_data as $var)
+                        <tr>
+                            <td class="counterCell"></td>
+                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                            <td>
+                                @if($var->status==1)
+                                    @if($var->validity=='VALID')
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
+                                    @else
+                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
+                                    @endif
+                                @else
+                                    N/A
+                                @endif
+                            </td>
+                            <td>@if($var->status==1)
+                                    PRESENT
+                                @else
+                                    ABSENT
+                                @endif </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+
+                </table>
+
+
+                <br>
+
+                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                    {{csrf_field()}}
+
+                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                    <center><button class="btn btn-primary" type="submit">Download</button></center>
+                </form>
+
+
+            @else
+
+            @endif
+        </div>
 
 @elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
 
