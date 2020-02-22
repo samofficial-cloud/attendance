@@ -1,46 +1,51 @@
 @extends('layouts.app')
-
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 @section('title')
-  COURSE - CS1
+  COURSES
 @endsection
 
 @section('style')
 <style>
-* {
-  box-sizing: border-box;
+div.dataTables_filter{
+  padding-left:740px;
+  padding-bottom:20px;
 }
 
-#myInput {
-  background-image: url('/img/search_icon.jpg');
-  background-size: 3%;
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
-
-  padding: 12px 20px 12px 40px;
-  border: 1px solid #ddd;
-  margin-bottom: 12px;
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;  
 }
 
-#myTable {
-  border-collapse: collapse;
-  width: 100%;
-  border: 1px solid #ddd;
-  
+div.dataTables_length select { 
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
 }
 
-#myTable th, #myTable td {
-  text-align: left;
-  padding: 12px;
+
+.dataTables_wrapper .dt-buttons {
+  float:none;  
+  text-align:center;
 }
 
-#myTable tr {
-  border-bottom: 1px solid #ddd;
+.dataTables_wrapper .dataTables_info {
+  padding-top: 0px;
+}
+.form-inline .form-control {
+    width: 100%;
 }
 
-#myTable tr.header, #myTable tr:hover {
-  background-color: #f1f1f1;
-}
 </style>
 
 @endsection 
@@ -53,8 +58,39 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container2">
- <ul class="nav1 nav-tabs">
+  
+    @if(Auth::user()->staff==1)
+    <div class="container">
+ <center><ul class="nav1 nav-tabs" style="width: 84%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="container" style="max-width: 1165px;">
+  <center><ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -71,32 +107,119 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+
   <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
         </div>
       </li>
 
-      <li class="nav-item">
-    <a class="nav-link active" style="color:#060606" href="/courses">COURSES</a>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->Timetable_Master==1)
+<div class="container2">
+  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 
-
-</ul>
-
+  </ul>
+  </center>
 </div>
+@elseif(Auth::user()->HoD==1)
+<div class="container">
+  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::user()->DEFAULTDEPTID==31)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          @elseif(Auth::user()->DEFAULTDEPTID==32)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          @endif
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+        </div>
+      </li>
+    
+</ul>
+</center>
+</div>
+
+@endif
+
+
 </nav>
 </div>
 <?php
@@ -110,17 +233,50 @@ $i='1';
 <div class="card border-info">
   <div class="card-body">
     <h5 class="card-title">Choose Degree Program</h5>
+    @if(Auth::user()->HoD==1 & Auth::user()->DEFAULTDEPTID==31)
     <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
     CS
   </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=CS1(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS1</a>
+     <a href="/Showcourses?rid=CS2(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS2</a>
+    <a href="/Showcourses?rid=CS3(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS3</a>
+    <a href="/Showcourses?rid=CS1(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS1</a>
+     <a href="/Showcourses?rid=CS2(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS2</a>
+    <a href="/Showcourses?rid=CS3(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS3</a>
+     <a href="/Showcourses?rid=CS(Cert)" class="list-group-item list-group-item-action dropdown-item">Cert. in CS</a>
+      <a href="/Showcourses?rid=CS1(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS1</a>
+       <a href="/Showcourses?rid=CS2(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS2</a>
+</div>
+</div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    CEIT
+  </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesCS1?rid=CS1" class="list-group-item list-group-item-action dropdown-item">CS1</a>
-     <a href="/coursesCS2?rid=CS2" class="list-group-item list-group-item-action dropdown-item">CS2</a>
-    <a href="/coursesCS3?rid=CS3" class="list-group-item list-group-item-action dropdown-item">CS3</a>
+    <a href="/Showcourses?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
+     <a href="/Showcourses?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
+    <a href="/Showcourses?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
+    <a href="/Showcourses?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
 </div>
 </div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    B-IT
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=BIT1" class="list-group-item list-group-item-action dropdown-item">B-IT1</a>
+     <a href="/Showcourses?rid=BIT2" class="list-group-item list-group-item-action dropdown-item">B-IT2</a>
+    <a href="/Showcourses?rid=BIT3" class="list-group-item list-group-item-action dropdown-item">B-IT3</a>
+  </div>
+</div>
+
+@elseif(Auth::user()->HoD==1 & Auth::user()->DEFAULTDEPTID==32)
 
 <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
@@ -128,10 +284,10 @@ $i='1';
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesTE1?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
-     <a href="/coursesTE2?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
-    <a href="/coursesTE3?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
-    <a href="/coursesTE4?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
+    <a href="/Showcourses?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
+     <a href="/Showcourses?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
+    <a href="/Showcourses?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
+    <a href="/Showcourses?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
 </div>
 </div>
 
@@ -141,10 +297,42 @@ $i='1';
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesESC1?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
-     <a href="/coursesESC2?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
-    <a href="/coursesESC3?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
+    <a href="/Showcourses?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
+     <a href="/Showcourses?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
+    <a href="/Showcourses?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
   </div>
+</div>
+
+
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    EE
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=EE1" class="list-group-item list-group-item-action dropdown-item">EE1</a>
+     <a href="/Showcourses?rid=EE2" class="list-group-item list-group-item-action dropdown-item">EE2</a>
+    <a href="/Showcourses?rid=EE3" class="list-group-item list-group-item-action dropdown-item">EE3</a>
+    <a href="/Showcourses?rid=EE4" class="list-group-item list-group-item-action dropdown-item">EE4</a>
+</div>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    CS
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=CS1(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS1</a>
+     <a href="/Showcourses?rid=CS2(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS2</a>
+    <a href="/Showcourses?rid=CS3(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS3</a>
+    <a href="/Showcourses?rid=CS1(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS1</a>
+     <a href="/Showcourses?rid=CS2(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS2</a>
+    <a href="/Showcourses?rid=CS3(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS3</a>
+     <a href="/Showcourses?rid=CS(Cert)" class="list-group-item list-group-item-action dropdown-item">Cert. in CS</a>
+      <a href="/Showcourses?rid=CS1(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS1</a>
+       <a href="/Showcourses?rid=CS2(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS2</a>
+</div>
 </div>
 
 <div class="dropright">
@@ -153,26 +341,74 @@ $i='1';
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesCEIT1?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/coursesCEIT2?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/coursesCEIT3?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/coursesCEIT4?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/Showcourses?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
+     <a href="/Showcourses?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
+    <a href="/Showcourses?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
+    <a href="/Showcourses?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
 </div>
 </div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    B-IT
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=BIT1" class="list-group-item list-group-item-action dropdown-item">B-IT1</a>
+     <a href="/Showcourses?rid=BIT2" class="list-group-item list-group-item-action dropdown-item">B-IT2</a>
+    <a href="/Showcourses?rid=BIT3" class="list-group-item list-group-item-action dropdown-item">B-IT3</a>
+  </div>
+</div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    TE
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
+     <a href="/Showcourses?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
+    <a href="/Showcourses?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
+    <a href="/Showcourses?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
+</div>
+</div>
+
+ <div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    ESC
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
+     <a href="/Showcourses?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
+    <a href="/Showcourses?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
+  </div>
+</div>
+
+
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    EE
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=EE1" class="list-group-item list-group-item-action dropdown-item">EE1</a>
+     <a href="/Showcourses?rid=EE2" class="list-group-item list-group-item-action dropdown-item">EE2</a>
+    <a href="/Showcourses?rid=EE3" class="list-group-item list-group-item-action dropdown-item">EE3</a>
+    <a href="/Showcourses?rid=EE4" class="list-group-item list-group-item-action dropdown-item">EE4</a>
+</div>
+</div>
+@endif
 
 </div>
 </div>
 </div>
 
-<div cclass="col-10">
-   @if ($errors->any())
+<div class="col-10">
+   @if ($errors= Session::get('errors'))
           <div class="alert alert-danger">
-            <strong>Sorry!!</strong> Something went Wrong<br>
-            <ul>
-              @foreach ($errors as $error)
-                <li>{{$error}}</li>
-              @endforeach
-            </ul>
+           <p>{{$errors}}</p>
           </div>
         @endif
 
@@ -181,6 +417,9 @@ $i='1';
         <p>{{$message}}</p>
       </div>
     @endif
+
+    <h2>{{$full}} Courses</h2>
+    <div>
     <a data-toggle="modal" data-target="#newcourse" class="btn button_color active" role="button" aria-pressed="true"><i class="fa fa-plus" style="font-size:36px;color:green"></i></a>
 <div class="modal fade" id="newcourse" role="dialog">
 
@@ -197,37 +436,37 @@ $i='1';
 
  
     <div class="form-group row">
-    <label for="program"  class="col-sm-3 col-form-label">Degree Program:</label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="program" name="program" value="CS1" readonly>
+    <label for="d-program"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="d-program" name="d-program" value="{{$full}}" readonly>
   </div>
   </div>
 
      <div class="form-group row">
-    <label for="course"  class="col-sm-3 col-form-label">Course ID:</label>
-    <div class="col-sm-7">
-    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="course" name="course" value="" required="">
+    <label for="course"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value); javascript:this.value=this.value.toUpperCase();" class="form-control" id="course" name="course" value="" required="">
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="course_name"  class="col-sm-3 col-form-label">Course Name:</label>
-    <div class="col-sm-7">
+    <label for="course_name"  class="col-sm-3 col-form-label"><strong>Course Name:</strong></label>
+    <div class="col-sm-8">
     <input type="text" class="form-control" id="course_name" name="course_name" value="" required="">
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="credit"  class="col-sm-3 col-form-label">Credit:</label>
-    <div class="col-sm-7">
+    <label for="credit"  class="col-sm-3 col-form-label"><strong>Credit:</strong></label>
+    <div class="col-sm-8">
     <input type="text" class="form-control" id="credit" name="credit" value="" required="">
   </div>
   </div>
 
 
   <div class="form-group row">
-    <label for="criteria"  class="col-sm-3 col-form-label">Criteria:</label>
-    <div class="col-sm-7">
+    <label for="criteria"  class="col-sm-3 col-form-label"><strong>Criteria:</strong></label>
+    <div class="col-sm-8">
    <select class="custom-select Reason" name="criteria" id="criteria">
     <option value="Core">Core</option>
     <option value="Optional">Optional</option>
@@ -236,8 +475,8 @@ $i='1';
   </div>
 
   <div class="form-group row">
-    <label for="semester"  class="col-sm-3 col-form-label">Semester:</label>
-    <div class="col-sm-7">
+    <label for="semester"  class="col-sm-3 col-form-label"><strong>Semester:</strong></label>
+    <div class="col-sm-8">
    <select class="custom-select Reason" name="semester" id="semester">
     <option value="1">Semester 1</option>
     <option value="2">Semester 2</option>
@@ -246,13 +485,13 @@ $i='1';
   </div>
 
   <div class="form-group row">
-    <label for="lecture_no"  class="col-sm-3 col-form-label">Lecture No:</label>
-    <div class="col-sm-7">
+    <label for="lecture_no"  class="col-sm-3 col-form-label"><strong>Lecture No:</strong></label>
+    <div class="col-sm-8">
     <input type="text" class="form-control" id="lecture_no" name="lecture_no" value="" required="">
   </div>
   </div>
 
-  
+  <input type="text" class="form-control" id="program" name="program" value="{{$_GET['rid']}}" hidden="">
 
 
   <div class="form-group">
@@ -264,20 +503,20 @@ $i='1';
 </div>
 </div>
 </div>
-    <input type="text" onblur="this.value=removeSpaces(this.value);" id="myInput" onkeyup="myFunction()" placeholder="Search for Course ID.." title="Type in a name">
-  <br>
-
-    <table class="table table-striped table-bordered" style="width: 142%" id="myTable">
+<a class="btn btn-sm btn-success" style="float: right; margin-top:20px;" href="/generate-Course-pdf?rid={{$_GET['rid']}}">PRINT</a>
+</div>
+    
+    <table class="hover table table-striped table-bordered" id="myTable">
   <thead class="thead-dark">
      <tr>
-      <th scope="col">S/N</th>
-      <th scope="col">@sortablelink('course')</th>
-      <th scope="col">@sortablelink('course_name')</th>
-      <th scope="col">@sortablelink('credit')</th>
-      <th scope="col">@sortablelink('semester')</th>
-      <th scope="col">@sortablelink('criteria')</th>
-      <th scope="col">lecture_no</th>
-      <th scope="col">Change</th>
+      <th scope="col"  style="color:#3490dc;">S/N</th>
+      <th scope="col"  style="color:#3490dc;">Course Code</th>
+      <th scope="col"  style="color:#3490dc;">Course Name</th>
+      <th scope="col"  style="color:#3490dc;">Credit</th>
+      <th scope="col"  style="color:#3490dc;">Semester</th>
+      <th scope="col"  style="color:#3490dc;">Criteria</th>
+      <th scope="col"  style="color:#3490dc;">Lecture No.</th>
+      <th scope="col"  style="color:#3490dc;">Change</th>
     </tr>
   </thead>
   <tbody>
@@ -307,53 +546,74 @@ $i='1';
   {{csrf_field()}}
 
   <div class="form-group row">
-    <label for="course{{$course->id}}"  class="col-sm-3 col-form-label">Course ID:</label>
-    <div class="col-sm-7">
-    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="course{{$course->id}}" name="course" value="{{$course->course}}" >
+    <label for="course{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="course{{$course->id}}" name="course" value="{{$course->course}}" readonly>
   </div>
   </div>
+  <br>
 
   <div class="form-group row">
-    <label for="course_name{{$course->id}}"  class="col-sm-3 col-form-label">Course Name:</label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="course_name{{$course->id}}" name="course_name" value="{{$course->course_name}}" >
+    <label for="course_name{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Course Name:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="course_name{{$course->id}}" name="course_name" value="{{$course->course_name}}" readonly>
   </div>
   </div>
+  <br>
 
   <div class="form-group row">
-    <label for="credit{{$course->id}}"  class="col-sm-3 col-form-label">Credit:</label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="credit{{$course->id}}" name="credit" value="" required>
+    <label for="credit{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Credit:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="credit{{$course->id}}" name="credit" value="{{$course->credit}}" required>
   </div>
   </div>
+  <br>
 
   <div class="form-group row">
-    <label for="semester{{$course->id}}"  class="col-sm-3 col-form-label">Semester:</label>
-    <div class="col-sm-7">
-   <select class="custom-select Reason" name="semester" id="semester{{$course->id}}">
+    <label for="semester{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Semester:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select" name="semester" id="semester{{$course->id}}">
+    @if($course->semester=="1")
     <option value="1">Semester 1</option>
     <option value="2">Semester 2</option>
+    @elseif($course->semester=="2")
+    <option value="2">Semester 2</option>
+    <option value="1">Semester 1</option>
+    @else
+    <option value="1">Semester 1</option>
+    <option value="2">Semester 2</option>
+    @endif
   </select>
   </div>
   </div>
+  <br>
 
   <div class="form-group row">
-    <label for="criteria{{$course->id}}"  class="col-sm-3 col-form-label">Criteria:</label>
-    <div class="col-sm-7">
-   <select class="custom-select Reason" name="criteria" id="criteria{{$course->id}}">
+    <label for="criteria{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Criteria:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select" name="criteria" id="criteria{{$course->id}}">
+    @if($course->criteria=="Core")
     <option value="Core">Core</option>
     <option value="Optional">Optional</option>
+    @elseif($course->criteria=="Optional")
+    <option value="Optional">Optional</option>
+    <option value="Core">Core</option>
+    @else
+    <option value="Core">Core</option>
+    <option value="Optional">Optional</option>
+    @endif
   </select>
   </div>
   </div>
+  <br>
 
   <div class="form-group row">
-    <label for="lecture_no{{$course->id}}"  class="col-sm-3 col-form-label">Lecture No:</label>
-    <div class="col-sm-7">
-    <input type="text" class="form-control" id="lecture_no{{$course->id}}" name="lecture_no" value="">
+    <label for="lecture_no{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Lecture No:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="lecture_no{{$course->id}}" name="lecture_no" value="{{$course->lectures_no}}">
   </div>
   </div>
-
+<br>
   <input type="hidden" id="id{{$course->id}}" name="id" value="{{$course->id}}"/>
 
   <div class="form-group">
@@ -378,17 +638,13 @@ $i='1';
     @endforeach
 </tbody>
 </table>
-<nav class="page-navigation">
-{!! $courses->appends(\Request::except('page'))->render() !!}
-</nav>
-
 </div>
 
 
 
 </div>
 </div>
-<center><a class="btn btn-sm btn-success" href="{{route('CS1pdf')}}">PRINT</a></center>
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -402,24 +658,40 @@ function removeSpaces(string) {
 }
 </script>
 
-<script>
-function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
+<script type="text/javascript">
+ $(document).ready(function() {
+  var x = {!! json_encode($full) !!};
+  
+  // console.log(x);
+    var table = $('#myTable').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>B',
+         buttons: [
+             {
+
+                extend: 'excelHtml5',className: 'btn-success',
+                title:x, 
+                exportOptions: {
+                    columns: [1, 2, 3, 4, 5 ]
+                }
+            },
+
+            {
+                extend: 'copyHtml5',className: 'btn-success',
+                exportOptions: {
+                    columns: [ 1, 2, 3, 4, 5]
+                }
+            },
+             ]     
+    } );
+//     var styles = {
+//     position: "relative",
+//     float: "right"
+// };
+$("div#myTable_wrapper").find($(".dt-buttons")).css("width", "53%").css("position", "relative");
+// $("div#myTable_wrapper").find($(".dt-buttons")).find($("a")).css(styles);
+});
+
 </script>
+
+
 @endsection

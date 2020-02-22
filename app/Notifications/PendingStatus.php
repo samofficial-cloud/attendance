@@ -55,7 +55,7 @@ class PendingStatus extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Dear '.($this->name).',')
+                    ->greeting('Greetings '.($this->name).',')
                     ->subject('VENUE_RESERVATION')
                     ->line('The Venue <strong>'. ($this->venue).'</strong> which was already approved for you for <strong>'.($this->date). '/'.($this->month).'/'. ($this->year).'</strong> has been reversed to pending status.')
                     ->line('For any inquiries please contact the Timetable Master.')

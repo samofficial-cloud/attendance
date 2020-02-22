@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Report</title>
+	<title>Timetable</title>
 </head>
 <style>
 table {

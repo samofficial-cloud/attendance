@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  HOME
+  COURSES
 @endsection
 
 @section('content')
@@ -12,8 +12,39 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container2">
- <ul class="nav1 nav-tabs">
+  
+    @if(Auth::user()->staff==1)
+    <div class="container">
+ <center><ul class="nav1 nav-tabs" style="width: 84%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="container" style="max-width: 1165px;">
+  <center><ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -30,32 +61,119 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
+          MANAGE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
         </div>
       </li>
 
-      <li class="nav-item">
-    <a class="nav-link active" style="color:#060606" href="/courses">COURSES</a>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->Timetable_Master==1)
+<div class="container2">
+  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 
-
-</ul>
-
+  </ul>
+  </center>
 </div>
+@elseif(Auth::user()->HoD==1)
+<div class="container">
+  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::user()->DEFAULTDEPTID==31)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          @elseif(Auth::user()->DEFAULTDEPTID==32)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          @endif
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+        </div>
+      </li>
+    
+</ul>
+</center>
+</div>
+
+@endif
+
+
 </nav>
 </div>
 <br>
@@ -67,17 +185,50 @@
 <div class="card border-info">
   <div class="card-body">
     <h5 class="card-title">Choose Degree Program</h5>
+    @if(Auth::user()->HoD==1 & Auth::user()->DEFAULTDEPTID==31)
     <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
     CS
   </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=CS1(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS1</a>
+     <a href="/Showcourses?rid=CS2(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS2</a>
+    <a href="/Showcourses?rid=CS3(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS3</a>
+    <a href="/Showcourses?rid=CS1(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS1</a>
+     <a href="/Showcourses?rid=CS2(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS2</a>
+    <a href="/Showcourses?rid=CS3(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS3</a>
+     <a href="/Showcourses?rid=CS(Cert)" class="list-group-item list-group-item-action dropdown-item">Cert. in CS</a>
+      <a href="/Showcourses?rid=CS1(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS1</a>
+       <a href="/Showcourses?rid=CS2(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS2</a>
+</div>
+</div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    CEIT
+  </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesCS1?rid=CS1" class="list-group-item list-group-item-action dropdown-item">CS1</a>
-     <a href="/coursesCS2?rid=CS2" class="list-group-item list-group-item-action dropdown-item">CS2</a>
-    <a href="/coursesCS3?rid=CS3" class="list-group-item list-group-item-action dropdown-item">CS3</a>
+    <a href="/Showcourses?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
+     <a href="/Showcourses?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
+    <a href="/Showcourses?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
+    <a href="/Showcourses?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
 </div>
 </div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    B-IT
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=BIT1" class="list-group-item list-group-item-action dropdown-item">B-IT1</a>
+     <a href="/Showcourses?rid=BIT2" class="list-group-item list-group-item-action dropdown-item">B-IT2</a>
+    <a href="/Showcourses?rid=BIT3" class="list-group-item list-group-item-action dropdown-item">B-IT3</a>
+  </div>
+</div>
+
+@elseif(Auth::user()->HoD==1 & Auth::user()->DEFAULTDEPTID==32)
 
 <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
@@ -85,10 +236,10 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesTE1?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
-     <a href="/coursesTE2?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
-    <a href="/coursesTE3?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
-    <a href="/coursesTE4?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
+    <a href="/Showcourses?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
+     <a href="/Showcourses?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
+    <a href="/Showcourses?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
+    <a href="/Showcourses?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
 </div>
 </div>
 
@@ -98,10 +249,42 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesESC1?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
-     <a href="/coursesESC2?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
-    <a href="/coursesESC3?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
+    <a href="/Showcourses?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
+     <a href="/Showcourses?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
+    <a href="/Showcourses?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
   </div>
+</div>
+
+
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    EE
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=EE1" class="list-group-item list-group-item-action dropdown-item">EE1</a>
+     <a href="/Showcourses?rid=EE2" class="list-group-item list-group-item-action dropdown-item">EE2</a>
+    <a href="/Showcourses?rid=EE3" class="list-group-item list-group-item-action dropdown-item">EE3</a>
+    <a href="/Showcourses?rid=EE4" class="list-group-item list-group-item-action dropdown-item">EE4</a>
+</div>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    CS
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=CS1(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS1</a>
+     <a href="/Showcourses?rid=CS2(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS2</a>
+    <a href="/Showcourses?rid=CS3(in)" class="list-group-item list-group-item-action dropdown-item">BSc. in CS3</a>
+    <a href="/Showcourses?rid=CS1(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS1</a>
+     <a href="/Showcourses?rid=CS2(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS2</a>
+    <a href="/Showcourses?rid=CS3(with)" class="list-group-item list-group-item-action dropdown-item">BSc. with CS3</a>
+     <a href="/Showcourses?rid=CS(Cert)" class="list-group-item list-group-item-action dropdown-item">Cert. in CS</a>
+      <a href="/Showcourses?rid=CS1(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS1</a>
+       <a href="/Showcourses?rid=CS2(Dipl.)" class="list-group-item list-group-item-action dropdown-item">Dipl. in CS2</a>
+</div>
 </div>
 
 <div class="dropright">
@@ -110,12 +293,65 @@
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/coursesCEIT1?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/coursesCEIT2?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/coursesCEIT3?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/coursesCEIT4?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/Showcourses?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
+     <a href="/Showcourses?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
+    <a href="/Showcourses?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
+    <a href="/Showcourses?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
 </div>
 </div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    B-IT
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=BIT1" class="list-group-item list-group-item-action dropdown-item">B-IT1</a>
+     <a href="/Showcourses?rid=BIT2" class="list-group-item list-group-item-action dropdown-item">B-IT2</a>
+    <a href="/Showcourses?rid=BIT3" class="list-group-item list-group-item-action dropdown-item">B-IT3</a>
+  </div>
+</div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    TE
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
+     <a href="/Showcourses?rid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
+    <a href="/Showcourses?rid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
+    <a href="/Showcourses?rid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
+</div>
+</div>
+
+ <div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    ESC
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
+     <a href="/Showcourses?rid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
+    <a href="/Showcourses?rid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
+  </div>
+</div>
+
+
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    EE
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/Showcourses?rid=EE1" class="list-group-item list-group-item-action dropdown-item">EE1</a>
+     <a href="/Showcourses?rid=EE2" class="list-group-item list-group-item-action dropdown-item">EE2</a>
+    <a href="/Showcourses?rid=EE3" class="list-group-item list-group-item-action dropdown-item">EE3</a>
+    <a href="/Showcourses?rid=EE4" class="list-group-item list-group-item-action dropdown-item">EE4</a>
+</div>
+</div>
+@endif
 
 </div>
 </div>

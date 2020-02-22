@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>CS1 COURSES</title>
+	<title>LIST OF COURSES</title>
 </head>
 <style>
 table {
@@ -24,8 +24,11 @@ table {
 <body>
   <?php
   use App\courses;
-   $course=courses::where('program','CS1')->orderBy('semester', 'asc')->get();
+   $course=courses::where('program',$_GET['rid'])->orderBy('semester', 'asc')->get();
    $i='1';
+
+   use App\program;
+   $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
 
   ?>
 
@@ -34,7 +37,7 @@ table {
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
-      <br>COMPUTER SCIENCE 1 COURSES
+      <br>{{$full}} Courses
 
     </b></center>
   <br>
@@ -42,12 +45,12 @@ table {
   <thead class="thead-dark">
     <tr>
       <th scope="col">S/N</th>
-      <th scope="col">course</th>
-      <th scope="col">course_name</th>
-      <th scope="col">credit</th>
-      <th scope="col">semester</th>
-      <th scope="col">criteria</th>
-      <th scope="col">lecture_no</th>
+      <th scope="col">Course ID</th>
+      <th scope="col">Course Name</th>
+      <th scope="col">Credit</th>
+      <th scope="col">Semester</th>
+      <th scope="col">Criteria</th>
+      <th scope="col">Lecture No.</th>
       
     </tr>
   </thead>

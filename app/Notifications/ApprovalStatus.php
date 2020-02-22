@@ -60,9 +60,9 @@ class ApprovalStatus extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Dear '.($this->name).',')
+                    ->greeting('Greetings '.($this->name).',')
                     ->subject('VENUE_RESERVATION')
-                    ->line('The Venue <strong>'. ($this->venue).'</strong> you reserved on'.($this->ReservationDate).' for date <strong>'.($this->date). '/'.($this->month).'/'. ($this->year).'</strong> has been approved.')
+                    ->line('The Venue <strong>'. ($this->venue).'</strong> you reserved on '.($this->ReservationDate).' for date <strong>'.($this->date). '/'.($this->month).'/'. ($this->year).'</strong> has been approved.')
                     ->line(' ')
                     ->line(' To view your reservations click the button below')
                     
