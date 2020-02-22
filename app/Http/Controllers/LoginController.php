@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use Hash;
 use App\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\MessageBag;
@@ -18,10 +19,13 @@ class LoginController extends Controller
       /*
       Check if credentials match with the records in the database
       */
+      $name="Arnold Matemu";
+      $password="@camis";
       if(Auth::attempt([
-        'reg_no' => $request->reg_no,
-        'password' => $request->password,
-        'status' => 1
+        'SSN' => $request->reg_no,
+        'password' =>$request->password,
+        'flag' => 1,
+        'TITLE'=>"staff"
       ]))
 
       /*
@@ -29,16 +33,45 @@ class LoginController extends Controller
       Check the type of user so as to direct the user to the correct page
       */
       {
-        $user = User::where('reg_no',$request->reg_no)->first();
+        $user = User::where('SSN',$request->reg_no)->first();
         // if($user->is_super_admin())
         // {
         //   return redirect()->route('admin');
         // }
 
+
           return redirect()->route('first');
 
-
       }
+
+     //  $user = User::where('SSN',$request->reg_no)->first();
+     //  $userpassword=$user->LoginPassword;
+      
+     // if (Hash::needsRehash($user->LoginPassword)) {
+     //  $user->LoginPassword=Hash::make($user->LoginPassword);
+     //   $user->save();
+     //  if(Auth::attempt([
+     //    'SSN' => $request->reg_no,
+     //    'LoginPassword' => $request->password,
+     //    'flag' => 1
+     //  ])){
+
+     //    return redirect()->route('first');
+     //  }
+
+
+     // }
+     // else{
+     //  dd(Hash::make($request->password));
+     //  if(Auth::attempt([
+     //    'SSN' => $request->reg_no,
+     //    'LoginPassword' => $request->password,
+     //    'flag' => 1
+     //  ])){
+
+     //    return redirect()->route('first');
+     //  }
+     // }
       /*
       If credentials doesn't match
       */

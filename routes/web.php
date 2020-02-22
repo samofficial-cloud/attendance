@@ -50,9 +50,13 @@ Route::post('/u_course1','examsController@updateexam')->name('u_course1');
 
 Route::post('/addtest','testsController@updatetest')->name('addtest');
 
+Route::post('/addstaffCSE','USERINFOController@addstaffCSE')->name('addstaffCSE');
+
 Route::get('/instructors-ETE','lecturesController@index')->name('lecturers');
 
 Route::get('/instructors-CSE','lecturesController@indexCSE')->name('lecturers1');
+
+Route::get('/CSE-instructors','lecturesController@CSEindex')->name('lecturers21');
 
 
 Route::get('/timetable', function () {
@@ -85,13 +89,26 @@ Route::get('/examwelcome', function () {
 
 });
 
+Route::get('/Up', function () {
+     return View ('Students');
 
+});
+
+Route::get('/studentsList', function () {
+     return View ('studentsList');
+
+});
+
+Route::get('/studentsList2', function () {
+     return View ('studentsList2');
+
+});
 
 Route::get('/join', 'coursesController@index');
 
 Route::get('/examcourse', 'examsController@index')->name('examcourse');
 
-Route::get('/update', 'timetablesController@showUpdateTimetable');
+Route::get('/update', 'timetablesController@showUpdateTimetable')->name('update');
 
 Route::get('/Update2', 'timetablesController@showUpdateTimetable2')->name('update2');
 
@@ -136,15 +153,31 @@ Route::get('/courses/edit', 'coursesController@edit')->name('editcourse');
 
 Route::get('/courses/delete/{id}', 'coursesController@DeleteCourse')->name('DeleteCourse');
 
+Route::get('/students/add', 'USERINFOController@add')->name('newstudents');
 
+Route::get('/students/delete/{USERID}', 'USERINFOController@DeactivateStudent')->name('DeactivateStudent');
 
+Route::get('/students/activate', 'USERINFOController@activate')->name('ActivateStudent');
 
+Route::get('/SearchStudents', 'USERINFOController@showStudents')->name('then');
+
+Route::get('/students/edit', 'USERINFOController@edit')->name('editstudent');
+
+Route::post('/UpdateTimetable/notify', 'timetablesController@notifyAll')->name('notifyAll');
+
+Route::get('/VenueCapacity/delete/{id}', 'CapacityvenuesController@DeleteVenue')->name('DeleteVenue');
+
+Route::get('/staffs', 'USERINFOController@staff');
+
+Route::get('/events/edit', 'calendarsController@edit')->name('editevents');
 
 
 Route::get('/form', function () {
      return View ('form');
 
 });
+
+
 
 Route::post('create','reservationsController@insert');
 Route::post('/edit1/{id}','usersystemController@update');
@@ -156,6 +189,10 @@ Route::post('/u_course','timetablesController@updatecourse')->name('u_course');
 
 
 Route::get('/edit', 'usersystemController@edit')->name('edit');
+
+Route::get('/addevent', 'calendarsController@addevent')->name('addevent');
+
+
 
 
 
@@ -206,6 +243,11 @@ Route::get('/LectureConflicts', function () {
 
 });
 
+
+Route::get('students','USERINFOController@index');
+
+Route::get('managestudents','USERINFOController@managestudents');
+
 Route::get('generate-pdf','ReportController@classPDF')->name('classpdf');
 
 Route::get('generate-timetable-pdf','timetablesController@programPDF')->name('programpdf');
@@ -226,41 +268,22 @@ Route::get('generate-ETE-pdf','lecturesController@ETEPDF')->name('ETEpdf');
 
 Route::get('generate-CSE-pdf','lecturesController@CSEPDF')->name('CSEpdf');
 
-Route::get('generate-CS1-pdf','coursesController@CS1PDF')->name('CS1pdf');
+Route::get('generate-Course-pdf','coursesController@CS1PDF')->name('CS1pdf');
 
-Route::get('generate-CS2-pdf','coursesController@CS2PDF')->name('CS2pdf');
+Route::get('generate-CSE-Staff-pdf','USERINFOController@staffCSEPDF')->name('staffCSEpdf');
 
-Route::get('generate-CS3-pdf','coursesController@CS3PDF')->name('CS3pdf');
-
-Route::get('generate-TE1-pdf','coursesController@TE1PDF')->name('TE1pdf');
-
-Route::get('generate-TE2-pdf','coursesController@TE2PDF')->name('TE2pdf');
-
-Route::get('generate-TE3-pdf','coursesController@TE3PDF')->name('TE3pdf');
-
-Route::get('generate-TE4-pdf','coursesController@TE4PDF')->name('TE4pdf');
-
-Route::get('generate-ESC1-pdf','coursesController@ESC1PDF')->name('ESC1pdf');
-
-Route::get('generate-ESC2-pdf','coursesController@ESC2PDF')->name('ESC2pdf');
-
-Route::get('generate-ESC3-pdf','coursesController@ESC3PDF')->name('ESC3pdf');
-
-Route::get('generate-CEIT1-pdf','coursesController@CEIT1PDF')->name('CEIT1pdf');
-
-Route::get('generate-CEIT2-pdf','coursesController@CEIT2PDF')->name('CEIT2pdf');
-
-Route::get('generate-CEIT3-pdf','coursesController@CEIT3PDF')->name('CEIT3pdf');
-
-Route::get('generate-CEIT4-pdf','coursesController@CEIT4PDF')->name('CEIT4pdf');
-
+Route::get('generate-ETE-Staff-pdf','USERINFOController@staffETEPDF')->name('staffETEpdf');
 
 
 Route::get('/reservation', 'reservationsController@show');
 
 Route::get('/courses', 'coursesController@index');
 
-Route::get('/coursesCS1', 'coursesController@showCS1');
+Route::get('/coursee', 'coursesController@indexcoursee');
+
+Route::get('/Showcourses', 'coursesController@showCourses');
+
+Route::get('/courses/show', 'coursesController@Courseshow');
 
 Route::get('/coursesCS2', 'coursesController@showCS2');
 
@@ -288,13 +311,16 @@ Route::get('/coursesCEIT3', 'coursesController@showCEIT3');
 
 Route::get('/coursesCEIT4', 'coursesController@showCEIT4');
 
+Route::get('/editstudentsList', 'USERINFOController@showStudentList');
+
+Route::get('generate-Students-PDF','USERINFOController@studentsPDF')->name('studentspdf');
 
 
 Route::get('/room', 'timetablesController@index');
 
 Route::get('/Password','usersystemController@showPassword');
 
-Route::get('/calendar', 'calendarsController@index');
+Route::get('/events', 'calendarsController@index');
 Route::get('/email', 'calendarsController@email');
 
 

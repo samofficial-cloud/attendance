@@ -11,8 +11,39 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container2">
- <ul class="nav1 nav-tabs">
+  
+    @if(Auth::user()->staff==1)
+    <div class="container">
+ <center><ul class="nav1 nav-tabs" style="width: 84%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="container" style="max-width: 1165px;">
+  <center><ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -29,32 +60,119 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
+          MANAGE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
         </div>
       </li>
 
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->Timetable_Master==1)
+<div class="container2">
+  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 
-
-</ul>
-
+  </ul>
+  </center>
 </div>
+@elseif(Auth::user()->HoD==1)
+<div class="container">
+  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::user()->DEFAULTDEPTID==31)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          @elseif(Auth::user()->DEFAULTDEPTID==32)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          @endif
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+        </div>
+      </li>
+    
+</ul>
+</center>
+</div>
+
+@endif
+
+
 </nav>
 </div>
 
@@ -68,7 +186,7 @@ use App\test;
 $mytest=test::where('name', Auth::user()->name)->get();
 
 use App\lecturer;
-$mycourse=lecturer::select('course')->where('instructor',Auth::user()->name)->orWhere('technical_staff',Auth::user()->name)->get();
+$mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->orWhere('Instructor_2',Auth::user()->name)->orWhere('Instructor_3',Auth::user()->name)->orWhere('Instructor_4',Auth::user()->name)->orWhere('Instructor_5',Auth::user()->name)->orWhere('Tutorial_Assistant',Auth::user()->name)->orWhere('technical_staff',Auth::user()->name)->orWhere('Technical_Staff_2',Auth::user()->name)->get();
 
 ?>
 <div class="container">
@@ -100,7 +218,7 @@ $mycourse=lecturer::select('course')->where('instructor',Auth::user()->name)->or
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
-           <div class="modal-body">
+  <div class="modal-body">
         <form method="post" action="{{route('addtest')}}" onsubmit="return getdata()"  name="myForm">
   {{csrf_field()}}
 
@@ -121,7 +239,7 @@ $mycourse=lecturer::select('course')->where('instructor',Auth::user()->name)->or
   <div class="form-group row">
     <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue(s):</strong></label>
     <div class="col-sm-7">
-    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="Venue" name="Venue" value="" required>
+    <input type="text" onblur="this.value=removeSpaces(this.value); javascript:this.value=this.value.toUpperCase();" class="form-control" id="Venue" name="Venue" value="" required>
   </div>
   </div>
 
@@ -181,6 +299,7 @@ $mycourse=lecturer::select('course')->where('instructor',Auth::user()->name)->or
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
+      <th scope="col">Venue(s)</th>
       <th scope="col">Test No.</th>
       <th scope="col">Course</th>
       <th scope="col">Date</th>
@@ -193,7 +312,8 @@ $mycourse=lecturer::select('course')->where('instructor',Auth::user()->name)->or
 
     @foreach($mytest as $mytests)
     <tr>
-      <th scope="row">{{ $i }}</th>
+      <th scope="row">{{ $i }}.</th>
+      <td>{{$mytests->venue}}</td>
       <td>{{$mytests->type}}</td>
       <td>{{$mytests->course}}</td>
       <td>{{$mytests->date}}</td>
@@ -234,7 +354,7 @@ function getdata(){
       if (txtone<txttwo) {
         var message=document.getElementById('message');
         message.style.color='red';
-        message.innerHTML="To time cannot be less than From time";
+        message.innerHTML=" 'To' time cannot be less than 'From' time";
         return false;
       }
 }

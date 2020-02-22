@@ -60,7 +60,7 @@ class DeclineStatus extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Dear '.($this->name).',')
+                    ->greeting('Greetings '.($this->name).',')
                     ->subject('VENUE_RESERVATION')
                     ->line('The reservation <strong>'. ($this->venue).'</strong> you made on'.($this->ReservationDate).' for date <strong>'.($this->date). '/'.($this->month).'/'. ($this->year).'</strong> and time <strong>'.($this->time).'</strong> has been declined due to the following reason(s):')
                     ->line('<strong>'.($this->Reason).'</strong>')

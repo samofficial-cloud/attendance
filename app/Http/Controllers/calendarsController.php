@@ -4,28 +4,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\calendar;
-use App\Notifications\ApprovalStatus;
-use App\User;
-use PDF;
-use Illuminate\Support\Facades\DB;
+use DB;
 
 class calendarsController extends Controller
 {
     //
 
     public function index(){
+        $status="Class Cancellation";
 
-    	// $timetab = calendar::select('Day')->where('Week','Wk1')->get();
-
-         // $Cweek = calendar::select('Week')->where('Date',date('d'))->where('Month',date('m'))->where('Year',date('Y'))->Value('Week');
-        $Cweek = calendar::select('Week')->where('Date','2')->where('Month','12')->where('Year','2019')->Value('Week');
-        $date=date('d');
-
-    	return $date;
-
-
-   // return view('calendar',['timetab'=> $timetab]);
+    	$events=calendar::where('status','Holiday')->orWhere('status',$status)->get();
+        return view('events')->with('events',$events);
     }
+
+
+    public function addevent(Request $request){
+    	$Date = $request->input('Date');
+    	$date  = strtotime($Date);
+         $day   = date('j',$date);
+         $month = date('n',$date);
+         $year  = date('Y',$date);
+
+         $event=calendar::where('Date',$day)->where('Month',$month)->where('Year',$year)->first();
+         if($event->status=="Holiday" or $event->status=="Class Cancellation"){
+            return redirect()->back()
+                    ->with('errors', 'Cannot Add This Event Because This Date has Already Being Assigned an Event ');
+         }
+         else{
+         $event->status=$request->input('status');
+         $event->FromTime=$request->input('fromTime');
+         $event->ToTime=$request->input('toTime');
+         $event->save();
+    return redirect()->back()
+                    ->with('success', 'Event Added successfully');
+
+
+}
+
+    }
+
+     public function edit(Request $request){
+     $id =$request->get('id');
+     $event = calendar::find($id);
+
+    
+    $event->status= $request->get('event');
+    $event->FromTime= $request->get('fromTime');
+    $event->ToTime= $request->get('toTime');
+    
+
+    $event->save();
+    return redirect()->back()
+                    ->with('success', 'Event Details updated successfully');
+
+    
+
+   }
 
 
     

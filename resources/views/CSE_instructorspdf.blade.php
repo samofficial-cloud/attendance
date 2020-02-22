@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Report</title>
+	<title>CSE Teaching Staff</title>
 </head>
 <style>
 table {
@@ -25,7 +25,7 @@ table {
   <?php
   Use App\lecturer;
 
-  $instructors1=lecturer::where('dept','CSE')->get();
+  $instructors1=lecturer::where('dept','CSE')->orderBy('semester','asc')->get();
   $i='1';
   ?>
 
@@ -45,8 +45,14 @@ table {
       <th scope="col">S/N</th>
       <th scope="col">Course ID</th>
       <th scope="col">Course Name</th>
-      <th scope="col">Instructors</th>
-      <th scope="col">Technical Staff</th>
+      <th scope="col">Instructor 1</th>
+      <th scope="col">Instructor 2</th>
+      <th scope="col">Instructor 3</th>
+      <th scope="col">Instructor 4</th>
+      <th scope="col">Instructor 5</th>
+      <th scope="col">Tutorial Assistant</th>
+      <th scope="col">Technical Staff 1</th>
+      <th scope="col">Technical Staff 2</th>
       <th scope="col">Course Type</th>
       <th scope="col">Semester</th>
       
@@ -57,10 +63,16 @@ table {
       @foreach($instructors1 as $instructors)
       <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{ $instructors->course}}</td>
+      <td style="align-content: center;">{{ $instructors->course}}</td>
       <td>{{$instructors->course_name}}</td>
       <td>{{ $instructors->instructor }}</td>
+      <td>{{ $instructors->Instructor_2}}</td>
+      <td>{{ $instructors->Instructor_3}}</td>
+      <td>{{ $instructors->Instructor_4}}</td>
+      <td>{{ $instructors->Instructor_5}}</td>
+      <td>{{ $instructors->Tutorial_Assistant}}</td>
       <td>{{ $instructors->technical_staff }}</td>
+      <td>{{ $instructors->Technical_staff_2}}</td>
       <td>{{ $instructors->course_type}}</td>
       <td>{{ $instructors->semester}}</td>
      

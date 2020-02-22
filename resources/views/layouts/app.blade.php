@@ -14,10 +14,18 @@
 
     <!-- Scripts -->
       <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
-      <script src="{{ asset('js/app.js') }}" defer></script>
+      <script src="{{ asset('js/app.js') }}" ></script>
       <script src="{{ asset('js/tablesorter.js') }}" defer></script>
 
-
+<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
+<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
 
 
     <!-- Fonts -->
@@ -31,14 +39,18 @@
      @yield('style')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark color_navbar navbar-laravel">
+    <div >
+        <nav class="navbar navbar-expand-sm navbar-dark color_navbar navbar-laravel">
             {{-- <div class=""> --}}
                 <a class="navbar-brand">
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     <div class="d-flex flex-row">
-                     <div class="pl-2"><img src="/img/logo_udsm.jpg" height="100px"></img></div>
-                    <div class="pl-3 pt-3"><h2>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</h2><h4>UNIVERSITY OF DAR ES SALAAM</h4></div>
+                     <div class="pl-2">
+                      <img src="/img/logo_udsm.jpg" height="100px"/>
+                    </div>
+                    <div class="pl-3 pt-3"><h2>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</h2>
+                      <h4>UNIVERSITY OF DAR ES SALAAM</h4>
+                    </div>
                 </div>
 
                 </a>

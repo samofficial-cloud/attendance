@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  TIMETABLE
+  TIMETABLE MANAGEMENT
 @endsection
 
 @section('content')
@@ -11,8 +11,39 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container2">
- <ul class="nav1 nav-tabs">
+  
+    @if(Auth::user()->staff==1)
+    <div class="container">
+ <center><ul class="nav1 nav-tabs" style="width: 84%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="container" style="max-width: 1165px;">
+  <center><ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -29,32 +60,119 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+
   <li class="nav-item dropdown">
-        <a class="nav-link active dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
         </div>
       </li>
 
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->Timetable_Master==1)
+<div class="container2">
+  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 
-
-</ul>
-
+  </ul>
+  </center>
 </div>
+@elseif(Auth::user()->HoD==1)
+<div class="container">
+  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::user()->DEFAULTDEPTID==31)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          @elseif(Auth::user()->DEFAULTDEPTID==32)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          @endif
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+        </div>
+      </li>
+    
+</ul>
+</center>
+</div>
+
+@endif
+
+
 </nav>
 </div>
 
@@ -62,7 +180,7 @@
 
 <?php
 $i='1';
-$program=array('ESC1','ESC2','ESC3','TE1','TE2','TE3','TE4','CS1'.'CS2','CS3','CEIT1','CEIT2','CEIT3','CEIT4','BIT1','BIT2','BIT3' );
+$program=array('ESC1','ESC2','ESC3','TE1','TE2','TE3','TE4','CS1(in)','CS2(in)','CS3(in)','CS1(with)','CS2(with)','CS3(with)','CEIT1','CEIT2','CEIT3','CEIT4','BIT1','BIT2','BIT3','EE1','EE2','EE3','EE4','CS1(Dipl.)','CS2(Dipl.)','CS(Cert)');
 use App\timetable;
 for($a=0; $a<count($program);$a++){
       $course[] =timetable::select ('courses.course', 'timetables.venue', 'timetables.day', 'courses.program','timetables.fromTime','timetables.toTime','courses.criteria')
@@ -728,7 +846,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -741,7 +859,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course[$x][$c]->program}}</td>
              <td>{{$course[$x][$c]->course}}</td>
              <td>{{$course[$x][$c]->venue}}</td>
@@ -766,7 +884,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -779,7 +897,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course1[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course1[$x][$c]->program}}</td>
              <td>{{$course1[$x][$c]->course}}</td>
              <td>{{$course1[$x][$c]->venue}}</td>
@@ -804,7 +922,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -817,7 +935,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course2[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course2[$x][$c]->program}}</td>
              <td>{{$course2[$x][$c]->course}}</td>
              <td>{{$course2[$x][$c]->venue}}</td>
@@ -842,7 +960,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -855,7 +973,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course3[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course3[$x][$c]->program}}</td>
              <td>{{$course3[$x][$c]->course}}</td>
              <td>{{$course3[$x][$c]->venue}}</td>
@@ -879,7 +997,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -892,7 +1010,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course4[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course4[$x][$c]->program}}</td>
              <td>{{$course4[$x][$c]->course}}</td>
              <td>{{$course4[$x][$c]->venue}}</td>
@@ -916,7 +1034,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -929,7 +1047,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course5[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course5[$x][$c]->program}}</td>
              <td>{{$course5[$x][$c]->course}}</td>
              <td>{{$course5[$x][$c]->venue}}</td>
@@ -953,7 +1071,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -966,7 +1084,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course6[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course6[$x][$c]->program}}</td>
              <td>{{$course6[$x][$c]->course}}</td>
              <td>{{$course6[$x][$c]->venue}}</td>
@@ -990,7 +1108,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1003,7 +1121,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course7[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course7[$x][$c]->program}}</td>
              <td>{{$course7[$x][$c]->course}}</td>
              <td>{{$course7[$x][$c]->venue}}</td>
@@ -1027,7 +1145,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1040,7 +1158,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course8[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course8[$x][$c]->program}}</td>
              <td>{{$course8[$x][$c]->course}}</td>
              <td>{{$course8[$x][$c]->venue}}</td>
@@ -1064,7 +1182,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1077,7 +1195,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course9[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course9[$x][$c]->program}}</td>
              <td>{{$course9[$x][$c]->course}}</td>
              <td>{{$course9[$x][$c]->venue}}</td>
@@ -1101,7 +1219,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1114,7 +1232,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course10[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course10[$x][$c]->program}}</td>
              <td>{{$course10[$x][$c]->course}}</td>
              <td>{{$course10[$x][$c]->venue}}</td>
@@ -1138,7 +1256,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1151,7 +1269,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course11[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course11[$x][$c]->program}}</td>
              <td>{{$course11[$x][$c]->course}}</td>
              <td>{{$course11[$x][$c]->venue}}</td>
@@ -1175,7 +1293,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1188,7 +1306,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course12[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course12[$x][$c]->program}}</td>
              <td>{{$course12[$x][$c]->course}}</td>
              <td>{{$course12[$x][$c]->venue}}</td>
@@ -1212,7 +1330,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1225,7 +1343,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course13[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course13[$x][$c]->program}}</td>
              <td>{{$course13[$x][$c]->course}}</td>
              <td>{{$course13[$x][$c]->venue}}</td>
@@ -1250,7 +1368,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1263,7 +1381,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($courseA[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $courseA[$x][$c]->program}}</td>
              <td>{{$courseA[$x][$c]->course}}</td>
              <td>{{$courseA[$x][$c]->venue}}</td>
@@ -1288,7 +1406,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1301,7 +1419,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course21[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course21[$x][$c]->program}}</td>
              <td>{{$course21[$x][$c]->course}}</td>
              <td>{{$course21[$x][$c]->venue}}</td>
@@ -1326,7 +1444,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1339,7 +1457,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course22[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course22[$x][$c]->program}}</td>
              <td>{{$course22[$x][$c]->course}}</td>
              <td>{{$course22[$x][$c]->venue}}</td>
@@ -1364,7 +1482,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1377,7 +1495,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course23[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course23[$x][$c]->program}}</td>
              <td>{{$course23[$x][$c]->course}}</td>
              <td>{{$course23[$x][$c]->venue}}</td>
@@ -1401,7 +1519,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1414,7 +1532,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course24[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course24[$x][$c]->program}}</td>
              <td>{{$course24[$x][$c]->course}}</td>
              <td>{{$course24[$x][$c]->venue}}</td>
@@ -1438,7 +1556,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1451,7 +1569,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course25[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course25[$x][$c]->program}}</td>
              <td>{{$course25[$x][$c]->course}}</td>
              <td>{{$course25[$x][$c]->venue}}</td>
@@ -1475,7 +1593,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1488,7 +1606,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course26[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course26[$x][$c]->program}}</td>
              <td>{{$course26[$x][$c]->course}}</td>
              <td>{{$course26[$x][$c]->venue}}</td>
@@ -1512,7 +1630,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1525,7 +1643,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course27[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course27[$x][$c]->program}}</td>
              <td>{{$course27[$x][$c]->course}}</td>
              <td>{{$course27[$x][$c]->venue}}</td>
@@ -1549,7 +1667,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1562,7 +1680,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course28[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course28[$x][$c]->program}}</td>
              <td>{{$course28[$x][$c]->course}}</td>
              <td>{{$course28[$x][$c]->venue}}</td>
@@ -1586,7 +1704,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1599,7 +1717,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course29[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course29[$x][$c]->program}}</td>
              <td>{{$course29[$x][$c]->course}}</td>
              <td>{{$course29[$x][$c]->venue}}</td>
@@ -1623,7 +1741,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1636,7 +1754,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course210[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course210[$x][$c]->program}}</td>
              <td>{{$course210[$x][$c]->course}}</td>
              <td>{{$course210[$x][$c]->venue}}</td>
@@ -1660,7 +1778,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1673,7 +1791,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course211[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course211[$x][$c]->program}}</td>
              <td>{{$course211[$x][$c]->course}}</td>
              <td>{{$course211[$x][$c]->venue}}</td>
@@ -1697,7 +1815,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1710,7 +1828,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course212[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course212[$x][$c]->program}}</td>
              <td>{{$course212[$x][$c]->course}}</td>
              <td>{{$course212[$x][$c]->venue}}</td>
@@ -1735,7 +1853,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1748,7 +1866,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($courseB[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $courseB[$x][$c]->program}}</td>
              <td>{{$courseB[$x][$c]->course}}</td>
              <td>{{$courseB[$x][$c]->venue}}</td>
@@ -1773,7 +1891,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1786,7 +1904,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course31[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course31[$x][$c]->program}}</td>
              <td>{{$course31[$x][$c]->course}}</td>
              <td>{{$course31[$x][$c]->venue}}</td>
@@ -1811,7 +1929,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1824,7 +1942,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course32[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course32[$x][$c]->program}}</td>
              <td>{{$course32[$x][$c]->course}}</td>
              <td>{{$course32[$x][$c]->venue}}</td>
@@ -1849,7 +1967,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1862,7 +1980,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course33[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course33[$x][$c]->program}}</td>
              <td>{{$course33[$x][$c]->course}}</td>
              <td>{{$course33[$x][$c]->venue}}</td>
@@ -1886,7 +2004,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1899,7 +2017,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course34[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course34[$x][$c]->program}}</td>
              <td>{{$course34[$x][$c]->course}}</td>
              <td>{{$course34[$x][$c]->venue}}</td>
@@ -1923,7 +2041,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1936,7 +2054,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course35[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course35[$x][$c]->program}}</td>
              <td>{{$course35[$x][$c]->course}}</td>
              <td>{{$course35[$x][$c]->venue}}</td>
@@ -1960,7 +2078,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -1973,7 +2091,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course36[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course36[$x][$c]->program}}</td>
              <td>{{$course36[$x][$c]->course}}</td>
              <td>{{$course36[$x][$c]->venue}}</td>
@@ -1997,7 +2115,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2010,7 +2128,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course37[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course37[$x][$c]->program}}</td>
              <td>{{$course37[$x][$c]->course}}</td>
              <td>{{$course37[$x][$c]->venue}}</td>
@@ -2034,7 +2152,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2047,7 +2165,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course38[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course38[$x][$c]->program}}</td>
              <td>{{$course38[$x][$c]->course}}</td>
              <td>{{$course38[$x][$c]->venue}}</td>
@@ -2071,7 +2189,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2084,7 +2202,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course39[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course39[$x][$c]->program}}</td>
              <td>{{$course39[$x][$c]->course}}</td>
              <td>{{$course39[$x][$c]->venue}}</td>
@@ -2108,7 +2226,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2121,7 +2239,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course310[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course310[$x][$c]->program}}</td>
              <td>{{$course310[$x][$c]->course}}</td>
              <td>{{$course310[$x][$c]->venue}}</td>
@@ -2145,7 +2263,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2158,7 +2276,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course311[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course311[$x][$c]->program}}</td>
              <td>{{$course311[$x][$c]->course}}</td>
              <td>{{$course311[$x][$c]->venue}}</td>
@@ -2182,7 +2300,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2195,7 +2313,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course312[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course312[$x][$c]->program}}</td>
              <td>{{$course312[$x][$c]->course}}</td>
              <td>{{$course312[$x][$c]->venue}}</td>
@@ -2220,7 +2338,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2233,7 +2351,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($courseC[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $courseC[$x][$c]->program}}</td>
              <td>{{$courseC[$x][$c]->course}}</td>
              <td>{{$courseC[$x][$c]->venue}}</td>
@@ -2258,7 +2376,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2271,7 +2389,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course41[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course41[$x][$c]->program}}</td>
              <td>{{$course41[$x][$c]->course}}</td>
              <td>{{$course41[$x][$c]->venue}}</td>
@@ -2296,7 +2414,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2309,7 +2427,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course42[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course42[$x][$c]->program}}</td>
              <td>{{$course42[$x][$c]->course}}</td>
              <td>{{$course42[$x][$c]->venue}}</td>
@@ -2334,7 +2452,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2347,7 +2465,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course43[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course43[$x][$c]->program}}</td>
              <td>{{$course43[$x][$c]->course}}</td>
              <td>{{$course43[$x][$c]->venue}}</td>
@@ -2371,7 +2489,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2384,7 +2502,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course44[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course44[$x][$c]->program}}</td>
              <td>{{$course44[$x][$c]->course}}</td>
              <td>{{$course44[$x][$c]->venue}}</td>
@@ -2408,7 +2526,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2421,7 +2539,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course45[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course45[$x][$c]->program}}</td>
              <td>{{$course45[$x][$c]->course}}</td>
              <td>{{$course45[$x][$c]->venue}}</td>
@@ -2445,7 +2563,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2458,7 +2576,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course46[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course46[$x][$c]->program}}</td>
              <td>{{$course46[$x][$c]->course}}</td>
              <td>{{$course46[$x][$c]->venue}}</td>
@@ -2482,7 +2600,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2495,7 +2613,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course47[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course47[$x][$c]->program}}</td>
              <td>{{$course47[$x][$c]->course}}</td>
              <td>{{$course47[$x][$c]->venue}}</td>
@@ -2519,7 +2637,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2532,7 +2650,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course48[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course48[$x][$c]->program}}</td>
              <td>{{$course48[$x][$c]->course}}</td>
              <td>{{$course48[$x][$c]->venue}}</td>
@@ -2556,7 +2674,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2569,7 +2687,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course49[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course49[$x][$c]->program}}</td>
              <td>{{$course49[$x][$c]->course}}</td>
              <td>{{$course49[$x][$c]->venue}}</td>
@@ -2593,7 +2711,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2606,7 +2724,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course410[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course410[$x][$c]->program}}</td>
              <td>{{$course410[$x][$c]->course}}</td>
              <td>{{$course410[$x][$c]->venue}}</td>
@@ -2630,7 +2748,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2643,7 +2761,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course411[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course411[$x][$c]->program}}</td>
              <td>{{$course411[$x][$c]->course}}</td>
              <td>{{$course411[$x][$c]->venue}}</td>
@@ -2667,7 +2785,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2680,7 +2798,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course412[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course412[$x][$c]->program}}</td>
              <td>{{$course412[$x][$c]->course}}</td>
              <td>{{$course412[$x][$c]->venue}}</td>
@@ -2703,7 +2821,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2716,7 +2834,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($courseD[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $courseD[$x][$c]->program}}</td>
              <td>{{$courseD[$x][$c]->course}}</td>
              <td>{{$courseD[$x][$c]->venue}}</td>
@@ -2741,7 +2859,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2754,7 +2872,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course51[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course51[$x][$c]->program}}</td>
              <td>{{$course51[$x][$c]->course}}</td>
              <td>{{$course51[$x][$c]->venue}}</td>
@@ -2779,7 +2897,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2792,7 +2910,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course52[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course52[$x][$c]->program}}</td>
              <td>{{$course52[$x][$c]->course}}</td>
              <td>{{$course52[$x][$c]->venue}}</td>
@@ -2817,7 +2935,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2830,7 +2948,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course53[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course53[$x][$c]->program}}</td>
              <td>{{$course53[$x][$c]->course}}</td>
              <td>{{$course53[$x][$c]->venue}}</td>
@@ -2854,7 +2972,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2867,7 +2985,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course54[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course54[$x][$c]->program}}</td>
              <td>{{$course54[$x][$c]->course}}</td>
              <td>{{$course54[$x][$c]->venue}}</td>
@@ -2891,7 +3009,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2904,7 +3022,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course55[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course55[$x][$c]->program}}</td>
              <td>{{$course55[$x][$c]->course}}</td>
              <td>{{$course55[$x][$c]->venue}}</td>
@@ -2928,7 +3046,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2941,7 +3059,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course56[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course56[$x][$c]->program}}</td>
              <td>{{$course56[$x][$c]->course}}</td>
              <td>{{$course56[$x][$c]->venue}}</td>
@@ -2965,7 +3083,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -2978,7 +3096,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course57[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course57[$x][$c]->program}}</td>
              <td>{{$course57[$x][$c]->course}}</td>
              <td>{{$course57[$x][$c]->venue}}</td>
@@ -3002,7 +3120,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -3015,7 +3133,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course58[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course58[$x][$c]->program}}</td>
              <td>{{$course58[$x][$c]->course}}</td>
              <td>{{$course58[$x][$c]->venue}}</td>
@@ -3039,7 +3157,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -3052,7 +3170,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course59[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course59[$x][$c]->program}}</td>
              <td>{{$course59[$x][$c]->course}}</td>
              <td>{{$course59[$x][$c]->venue}}</td>
@@ -3076,7 +3194,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -3089,7 +3207,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course510[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course510[$x][$c]->program}}</td>
              <td>{{$course510[$x][$c]->course}}</td>
              <td>{{$course510[$x][$c]->venue}}</td>
@@ -3113,7 +3231,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -3126,7 +3244,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course511[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course511[$x][$c]->program}}</td>
              <td>{{$course511[$x][$c]->course}}</td>
              <td>{{$course511[$x][$c]->venue}}</td>
@@ -3151,7 +3269,7 @@ for($a=0; $a<count($program);$a++){
 <table class="table table-striped table-bordered">
   <thead class="thead-dark">
     <tr>
-     <th scope="col">#</th>
+     <th scope="col">S/N</th>
       <th scope="col">Program</th>
       <th scope="col">Course</th>
       <th scope="col">Venue</th>
@@ -3164,7 +3282,7 @@ for($a=0; $a<count($program);$a++){
       <tbody>
       @for($c=0; $c<count($course512[$x]); $c++)
          <tr>
-           <th scope="row">{{ $i }}</th>
+           <th scope="row">{{ $i }}.</th>
              <td>{{ $course512[$x][$c]->program}}</td>
              <td>{{$course512[$x][$c]->course}}</td>
              <td>{{$course512[$x][$c]->venue}}</td>

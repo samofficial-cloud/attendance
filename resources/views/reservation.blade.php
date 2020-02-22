@@ -9,8 +9,39 @@ VENUE RESERVATION
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container2">
- <ul class="nav1 nav-tabs">
+  
+    @if(Auth::user()->staff==1)
+    <div class="container">
+ <center><ul class="nav1 nav-tabs" style="width: 84%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="container" style="max-width: 1165px;">
+  <center><ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -27,32 +58,119 @@ VENUE RESERVATION
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
+          MANAGE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
         </div>
       </li>
 
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->Timetable_Master==1)
+<div class="container2">
+  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 
-
-</ul>
-
+  </ul>
+  </center>
 </div>
+@elseif(Auth::user()->HoD==1)
+<div class="container">
+  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::user()->DEFAULTDEPTID==31)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          @elseif(Auth::user()->DEFAULTDEPTID==32)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          @endif
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+        </div>
+      </li>
+    
+</ul>
+</center>
+</div>
+
+@endif
+
+
 </nav>
 </div>
 
@@ -63,7 +181,7 @@ $timetabled = calendar::select('Date','Day','Month','Year')->where('Week',$_GET[
 
 $Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('n'))->where('Year',date('Y'))->Value('Week');
 
-  $today=date('d-m-Y');
+  $today=date('j-n-Y');
   $tdate=date('j');
   $tmonth=date('n');
   $tyear=date('Y');
@@ -74,9 +192,9 @@ $Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('
    $states = reservation::where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('rstatus','-1')->get();  
 
   use App\capacityvenue;
- $capacity = capacityvenue::select('capacity')->where('venue',$_GET['rid'])->value('capacity');
+ $capacity = capacityvenue::select('capacity')->where('venue',$_GET['rid'])->where('Criteria','Lecture')->value('capacity');
 
-
+$capacity1 = capacityvenue::select('capacity')->where('venue',$_GET['rid'])->where('Criteria','Test')->value('capacity');
   ?> 
 
 <br>
@@ -294,26 +412,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputday{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -353,7 +471,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectReason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -375,7 +493,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -443,26 +561,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -501,7 +619,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -523,7 +641,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -599,26 +717,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -656,7 +774,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -678,7 +796,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -760,26 +878,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -816,7 +934,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -838,7 +956,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -928,26 +1046,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -983,7 +1101,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -1005,7 +1123,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -1101,26 +1219,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -1155,7 +1273,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -1177,7 +1295,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -1281,26 +1399,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -1334,7 +1452,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -1356,7 +1474,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -1467,26 +1585,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -1519,7 +1637,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -1541,7 +1659,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -1660,26 +1778,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -1711,7 +1829,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -1733,7 +1851,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -1858,26 +1976,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -1908,7 +2026,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -1930,7 +2048,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -2061,26 +2179,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -2111,7 +2229,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -2133,7 +2251,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -2271,26 +2389,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -2319,7 +2437,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -2341,7 +2459,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -2486,26 +2604,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Monday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -2533,7 +2651,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -2555,7 +2673,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -2635,26 +2753,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputday{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -2694,7 +2812,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectReason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -2716,7 +2834,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -2784,26 +2902,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -2842,7 +2960,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -2864,7 +2982,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -2940,26 +3058,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -2997,7 +3115,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -3019,7 +3137,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -3101,26 +3219,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -3157,7 +3275,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -3179,7 +3297,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -3269,26 +3387,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -3324,7 +3442,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -3346,7 +3464,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -3442,26 +3560,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -3496,7 +3614,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -3518,7 +3636,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -3622,26 +3740,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -3675,7 +3793,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -3697,7 +3815,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -3808,26 +3926,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -3860,7 +3978,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -3882,7 +4000,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -4001,26 +4119,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -4052,7 +4170,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -4074,7 +4192,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -4199,26 +4317,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -4249,7 +4367,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -4271,7 +4389,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -4402,26 +4520,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -4452,7 +4570,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -4474,7 +4592,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -4612,26 +4730,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -4660,7 +4778,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -4682,7 +4800,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -4827,26 +4945,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Tuesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -4874,7 +4992,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -4896,7 +5014,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -4978,26 +5096,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputday{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -5037,7 +5155,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectReason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -5059,7 +5177,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -5127,26 +5245,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -5185,7 +5303,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -5207,7 +5325,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -5283,26 +5401,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -5340,7 +5458,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -5362,7 +5480,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -5444,26 +5562,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -5500,7 +5618,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -5522,7 +5640,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -5612,26 +5730,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -5667,7 +5785,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -5689,7 +5807,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -5785,26 +5903,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -5839,7 +5957,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -5861,7 +5979,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -5965,26 +6083,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -6018,7 +6136,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -6040,7 +6158,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -6151,26 +6269,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -6203,7 +6321,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -6225,7 +6343,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -6344,26 +6462,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -6395,7 +6513,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -6417,7 +6535,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -6542,26 +6660,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -6592,7 +6710,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -6614,7 +6732,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -6745,26 +6863,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -6795,7 +6913,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -6817,7 +6935,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -6955,26 +7073,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -7003,7 +7121,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -7025,7 +7143,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -7170,26 +7288,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Wednesday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -7217,7 +7335,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -7239,7 +7357,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -7317,26 +7435,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputday{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -7376,7 +7494,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectReason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -7398,7 +7516,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -7466,26 +7584,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -7524,7 +7642,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -7546,7 +7664,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -7622,26 +7740,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -7679,7 +7797,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -7701,7 +7819,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -7783,26 +7901,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -7839,7 +7957,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -7861,7 +7979,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -7951,26 +8069,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -8006,7 +8124,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -8028,7 +8146,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -8124,26 +8242,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -8178,7 +8296,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -8200,7 +8318,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -8304,26 +8422,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -8357,7 +8475,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -8379,7 +8497,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -8490,26 +8608,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -8542,7 +8660,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -8564,7 +8682,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -8683,26 +8801,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -8734,7 +8852,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -8756,7 +8874,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -8881,26 +8999,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -8931,7 +9049,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -8953,7 +9071,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -9084,26 +9202,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -9134,7 +9252,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -9156,7 +9274,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -9294,26 +9412,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -9342,7 +9460,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -9364,7 +9482,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -9509,26 +9627,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Thursday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -9556,7 +9674,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -9578,7 +9696,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -9656,26 +9774,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputday{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -9715,7 +9833,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectReason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -9737,7 +9855,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -9805,26 +9923,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -9863,7 +9981,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -9885,7 +10003,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -9961,26 +10079,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -10018,7 +10136,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -10040,7 +10158,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -10122,26 +10240,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -10178,7 +10296,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -10200,7 +10318,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -10290,26 +10408,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -10345,7 +10463,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -10367,7 +10485,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -10463,26 +10581,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -10517,7 +10635,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -10539,7 +10657,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -10643,26 +10761,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -10696,7 +10814,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -10718,7 +10836,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -10829,26 +10947,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -10881,7 +10999,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -10903,7 +11021,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -11022,26 +11140,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -11073,7 +11191,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -11095,7 +11213,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -11220,26 +11338,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -11270,7 +11388,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -11292,7 +11410,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -11423,26 +11541,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -11473,7 +11591,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -11495,7 +11613,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -11633,26 +11751,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -11681,7 +11799,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -11703,7 +11821,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -11848,26 +11966,26 @@ $yy=$times['Year'];
             <form method="post" action="{{url('create')}}">
   {{csrf_field()}}
   <div class="form-group row">
-    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID</label>
+    <label for="InputName{{$timed->id}}" class="col-sm-3 col-form-label">Employee ID:</label>
     <div class="col-sm-8">
       <input type="text" class="form-control" id="InputName{{$timed->id}}" name="Name" value="{{ Auth::user()->name }}" readonly>
     </div>
   </div>
   <div class="form-group row">
-    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$timed->id}}"  class="col-sm-3 col-form-label">Venue:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Venue{{$timed->id}}" name="Venue" value="{{ $_GET['rid'] }}" readonly>
   </div>
   </div>
    <div class="form-group row">
-    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day</label>
+    <label for="Day{{$timed->id}}"  class="col-sm-3 col-form-label">Day:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="Day{{$timed->id}}" name="Day" value="Friday" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date</label>
+    <label for="inputdate{{$timed->id}}"  class="col-sm-3 col-form-label">Date:</label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="inputdate{{$timed->id}}" name="Date" value="{{ $dd }}/{{ $mm }}/{{ $yy }}" readonly>
   </div>
@@ -11895,7 +12013,7 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
@@ -11917,7 +12035,7 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks</label>
+    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
     <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
@@ -11947,6 +12065,24 @@ $yy=$times['Year'];
 </tr>
 
 </table>
+<br>
+<div>
+<h5><b>NOTE<br>This room can accomodate as follows:
+<table>
+  <tr>
+    <td>1. Lectures/Seminars</td>
+    <td>-</td>
+    <td>{{$capacity}}</td>
+  </tr>
+  <tr>
+  <td>2. Tests and Exams</td>
+  <td>-</td>
+  <td>{{$capacity1}}</td>
+</tr>
+</table>
+</b>
+</h5>
+</div>
 </div>
 </div>
 </div>

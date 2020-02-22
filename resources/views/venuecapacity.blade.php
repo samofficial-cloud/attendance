@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  VENUE RESERVATION
+  VENUE CAPACITIES
 @endsection
 
 @section('content')
@@ -11,8 +11,39 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  <div class="container2">
- <ul class="nav1 nav-tabs">
+  
+    @if(Auth::user()->staff==1)
+    <div class="container">
+ <center><ul class="nav1 nav-tabs" style="width: 84%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->principal==1)
+<div class="container" style="max-width: 1165px;">
+  <center><ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -29,55 +60,137 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  
   <li class="nav-item">
-    <a class="nav-link active" style="color:#060606" href="/VenueCapacity">ROOMS CAPACITY</a>
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+
   <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
         </div>
       </li>
 
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+</ul>
+</center>
+</div>
+@elseif(Auth::user()->Timetable_Master==1)
+<div class="container2">
+  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
 
-
-</ul>
-
+  </ul>
+  </center>
 </div>
+@elseif(Auth::user()->HoD==1)
+<div class="container">
+  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+  </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @if(Auth::user()->DEFAULTDEPTID==31)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          @elseif(Auth::user()->DEFAULTDEPTID==32)
+          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          @endif
+          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+        </div>
+      </li>
+    
+</ul>
+</center>
+</div>
+
+@endif
+
+
 </nav>
 </div>
 <br>
 
 <?php
 use App\capacityvenue;
- $venue = capacityvenue::where('criteria','Lecture')->get();
- $venue1 = capacityvenue::where('criteria','Test')->get();
-  $venue2 = capacityvenue::where('criteria','Practical')->get();
+ $venue = capacityvenue::where('criteria','Lecture')->orderBy('Venue','asc')->get();
+ $venue1 = capacityvenue::where('criteria','Test')->orderBy('Venue','asc')->get();
+  $venue2 = capacityvenue::where('criteria','Practical')->orderBy('Venue','asc')->get();
  $i=1;
  $j=1;
  $k=1;
 ?>
 
 <div class="container">
-   @if ($errors->any())
+   @if ($errors=Session::get('errors'))
           <div class="alert alert-danger">
-            <strong>Sorry!!</strong> Something went Wrong<br>
-            <ul>
-              @foreach ($errors as $error)
-                <li>{{$error}}</li>
-              @endforeach
-            </ul>
+             <p>{{$errors}}</p>
           </div>
         @endif
 
@@ -103,21 +216,21 @@ use App\capacityvenue;
   {{csrf_field()}}
 
   <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-7">
-    <input type="text" onblur="this.value=removeSpaces(this.value);" class="form-control" id="Venue" name="Venue" value="" required="">
+    <input type="text" onblur="this.value=removeSpaces(this.value); javascript:this.value=this.value.toUpperCase();" class="form-control" id="Venue" name="Venue" value="" required="">
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="capacity"  class="col-sm-3 col-form-label">Capacity</label>
+    <label for="capacity"  class="col-sm-3 col-form-label"><strong>Capacity:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="capacity" name="capacity" value="" required="">
+    <input type="number" class="form-control" id="capacity" name="capacity" value="" min="1" required="">
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="criteria"  class="col-sm-3 col-form-label">Criteria</label>
+    <label for="criteria"  class="col-sm-3 col-form-label"><strong>Criteria:</strong></label>
     <div class="col-sm-7">
    <select class="custom-select Reason" name="criteria" id="criteria">
     <option value="Lecture">Lecture</option>
@@ -157,10 +270,10 @@ use App\capacityvenue;
     
       @foreach($venue as$venue)
       <tr>
-      <th width="10%" scope="row">{{ $i }}</th>
-      <td width="30%"><strong>{{$venue->Venue}}</strong></td>
-      <td width="30%"><strong>{{ $venue->Capacity }}</strong></td>
-      <td width="10%"><center><a data-toggle="modal" data-target="#edit{{$venue->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a></center>
+      <th  scope="row">{{ $i }}.</th>
+      <td><strong>{{$venue->Venue}}</strong></td>
+      <td><strong>{{ $venue->Capacity }}</strong></td>
+      <td><a data-toggle="modal" data-target="#edit{{$venue->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a>
 
         <div class="modal fade" id="edit{{$venue->id}}" role="dialog">
 
@@ -176,29 +289,27 @@ use App\capacityvenue;
   {{csrf_field()}}
 
   <div class="form-group row">
-    <label for="Venue{{$venue->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-7">
     <input type="text" class="form-control" id="Venue{{$venue->id}}" name="Venue" value="{{$venue->Venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="capacity{{$venue->id}}"  class="col-sm-3 col-form-label">Capacity</label>
+    <label for="criteria{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Criteria:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="capacity{{$venue->id}}" name="capacity" value="{{$venue->Capacity}}">
+   <input type="text" class="form-control" name="criteria" id="criteria{{$venue->id}}" value="Lecture" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="criteria{{$venue->id}}"  class="col-sm-3 col-form-label">Criteria</label>
+    <label for="capacity{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Capacity:</strong></label>
     <div class="col-sm-7">
-   <select class="custom-select Reason" name="criteria" id="criteria{{$venue->id}}">
-    <option value="Lecture">Lecture</option>
-    <option value="Test">Test</option>
-    <option value="Practical">Practical</option>
-  </select>
+    <input type="number" class="form-control" id="capacity{{$venue->id}}" name="capacity" value="{{$venue->Capacity}}" min="1">
   </div>
   </div>
+
+  
 
   
 
@@ -214,7 +325,7 @@ use App\capacityvenue;
 </div>
 </div>
 
-
+<a class="btn btn-sm btn-danger" href="{{route('DeleteVenue',$venue->id)}}">Delete</a>
 
 
 
@@ -243,10 +354,10 @@ use App\capacityvenue;
   <tbody>
     @foreach($venue1 as$venue)
       <tr>
-      <th width="10%" scope="row">{{ $j }}</th>
-      <td width="30%"><strong>{{$venue->Venue}}</strong></td>
-      <td width="30%"><strong>{{ $venue->Capacity }}</strong></td>
-      <td width="10%"><center><a data-toggle="modal" data-target="#edit{{$venue->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a></center>
+      <th scope="row">{{ $j }}.</th>
+      <td><strong>{{$venue->Venue}}</strong></td>
+      <td><strong>{{ $venue->Capacity }}</strong></td>
+      <td><a data-toggle="modal" data-target="#edit{{$venue->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a>
 
         <div class="modal fade" id="edit{{$venue->id}}" role="dialog">
 
@@ -262,27 +373,23 @@ use App\capacityvenue;
   {{csrf_field()}}
 
   <div class="form-group row">
-    <label for="Venue{{$venue->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-7">
     <input type="text" class="form-control" id="Venue{{$venue->id}}" name="Venue" value="{{$venue->Venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="capacity{{$venue->id}}"  class="col-sm-3 col-form-label">Capacity</label>
+    <label for="criteria{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Criteria:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="capacity{{$venue->id}}" name="capacity" value="{{$venue->Capacity}}">
+   <input type="text" class="form-control" name="criteria" id="criteria{{$venue->id}}" value="Test" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="criteria{{$venue->id}}"  class="col-sm-3 col-form-label">Criteria</label>
+    <label for="capacity{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Capacity:</strong></label>
     <div class="col-sm-7">
-   <select class="custom-select Reason" name="criteria" id="criteria{{$venue->id}}">
-    <option value="Test">Test</option>
-    <option value="Lecture">Lecture</option>
-    <option value="Practical">Practical</option>
-  </select>
+    <input type="number" min="1" class="form-control" id="capacity{{$venue->id}}" name="capacity" value="{{$venue->Capacity}}">
   </div>
   </div>
 
@@ -301,7 +408,7 @@ use App\capacityvenue;
 </div>
 
 
-
+<a class="btn btn-sm btn-danger" href="{{route('DeleteVenue',$venue->id)}}">Delete</a>
 
 
       </td>
@@ -329,10 +436,10 @@ use App\capacityvenue;
   <tbody>
     @foreach($venue2 as$venue)
       <tr>
-      <th width="10%"scope="row">{{ $k }}</th>
-      <td width="30%"><strong>{{$venue->Venue}}</strong></td>
-      <td width="30%"><strong>{{ $venue->Capacity }}</strong></td>
-      <td width="10%"><center><a data-toggle="modal" data-target="#edit{{$venue->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a></center>
+      <th scope="row">{{ $k }}.</th>
+      <td ><strong>{{$venue->Venue}}</strong></td>
+      <td ><strong>{{ $venue->Capacity }}</strong></td>
+      <td><a data-toggle="modal" data-target="#edit{{$venue->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a>
 
         <div class="modal fade" id="edit{{$venue->id}}" role="dialog">
 
@@ -348,30 +455,26 @@ use App\capacityvenue;
   {{csrf_field()}}
 
   <div class="form-group row">
-    <label for="Venue{{$venue->id}}"  class="col-sm-3 col-form-label">Venue</label>
+    <label for="Venue{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-7">
     <input type="text" class="form-control" id="Venue{{$venue->id}}" name="Venue" value="{{$venue->Venue}}" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="capacity{{$venue->id}}"  class="col-sm-3 col-form-label">Capacity</label>
+    <label for="criteria{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Criteria:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="capacity{{$venue->id}}" name="capacity" value="{{$venue->Capacity}}">
+   <input type="text" class="form-control" name="criteria" id="criteria{{$venue->id}}" value="Practical" readonly>
   </div>
   </div>
 
   <div class="form-group row">
-    <label for="criteria{{$venue->id}}"  class="col-sm-3 col-form-label">Criteria</label>
+    <label for="capacity{{$venue->id}}"  class="col-sm-3 col-form-label"><strong>Capacity:</strong></label>
     <div class="col-sm-7">
-   <select class="custom-select Reason" name="criteria" id="criteria{{$venue->id}}">
-    <option value="Practical">Practical</option>
-    <option value="Lecture">Lecture</option>
-    <option value="Test">Test</option>
-    
-  </select>
+    <input type="number" min="1" class="form-control" id="capacity{{$venue->id}}" name="capacity" value="{{$venue->Capacity}}">
   </div>
   </div>
+
 
   
 
@@ -389,7 +492,7 @@ use App\capacityvenue;
 
 
 
-
+<a class="btn btn-sm btn-danger" href="{{route('DeleteVenue',$venue->id)}}">Delete</a>
 
       </td>
 
