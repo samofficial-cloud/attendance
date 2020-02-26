@@ -11,9 +11,9 @@ class calendarsController extends Controller
     //
 
     public function index(){
-        $status="Class Cancellation";
+        $status="CANCELLATION";
 
-    	$events=calendar::where('status','Holiday')->orWhere('status',$status)->get();
+    	$events=calendar::where('status','HOLIDAY')->orWhere('status',$status)->get();
         return view('events')->with('events',$events);
     }
 

@@ -205,7 +205,7 @@ ARRIVED EARLY
 <p>STATUS: PRESENT</p>
 
 
-  <br>
+  {{-- <br>
 
   <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
@@ -223,7 +223,7 @@ ARRIVED EARLY
 
 
        <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
+       </form> --}}
 
 
   @else

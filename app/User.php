@@ -19,11 +19,10 @@ class User extends Authenticatable
         'NAME', 'email', 'password','SSN'
     ];
 
-
+ 
  protected $table = 'USERINFO';
 
  protected $primaryKey = 'USERID';
-
 
     /**
      * The attributes that should be hidden for arrays.

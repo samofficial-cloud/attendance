@@ -4,6 +4,49 @@
   REPORT
 @endsection
 
+@section('style')
+<style>
+div.dataTables_filter{
+  padding-left:710px;
+  padding-bottom:20px;
+}
+
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;  
+}
+
+div.dataTables_length select { 
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    
+
+    
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border: 2px solid #505559;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+
+</style>
+
+@endsection 
 
 @section('content')
 <div class="classname">
@@ -183,7 +226,7 @@
   @if(count($all_test)>0)
         <div class="col-xs-9"><legend>
           <p class="note">UE attendance report for all students</p>
-        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
+        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
         </legend> </div>
   @else
 
@@ -194,7 +237,7 @@
   <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
   <p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
   <p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
-  <table id="myTable" class="table table-bordered table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -207,7 +250,7 @@
     <tbody>
       @foreach ($all_test as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->name}}</td>
         <td>{{$var->reg_no}}</td>
         <td>PRESENT </td>
@@ -249,7 +292,7 @@
     </div>
 
 </div>
-</div>
+
 
 
 
@@ -258,11 +301,6 @@
 
 @section('pagescript')
 
-<script>
-        $(document).ready( function () {
-                $("#myTable").tablesorter();
-        });
-    </script>
 
 <script>
 window.addEventListener( "pageshow", function ( event ) {
@@ -274,6 +312,19 @@ window.addEventListener( "pageshow", function ( event ) {
     window.location.reload();
   }
 });
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable1').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
 </script>
 
 @endsection

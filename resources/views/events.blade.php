@@ -267,8 +267,8 @@ div.top {
     <label for="Criteria"  class="col-sm-3 col-form-label"><strong>Event Type:</strong></label>
     <div class="col-sm-8">
    <select class="custom-select Reason" name="status" id="Criteria">
-    <option value="Holiday">Holiday</option>
-    <option value="Class Cancellation">Class Cancellation</option>
+    <option value="HOLIDAY">Holiday</option>
+    <option value="CANCELLATION">Class Cancellation</option>
   </select>
   </div>
   </div>
