@@ -4,7 +4,49 @@
   REPORT
 @endsection
 
+@section('style')
+<style>
+div.dataTables_filter{
+  padding-left:710px;
+  padding-bottom:20px;
+}
 
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;  
+}
+
+div.dataTables_length select { 
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    
+
+    
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border: 2px solid #505559;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+
+</style>
+
+@endsection 
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -188,8 +230,8 @@
 @elseif(!empty($_GET['checkbox']))
 @if(count($dataSingle_all)>0)
 <div class="col-xs-9"><legend>
-  <p class="note"> Test attendance report for {{$name}} ({{$reg_no}})</p>
-  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
+  <p class="note"> Test attendance report for <b>{{$name}} ({{$reg_no}})</b></p>
+  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
 </legend> </div>
 
 @else
@@ -198,7 +240,7 @@
 
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p>
+  <p class="note"> Attendance report for {{strtoupper($_GET['course_id'])}} - {{$course_name}} </p>
 
 </legend> </div>
 @endif
@@ -242,7 +284,7 @@
 
 <div class="col-xs-6">
   @if(count($dataSingle_all)>0)
-  <table class="table table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -258,7 +300,7 @@
     <tbody>
       @foreach ($dataSingle_all as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->test_type}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
@@ -329,6 +371,19 @@ window.addEventListener( "pageshow", function ( event ) {
     window.location.reload();
   }
 });
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable1').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
 </script>
 
 @endsection

@@ -4,7 +4,49 @@
   REPORT
 @endsection
 
+@section('style')
+<style>
+div.dataTables_filter{
+  padding-left:710px;
+  padding-bottom:20px;
+}
 
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;  
+}
+
+div.dataTables_length select { 
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    
+
+    
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border: 2px solid #505559;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+
+</style>
+
+@endsection 
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -210,7 +252,7 @@
 <div class="col-xs-6">
   <h5>TEST 1 </h5>
   @if(count($all_courses)>0)
-  <table class="table table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable2">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -223,7 +265,7 @@
     <tbody>
       @foreach ($all_courses as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->courseId}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>PRESENT</td>
@@ -245,27 +287,6 @@ foreach($all_courses as $values){
 ?>
 
 
-  <br>
-      <form action="{{route('testpdf')}}" class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
-
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
-
-
-
   @else
   <h4>No data to display</h4>
   @endif
@@ -273,12 +294,12 @@ foreach($all_courses as $values){
 
 <br>
 <br>
-
+<hr>
 <!-- TEST 2 -->
 <div class="col-xs-6">
   <h5>TEST 2 </h5>
   @if(count($all_courses2)>0)
-  <table class="table table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable3">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -291,7 +312,7 @@ foreach($all_courses as $values){
     <tbody>
       @foreach ($all_courses2 as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->courseId}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>PRESENT</td>
@@ -313,27 +334,6 @@ foreach($all_courses as $values){
   }
   ?>
 
-  <br>
-      <form action="{{route('testpdf')}}" class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
-
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
-
-
-
   @else
   <h4>No data to display</h4>
   @endif
@@ -342,10 +342,11 @@ foreach($all_courses as $values){
 <br>
 <br>
 <!-- TEST 3 -->
+<hr>
 <div class="col-xs-6">
   <h5>TEST 3 </h5>
   @if(count($all_courses3)>0)
-  <table class="table table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable4">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -358,7 +359,7 @@ foreach($all_courses as $values){
     <tbody>
       @foreach ($all_courses3 as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->courseId}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>PRESENT</td>
@@ -412,7 +413,7 @@ foreach($all_courses as $values){
 
 <div class="col-xs-6">
   @if(count($data)>0)
-  <table class="table table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -425,7 +426,7 @@ foreach($all_courses as $values){
     <tbody>
       @foreach ($data as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->test_type}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
         <td>PRESENT</td>
@@ -479,7 +480,7 @@ foreach($all_courses as $values){
 foreach($all_students as $values){
        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
        $val = (iterator_to_array($iterator,true));
-       print('<tr><td class="counterCell"></td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+       print('<tr><td class="counterCell">.</td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
 
 }
 ?>
@@ -511,11 +512,57 @@ foreach($all_students as $values){
 
 @section('pagescript')
 
-<script>
-        $(document).ready( function () {
-                $("#myTable").tablesorter();
-        });
-    </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable1').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable2').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable3').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable4').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
+</script>
 
 <script>
 window.addEventListener( "pageshow", function ( event ) {

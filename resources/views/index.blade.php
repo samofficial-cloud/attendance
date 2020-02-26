@@ -45,8 +45,8 @@
 </center>
 </div>
 @elseif(Auth::user()->principal==1)
-<div class="container" style="max-width: 1165px;">
-  <center><ul class="nav1 nav-tabs">
+<div class="container3" style="padding-left: 135px;">
+  <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link active" style="color:#060606"href="/">HOME</a>
   </li>
@@ -62,6 +62,9 @@
 
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
@@ -91,7 +94,6 @@
       </li>
 
 </ul>
-</center>
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
 <div class="container2">

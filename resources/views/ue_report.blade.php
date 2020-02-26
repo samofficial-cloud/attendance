@@ -5,9 +5,49 @@
 @endsection
 
 
-<!-- @section('style')
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-@endsection -->
+@section('style')
+<style>
+div.dataTables_filter{
+  padding-left:710px;
+  padding-bottom:20px;
+}
+
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;  
+}
+
+div.dataTables_length select { 
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    
+
+    
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border: 2px solid #505559;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+
+</style>
+
+@endsection 
 
 @section('content')
 <div class="classname">
@@ -186,7 +226,7 @@
 @if($_GET['selection']=='All courses')
 @if(count($all_courses)>0)
       <div class="col-xs-9"><legend>
-        <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
+        <p class="note">UE attendance report for <b>{{$name}} ({{$reg_no}})</b></p>
       <h5 class="note">Course(s): All </h5>
       </legend> </div>
 @else
@@ -203,7 +243,7 @@
 @endif
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p></legend> </div>
+  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} - {{$course_name}} </p></legend> </div>
 @endif
 
 
@@ -212,7 +252,7 @@
 
 <div class="col-xs-6">
   @if(count($all_courses)>0)
-  <table class="table table-striped">
+  <table class="hover table table-bordered table-striped" id="myTable2">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -227,7 +267,7 @@
     <tbody>
       @foreach ($all_courses as $var)
       <tr>
-        <td class="counterCell"></td>
+        <td class="counterCell">.</td>
         <td>{{$var->courseId}}</td>
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
@@ -291,7 +331,7 @@
 <span>STATUS: PRESENT</span> <span><i class="fa fa-check-square-o" style="font-size:18px;color:#3e8ed0"></i></span>
 
 
-  <br>
+  {{-- <br>
 
   <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
@@ -309,7 +349,7 @@
 
 
        <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
+       </form> --}}
 
 
   @else
@@ -374,7 +414,7 @@ foreach($all_students as $values){
 @endif
 
 
-
+<br>
 
     <div class="col-xs-3">
       <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
@@ -390,11 +430,18 @@ foreach($all_students as $values){
 
 @section('pagescript')
 
-<script>
-        $(document).ready( function () {
-                $("#myTable").tablesorter();
-        });
-    </script>
+<script type="text/javascript">
+ $(document).ready(function() {
+  
+  
+  // console.log(x);
+    var table = $('#myTable2').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+
+</script>
 
 <script>
 window.addEventListener( "pageshow", function ( event ) {

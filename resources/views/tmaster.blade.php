@@ -1,5 +1,4 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 @section('title')
   APPROVAL
 @endsection

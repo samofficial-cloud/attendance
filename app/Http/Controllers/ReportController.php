@@ -70,7 +70,6 @@ class ReportController extends Controller
 
 
 
-
     }elseif ($request->get('category')== 2) {
       //echo one lecturer
       if ($request->get('checkbox')=='all cases') {

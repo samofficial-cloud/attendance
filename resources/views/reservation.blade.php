@@ -326,21 +326,21 @@ $capacity1 = capacityvenue::select('capacity')->where('venue',$_GET['rid'])->whe
   </a>
 
    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/reservation?rid={{$_GET['rid']}}&wid=Wk1" class="list-group-item list-group-item-action dropdown-item">Wk1 (04/11-08/11)</a>
-     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk2" class="list-group-item list-group-item-action dropdown-item">Wk2 (11/11-15/11)</a>
-    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk3" class="list-group-item list-group-item-action dropdown-item">Wk3 (18/11-22/11)</a>
-    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk4" class="list-group-item list-group-item-action dropdown-item">Wk4 (25/11-29/11)</a>
-     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk5" class="list-group-item list-group-item-action dropdown-item">Wk5 (02/12-06/12)</a>
-       <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk6" class="list-group-item list-group-item-action dropdown-item">Wk6 (09/12-13/12)</a>
-        <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk7" class="list-group-item list-group-item-action dropdown-item">Wk7 (16/12-20/12)</a>
-         <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk8" class="list-group-item list-group-item-action dropdown-item">Wk8 (23/12-27/12)</a>
-          <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk9" class="list-group-item list-group-item-action dropdown-item">Wk9 (30/12-03/1)</a>
-           <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk10" class="list-group-item list-group-item-action dropdown-item">Wk10 (06/01-10/1)</a>
-            <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk11" class="list-group-item list-group-item-action dropdown-item">Wk11 (13/1-17/1)</a>
-             <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk12" class="list-group-item list-group-item-action dropdown-item">Wk12 (20/1-24/1)</a>
-              <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk13" class="list-group-item list-group-item-action dropdown-item">Wk13 (27/1-31/1)</a>
-               <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk14" class="list-group-item list-group-item-action dropdown-item">Wk14 (03/2-07/2)</a>
-                <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk15" class="list-group-item list-group-item-action dropdown-item">Wk15 (10/2-14/2)</a>
+    <a href="/reservation?rid={{$_GET['rid']}}&wid=Wk1" class="list-group-item list-group-item-action dropdown-item">Wk1 (23/03-27/03)</a>
+     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk2" class="list-group-item list-group-item-action dropdown-item">Wk2 (30/03-03/04)</a>
+    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk3" class="list-group-item list-group-item-action dropdown-item">Wk3 (06/04-10/04)</a>
+    <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk4" class="list-group-item list-group-item-action dropdown-item">Wk4 (13/04-17/04)</a>
+     <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk5" class="list-group-item list-group-item-action dropdown-item">Wk5 (20/04-24/04)</a>
+       <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk6" class="list-group-item list-group-item-action dropdown-item">Wk6 (27/04-01/05)</a>
+        <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk7" class="list-group-item list-group-item-action dropdown-item">Wk7 (04/05-08/05)</a>
+         <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk8" class="list-group-item list-group-item-action dropdown-item">Wk8 (11/05-15/05)</a>
+          <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk9" class="list-group-item list-group-item-action dropdown-item">Wk9 (18/05-22/05)</a>
+           <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk10" class="list-group-item list-group-item-action dropdown-item">Wk10 (25/05-29/05)</a>
+            <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk11" class="list-group-item list-group-item-action dropdown-item">Wk11 (01/06-05/06)</a>
+             <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk12" class="list-group-item list-group-item-action dropdown-item">Wk12 (08/06-12/06)</a>
+              <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk13" class="list-group-item list-group-item-action dropdown-item">Wk13 (15/06-19/06)</a>
+               <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk14" class="list-group-item list-group-item-action dropdown-item">Wk14 (22/06-26/06)</a>
+                <a href="/reservation?rid={{ $_GET['rid'] }}&wid=Wk15" class="list-group-item list-group-item-action dropdown-item">Wk15 (29/06-03/07)</a>
 
   </div>
 </div>
