@@ -32,9 +32,12 @@ class LoginController extends Controller
       Check the type of user so as to direct the user to the correct page
       */
       {
-        //$user = User::where('SSN',$request->reg_no)->first();
-          return redirect()->intended('first');
-            //return view('index');
+
+      
+
+        $user = User::where('SSN',$request->reg_no)->first();
+          return redirect()->route('first');
+
       }
 
      
