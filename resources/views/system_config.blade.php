@@ -82,8 +82,8 @@
           <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
           <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
-          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
-             <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
+        <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+   <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
         </div>
       </li>
 
@@ -181,14 +181,20 @@
 <br>
 <div class="container">
   <div class="row">
+
+
+
+
 <div class="col-2 ">
+
 <div class="card border-info">
   <div class="card-body">
-    <h5 class="card-title">Choose Type of Report</h5>
+    <h5 class="card-title">System settings</h5>
 
-  <a data-toggle="modal" data-target="#class" class="btn styling button_color active" role="button" aria-pressed="true">Class attendance reports</a> &nbsp;
-  <a data-toggle="modal" data-target="#test" class="btn styling button_color active" role="button" aria-pressed="true">Test attendance reports</a>&nbsp;
-  <a data-toggle="modal" data-target="#ue" class="btn styling button_color active" role="button" aria-pressed="true">UE attendance reports</a>&nbsp;
+  <a data-toggle="modal" data-target="#class" class="btn styling button_color active" role="button" aria-pressed="true">Minimum class percentage for students</a> &nbsp;
+  <a data-toggle="modal" data-target="#test" class="btn styling button_color active" role="button" aria-pressed="true">Test, class and UE scanning validity duration</a>&nbsp;
+      <a data-toggle="modal" data-target="#ue" class="btn styling button_color active" role="button" aria-pressed="true">Semester start date and academic year</a>&nbsp;<br>
+      <a data-toggle="modal" data-target="#title" class="btn styling button_color active" role="button" aria-pressed="true">System title</a>&nbsp;
 
 <!-- Classes -->
    <div class="modal fade" id="class" role="dialog">
@@ -196,88 +202,30 @@
           <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-            <b><h5 class="modal-title">Fill the Form Below to Generate Class Report</h5></b>
+            <b><h5 class="modal-title">Change class minimun required percentage for students </h5></b>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
              <div class="modal-body">
-               <form id="class_form" action="{{ route('report')}}" class="form-container form-horizontal" method="get">
+               <form id="class_form" action="{{ route('change_percentage')}}" class="form-container form-horizontal" method="get">
                  {{csrf_field()}}
-                 <div class="form-group row">
-                   <label for="" class="col-sm-4 col-form-label">For:</label>
-                   <div class="col-sm-8">
-                   <select name="category" id="getSelection" onchange="SelectCheck(this)">
-
-                     <option value="3" id="Option" >One student</option>
-                    <option value="1" id="Option">All students</option>
-                      <option value="2" id="Option">Lecturer</option>
-                  </select>
-                </div>
-               </div>
 
 
-               <div id="DivCheckRadio" style="display:block;">
-                 <div class="form-group row" >
-                   <label for="inputEmail3" class="col-sm-4 col-form-label">Specification:</label>
-                   <div class="col-sm-8">
-                     <input id="one_course" class="italian" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
-                     <input id="All_courses" type="radio" name="selection" value="All courses">All courses
-                   </div>
-                 </div>
-               </div>
 
 
-                   <div id="DivCheckbox" style="display:none;">
-                       <div class="form-group row" >
-                           <label for="inputEmail3" class="col-sm-4 col-form-label">Show detailed information of the attendances:</label>
-                           <div class="col-sm-8">
-                               <input id="show_all" type="checkbox" name="checkbox" value="all cases">
-                           </div>
-                       </div>
-                   </div>
 
 
 
                    <div id="DivCheck" style="display:block;">
                        <div class="form-group row">
-                           <label for="inputEmail3" class="col-sm-4 col-form-label">Name:</label>
+                           <label for="inputEmail3" class="col-sm-4 col-form-label">Minimum required percentage:</label>
                            <div class="col-sm-8">
-                               <input type="text" name="input_name" class="form-control" id="input_name"  autocomplete="off"  placeholder="">
-                               <div id="nameList"></div>
+                               <input type="text" required name="minimum_percentage" class="form-control" id="inputRegNo"  value="{{$minimum_percentage}}"  >
 
 
-                           </div>
-                       </div>
-
-                       <span id="message3"></span>
-                   </div>
-
-
-                   {{--<div id="DivCheckStaff" style="display:none;">--}}
-                       {{--<div class="form-group row">--}}
-                           {{--<label for="inputEmail3" class="col-sm-4 col-form-label">Employee Id:</label>--}}
-                           {{--<div class="col-sm-8">--}}
-                               {{--<input type="text" name="input_name" class="form-control" id="inputRegNoStaff"   oninput="checkUser();"  placeholder="Employee id">--}}
-                               {{--<p class="pt-1 " id="user_availability"></p>--}}
-
-
-                           {{--</div>--}}
-                       {{--</div>--}}
-                   {{--</div>--}}
-
-
-                   <div id="programmediv"  style="display:none;">
-                       <div class="form-group row">
-                           <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Programme <span style="display: none;" id="staff_programme">(in which the course belongs)</span></label>
-                           <div class="input_radio col-sm-8">
-
-                               <input type="text" name="prog" class="form-control" id="inputProg"  autocomplete="off" placeholder="In short form like CEIT4,TE1 etc">
-                               <div id="nameListP"></div>
 
                            </div>
                        </div>
-                       <span id="message2"></span>
-
                    </div>
 
 
@@ -285,24 +233,8 @@
 
 
 
-     <div id="coursediv"  style="display:block;">
-      <div class="form-group row">
-     <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
-     <div class="input_radio col-sm-8">
 
-         <select class="form-control" name="course_id" id="selectDiv">
-
-
-         </select>
-     {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
-     </div>
-   </div>
-     </div>
-
-
-
-
-     <center><button id="generate_btn"  class="btn btn-primary" type="submit">Generate Report</button></center>
+     <center><button id="generate_btn"  class="btn btn-primary" type="submit">Change</button></center>
      </form>
   </div>
 
@@ -316,80 +248,95 @@
          <div class="modal-dialog" role="document">
      <div class="modal-content">
          <div class="modal-header">
-           <b><h5 class="modal-title">Fill the Form Below to Generate Tests Report</h5></b>
+           <b><h5 class="modal-title">Time parameters for fingeprint device(In minutes) </h5></b>
            <button type="button" class="close" data-dismiss="modal">&times;</button>
            </div>
 
             <div class="modal-body">
-              <form id="test_form"  action="{{ route('report_tests')}}" class="form-container form-horizontal" method="get">
+              <form id="test_form"  action="{{ route('change_validity_period')}}" class="form-container form-horizontal" method="get">
                 {{csrf_field()}}
-                <div class="form-group row">
-                  <label for="" class="col-sm-4 col-form-label">For:</label>
-                   <div class="col-sm-8">
-                  <select name="category" id="getSelectiont" onchange="SelectCheckTest(this)">
-
-                    <option value="3" id="Option" >One student</option>
-                     <option value="1" id="Option">All students</option>
-                 </select>
-               </div>
-              </div>
-
-              <div id="DivCheckRadiot" style="display:block;">
-                <div class="form-group row" >
-                  <label for="inputEmail3" class="col-sm-4 col-form-label">Specification:</label>
-                  <div class="col-sm-8">
-                    <input id="one_courset" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
-                    <input id="All_coursest" type="radio" name="selection" value="All courses">All courses
-
-                  </div>
-                </div>
-              </div>
 
 
-                  <div id="DivCheckt" style="display:block;">
+                  <div >
                       <div class="form-group row">
-                          <label for="inputEmail3" class="col-sm-4 col-form-label">Student's name:</label>
-                          <div class="col-sm-8">
-                              <input type="text" name="input_name" class="form-control"  autocomplete="off"    id="input_namet" placeholder="Name of the student">
-                              <div id="nameListt"></div>
-                          </div>
-
-                      </div>
-                      <span id="message3t"></span>
-                  </div>
-
-
-                  <div id="programmedivt"  style="display:none;">
-                      <div class="form-group row">
-                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Programme:</label>
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label"> Class validity duration:</label>
                           <div class="input_radio col-sm-8">
-
-                              <input type="text"  class="form-control" id="inputProgt"  autocomplete="off" placeholder="Programme in short form like CEIT4,TE1 etc">
-                              <div id="nameListtP"></div>
+                              <input type="number" name="class_validity" required class="form-control" value="{{$class_validity}}" autocomplete="off" >
                               {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
                           </div>
                       </div>
-                      <span id="message2t"></span>
+
 
                   </div>
 
 
-    <div id="coursedivt" style="display:block;">
-      <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
-    <div class="input_radio col-sm-8">
-        <select class="form-control" name="course_id" id="selectDivt">
+                  <div>
+                      <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Test validity duration:</label>
+                          <div class="input_radio col-sm-8">
+                              <input type="number" name="test_validity" required class="form-control" value="{{$test_validity}}"  autocomplete="off" >
+                              {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                          </div>
+                      </div>
 
 
-        </select>
-    </div>
-  </div>
-    </div>
+                  </div>
+
+                  <div>
+                      <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">UE validity duration:</label>
+                          <div class="input_radio col-sm-8">
+                              <input type="number" name="ue_validity" required class="form-control" value="{{$ue_validity}}" autocomplete="off" >
+                              {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                          </div>
+                      </div>
+
+
+                  </div>
+
+
+                  <div>
+                      <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Time allowance for tests:</label>
+                          <div class="input_radio col-sm-8">
+                              <input type="number" name="test_allowance" required class="form-control" value="{{$test_allowance}}" autocomplete="off" >
+                              {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                          </div>
+                      </div>
+
+
+                  </div>
+
+
+                  <div>
+                      <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Time allowance for classes:</label>
+                          <div class="input_radio col-sm-8">
+                              <input type="number" name="class_allowance" required class="form-control" value="{{$class_allowance}}" autocomplete="off" >
+                              {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                          </div>
+                      </div>
+
+
+                  </div>
+
+
+                  <div>
+                      <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Time allowance for UE:</label>
+                          <div class="input_radio col-sm-8">
+                              <input type="number" name="ue_allowance" required class="form-control" value="{{$ue_allowance}}" autocomplete="off" >
+                              {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                          </div>
+                      </div>
+
+
+                  </div>
 
 
 
 
-    <center><button id="generate_btnt"  class="btn btn-primary" type="submit">Generate Report</button></center>
+    <center><button id="generate_btnt"  class="btn btn-primary" type="submit">Change</button></center>
     </form>
   </div>
 
@@ -405,79 +352,41 @@
          <div class="modal-dialog" role="document">
      <div class="modal-content">
          <div class="modal-header">
-           <b><h5 class="modal-title">Fill the Form Below to Generate Examinations Report</h5></b>
+           <b><h5 class="modal-title">Set Academic year and semester</h5></b>
            <button type="button" class="close" data-dismiss="modal">&times;</button>
            </div>
 
             <div class="modal-body">
-              <form id="ue_form"  action="{{ route('report_ue')}}" class="form-container form-horizontal" method="get">
+              <form id="ue_form"  action="{{ route('change_academic_year')}}" class="form-container form-horizontal" method="get">
                 {{csrf_field()}}
-                <div class="form-group row">
-                  <label for="" class="col-sm-4 col-form-label">For:</label>
-                  <div class="col-sm-8">
-                  <select name="category" id="getSelectionu" onchange="SelectCheckUe(this)">
-
-                    <option value="3" id="Option" >One student</option>
-                     <option value="1" id="Option">All students</option>
-                 </select>
-               </div>
-              </div>
-
-              <div id="DivCheckRadiou" style="display:block;">
-                <div class="form-group row" >
-                  <label for="inputEmail3" class="col-sm-4 col-form-label">Specification:</label>
-                  <div class="col-sm-8">
-                    <input id="one_courseu" type="radio" name="selection" checked="checked" value="One course">One course &nbsp
-                    <input id="All_coursesu" type="radio" name="selection" value="All courses">All courses
-                  </div>
-                </div>
-              </div>
-
-
-
-                  <div id="DivChecku" style="display:block;">
+                  <div>
                       <div class="form-group row">
-                          <label for="inputEmail3" class="col-sm-4 col-form-label">Student's name:</label>
-                          <div class="col-sm-8">
-                              <input type="text" name="input_name" class="form-control"  autocomplete="off"  id="input_nameu" placeholder="Name of the student">
-                              <div id="nameListu"></div>
-                          </div>
-
-                      </div>
-                      <span id="message3u"></span>
-
-                  </div>
-
-                  <div id="programmedivu"  style="display:none;">
-                      <div class="form-group row">
-                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Programme:</label>
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Academic year:</label>
                           <div class="input_radio col-sm-8">
-
-                              <input type="text"  class="form-control" id="inputProgu"  autocomplete="off" placeholder="Programme in short form like CEIT4,TE1 etc">
-                              <div id="nameListuP"></div>
+                              <input type="text" name="academic_year" required class="form-control" value="{{$academic_year}}"  autocomplete="off" >
                               {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
                           </div>
                       </div>
-                      <span id="message2u"></span>
+
 
                   </div>
 
-    <div id="coursedivu"  style="display:block;">
-      <div class="form-group row">
-    <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Course ID:</label>
-    <div class="input_radio col-sm-8">
-        <select class="form-control" name="course_id" id="selectDivu">
+                  <div>
+                      <div class="form-group row">
+                          <label for="inputEmail3" class="col-sm-4 for_label col-form-label">Semester:</label>
+                          <div class="input_radio col-sm-8">
+                              <input type="text" name="semester" required class="form-control" value="{{$semester}}" autocomplete="off" >
+                              {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                          </div>
+                      </div>
 
 
-        </select>
-    </div>
-  </div>
-    </div>
+                  </div>
 
 
 
 
-    <center><button id="generate_btnu"  class="btn btn-primary" type="submit">Generate Report</button></center>
+    <center><button id="generate_btnu"  class="btn btn-primary" type="submit">Change</button></center>
     </form>
   </div>
 
@@ -486,22 +395,69 @@
   </div>
 
 
+
+      <div class="modal fade" id="title" role="dialog">
+
+
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <b><h5 class="modal-title">Change system title</h5></b>
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+
+                  <div class="modal-body">
+                      <form id="ue_form"  action="{{ route('change_title')}}" class="form-container form-horizontal" method="get">
+                          {{csrf_field()}}
+                          <div>
+                              <div class="form-group row">
+                                  <label for="inputEmail3" class="col-sm-4 for_label col-form-label">System title:</label>
+                                  <div class="input_radio col-sm-8">
+                                      <input type="text" name="title" required class="form-control" value="{{$title}}"  autocomplete="off" >
+                                      {{--<input type="text" onblur="this.value=removeSpaces(this.value);" name="course_id" class="form-control" id="inputCourse"  placeholder="Course ID">--}}
+                                  </div>
+                              </div>
+
+
+                          </div>
+
+
+                          <center><button id="generate_btnu"  class="btn btn-primary" type="submit">Change</button></center>
+                      </form>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
 <div class="col-10">
-
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{$message}}</p>
+        </div>
+    @endif
   <div class="card hero-image border-info" >
   <div class="card-body">
-    <center><h1 class="card-title"><b>WELCOME TO COLLEGE OF ICT</b></h1></center>
-    <center><h2 class="card-title"><b>ATTENDANCE REPORTS GENERATION PORTAL</b></h2></center>
-
+    <center><h1 class="card-title"><b>UNIVERSITY OF DAR ES SALAAM</b></h1></center>
+    <center><h2 class="card-title"><b>COLLEGE OF ICT</b></h2></center>
+      <center><h2 class="card-title"><b>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</b></h2></center>
+      <center><h2 class="card-title"><b>SYSTEM SETTINGS</b></h2></center>
     <div align="center">
 
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
 
-    <h1 >SEMESTER 1 2019/20</h1><br>
-    <h2>WEEK: 1-17</h2>
+
 
 
 </div>
@@ -543,14 +499,12 @@ function SelectCheck(nameSelect){
           var input = document.getElementById("inputProg");
           input.value ="";
 
-          var input11 = document.getElementById("input_name");
-          input11.value ="";
 
           var ele7 = document.getElementById("inputProg");
           ele7.required = true;
 
 
-          var ele4 = document.getElementById("input_name");
+          var ele4 = document.getElementById("inputRegNo");
           ele4.required = false;
 
       }else if(nameSelect.value== 2) {
@@ -570,7 +524,7 @@ function SelectCheck(nameSelect){
           var ele7 = document.getElementById("inputProg");
           ele7.required = false;
 
-          var ele4 = document.getElementById("input_name");
+          var ele4 = document.getElementById("inputRegNo");
           ele4.required = true;
 
           var ele2 = document.getElementById("show_all");
@@ -582,19 +536,19 @@ function SelectCheck(nameSelect){
                   document.getElementById("DivCheckbox").style.display = "block";
                   document.getElementById("programmediv").style.display = "none";
                   document.getElementById("DivCheck").style.display = "block";
-                  var input = document.getElementById("input_name");
+                  var input = document.getElementById("inputRegNo");
                   input.value ="";
 
 
 
-
+                  document.getElementById("user_availability").innerHTML ='';
                   $('#selectDiv').html("<option>Select Course</option>");
               } else {
                   document.getElementById("coursediv").style.display = "none";
                   // var ele7 = document.getElementById("inputProg");
                   // ele7.required = false;
                   //
-                  // var ele4 = document.getElementById("input_name");
+                  // var ele4 = document.getElementById("inputRegNo");
                   // ele4.required = true;
 
               }
@@ -605,9 +559,9 @@ function SelectCheck(nameSelect){
         // document.getElementById("coursediv").style.display = "block";
           document.getElementById("generate_btn").disabled = false;
           $('#selectDiv').html(" <option>Select Course</option>");
-          var input = document.getElementById("input_name");
+          var input = document.getElementById("inputRegNo");
           input.value ="";
-
+          document.getElementById("user_availability").innerHTML ='';
 
 
 
@@ -625,7 +579,7 @@ function SelectCheck(nameSelect){
           document.getElementById("coursediv").style.display = "block";
           document.getElementById("generate_btn").disabled = false;
           $('#selectDiv').html(" <option>Select Course</option>");
-          var input = document.getElementById("input_name");
+          var input = document.getElementById("inputRegNo");
           input.value ="";
 
 
@@ -634,14 +588,14 @@ function SelectCheck(nameSelect){
 
 
 
-
+          document.getElementById("user_availability").innerHTML ='';
           var ele = document.getElementById("one_course");
           ele.checked = true;
 
           var ele7 = document.getElementById("inputProg");
           ele7.required = false;
 
-          var ele4 = document.getElementById("input_name");
+          var ele4 = document.getElementById("inputRegNo");
           ele4.required = true;
 
 
@@ -649,9 +603,9 @@ function SelectCheck(nameSelect){
               if( $('#one_course').prop('checked') ){
                   document.getElementById("coursediv").style.display = "block";
 
-                  var input = document.getElementById("input_name");
+                  var input = document.getElementById("inputRegNo");
                   input.value ="";
-
+                  document.getElementById("user_availability").innerHTML ='';
                   $('#selectDiv').html(" <option>Select Course</option>");
               } else {
                   document.getElementById("coursediv").style.display = "none";}
@@ -680,7 +634,7 @@ function SelectCheckTest(nameSelect){
 
 
 
-          var ele4 = document.getElementById("input_namet");
+          var ele4 = document.getElementById("inputRegNot");
           ele4.required = false;
 
       }else if(nameSelect.value== 2) {
@@ -693,16 +647,16 @@ function SelectCheckTest(nameSelect){
         document.getElementById("coursedivt").style.display = "block";
         var ele = document.getElementById("one_courset");
         ele.checked = true;
-
+          document.getElementById("user_availabilityt").innerHTML ='';
           $('#selectDivt').html(" <option>Select Course</option>");
 
           var ele7 = document.getElementById("inputProgt");
           ele7.required = false;
 
-          var input = document.getElementById("input_namet");
+          var input = document.getElementById("inputRegNot");
           input.value ="";
 
-        var ele4 = document.getElementById("input_namet");
+        var ele4 = document.getElementById("inputRegNot");
         ele4.required = true;
 
 
@@ -716,7 +670,7 @@ function SelectCheckTest(nameSelect){
           document.getElementById("coursedivt").style.display = "block";
           var ele = document.getElementById("one_courset");
           ele.checked = true;
-
+          document.getElementById("user_availabilityt").innerHTML ='';
           $('#selectDivt').html(" <option>Select Course</option>");
 
           var ele7 = document.getElementById("inputProgt");
@@ -725,10 +679,10 @@ function SelectCheckTest(nameSelect){
 
 
 
-          var input = document.getElementById("input_namet");
+          var input = document.getElementById("inputRegNot");
           input.value ="";
 
-          var ele4 = document.getElementById("input_namet");
+          var ele4 = document.getElementById("inputRegNot");
           ele4.required = true;
 
       }
@@ -754,7 +708,7 @@ function SelectCheckUe(nameSelect){
           var ele7 = document.getElementById("inputProgu");
           ele7.required = true;
 
-          var ele4 = document.getElementById("input_nameu");
+          var ele4 = document.getElementById("inputRegNou");
           ele4.required = false;
 
       }else if(nameSelect.value== 2) {
@@ -772,16 +726,16 @@ function SelectCheckUe(nameSelect){
         document.getElementById("coursedivu").style.display = "block";
         var ele = document.getElementById("one_courseu");
         ele.checked = true;
-
+          document.getElementById("user_availabilityu").innerHTML ='';
           $('#selectDivu').html(" <option>Select Course</option>");
 
           var ele7 = document.getElementById("inputProgu");
           ele7.required = false;
 
-          var input = document.getElementById("input_nameu");
+          var input = document.getElementById("inputRegNou");
           input.value ="";
 
-        var ele4 = document.getElementById("input_nameu");
+        var ele4 = document.getElementById("inputRegNou");
         ele4.required = true;
 
 
@@ -800,12 +754,12 @@ function SelectCheckUe(nameSelect){
 
           var ele7 = document.getElementById("inputProgu");
           ele7.required = false;
+          document.getElementById("user_availabilityu").innerHTML ='';
 
-
-          var input = document.getElementById("input_nameu");
+          var input = document.getElementById("inputRegNou");
           input.value ="";
 
-          var ele4 = document.getElementById("input_nameu");
+          var ele4 = document.getElementById("inputRegNou");
           ele4.required = true;
 
       }
@@ -814,71 +768,71 @@ function SelectCheckUe(nameSelect){
 }
 
 //CLASS CHECK IF USER EXISTS START
-{{--function checkUser() {--}}
+function checkUser() {
 
-    {{--var input_name=document.getElementById('input_name').value;--}}
+    var inputRegNo=document.getElementById('inputRegNo').value;
 
-    {{--$.ajax({--}}
-        {{--url : '{{ route("check_user")}}',--}}
-        {{--type : "GET",--}}
-        {{--data: {input_name: input_name},--}}
-        {{--success : function(data){--}}
-            {{--if(data===""){--}}
+    $.ajax({
+        url : '{{ route("check_user")}}',
+        type : "GET",
+        data: {inputRegNo: inputRegNo},
+        success : function(data){
+            if(data===""){
 
-                {{--document.getElementById('user_availability').style.color = 'red';--}}
-                {{--document.getElementById("user_availability").innerHTML ='User does not exist';--}}
-                {{--document.getElementById("user_availability").className += "status_back";--}}
-                {{--document.getElementById("selectDiv").disabled = true;--}}
-                {{--document.getElementById("generate_btn").disabled = true;--}}
-
-
-            {{--}else {--}}
-
-                {{--document.getElementById('user_availability').style.color = 'green';--}}
-                {{--document.getElementById("user_availability").className += "status_back";--}}
-                {{--document.getElementById("user_availability").innerHTML =data;--}}
-                {{--document.getElementById("selectDiv").disabled = false;--}}
-                {{--document.getElementById("generate_btn").disabled = false;--}}
-
-            {{--}--}}
-
-        {{--},--}}
-        {{--error : function(data) {--}}
-
-        {{--}--}}
-    {{--});--}}
+                document.getElementById('user_availability').style.color = 'red';
+                document.getElementById("user_availability").innerHTML ='User does not exist';
+                document.getElementById("user_availability").className += "status_back";
+                document.getElementById("selectDiv").disabled = true;
+                document.getElementById("generate_btn").disabled = true;
 
 
-    {{--$.ajax({--}}
-        {{--url : '{{ route("check_course")}}',--}}
-        {{--type : "GET",--}}
-        {{--data: {input_name: input_name},--}}
-        {{--dataType:"html",--}}
-        {{--success : function(data){--}}
+            }else {
+
+                document.getElementById('user_availability').style.color = 'green';
+                document.getElementById("user_availability").className += "status_back";
+                document.getElementById("user_availability").innerHTML =data;
+                document.getElementById("selectDiv").disabled = false;
+                document.getElementById("generate_btn").disabled = false;
+
+            }
+
+        },
+        error : function(data) {
+
+        }
+    });
 
 
-            {{--if(data===""){--}}
+    $.ajax({
+        url : '{{ route("check_course")}}',
+        type : "GET",
+        data: {inputRegNo: inputRegNo},
+        dataType:"html",
+        success : function(data){
 
 
-            {{--}else {--}}
+            if(data===""){
 
 
-                {{--$('#selectDiv').html(data);--}}
-                {{--// document.getElementById("selectDiv").html(data);--}}
-                {{--// console.log(data);--}}
+            }else {
 
 
-            {{--}--}}
-
-        {{--},--}}
-        {{--error : function(data) {--}}
-
-        {{--}--}}
-    {{--});--}}
+                $('#selectDiv').html(data);
+                // document.getElementById("selectDiv").html(data);
+                // console.log(data);
 
 
+            }
 
-{{--}--}}
+        },
+        error : function(data) {
+
+        }
+    });
+
+
+
+}
 
 
 
@@ -894,7 +848,7 @@ function SelectCheckUe(nameSelect){
 //TEST CHECK IF USER EXISTS START
 function checkUsert() {
 
-    var inputRegNo=document.getElementById('input_namet').value;
+    var inputRegNo=document.getElementById('inputRegNot').value;
 
     $.ajax({
         url : '{{ route("check_user")}}',
@@ -974,7 +928,7 @@ function checkUsert() {
 //UE CHECK IF USER EXISTS START
 function checkUseru() {
 
-    var inputRegNo=document.getElementById('input_nameu').value;
+    var inputRegNo=document.getElementById('inputRegNou').value;
 
     $.ajax({
         url : '{{ route("check_user")}}',
@@ -1054,273 +1008,6 @@ function checkUseru() {
 
 $(document).ready(function() {
 
-    //CLASS  NAME SEARCH SUGGESTIONS START
-    var a =" ";
-
-    $('#input_name').keyup(function(e){
-        e.preventDefault();
-        var query = $(this).val();
-        if(query != '')
-        {
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{ route('autocomplete.name') }}",
-                method:"POST",
-                data:{query:query, _token:_token},
-                success:function(data){
-                    if(data=='0'){
-                        $('#input_name').attr('style','border:1px solid #f00');
-                        a = '0';
-                    }
-                    else{
-                        a ='1';
-                        $('#message3').hide();
-                        $('#input_name').attr('style','border:1px solid #ced4da');
-                        $('#nameList').fadeIn();
-                        $('#nameList').html(data);
-                    }
-                }
-            });
-        }
-        else if(query==''){
-            a ='1';
-            $('#message3').hide();
-            $('#input_name').attr('style','border:1px solid #ced4da');
-        }
-    });
-    $(document).on('click', '#list', function(){
-
-        a ='1';
-        $('#message3').hide();
-        $('#input_name').attr('style','border:1px solid #ced4da');
-
-        $('#input_name').val($(this).text());
-
-        var input_name=$(this).text();
-
-        $.ajax({
-            url : '{{ route("check_course")}}',
-            type : "GET",
-            data: {input_name: input_name},
-            dataType:"html",
-            success : function(data){
-
-
-                if(data===""){
-                    console.log('empty');
-
-                }else {
-
-                    // console.log(data);
-                    $('#selectDiv').html(data);
-                    // document.getElementById("selectDiv").html(data);
-
-
-
-                }
-
-            },
-            error : function(data) {
-
-            }
-        });
-
-
-
-
-
-        $('#nameList').fadeOut();
-    });
-
-    $(document).on('click', 'form', function(){
-        $('#nameList').fadeOut();
-    });
-
-
-    //CLASS NAME SEARCH SUGGESTIONS END
-
-
-
-
-    //TEST  NAME SEARCH SUGGESTIONS START
-    var a =" ";
-
-    $('#input_namet').keyup(function(e){
-        e.preventDefault();
-        var query = $(this).val();
-        if(query != '')
-        {
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{ route('autocomplete.name') }}",
-                method:"POST",
-                data:{query:query, _token:_token},
-                success:function(data){
-                    if(data=='0'){
-                        $('#input_namet').attr('style','border:1px solid #f00');
-                        a = '0';
-                    }
-                    else{
-                        a ='1';
-                        $('#message3t').hide();
-                        $('#input_namet').attr('style','border:1px solid #ced4da');
-                        $('#nameListt').fadeIn();
-                        $('#nameListt').html(data);
-                    }
-                }
-            });
-        }
-        else if(query==''){
-            a ='1';
-            $('#message3t').hide();
-            $('#input_namet').attr('style','border:1px solid #ced4da');
-        }
-    });
-    $(document).on('click', '#list', function(){
-
-        a ='1';
-        $('#message3t').hide();
-        $('#input_namet').attr('style','border:1px solid #ced4da');
-
-        $('#input_namet').val($(this).text());
-
-        var input_name=$(this).text();
-
-        $.ajax({
-            url : '{{ route("check_course")}}',
-            type : "GET",
-            data: {input_name: input_name},
-            dataType:"html",
-            success : function(data){
-
-
-                if(data===""){
-                    console.log('empty');
-
-                }else {
-
-                    // console.log(data);
-                    $('#selectDivt').html(data);
-                    // document.getElementById("selectDiv").html(data);
-
-
-
-                }
-
-            },
-            error : function(data) {
-
-            }
-        });
-
-
-
-
-
-        $('#nameListt').fadeOut();
-    });
-
-    $(document).on('click', 'form', function(){
-        $('#nameListt').fadeOut();
-    });
-
-
-
-    //TEST NAME SEARCH SUGGESTIONS END
-
-
-
-
-    //UE  NAME SEARCH SUGGESTIONS START
-    var a =" ";
-
-    $('#input_nameu').keyup(function(e){
-        e.preventDefault();
-        var query = $(this).val();
-        if(query != '')
-        {
-            var _token = $('input[name="_token"]').val();
-            $.ajax({
-                url:"{{ route('autocomplete.name') }}",
-                method:"POST",
-                data:{query:query, _token:_token},
-                success:function(data){
-                    if(data=='0'){
-                        $('#input_nameu').attr('style','border:1px solid #f00');
-                        a = '0';
-                    }
-                    else{
-                        a ='1';
-                        $('#message3u').hide();
-                        $('#input_nameu').attr('style','border:1px solid #ced4da');
-                        $('#nameListu').fadeIn();
-                        $('#nameListu').html(data);
-                    }
-                }
-            });
-        }
-        else if(query==''){
-            a ='1';
-            $('#message3u').hide();
-            $('#input_nameu').attr('style','border:1px solid #ced4da');
-        }
-    });
-    $(document).on('click', '#list', function(){
-
-        a ='1';
-        $('#message3u').hide();
-        $('#input_nameu').attr('style','border:1px solid #ced4da');
-
-        $('#input_nameu').val($(this).text());
-
-        var input_name=$(this).text();
-
-        $.ajax({
-            url : '{{ route("check_course")}}',
-            type : "GET",
-            data: {input_name: input_name},
-            dataType:"html",
-            success : function(data){
-
-
-                if(data===""){
-                    console.log('empty');
-
-                }else {
-
-                    // console.log(data);
-                    $('#selectDivu').html(data);
-                    // document.getElementById("selectDiv").html(data);
-
-
-
-                }
-
-            },
-            error : function(data) {
-
-            }
-        });
-
-
-
-
-
-        $('#nameListu').fadeOut();
-    });
-
-    $(document).on('click', 'form', function(){
-        $('#nameListu').fadeOut();
-    });
-
-
-
-    //TEST NAME SEARCH SUGGESTIONS END
-
-
-
-
-
 //CLASS  PROGRAMME SEARCH SUGGESTIONS START
     var a =" ";
 
@@ -1343,8 +1030,8 @@ $(document).ready(function() {
                         a ='1';
                         $('#message2').hide();
                         $('#inputProg').attr('style','border:1px solid #ced4da');
-                        $('#nameListP').fadeIn();
-                        $('#nameListP').html(data);
+                        $('#nameList').fadeIn();
+                        $('#nameList').html(data);
                     }
                 }
             });
@@ -1396,11 +1083,11 @@ $(document).ready(function() {
 
 
 
-        $('#nameListP').fadeOut();
+        $('#nameList').fadeOut();
     });
 
     $(document).on('click', 'form', function(){
-        $('#nameListP').fadeOut();
+        $('#nameList').fadeOut();
     });
 
     //PROGRAMME SEARCH SUGGESTIONS END
@@ -1429,8 +1116,8 @@ $(document).ready(function() {
                         a ='1';
                         $('#message2t').hide();
                         $('#inputProgt').attr('style','border:1px solid #ced4da');
-                        $('#nameListtP').fadeIn();
-                        $('#nameListtP').html(data);
+                        $('#nameListt').fadeIn();
+                        $('#nameListt').html(data);
                     }
                 }
             });
@@ -1482,11 +1169,11 @@ $(document).ready(function() {
 
 
 
-        $('#nameListtP').fadeOut();
+        $('#nameListt').fadeOut();
     });
 
     $(document).on('click', 'form', function(){
-        $('#nameListtP').fadeOut();
+        $('#nameListt').fadeOut();
     });
 
     //PROGRAMME SEARCH SUGGESTIONS END
@@ -1518,8 +1205,8 @@ $(document).ready(function() {
                         a ='1';
                         $('#message2u').hide();
                         $('#inputProgu').attr('style','border:1px solid #ced4da');
-                        $('#nameListuP').fadeIn();
-                        $('#nameListuP').html(data);
+                        $('#nameListu').fadeIn();
+                        $('#nameListu').html(data);
                     }
                 }
             });
@@ -1571,11 +1258,11 @@ $(document).ready(function() {
 
 
 
-        $('#nameListuP').fadeOut();
+        $('#nameListu').fadeOut();
     });
 
     $(document).on('click', 'form', function(){
-        $('#nameListuP').fadeOut();
+        $('#nameListu').fadeOut();
     });
 
     //PROGRAMME SEARCH SUGGESTIONS END
@@ -1623,15 +1310,15 @@ $("#getSelection").trigger('change');
           document.getElementById("programmediv").style.display = "none";
           document.getElementById("DivCheckbox").style.display = "none";
           document.getElementById("DivCheck").style.display = "block";
-          var input = document.getElementById("input_name");
+          var input = document.getElementById("inputRegNo");
           input.value ="";
-
+          document.getElementById("user_availability").innerHTML ='';
           $('#selectDiv').html(" <option>Select Course</option>");
 
           var ele7 = document.getElementById("inputProg");
           ele7.required = false;
 
-          var ele4 = document.getElementById("input_name");
+          var ele4 = document.getElementById("inputRegNo");
           ele4.required = true;
 
       } else {
@@ -1653,22 +1340,22 @@ $("#getSelection").trigger('change');
                 document.getElementById("DivCheckRadio").style.display = "none";
                 document.getElementById("DivCheck").style.display = "none";
                 document.getElementById("programmediv").style.display = "block";
-                var ele21 = document.getElementById("input_name");
+                var ele21 = document.getElementById("inputRegNo");
                 ele21.required = false;
 
-
+                document.getElementById("user_availability").innerHTML ='';
                 $('#selectDiv').html(" <option>Select Course</option>");
 
             } else {
 
-                var input = document.getElementById("input_name");
+                var input = document.getElementById("inputRegNo");
                 input.value ="";
                 document.getElementById("DivCheckRadio").style.display = "block";
                 document.getElementById("DivCheck").style.display = "block";
-                var ele21 = document.getElementById("input_name");
+                var ele21 = document.getElementById("inputRegNo");
                 ele21.required = true;
                 document.getElementById("programmediv").style.display = "none";
-
+                document.getElementById("user_availability").innerHTML ='';
                 $('#selectDiv').html(" <option>Select Course</option>");
             }
 
@@ -1677,13 +1364,13 @@ $("#getSelection").trigger('change');
 
             // if( $('#show_all').prop('checked') ){
             //     document.getElementById("DivCheckRadio").style.display = "none";
-            //     var input = document.getElementById("input_name");
+            //     var input = document.getElementById("inputRegNo");
             //     input.value ="";
             //     document.getElementById("user_availability").innerHTML ='';
             //     $('#selectDiv').html(" <option>Select Course</option>");
             // } else {
             //     document.getElementById("DivCheckRadio").style.display = "block";
-            //     var input = document.getElementById("input_name");
+            //     var input = document.getElementById("inputRegNo");
             //     input.value ="";
             //     document.getElementById("user_availability").innerHTML ='';
             //     $('#selectDiv').html(" <option>Select Course</option>");
@@ -1708,9 +1395,9 @@ $("#getSelection").trigger('change');
 
 
 
-                        var input = document.getElementById("input_namet");
+                        var input = document.getElementById("inputRegNot");
                         input.value ="";
-
+                        document.getElementById("user_availabilityt").innerHTML ='';
                         $('#selectDivt').html(" <option>Select Course</option>");
 
 
@@ -1723,9 +1410,9 @@ $("#getSelection").trigger('change');
                     $('#one_courset').change(function(){
                         if( $('#one_courset').prop('checked') ){
                           document.getElementById("coursedivt").style.display = "block";
-                            var input = document.getElementById("input_namet");
+                            var input = document.getElementById("inputRegNot");
                             input.value ="";
-
+                            document.getElementById("user_availabilityt").innerHTML ='';
                             $('#selectDivt').html(" <option>Select Course</option>");
 
                         } else {
@@ -1744,9 +1431,9 @@ $("#getSelection").trigger('change');
                                   if( $('#All_coursesu').prop('checked')){
                                     document.getElementById("coursedivu").style.display = "none";
 
-                                      var input = document.getElementById("input_nameu");
+                                      var input = document.getElementById("inputRegNou");
                                       input.value ="";
-
+                                      document.getElementById("user_availabilityu").innerHTML ='';
                                       $('#selectDivu').html(" <option>Select Course</option>");
 
                                   } else {
@@ -1757,9 +1444,9 @@ $("#getSelection").trigger('change');
                                   $('#one_courseu').change(function(){
                                       if( $('#one_courseu').prop('checked') ){
                                         document.getElementById("coursedivu").style.display = "block";
-                                          var input = document.getElementById("input_nameu");
+                                          var input = document.getElementById("inputRegNou");
                                           input.value ="";
-
+                                          document.getElementById("user_availabilityu").innerHTML ='';
                                           $('#selectDivu').html(" <option>Select Course</option>");
 
                                       } else {

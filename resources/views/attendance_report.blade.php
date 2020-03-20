@@ -15,10 +15,10 @@ div.dataTables_length label {
     font-weight: normal;
     text-align: left;
     white-space: nowrap;
-    display: inline-block;  
+    display: inline-block;
 }
 
-div.dataTables_length select { 
+div.dataTables_length select {
   height:25px;
   width:10px;
   font-size: 70%;
@@ -26,9 +26,9 @@ div.dataTables_length select {
 table.dataTable {
 font-family: "Nunito", sans-serif;
     font-size: 15px;
-    
 
-    
+
+
   }
   table.dataTable.no-footer {
     border-bottom: 0px solid #111;
@@ -46,7 +46,7 @@ hr {
 
 </style>
 
-@endsection 
+@endsection
 
 
 @section('content')
@@ -56,7 +56,7 @@ hr {
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 84%">
@@ -72,7 +72,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
   </li>
@@ -210,7 +210,7 @@ hr {
           <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -237,8 +237,8 @@ hr {
 <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
   </li>
-  
-  
+
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           INSTRUCTORS
@@ -262,6 +262,7 @@ hr {
 
 </ul>
 </div>
+
 @endif
 
 
@@ -275,7 +276,24 @@ hr {
 
         @if((count($instructor_data)>0) OR (count($instructor2_data)>0) OR (count($instructor3_data)>0) OR (count($instructor4_data)>0) OR (count($instructor5_data)>0) OR (count($Tutorial_Assistant_data)>0) OR (count($technical_staff_data)>0) OR (count($Technical_Staff_2_data)>0) OR (count($Technical_Staff_3_data)>0))
             <div class="col-xs-9"><legend>
-                    <p class="note"> Class attendance report for {{strtoupper($_GET['course_id'])}}({{$course_name}}) </p>
+                    <div style="float: right;">
+                    <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                    <h6 class="note">Semester: {{$current_semester}}</h6></div>
+                    @if($dept_short=='CSE')
+                        <h4 class="note">Department: Computer science and Engineering</h4>
+                    @elseif($dept_short=='ETE')
+
+                        <h4 class="note">Department: Electronics and Telecommunications Engineering</h4>
+                    @else
+
+
+                    @endif
+
+                    <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h4>
+
+                    <u><p class="note"> Class attendance report for staffs</p></u>
+
+
 
                 </legend> </div>
 
@@ -283,14 +301,23 @@ hr {
 
         @endif
 
-
 <!-- One student all courses -->
 @elseif($_GET['selection']=='All courses')
 
 @if(count($all_courses)>0)
     <div class="col-xs-9"><legend>
-      <p class="note">Class attendance report for <b>{{$name}} ({{$reg_no}})</b> </p>
-    <h5 class="note">Course(s): All </h5>
+            <div style="float: right;">
+                <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                <h6 class="note">Semester: {{$current_semester}}</h6></div>
+            @foreach($program_fullAllCourses as $var)
+                <h4 class="note">Programme: {{$var->full}}</h4>
+            @endforeach
+            <h4 class="note">Case: All courses </h4>
+
+      <u><p class="note">Class attendance report for {{$name}} ({{$reg_no}})</p></u>
+
+
+
     </legend> </div>
 
     @else
@@ -303,8 +330,36 @@ hr {
 
 @if(count($all_students)>0)
     <div class="col-xs-9"><legend>
-      <p class="note">Class attendance report for all students </p>
-    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}}</h5>
+            <div style="float: right;">
+                <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                <h6 class="note">Semester: {{$current_semester}}</h6></div>
+            <h6 class="note">Programme:
+
+                <?php
+                $i=0;
+                $length=count($program_full);
+                foreach($program_full as $values){
+                    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                    $val = (iterator_to_array($iterator,true));
+
+
+                    if($i!=($length-1)){
+                        print($val['full'].', ');
+                    }else{
+
+                        print($val['full'].' ');
+
+                    }
+                    $i++;
+                }
+                ?>
+
+            </h6>
+
+            <h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
+      <u><p class="note">Class attendance report for all students </p></u>
+
+
     </legend> </div>
 
     @else
@@ -313,241 +368,757 @@ hr {
 
 
 <!-- Last case -->
-@else
-@if(!empty($name))
-<div class="col-xs-9"><legend>
-  <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
-<h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
-</legend> </div>
-  @else
-
-  @endif
-@endif
 
 
+        @else
 
-<!-- Show also invalid cases -->
-    @if(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
-
-        <div class="col-xs-6">
-            @if(count($dataSingle_all)>0)
-                <div class="col-xs-9"><legend>
-                        <p class="note"> Class attendance report for <b>{{$name}} ({{$reg_no}})</b> </p>
-                        <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}}</h5>
-                    </legend> </div>
-
-            <br>
-
-
-                <table class="hover table table-bordered table-striped" id="myTable1">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($dataSingle_all as $var)
-                        <tr>
-                            <td class="counterCell">.</td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-                <h4>No data to display</h4>
-            @endif
-        </div>
+        @endif
 
 
 
 
+@if(!empty($_GET['checkbox']))
 
-
-
-
-<!-- Show also invalid cases staff -->
-@elseif(!empty($_GET['checkbox']))
-
-    <!-- instructor -->
+        @if((count($instructor_data)>0) OR (count($instructor2_data)>0) OR (count($instructor3_data)>0) OR (count($instructor4_data)>0) OR (count($instructor5_data)>0) OR (count($Tutorial_Assistant_data)>0) OR (count($technical_staff_data)>0) OR (count($Technical_Staff_2_data)>0) OR (count($Technical_Staff_3_data)>0))
+        <!-- instructor -->
 
             <div class="col-xs-6">
-            @if(count($instructor_data)>0)
+                @if(count($instructor_data)>0)
+
                     <div class="col-xs-9"><legend>
                             <p class="note">Instructor:  {{$instructor}} ({{$instructor_reg}}) </p>
 
                         </legend> </div>
-                <br>
-
-  <table class="table table-bordered table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>S/N</th>
-        <th>DATE</th>
-        <th>COURSE START TIME</th>
-        <th>COURSE END TIME</th>
-        <th>SIGNING TIME</th>
-        <th>STATUS</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach ($instructor_data as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-        <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-        <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-        <td>
-          @if($var->status==1)
-          @if($var->validity=='VALID')
-          {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-          @else
-          {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-          @endif
-            @else
-            N/A
-            @endif
-        </td>
-        <td>@if($var->status==1)
-          PRESENT
-          @else
-          ABSENT
-          @endif </td>
-      </tr>
-      @endforeach
-    </tbody>
-
-  </table>
 
 
-  <br>
-
-  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
-
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
-
-
-  @else
-
-  @endif
-</div>
-
-        <!-- instructor2 -->
-        <div class="col-xs-6">
-            @if(count($instructor2_data)>0)
-
-                <div class="col-xs-9"><legend>
-                        <p class="note">Instructor:  {{$instructor_2}} ({{$instructor2_reg}}) </p>
-
-                    </legend> </div>
-                <br>
-
-
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($instructor2_data as $var)
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
                         <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
                         </tr>
-                    @endforeach
-                    </tbody>
+                        </thead>
 
-                </table>
+                        <tbody>
+                        @foreach ($instructor_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
 
 
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor}}%</p>
+                @else
+
+                @endif
+            </div>
+
+            <!-- instructor2 -->
+            <div class="col-xs-6">
+                @if(count($instructor2_data)>0)
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Instructor:  {{$instructor_2}} ({{$instructor2_reg}}) </p>
+
+                        </legend> </div>
+
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($instructor2_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_2}}%</p>
+                @else
+
+                @endif
+            </div>
+
+
+            <!-- instructor3 -->
+            <div class="col-xs-6">
+                @if(count($instructor3_data)>0)
+
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Instructor:  {{$instructor_3}} ({{$instructor3_reg}}) </p>
+                        </legend> </div>
+
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($instructor3_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_3}}%</p>
+                @else
+
+                @endif
+            </div>
+
+            <!-- instructor4 -->
+            <div class="col-xs-6">
+                @if(count($instructor4_data)>0)
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Instructor:  {{$instructor_4}} ({{$instructor4_reg}})</p>
+                        </legend> </div>
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($instructor4_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_4}}%</p>
+                @else
+
+                @endif
+            </div>
+
+
+            <!-- instructor5 -->
+            <div class="col-xs-6">
+                @if(count($instructor5_data)>0)
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Instructor:  {{$instructor_5}} ({{$instructor5_reg}})</p>
+                        </legend> </div>
+
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($instructor5_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_5}}%</p>
+                @else
+
+                @endif
+            </div>
+
+
+            <!-- Tutorial_assistant -->
+            <div class="col-xs-6">
+                @if(count($Tutorial_Assistant_data)>0)
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Tutorial Assistant:  {{$Tutorial_Assistant}} ({{ $Tutorial_Assistant_reg}})</p>
+                        </legend> </div>
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($Tutorial_Assistant_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTutorial_Assistant}}%</p>
+                @else
+
+                @endif
+            </div>
+
+            <!-- technical_staff -->
+            <div class="col-xs-6">
+                @if(count($technical_staff_data)>0)
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Technical staff:  {{$technical_staff}} ({{ $technical_staff_reg}})</p>
+                        </legend> </div>
+
+
+                    <table class="hover table table-bordered table-striped" id="myTable1">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($technical_staff_data as $var)
+                            <tr>
+                                <td class="counterCell">.</td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentagetechnical_staff}}%</p>
+                @else
+
+                @endif
+            </div>
+
+
+            <!-- Techinal_staff 2 -->
+            <div class="col-xs-6">
+                @if(count($Technical_Staff_2_data)>0)
+
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Technical staff:  {{$Technical_Staff_2}} ({{ $Technical_Staff_2_reg}})</p>
+                        </legend> </div>
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($Technical_Staff_2_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTechnical_Staff_2}}%</p>
+                @else
+
+                @endif
+            </div>
+
+
+            <!-- Technical staff3 -->
+            <div class="col-xs-6">
+                @if(count($Technical_Staff_3_data)>0)
+                    <div class="col-xs-9"><legend>
+                            <p class="note">Technical staff:  {{$Technical_Staff_3}} ({{ $Technical_Staff_3_reg}})</p>
+                        </legend> </div>
+
+
+
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        @foreach ($Technical_Staff_3_data as $var)
+                            <tr>
+                                <td class="counterCell"></td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
+                                        @else
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+
+
+
+
+                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTechnical_Staff_3}}%</p>
+                @else
+
+                @endif
+
+
+                <br>
+                <br>
+
+                <h6><u>PUBLIC HOLIDAYS</u></h6>
+                <?php
+                foreach($holidays as $values){
+                    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                    $val = (iterator_to_array($iterator,true));
+
+                    print( date("d/m/Y",strtotime($val['combined_date'])).' - '.$val['holiday_name'].'<br>');
+
+                }
+
+                ?>
+                <br>
                 <br>
 
                 <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
@@ -569,610 +1140,199 @@ hr {
                 </form>
 
 
-            @else
-
-            @endif
-        </div>
 
 
-        <!-- instructor3 -->
-        <div class="col-xs-6">
-            @if(count($instructor3_data)>0)
+                @else
+                    <h4>No data to display</h4>
+                @endif
+
+            </div>
 
 
-                <div class="col-xs-9"><legend>
-                        <p class="note">Instructor:  {{$instructor_3}} ({{$instructor3_reg}}) </p>
-                    </legend> </div>
-                <br>
 
 
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
 
-                    <tbody>
-                    @foreach ($instructor3_data as $var)
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
 
-                </table>
+            @elseif(!empty($_GET['input_name']) AND $_GET['selection']=='One course')
 
+            <div class="col-xs-6">
+                @if(count($dataSingle)>0)
+                    {{--<div class="col-xs-9"><legend>--}}
+                            {{--<p class="note"> Class attendance report for <b>{{$name}} ({{$reg_no}})</b> </p>--}}
+                            {{--@foreach($program_fullAllCourses as $var)--}}
+                                {{--<h5 class="note">Programme: {{$var->full}}</h5>--}}
+                            {{--@endforeach--}}
+                            {{--<h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>--}}
+                        {{--</legend> </div>--}}
+
+                    {{--<br>--}}
+
+                    <div class="col-xs-9"><legend>
+                            <div style="float: right;">
+                                <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                                <h6 class="note">Semester: {{$current_semester}}</h6></div>
+
+                            @if($dept_short=='CSE')
+                                <h4 class="note">Department: Computer science and Engineering</h4>
+                            @elseif($dept_short=='ETE')
+
+                                <h4 class="note">Department: Electronics and Telecommunications Engineering</h4>
+                            @else
+
+
+                            @endif
+
+
+                            <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h4>
+
+                            <u><p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p></u>
+
+                        </legend> </div>
 
                 <br>
 
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
+                    {{--<center><h4>Overall percentage</h4></center>--}}
 
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
 
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-        <!-- instructor4 -->
-        <div class="col-xs-6">
-            @if(count($instructor4_data)>0)
-
-                <div class="col-xs-9"><legend>
-                        <p class="note">Instructor:  {{$instructor_4}} ({{$instructor4_reg}})</p>
-                    </legend> </div>
-                <br>
-
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($instructor4_data as $var)
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-
-        <!-- instructor5 -->
-        <div class="col-xs-6">
-            @if(count($instructor5_data)>0)
-
-                <div class="col-xs-9"><legend>
-                        <p class="note">Instructor:  {{$instructor_5}} ({{$instructor5_reg}})</p>
-                    </legend> </div>
-                <br>
-
-
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($instructor5_data as $var)
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-
-        <!-- Tutorial_assistant -->
-        <div class="col-xs-6">
-            @if(count($Tutorial_Assistant_data)>0)
-
-                <div class="col-xs-9"><legend>
-                        <p class="note">Tutorial Assistant:  {{$Tutorial_Assistant}} ({{ $Tutorial_Assistant_reg}})</p>
-                    </legend> </div>
-                <br>
-
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($Tutorial_Assistant_data as $var)
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-        <!-- technical_staff -->
-        <div class="col-xs-6">
-            @if(count($technical_staff_data)>0)
-
-                <div class="col-xs-9"><legend>
-                        <p class="note">Technical staff:  {{$technical_staff}} ({{ $technical_staff_reg}})</p>
-                    </legend> </div>
-                <br>
-
-                <table class="hover table table-bordered table-striped" id="myTable1">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($technical_staff_data as $var)
-                        <tr>
-                            <td class="counterCell">.</td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-
-        <!-- Techinal_staff 2 -->
-        <div class="col-xs-6">
-            @if(count($Technical_Staff_2_data)>0)
-
-                <div class="col-xs-9"><legend>
-                        <p class="note">Technical staff:  {{$Technical_Staff_2}} ({{ $Technical_Staff_2_reg}})</p>
-                    </legend> </div>
-                <br>
-
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($Technical_Staff_2_data as $var)
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-
-        <!-- Technical staff3 -->
-        <div class="col-xs-6">
-            @if(count($Technical_Staff_3_data)>0)
-                <div class="col-xs-9"><legend>
-                        <p class="note">Technical staff:  {{$Technical_Staff_3}} ({{ $Technical_Staff_3_reg}})</p>
-                    </legend> </div>
-                <br>
-
-
-                <table class="table table-bordered table-striped">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>S/N</th>
-                        <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
-                        <th>SIGNING TIME</th>
-                        <th>STATUS</th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    @foreach ($Technical_Staff_3_data as $var)
-                        <tr>
-                            <td class="counterCell"></td>
-                            <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                            <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-                            <td>
-                                @if($var->status==1)
-                                    @if($var->validity=='VALID')
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived early)
-                                    @else
-                                        {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-                                    @endif
-                                @else
-                                    N/A
-                                @endif
-                            </td>
-                            <td>@if($var->status==1)
-                                    PRESENT
-                                @else
-                                    ABSENT
-                                @endif </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-
-                </table>
-
-
-                <br>
-
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-            @else
-
-            @endif
-        </div>
-
-@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
-
-<div class="col-xs-6">
-
-
-@if (!empty($name))
-<p>Minimum required percentage: 75% </p>
-<center><span class="chart " data-percent="{{$percentage}}">
+                    <center><span class="chart " data-percent="{{$percentage}}">
 		<span class="percent"></span>
 	</span></center>
-<br>
+                    <br>
 
-<div class="center location"><p>Your current percantage so far</p></div>
-  <br>
+                    <div class="center location"><p>Overall percantage so far</p></div>
+<br><br><br>
 
-  <!-- <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
+                    <table class="hover table table-bordered table-striped" id="myTable1">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th>S/N</th>
+                            <th>DATE</th>
+                            <th>COURSE START TIME</th>
+                            <th>COURSE END TIME</th>
+                            <th>SIGNING TIME</th>
+                            <th>STATUS</th>
+                        </tr>
+                        </thead>
 
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
-
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form> -->
+                        <tbody>
+                        @foreach ($dataSingle as $var)
+                            <tr>
+                                <td class="counterCell">.</td>
+                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
+                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td>
+                                    @if($var->status==1)
+                                        @if($var->validity=='VALID')
+                                            {{ date("H:i",strtotime($var->datetime))}}
 
 
-  @else
-  <h4>No data to display</h4>
-  @endif
-</div>
+
+
+                                        @else
+
+                                            <?php
+
+                                            $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                                            $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                                            $interval = $datetime1->diff($datetime2);
+
+
+                                            if($interval->format('%h')=='0'){
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                                            } else if ($interval->format('%h')=='1'){
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                                            else {
+
+                                                echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                                            }
+
+
+                                            ?>
+
+
+
+                                        @endif
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
+                                <td>@if($var->status==1)
+                                        PRESENT
+                                    @else
+                                        ABSENT
+                                    @endif </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+
+                    </table>
+
+
+                    <br>
+
+
+                    <h6><u>PUBLIC HOLIDAYS</u></h6>
+                    <?php
+                    foreach($holidays as $values){
+                        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                        $val = (iterator_to_array($iterator,true));
+                        print(date("d/m/Y",strtotime($val['combined_date'])).' - '.$val['holiday_name'].'<br>');
+
+                    }
+                    ?>
+                    <br>
+                    <br>
+
+
+                    <br>
+
+
+
+
+                    <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+                        {{csrf_field()}}
+
+                        <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+                        <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+                        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+                        <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+                        <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+                        <center><button class="btn btn-primary" type="submit">Download</button></center>
+                    </form>
+
+
+                @else
+                    <h4>No data to display</h4>
+                @endif
+            </div>
+
+
 
 
 
 
 @elseif ($_GET['selection']=='All courses')
 
-<div class="col-xs-6">
+<div class="col-xs-6 custom">
   @if(count($all_courses)>0)
   <br>
-  <table class="hover table table-striped table-bordered" id="myTable1">
+  <table style="width:60%;" class="hover table table-striped table-bordered" id="myTable">
     <thead class="thead-dark">
       <tr>
-        <th>S/N</th>
-        <th>Course</th>
+        <th >S/N</th>
+        <th>Course code</th>
+          <th>Course name</th>
         <th>Percentage</th>
       </tr>
     </thead>
@@ -1182,26 +1342,22 @@ hr {
       foreach($all_courses as $values){
        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
        $val = (iterator_to_array($iterator,true));
-       print('<tr><td class="counterCell">.</td>'.'<td>'.$val['courseId'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+       print('<tr><td style="text-align: center;" class="counterCell">.</td>'.'<td>'.$val['courseId'].'<td>'.$val['course_name'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
 
 }
 ?>
     </tbody>
 
   </table>
+
+
 <br>
+
+        <p>Minimum required percentage: {{$minimum_percentage}}% </p>
+
 <br>
 <!-- course key -->
 
-<h6><u>KEY</u></h6>
-<?php
-foreach($all_courses as $values){
- $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
- $val = (iterator_to_array($iterator,true));
- print($val['courseId'].' - '.$val['course_name'].'<br>');
-
-}
-?>
 
 
   <br>
@@ -1231,17 +1387,71 @@ foreach($all_courses as $values){
 </div>
 
 
+
+
+
 @else
 
 <div class="col-xs-6">
   @if(count($all_students)>0)
   <br>
+
+        <a data-toggle="modal" data-target="#sortClass" class="btn styling mb-2 button_color active" role="button" aria-pressed="true">Sort by percentage</a> &nbsp;
+        <div class="modal fade" id="sortClass" role="dialog">
+
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <b><h5 class="modal-title">Sort by percentage</h5></b>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body">
+                        <form id="test_form"  action="/attendance_report/sortClass/{{{$_GET['course_id']}}}" class="form-container form-horizontal" method="get">
+                            {{csrf_field()}}
+                            <div class="form-group row">
+                                <label for="" class="col-sm-4 col-form-label">Criteria:</label>
+                                <div class="col-sm-8">
+                                    <select name="sort_criteria" id="getSortCriteria" >
+
+                                        <option value="1" >Below</option>
+                                        <option value="2" >Above</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+
+
+                            <div id="DivCheckt" style="display:block;">
+                                <div class="form-group row">
+                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Percentage:</label>
+                                    <div class="col-sm-8">
+                                        <input type="number" required name="percentage" class="form-control"  autocomplete="off" >
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <center><button id="generate_btnt"  class="btn btn-primary" type="submit">Sort</button></center>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
   <table id="myTable1" class="table table-bordered table-striped" >
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th>Name</th>
+          <th class="order">SURNAME</th>
+          <th class="order">OTHER NAMES</th>
         <th>Registration number</th>
+          <th>Programme</th>
         <th>Percentage</th>
       </tr>
     </thead>
@@ -1251,7 +1461,17 @@ foreach($all_courses as $values){
 foreach($all_students as $values){
        $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
        $val = (iterator_to_array($iterator,true));
-       print('<tr><td class="counterCell">.</td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+
+    $temp1=explode(',', $val['name']);
+    $surname=$temp1[0];
+    $temp2 = preg_split('/\s+/', $temp1[1]);
+    $first_name=$temp2[1];
+    $middle_name=$temp2[2];
+    $other_names=$temp1[1];
+    print('<td class="counterCell">.</td>'.'<td>'.$surname.'</td><td>'.$other_names.'</td><td>'.$val['reg_no'].'</td><td>'.$val['program'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+
+
+//       print('<tr><td class="counterCell">.</td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
 
 }
 ?>
@@ -1261,6 +1481,40 @@ foreach($all_students as $values){
   </table>
 
   <br>
+
+    <b><p>Minimum required percentage: {{$minimum_percentage}}%</p></b>
+    <br>
+
+
+        <!-- course key -->
+
+        <h6><u>KEY</u></h6>
+        <?php
+
+        $tempOut = array();
+        foreach($all_studentsProgKey as $values){
+            $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+            $val = (iterator_to_array($iterator,true));
+            $tempoIn=$val['program'];
+
+            if(!in_array($tempoIn, $tempOut))
+            {
+                print($val['program'].' - '.$val['full'].'<br>');
+                array_push($tempOut,$tempoIn);
+            }
+
+
+
+
+        }
+        ?>
+
+
+        <br>
+
+
+
+
 
   <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
@@ -1341,12 +1595,23 @@ window.addEventListener( "pageshow", function ( event ) {
 
 <script type="text/javascript">
  $(document).ready(function() {
-  
-  
+
+     // $('tr').each(
+     //     function(){
+     //         $(this).find('td:gt(11)').hide();
+     //     });
+
+
+
   // console.log(x);
     var table = $('#myTable1').DataTable( {
-        dom: '<"top"fl>rt<"bottom"pi>'     
+        dom: '<"top"fl>rt<"bottom"pi>'
     } );
+
+
+
+
+
 
 });
 
