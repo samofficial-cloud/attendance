@@ -485,7 +485,7 @@ $i='1';
   </div>
 
   <div class="form-group row">
-    <label for="lecture_no"  class="col-sm-3 col-form-label"><strong>Lecture No:</strong></label>
+    <label for="lecture_no"  class="col-sm-3 col-form-label"><strong>No. of Hours per Semester:</strong></label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="lecture_no" name="lecture_no" value="" required="">
   </div>
@@ -515,7 +515,7 @@ $i='1';
       <th scope="col"  style="color:#3490dc;">Credit</th>
       <th scope="col"  style="color:#3490dc;">Semester</th>
       <th scope="col"  style="color:#3490dc;">Criteria</th>
-      <th scope="col"  style="color:#3490dc;">Lecture No.</th>
+      <th scope="col"  style="color:#3490dc;">No. of Hours per Semester:</th>
       <th scope="col"  style="color:#3490dc;">Change</th>
     </tr>
   </thead>
@@ -608,7 +608,7 @@ $i='1';
   <br>
 
   <div class="form-group row">
-    <label for="lecture_no{{$course->id}}"  class="col-sm-3 col-form-label"><strong>Lecture No:</strong></label>
+    <label for="lecture_no{{$course->id}}"  class="col-sm-3 col-form-label"><strong>No. of Hours per Semester:</strong></label>
     <div class="col-sm-8">
     <input type="text" class="form-control" id="lecture_no{{$course->id}}" name="lecture_no" value="{{$course->lectures_no}}">
   </div>

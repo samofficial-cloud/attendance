@@ -254,8 +254,9 @@ $j='1';
   <thead class="thead-dark">
     <tr>
       <th scope="col"  style="color:#3490dc;">S/N</th>
+      <th scope="col"  style="color:#3490dc;">NAME</th>
       <th scope="col"  style="color:#3490dc;">EMPLOYEE ID</th>
-     <th scope="col"  style="color:#3490dc;">NAME</th>
+      <th scope="col"  style="color:#3490dc;">GENDER</th>
       <th scope="col"  style="color:#3490dc;">PHONE NUMBER</th>
       <th scope="col"  style="color:#3490dc;">EMAIL</th>
     </tr>
@@ -264,8 +265,15 @@ $j='1';
      @foreach($staffCSE as $staff)
       <tr>
       <th scope="row">{{ $j }}.</th>
+       <td>{{$staff->name}}</td>
       <td>{{ $staff->SSN}}</td>
-      <td>{{$staff->name}}</td>
+      @if($staff->GENDER =='Male')
+      <td>M</td>
+      @elseif($staff->GENDER =='Female')
+      <td>F</td>
+      @else
+      <td></td>
+      @endif
       <td>{{ $staff->phone_number}}</td>
       <td>{{ $staff->email}}</td>
        </tr>
@@ -280,14 +288,15 @@ $j='1';
 <center><a class="btn btn-sm btn-success" href="/generate-CSE-Staff-pdf">PRINT</a></center>
 <br>
 <hr>
-<h4><b>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING</b></h4>
+<h4><b>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING</b></h4>
 
 <table class="table table-striped table-bordered" id="myTablee" style="width: 100%">
   <thead class="thead-dark">
     <tr>
       <th scope="col"  style="color:#3490dc;">S/N</th>
+      <th scope="col"  style="color:#3490dc;">NAME</th>
       <th scope="col"  style="color:#3490dc;">EMPLOYEE ID</th>
-     <th scope="col"  style="color:#3490dc;">NAME</th>
+     <th scope="col"  style="color:#3490dc;">GENDER</th>
       <th scope="col"  style="color:#3490dc;">PHONE NUMBER</th>
       <th scope="col"  style="color:#3490dc;">EMAIL</th>
     </tr>
@@ -296,8 +305,15 @@ $j='1';
      @foreach($staffETE as $staff)
       <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{ $staff->SSN}}</td>
       <td>{{$staff->name}}</td>
+      <td>{{ $staff->SSN}}</td>
+      @if($staff->GENDER =='Male')
+      <td>M</td>
+      @elseif($staff->GENDER =='Female')
+      <td>F</td>
+      @else
+      <td></td>
+      @endif
       <td>{{ $staff->phone_number}}</td>
       <td>{{ $staff->email}}</td>
        </tr>

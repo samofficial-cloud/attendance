@@ -50,7 +50,7 @@ table {
       <th scope="col">Credit</th>
       <th scope="col">Semester</th>
       <th scope="col">Criteria</th>
-      <th scope="col">Lecture No.</th>
+      <th scope="col">No. of Hours per Semester</th>
       
     </tr>
   </thead>

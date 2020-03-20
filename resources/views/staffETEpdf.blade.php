@@ -31,7 +31,7 @@ table {
     <center><b>UNIVERSITY OF DAR ES SALAAM
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-      <br>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING STAFF LIST
+      <br>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING STAFF LIST
     </b>
   </center>
 <br>
@@ -39,8 +39,9 @@ table {
   <thead class="thead-dark">
     <tr>
       <th scope="col"  style="color:#3490dc;">S/N</th>
-      <th scope="col"  style="color:#3490dc;">EMPLOYEE ID</th>
      <th scope="col"  style="color:#3490dc;">NAME</th>
+      <th scope="col"  style="color:#3490dc;">EMPLOYEE ID</th>
+       <th scope="col"  style="color:#3490dc;">GENDER</th>
       <th scope="col"  style="color:#3490dc;">PHONE NUMBER</th>
       <th scope="col"  style="color:#3490dc;">EMAIL</th>
     </tr>
@@ -49,8 +50,15 @@ table {
      @foreach($staffETE as $staff)
       <tr>
       <th scope="row">{{ $j }}.</th>
+       <td>{{$staff->name}}</td>
       <td>{{ $staff->SSN}}</td>
-      <td>{{$staff->name}}</td>
+      @if($staff->GENDER =='Male')
+      <td>M</td>
+      @elseif($staff->GENDER =='Female')
+      <td>F</td>
+      @else
+      <td></td>
+      @endif
       <td>{{ $staff->phone_number}}</td>
       <td>{{ $staff->email}}</td>
        </tr>

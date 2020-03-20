@@ -17,15 +17,17 @@
       <script src="{{ asset('js/app.js') }}" ></script>
       <script src="{{ asset('js/tablesorter.js') }}" defer></script>
 
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" ></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+<script src="{{ asset('js/jquery.dataTables.min.js') }}" ></script>
+<script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('js/buttons.flash.min.js') }}"></script>
+
+<script src="{{ asset('js/jszip.min.js') }}"></script>
+<script src="{{ asset('js/pdfmake.min.js') }}"></script>
+<script src="{{ asset('js/vfs_fonts.js') }}"></script>
+<script src="{{ asset('js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('js/buttons.print.min.js') }}"></script>
 
 
     <!-- Fonts -->
@@ -36,6 +38,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
 
      @yield('style')
 </head>
@@ -123,7 +126,7 @@
 
   ?>
 
-  <div class="footer-copyright text-center py-3"> © {{$year}} College of Communication and Information Technologies. All Rights Reserved.
+  <div class="footer-copyright text-center py-3"> © {{$year}} College of Information and Communication Technologies. All Rights Reserved.
   </div>
 
 </footer>

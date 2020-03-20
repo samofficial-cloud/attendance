@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-
 @section('title')
   STUDENTS
 @endsection
@@ -9,7 +7,7 @@
 @section('style')
 <style>
 div.dataTables_filter{
-  padding-left:700px;
+  padding-left:760px;
   padding-bottom:20px;
 }
 
@@ -241,7 +239,7 @@ Use App\program;
 use App\lecturer;
 $course=lecturer::select('course')->where('instructor', Auth::user()->name)->orWhere('Instructor_2',Auth::user()->name)->orWhere('Instructor_3',Auth::user()->name)->orWhere('Instructor_4',Auth::user()->name)->orWhere('Instructor_5',Auth::user()->name)->orWhere('Tutorial_Assistant',Auth::user()->name)->orWhere('technical_staff',Auth::user()->name)->orWhere('Technical_Staff_2',Auth::user()->name)->where('course_type','core')->get();
 $deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEPTID');
-        $students=userinfo::where('DEFAULTDEPTID',$deptId)->get();
+        $students=userinfo::where('DEFAULTDEPTID',$deptId)->orderBy('name','asc')->get();
         $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
 ?>
 
@@ -351,14 +349,18 @@ $deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEP
   <div class="card-body">
 <h2>{{$full}}</h2>
 <br>
+ <a class="btn btn-sm btn-success" style="float: right;" href="/generate-Students-PDF?rid={{$_GET['rid']}}">PRINT</a>
+   <br>
+   <br>
     <table class=" hover table table-striped table-bordered" id="example">
   <thead class="thead-dark">
      <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">NAME</th>
+      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">GENDER</th>
       <th scope="col" style="color:#3490dc;">FEES STATUS</th>
+       <th scope="col" style="color:#3490dc;">FEES DURATION</th>
     </tr>
   </thead>
   <tbody>
@@ -366,10 +368,17 @@ $deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEP
     @foreach($students as $student)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$student->SSN}}</td>
       <td>{{$student->name}}</td>
-      <td>{{$student->GENDER}}</td>
+      <td>{{$student->SSN}}</td>
+      @if($student->GENDER =='Male')
+      <td>M</td>
+      @elseif($student->GENDER =='Female')
+      <td>F</td>
+      @else
+      <td></td>
+      @endif
       <td>{{$student->Fees_Status}}</td>
+      <td>{{$student->Fees_Duration}}</td>
     </tr>
     <?php
     $i= $i+1;

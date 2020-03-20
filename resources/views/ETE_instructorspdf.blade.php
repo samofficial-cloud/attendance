@@ -25,7 +25,7 @@ table {
   <?php
   Use App\lecturer;
 
-  $instructors1=lecturer::where('dept','ETE')->orderBy('semester','asc')->get();
+  $instructors1=lecturer::where('dept','ETE')->where('flag','1')->where('academic_year','2019/2020')->orderBy('semester','asc')->get();
   $i='1';
   ?>
 
@@ -33,16 +33,16 @@ table {
     <center><b>UNIVERSITY OF DAR ES SALAAM
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-      <br>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING
-      <br>TEACHING STAFF
+      <br>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING
+      <br>ASSIGNED INSTRUCTORS FOR THE ACADEMIC YEAR 2019/2020.
 
     </b></center>
   
-  
+  <br>
 <table class="table table-striped table-bordered" style="width: 100%">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">S/N</th>
+      <th scope="col">SN</th>
       <th scope="col">Course ID</th>
       <th scope="col">Course Name</th>
       <th scope="col">Instructor 1</th>

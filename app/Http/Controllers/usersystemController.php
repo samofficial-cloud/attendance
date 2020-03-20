@@ -43,10 +43,10 @@ public function changePassword(Request $request){
 
   }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
-    $users = User::find($id);
+    $users = user::where('SSN',$request->get('SSN'))->first();
     $users->name = $request->get('name');
     $users->email = $request->get('email');
     $users->phone_number = $request->get('phoneNumber');
@@ -56,7 +56,8 @@ public function changePassword(Request $request){
     }
 
     public function edit(){
-    	$user = user::where('name',Auth::user()->name)->get();
+    	$user = user::where('SSN',Auth::user()->SSN)->get();
     	return view('edit',['users'=>$user]);
+
     }
 }

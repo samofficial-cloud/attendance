@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
 @section('title')
   STUDENTS
@@ -9,7 +8,7 @@
 @section('style')
 <style>
 div.dataTables_filter{
-  padding-left:740px;
+  padding-left:802px;
   padding-bottom:20px;
 }
 
@@ -58,6 +57,9 @@ div.dt-buttons {
 }
 .form-inline .custom-select {
     width: 100%;
+}
+.form-inline label {
+  justify-content:left;
 }
 
 hr {
@@ -449,20 +451,26 @@ $i='1';
     <h2>{{$full}}</h2>
     
 
-<a class="btn btn-sm btn-success" style="float: right; margin-top:20px;" href="/generate-Students-PDF?rid={{$_GET['rid']}}">PRINT</a>
 
-   <br>
+
+  
    <br>
 <h4>1. ACTIVE STUDENTS</h4>
-    <table class=" hover table table-striped table-bordered" id="example">
+@if(count($students2)!=0)
+<a class="btn btn-sm btn-success" style="float: right;" href="/generate-Students-PDF?rid={{$_GET['rid']}}">PRINT</a>
+<br>
+<br>
+@endif
+    <table class=" hover table table-striped table-bordered" id="mytable1">
   <thead class="thead-dark">
      <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">NAME</th>
+      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">GENDER</th>
       <th scope="col" style="color:#3490dc;">FEES STATUS</th>
-      <th scope="col" style="color:#3490dc;">CHANGE</th>
+      <th scope="col" style="color:#3490dc;">FEES DURATION</th>
+      <th scope="col" style="color:#3490dc;">ACTION</th>
     </tr>
   </thead>
   <tbody>
@@ -470,12 +478,17 @@ $i='1';
     @foreach($students as $student)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$student->SSN}}</td>
       <td>{{$student->name}}</td>
-      <td>{{$student->GENDER}}</td>
+      <td>{{$student->SSN}}</td>
+       @if($student->GENDER=="Male")
+       <td>M</td>
+       @elseif($student->GENDER=="Female")
+       <td>F</td>
+       @endif
       <td>{{$student->Fees_Status}}</td>
+      <td>{{$student->Fees_Duration}}</td>
       <td>
-        <a data-toggle="modal" data-target="#edit{{$student->USERID}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a>
+        <a data-toggle="modal" data-target="#edit{{$student->USERID}}" role="button" aria-pressed="true" id="{{$student->USERID}}"><i class="fa fa-edit" style="font-size:30px; color: green;"></i></a>
 
         <div class="modal fade" id="edit{{$student->USERID}}" role="dialog">
 
@@ -487,7 +500,7 @@ $i='1';
           </div>
 
            <div class="modal-body">
-        <form method="get" action="{{route('editstudent')}}">
+        <form method="get" action="{{route('editstudent')}}" name="form1">
   {{csrf_field()}}
 
   <div class="form-group row">
@@ -511,14 +524,14 @@ $i='1';
     <div class="col-sm-8">
    <select class="custom-select Reason" name="Gender" id="Gender{{$student->USERID}}">
     @if($student->GENDER=="Male")
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
+    <option value="Male">M</option>
+    <option value="Female">F</option>
     @elseif($student->GENDER=="Female")
-    <option value="Female">Female</option>
-    <option value="Male">Male</option>
+    <option value="Female">F</option>
+    <option value="Male">M</option>
     @else
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
+    <option value="Male">M</option>
+    <option value="Female">F</option>
     @endif
   </select>
   </div>
@@ -545,6 +558,27 @@ $i='1';
   <br>
 
 
+  <div class="form-group row" id="durat{{$student->USERID}}">
+    <label for="Fees_Duration{{$student->USERID}}"  class="col-sm-3 col-form-label"><strong>Fees Duration:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Fees_Duration" id="Fees_Duration{{$student->USERID}}">
+    @if($student->Fees_Duration=="PAID HALF")
+    <option value="PAID HALF">PAID HALF</option>
+    <option value="PAID FULL">PAID FULL</option>
+    @elseif($student->Fees_Duration=="PAID FULL")
+    <option value="PAID FULL">PAID FULL</option>
+    <option value="PAID HALF">PAID HALF</option>
+    @else
+    <option value="PAID HALF">PAID HALF</option>
+    <option value="PAID FULL">PAID FULL</option>
+    @endif
+  </select>
+  </div>
+  </div>
+  <br>
+ 
+
+
   <input type="hidden" id="id{{$student->USERID}}" name="id" value="{{$student->USERID}}"/>
 
   <div class="form-group">
@@ -557,7 +591,54 @@ $i='1';
 </div>
 </div>
 
-<a class="btn btn-sm btn-danger" href="{{route('DeactivateStudent',$student->USERID)}}">Deactivate</a>
+ <a data-toggle="modal" data-target="#Deactivate{{$student->USERID}}" role="button" aria-pressed="true"><i class="fa fa-trash" aria-hidden="true" style="font-size:30px; color:red;"></i></a>
+ <div class="modal fade" id="Deactivate{{$student->USERID}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Please Provide Reason Below</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+{{-- {{route('DeactivateStudent',$student->USERID)}} --}}
+           <div class="modal-body">
+        <form method="get" action="{{route('DeactivateStudent',$student->USERID)}}">
+  {{csrf_field()}}
+
+    <div class="form-group row">
+    <label for="reason{{$student->USERID}}"  class="col-sm-2 col-form-label"><strong>Reason:</strong></label>
+    <div class="col-sm-10">
+   <select class="custom-select Reason" name="reasons" id="reason{{$student->USERID}}" required="">
+    <option value=""></option>
+     <option value="Postponed Semester">Postponed Semester</option>
+     <option value="Postponed Year">Postponed Year</option>
+    <option value="Discontinued">Discontinued</option>
+    <option value="Others">Others</option>
+  </select>
+  </div>
+  </div>
+  <br>
+
+  <div class="form-group row">
+    <label for="remarks{{$student->USERID}}"  class="col-sm-2 col-form-label"><strong>Remarks(s):</strong></label>
+    <div class="col-sm-10">
+    <textarea class="form-control" name="remarks" id="remarks{{$student->USERID}}" rows="3"></textarea>
+  </div>
+  </div>
+  <span id="message{{$student->USERID}}"></span>
+
+  <input type="hidden" id="idA{{$student->USERID}}" name="idA" value="{{$student->USERID}}"/>
+
+  <div class="form-group">
+     <center><button type="submit" id="uy{{$student->USERID}}" name="uy" class="btn btn-primary">SUBMIT</button></center>
+    </div>
+
+</form>
+</div>
+</div>
+</div>
+</div>
+
 
       </td>
     </tr>
@@ -573,14 +654,21 @@ $i='1';
 ?>
 
 <h4>2. INACTIVE STUDENTS</h4>
+@if(count($students2)!=0)
+<a class="btn btn-sm btn-success" style="float: right;" href="/generate-Inactive-Students-PDF?rid={{$_GET['rid']}}">PRINT</a>
+<br>
+<br>
+@endif
     <table class=" hover table table-striped table-bordered" id="mytable">
   <thead class="thead-dark">
      <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">NAME</th>
+      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">GENDER</th>
       <th scope="col" style="color:#3490dc;">FEES STATUS</th>
+      <th scope="col" style="color:#3490dc;">REASON</th>
+      <th scope="col" style="color:#3490dc;">REMARKS</th>
       <th scope="col" style="color:#3490dc;">CHANGE</th>
     </tr>
   </thead>
@@ -589,10 +677,16 @@ $i='1';
     @foreach($students2 as $student2)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$student2->SSN}}</td>
       <td>{{$student2->name}}</td>
-      <td>{{$student2->GENDER}}</td>
+      <td>{{$student2->SSN}}</td>
+       @if($student->GENDER=="Male")
+       <td>M</td>
+       @elseif($student->GENDER=="Female")
+       <td>F</td>
+       @endif
       <td>{{$student2->Fees_Status}}</td>
+      <td>{{$student2->reasons}}</td>
+      <td>{{$student2->remarks}}</td>
       <td><center><a data-toggle="modal" data-target="#edit{{$student2->USERID}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Activate</a></center>
 
         <div class="modal fade" id="edit{{$student2->USERID}}" role="dialog">
@@ -609,74 +703,70 @@ $i='1';
   {{csrf_field()}}
 
   <div class="form-group row">
-  <label for="dprogram{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
-    <div class="col-sm-8">
-   <select class="custom-select Reason" name="dprogram" id="dprogram{{$student2->USERID}}">
-    <option value="11">CS1(in)</option>
-    <option value="12">CS2(in)</option>
-    <option value="13">CS3(in)</option>
-    <option value="21">CS1(with)</option>
-    <option value="22">CS2(with)</option>
-    <option value="23">CS3(with)</option>
-    <option value="8">ESC1</option>
-    <option value="9">ESC2</option>
-    <option value="10">ESC3</option>
-    <option value="14">TE1</option>
-    <option value="15">TE2</option>
-    <option value="16">TE3</option>
-    <option value="17">TE4</option>
-    <option value="5">CEIT1</option>
-    <option value="6">CEIT2</option>
-    <option value="7">CEIT3</option>
-    <option value="4">CEIT4</option>
-    <option value="24">EE1</option>
-    <option value="25">EE2</option>
-    <option value="26">EE3</option>
-    <option value="27">EE4</option>
-    <option value="18">B-IT1</option>
-    <option value="19">B-IT2</option>
-    <option value="20">B-IT3</option>
-    <option value="28">CS(Cert)</option>
-    <option value="29">CS1(Dipl.)</option>
-    <option value="30">CS2(Dipl.)</option>
-  </select>
-  </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="regNo{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Registration Number:</strong></label>
-    <div class="col-sm-8">
-    <input type="text" class="form-control" id="regNo{{$student2->USERID}}" name="regNo" value="{{$student2->SSN}}" >
-  </div>
-  </div>
-  <br>
-
-  <div class="form-group row">
     <label for="name{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Name:</strong></label>
     <div class="col-sm-8">
-    <input type="text" class="form-control" id="name{{$student2->USERID}}" name="name" value="{{$student2->name}}" >
+    <input type="text" class="form-control" id="name{{$student2->USERID}}" name="name" value="{{$student2->name}}" readonly="">
   </div>
   </div>
 <br>
 
   <div class="form-group row">
-    <label for="Gender{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Gender:</strong></label>
+    <label for="regNo{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Registration Number:</strong></label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Gender" id="Gender{{$student2->USERID}}">
-    @if($student2->GENDER=="Male")
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    @elseif($student2->GENDER=="Female")
-    <option value="Female">Female</option>
-    <option value="Male">Male</option>
-    @else
-    <option value="Male">Male</option>
-    <option value="Female">Female</option>
-    @endif
-  </select>
+    <input type="text" class="form-control" id="regNo{{$student2->USERID}}" name="regNo" value="{{$student2->SSN}}" readonly="">
   </div>
   </div>
   <br>
+
+  <div class="form-group row">
+    <label for="Gender{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Gender:</strong></label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control" id="Gender{{$student2->USERID}}" name="Gender" value="{{$student2->GENDER}}" readonly="">
+  </div>
+  </div>
+  <br>
+
+  <div class="form-group row">
+  <label for="dprogram{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="dprogram" id="dprogram{{$student2->USERID}}" required="">
+    <option value="">Select Degree Program</option>
+     <option value="18">BSc. in Business Information Technology year 1</option>
+    <option value="19">BSc. in Business Information Technology year 2</option>
+    <option value="20">BSc. in Business Information Technology year 3</option>
+    <option value="5"> B.Sc. in Computer Engineering and Information Technology year 1</option>
+    <option value="6">B.Sc. in Computer Engineering and Information Technology year 2</option>
+    <option value="7">B.Sc. in Computer Engineering and Information Technology year 3</option>
+    <option value="4">B.Sc. in Computer Engineering and Information Technology year 4</option>
+    <option value="11">B.Sc. in Computer Science year 1</option>
+    <option value="12">B.Sc. in Computer Science year 2</option>
+    <option value="13">B.Sc. in Computer Science year 3</option>
+    <option value="21">B.Sc. with Computer Science 1</option>
+    <option value="22">B.Sc. with Computer Science</option>
+    <option value="23">B.Sc. with Computer Science 3</option>
+    <option value="28">Certificate in Computer Science</option>
+    <option value="29">Diploma in Computer Science year 1</option>
+    <option value="30">Diploma in Computer Science year 2</option>
+    <option value="24">B.Sc. in Electronic Engineering year 1</option>
+    <option value="25">B.Sc. in Electronic Engineering year 2</option>
+    <option value="26">B.Sc. in Electronic Engineering year 3</option>
+    <option value="27">B.Sc. in Electronic Engineering year 4</option>
+    <option value="8">B.Sc. in Electronic Science and Communication year 1</option>
+    <option value="9">B.Sc. in Electronic Science and Communication year 2</option>
+    <option value="10">B.Sc. in Electronic Science and Communication year 3</option>
+    <option value="14">B.Sc. in Telecommunications Engineering year 1</option>
+    <option value="15">B.Sc. in Telecommunications Engineering year 2</option>
+    <option value="16">B.Sc. in Telecommunications Engineering year 3</option>
+    <option value="17">B.Sc. in Telecommunications Engineering 4</option>
+  </select>
+  </div>
+  </div>
+
+  
+
+  
+
+  
 
   <div class="form-group row">
     <label for="Fees{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Fees Status:</strong></label>
@@ -695,6 +785,26 @@ $i='1';
   </select>
   </div>
   </div>
+  <br>
+
+   <div class="form-group row" id="durat{{$student2->USERID}}">
+    <label for="Fees_Duration{{$student2->USERID}}"  class="col-sm-3 col-form-label"><strong>Fees Duration:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="Fees_Duration" id="Fees_Duration{{$student2->USERID}}">
+    @if($student2->Fees_Status=="SEMESTER 1")
+    <option value="SEMESTER 1">SEMESTER 1</option>
+    <option value="FULL">FULL</option>
+    @elseif($student2->Fees_Duration=="FULL")
+    <option value="FULL">FULL</option>
+    <option value="SEMESTER 1">SEMESTER 1</option>
+    @else
+    <option value="SEMESTER 1">SEMESTER 1</option>
+    <option value="FULL">FULL</option>
+    @endif
+  </select>
+  </div>
+  </div>
+  
   <br>
 
 
@@ -726,6 +836,66 @@ $i='1';
 @endsection
 
 @section('pagescript')
+<script src="http://malsup.github.com/jquery.form.js"></script> 
+
+<script type="text/javascript">
+  $(document).ready(function(){
+
+$("a").click(function(e) {
+      let reg = e.target.id.replace(/\D/g,'');
+      var id = $("#Fees"+reg).val();
+      console.log(id);
+     // var query = $(this).val();
+     if (id === 'PAID'){
+        $('#durat'+reg) .show();
+     }
+     else{
+        $('#durat'+reg).hide();
+     }
+
+});
+
+
+
+
+  $('[name="Fees"]').click(function(e){ 
+      var id = $("#"+e.target.id).val();
+      let reg = e.target.id.replace(/\D/g,'');
+     // var query = $(this).val();
+     if (id=='PAID'){
+        $('#durat'+reg) .show();
+     }
+     else{
+        $('#durat'+reg).hide();
+     }
+  });
+
+
+
+});
+</script>
+
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('[name="uy"]').click(function(e){
+      // e.preventDefault();
+      var idw = e.target.id;
+      let reg = e.target.id.replace(/\D/g,'');
+      
+      var reasonss=$('#reason'+reg).val();
+      console.log(reasonss);
+      var remarkss=$('#remarks'+reg).val();
+      if(reasonss=='Others' && remarkss==''){
+      var message=document.getElementById('message'+reg);
+        message.style.color='red';
+        message.innerHTML="Please Add Remarks";
+        return false;
+      }
+     
+
+    });
+    });
+</script>
 
 
 <script type="text/javascript">
@@ -733,22 +903,23 @@ $i='1';
   var x = {!! json_encode($full) !!};
   
   // console.log(x);
-    var table = $('#example').DataTable( {
+    var table = $('#mytable1').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>B',
          buttons: [
              {
 
                 extend: 'excelHtml5',className: 'btn-success',
-                title:x+'-'+'Active students', 
+                title:x+'-'+'Active students',
+                extension: '.xls', 
                 exportOptions: {
-                    columns: [1, 2, 3, 4 ]
+                    columns: [1, 2, 3, 4, 5 ]
                 }
             },
 
             {
                 extend: 'copyHtml5',className: 'btn-success',
                 exportOptions: {
-                    columns: [ 1, 2, 3, 4  ]
+                    columns: [ 1, 2, 3, 4, 5 ]
                 }
             },
              ]     
@@ -772,16 +943,17 @@ $(document).ready(function() {
              {
 
                 extend: 'excelHtml5',className: 'btn-success',
-                title:x+'-'+'Inactive students', 
+                title:x+'-'+'Inactive students',
+                extension: '.xls', 
                 exportOptions: {
-                    columns: [1, 2, 3, 4 ]
+                    columns: [1, 2, 3, 4, 5, 6 ]
                 }
             },
 
             {
                 extend: 'copyHtml5',className: 'btn-success',
                 exportOptions: {
-                    columns: [ 1, 2, 3, 4  ]
+                    columns: [ 1, 2, 3, 4, 5, 6 ]
                 }
             },
              ]     

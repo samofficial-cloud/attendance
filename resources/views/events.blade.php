@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
 @section('title')
   EVENTS
 @endsection
@@ -50,7 +50,9 @@ div.top {
 .form-inline .form-control {
     width: 100%;
 }
-
+.form-inline label {
+  justify-content:left;
+}
 
 </style>
 
@@ -273,6 +275,13 @@ div.top {
   </div>
   </div>
 
+  <div class="form-group row">
+    <label for="holiday_name"  class="col-sm-3 col-form-label"><strong>Holiday Name:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="holiday_name" name="holiday_name">
+  </div>
+  </div>
+<span id="message1"></span>
 
   <div class="form-group row">
     <label for="inputTimeFrom"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
@@ -286,7 +295,7 @@ div.top {
   </div>
 
   <span id="message"></span>
-
+<br>
   
   <div class="form-group">
      <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
@@ -307,6 +316,7 @@ $i='1';
       <th scope="col" style="color:#3490dc;">Date</th>
       <th scope="col" style="color:#3490dc;">Duration</th>
       <th scope="col" style="color:#3490dc;">Event</th>
+      <th scope="col" style="color:#3490dc;">Holiday Name</th>
       <th scope="col" style="color:#3490dc;">Change</th>
     </tr>
   </thead>
@@ -314,9 +324,14 @@ $i='1';
     @foreach($events as $events)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$events->Date}}-{{$events->Month}}-{{$events->Year}}</td>
-      <td>{{$events->FromTime}}-{{$events->ToTime}}</td>
+      <td>{{$events->Day}}, {{$events->Date}}/{{$events->Month}}/{{$events->Year}}</td>
+      @if(strtotime($events->FromTime) ==strtotime("07:00") and strtotime($events->ToTime) == strtotime("20:00"))
+       <td>ALL DAY</td>
+      @else
+       <td>{{$events->FromTime}}-{{$events->ToTime}}</td>
+       @endif
       <td>{{$events->status}}</td>
+      <td>{{$events->holiday_name}}</td>
       <td>
          <center><a data-toggle="modal" data-target="#edit{{$events->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Edit</a></center>
 
@@ -330,7 +345,7 @@ $i='1';
           </div>
 
            <div class="modal-body">
-        <form method="get" action="{{route('editevents')}}">
+        <form method="get" action="{{route('editevents')}}" name="myForm2"  onsubmit = "return getdata2()">
   {{csrf_field()}}
 
   <div class="form-group row">
@@ -340,6 +355,33 @@ $i='1';
   </div>
   </div>
   <br>
+
+  
+
+  <div class="form-group row">
+    <label for="event{{$events->id}}"  class="col-sm-3 col-form-label"><strong>Event:</strong></label>
+    <div class="col-sm-8">
+   <select class="custom-select Reason" name="event" id="event{{$events->id}}">
+    @if($events->status=="HOLIDAY")
+    <option value="HOLIDAY">Holiday</option>
+    <option value="CANCELLATION">Class Cancellation</option>
+    @elseif($events->status=="CANCELLATION")
+    <option value="CANCELLATION">Class Cancellation</option>
+    <option value="HOLIDAY">Holiday</option>
+    @endif
+  </select>
+  </div>
+  </div>
+  <br>
+
+  <div class="form-group row">
+    <label for="holiday_name{{$events->id}}"  class="col-sm-3 col-form-label"><strong>Holiday Name:</strong></label>
+    <div class="col-sm-8">
+    <input type="text" class="form-control" id="holiday_name{{$events->id}}" name="holiday_name" value="{{$events->holiday_name}}">
+  </div>
+  </div>
+  <br>
+  <span id="message2"></span>
 
   <div class="form-group row">
     <label for="inputTimeFrom{{$events->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
@@ -352,23 +394,7 @@ $i='1';
   </div>
   </div>
 <br>
-
-  <div class="form-group row">
-    <label for="event{{$events->id}}"  class="col-sm-3 col-form-label"><strong>event:</strong></label>
-    <div class="col-sm-8">
-   <select class="custom-select Reason" name="event" id="event{{$events->id}}">
-    @if($events->status=="Holiday")
-    <option value="Holiday">Holiday</option>
-    <option value="Class Cancellation">Class Cancellation</option>
-    @elseif($events->status=="Class Cancellation")
-    <option value="Class Cancellation">Class Cancellation</option>
-    <option value="Holiday">Holiday</option>
-    @endif
-  </select>
-  </div>
-  </div>
-  <br>
-
+<span id="message3"></span>
   
   <input type="hidden" id="id{{$events->id}}" name="id" value="{{$events->id}}"/>
 
@@ -392,7 +418,7 @@ $i=$i+1;
 </table>
 
 
-
+<center><a class="btn btn-sm btn-success" href="{{route('eventspdf')}}">PRINT</a></center>
 
 </div>
 
@@ -407,6 +433,9 @@ function getdata(){
        var txtone = document.forms["myForm"]["toTime"].value;
         var txttwo = document.forms["myForm"]["fromTime"].value;
         var date = document.forms["myForm"]["Date"].value;
+        var status = document.forms["myForm"]["status"].value;
+
+        var holiday_name = document.forms["myForm"]["holiday_name"].value;
 
 
       if (txtone<txttwo) {
@@ -416,9 +445,47 @@ function getdata(){
         return false;
       }
 
-}
+      if(status == 'HOLIDAY'){
+      if (holiday_name === '') {
+        var message=document.getElementById('message1');
+        message.style.color='red';
+        message.innerHTML="Holiday Name is required";
+        return false;
+      }
+    }
 
-$(document).ready(function() {
+}
+</script>
+
+<script>
+function getdata2(){
+       var txtone = document.forms["myForm2"]["toTime"].value;
+        var txttwo = document.forms["myForm2"]["fromTime"].value;
+        var status = document.forms["myForm2"]["event"].value;
+        var holiday_name = document.forms["myForm2"]["holiday_name"].value;
+
+
+      if (txtone<txttwo) {
+        var message=document.getElementById('message3');
+        message.style.color='red';
+        message.innerHTML=" 'To' time cannot be less than 'From' time";
+        return false;
+      }
+
+      if(status == 'HOLIDAY'){
+      if (holiday_name === '') {
+        var message=document.getElementById('message2');
+        message.style.color='red';
+        message.innerHTML="Holiday Name is required";
+        return false;
+      }
+    }
+
+}
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
  
     var table = $('#myTable').DataTable( {
         dom: '<"top"l>rt<"bottom"pi>',
@@ -426,5 +493,8 @@ $(document).ready(function() {
          
     } );
 });
+</script>
+<script>
+
 </script>
 @endsection
