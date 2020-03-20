@@ -4,6 +4,49 @@
   REPORT
 @endsection
 
+@section('style')
+<style>
+div.dataTables_filter{
+  padding-left:710px;
+  padding-bottom:20px;
+}
+
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+div.dataTables_length select {
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 15px;
+
+
+
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border: 2px solid #505559;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+
+</style>
+
+@endsection
 
 @section('content')
 <div class="classname">
@@ -180,75 +223,194 @@
 <div class="container">
 
 
-@if(!empty($FromTime))
-      <div class="col-xs-9"><legend>
-        <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
-      <h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
-      </legend> </div>
-@else
+  @if(count($all_test)>0)
+        <div class="col-xs-9"><legend>
+                <div style="float: right;">
+                    <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                    <h6 class="note">Semester: {{$current_semester}}</h6></div>
 
-@endif
+                <h6 class="note">Programme:
 
-
-<div class="col-xs-6">
-
-
-@if (!empty($FromTime))
-<p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
-<p>From time: {{ date("H:i",strtotime($FromTime))}}</p>
-<p>To time: {{ date("H:i",strtotime($ToTime))}} </p>
-<p>Sign in time: @if($var->status==1)
-        @if($var->validity=='VALID')
-            {{ date("H:i",strtotime($var->datetime))}}
-        @else
-            {{ date("H:i",strtotime($var->datetime))}} (Arrived late)
-        @endif
-    @else
-        N/A
-    @endif</p>
-<p>STATUS: @if($var->status==1)
-        PRESENT
-    @else
-        ABSENT
-        @endif </td></p>
+                <?php
+                $i=0;
+                    $length=count($program_full);
+                foreach($program_full as $values){
+                    $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                    $val = (iterator_to_array($iterator,true));
 
 
-  {{-- <br>
+                    if($i!=($length-1)){
+                    print($val['full'].', ');
+                    }else{
 
-  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
+                        print($val['full'].' ');
 
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+                }
+                    $i++;
+                    }
+                ?>
 
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+                </h6>
 
 
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form> --}}
-
-
+        <h5 class="note">Course: {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
+                <u><p class="note">UE attendance report showing only absentee students</p></u>
+        </legend> </div>
   @else
-  <h4>No data to display</h4>
+
+  @endif
+<div class="col-xs-6">
+  @if(count($all_test)>0)
+
+  <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
+        <p>Exam time: {{ date("H:i",strtotime($FromTime))}} hours  to  {{ date("H:i",strtotime($ToTime))}} hours </p>
+
+  <table class="hover table table-bordered table-striped" id="myTable1">
+    <thead class="thead-dark">
+      <tr>
+        <th>S/N</th>
+          <th class="order">SURNAME</th>
+          <th class="order">OTHER NAMES</th>
+        <th>REGISTRATION NUMBER</th>
+          <th>PROGRAMME</th>
+          <th>SIGNING TIME</th>
+          <th>STATUS</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @foreach ($all_test as $var)
+      <tr>
+        <td class="counterCell">.</td>
+          <?php
+          $temp1=explode(',', $var->name);
+          $surname=$temp1[0];
+          $temp2 = preg_split('/\s+/', $temp1[1]);
+          $first_name=$temp2[1];
+          $middle_name=$temp2[2];
+          $other_names=$temp1[1];
+          print('<td>'.$surname.'</td><td>'.$other_names.'</td>');
+          ?>
+        <td>{{$var->reg_no}}</td>
+          <td>{{$var->program}}</td>
+          <td>
+              @if($var->status==1)
+                  @if($var->validity=='VALID')
+                      {{ date("H:i",strtotime($var->datetime))}}
+                  @else
+                      <?php
+
+                      $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                      $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                      $interval = $datetime1->diff($datetime2);
+
+
+                      if($interval->format('%h')=='0'){
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                      } else if ($interval->format('%h')=='1'){
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                      else {
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                      }
+
+
+                      ?>
+                  @endif
+              @else
+                  N/A
+              @endif
+          </td>
+
+          <td>@if($var->status==1)
+                  PRESENT
+              @else
+                  ABSENT
+              @endif </td>
+      </tr>
+      @endforeach
+    </tbody>
+
+  </table>
+  @else
+  <h4>No absentees, all students were present</h4>
   @endif
 </div>
 
 
 
+      <br>
+
+
+
+
+
+      @if((count($all_test)>0))
+      <!-- course key -->
+
+          <h6><u>KEY</u></h6>
+          <?php
+
+          $tempOut = array();
+          foreach($all_test as $values){
+              $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+              $val = (iterator_to_array($iterator,true));
+              $tempoIn=$val['program'];
+
+              if(!in_array($tempoIn, $tempOut))
+              {
+                  print($val['program'].' - '.$val['full'].'<br>');
+                  array_push($tempOut,$tempoIn);
+              }
+
+
+
+
+          }
+
+
+
+          ?>
+
+      @else
+
+      @endif
+      <br>
+
+
+
+
+      <form action="{{route('UEAllpdf')}}" class="form-container form-horizontal" method="get">
+                 {{csrf_field()}}
+
+    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+
+    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+
+      <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+
+  <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+
+
+  <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+
+
+     <center><button class="btn btn-primary" type="submit">Download</button></center>
+     </form>
+
 
 <br>
+
+
     <div class="col-xs-3">
-      <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
+      <button class="btn btn-dark " onclick="history.back(-1)">Back</button>
     </div>
 
 </div>
-</div>
+
 
 
 
@@ -256,6 +418,8 @@
 @endsection
 
 @section('pagescript')
+
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||
@@ -266,6 +430,19 @@ window.addEventListener( "pageshow", function ( event ) {
     window.location.reload();
   }
 });
+</script>
+
+<script type="text/javascript">
+ $(document).ready(function() {
+
+
+  // console.log(x);
+    var table = $('#myTable1').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'
+    } );
+
+});
+
 </script>
 
 @endsection

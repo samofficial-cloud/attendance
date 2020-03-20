@@ -15,10 +15,10 @@ div.dataTables_length label {
     font-weight: normal;
     text-align: left;
     white-space: nowrap;
-    display: inline-block;  
+    display: inline-block;
 }
 
-div.dataTables_length select { 
+div.dataTables_length select {
   height:25px;
   width:10px;
   font-size: 70%;
@@ -26,9 +26,9 @@ div.dataTables_length select {
 table.dataTable {
 font-family: "Nunito", sans-serif;
     font-size: 15px;
-    
 
-    
+
+
   }
   table.dataTable.no-footer {
     border-bottom: 0px solid #111;
@@ -46,7 +46,7 @@ hr {
 
 </style>
 
-@endsection 
+@endsection
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -54,7 +54,7 @@ hr {
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 84%">
@@ -70,7 +70,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
   </li>
@@ -208,7 +208,7 @@ hr {
           <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -231,7 +231,7 @@ hr {
 @if(count($dataSingle_all)>0)
 <div class="col-xs-9"><legend>
   <p class="note"> Test attendance report for <b>{{$name}} ({{$reg_no}})</b></p>
-  <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
+  <h5 class="note">Course: {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
 </legend> </div>
 
 @else
@@ -245,42 +245,9 @@ hr {
 </legend> </div>
 @endif
 
-@if($_GET['selection']=='All courses' AND $_GET['checkbox']=='all cases')
-
-<div class="col-xs-6">
-  @if(count($checkbox_all_courses)>0)
-  <table class="table table-striped">
-    <thead class="thead-dark">
-      <tr>
-        <th>S/N</th>
-        <th>COURSE</th>
-        <th>TYPE OF TEST</th>
-        <th>DATE</th>
-        <th>STATUS</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      @foreach ($checkbox_all_courses as $var)
-      <tr>
-        <td class="counterCell"></td>
-        <td>{{$var->courseId}}</td>
-        <td>{{$var->test_type}}</td>
-        <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
-        <td>ARRIVED LATE </td>
-      </tr>
-      @endforeach
-    </tbody>
-
-  </table>
-  @else
-  <h4>No data to display</h4>
-  @endif
-</div>
-
 
 <!-- Show also invalid cases -->
-@elseif(!empty($_GET['reg_no']) AND !empty($_GET['checkbox']))
+@if(!empty($_GET['input_name']) AND !empty($_GET['checkbox']))
 
 <div class="col-xs-6">
   @if(count($dataSingle_all)>0)
@@ -293,7 +260,8 @@ hr {
         <th>FROM TIME</th>
         <th>TO TIME</th>
         <th>SIGN IN TIME</th>
-        <th>STATUS</th>
+          <th>STATUS</th>
+
       </tr>
     </thead>
 
@@ -305,12 +273,24 @@ hr {
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
         <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-        <td>{{ date("H:i",strtotime($var->datetime))}}</td>
-        <td>@if($var->validity=='VALID')
-          ARRIVED EARLY
-          @else
-          ARRIVED LATE
-          @endif</td>
+        <td>
+            @if($var->status==1)
+                @if($var->validity=='VALID')
+                    {{ date("H:i",strtotime($var->datetime))}}
+                @else
+                    {{ date("H:i",strtotime($var->datetime))}} ({{ date("i",strtotime($var->datetime))-date("i",strtotime($var->courseTimeFrom))}} minutes late)
+                @endif
+            @else
+                N/A
+            @endif
+            </td>
+
+          <td>@if($var->status==1)
+                  PRESENT
+              @else
+                  ABSENT
+              @endif </td>
+
       </tr>
       @endforeach
     </tbody>
@@ -375,11 +355,11 @@ window.addEventListener( "pageshow", function ( event ) {
 
 <script type="text/javascript">
  $(document).ready(function() {
-  
-  
+
+
   // console.log(x);
     var table = $('#myTable1').DataTable( {
-        dom: '<"top"fl>rt<"bottom"pi>'     
+        dom: '<"top"fl>rt<"bottom"pi>'
     } );
 
 });

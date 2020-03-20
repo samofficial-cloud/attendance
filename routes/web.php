@@ -33,13 +33,39 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/attendance_report', 'ReportController@showattendance_all')->name('report');
 
+Route::get('/system_settings', 'configController@changeConfiguration')->name('change_config');
+
+Route::get('/system_settings/changePercentage', 'configController@changePercentage')->name('change_percentage');
+
+Route::get('/system_settings/changeScanningValidityPeriod', 'configController@changeScanningValidityPeriod')->name('change_validity_period');
+
+
+Route::get('/system_settings/change_academic_year', 'configController@changeAcademicYear')->name('change_academic_year');
+
+Route::get('/system_settings/change_title', 'configController@changeTitle')->name('change_title');
+
+Route::get('/attendance_report/sortClass/{courseValue}', 'ReportController@sortClass')->name('sortClass');
+
 Route::get('/attendance_report_tests', 'ReportController@showattendance_all_tests')->name('report_tests');
 
+Route::get('/attendance_report_tests/absentees/{courseValue}', 'ReportController@AbsenteeTest')->name('report_testsAbsentees');
+
+Route::get('/attendance_report_tests/present/{courseValue}', 'ReportController@PresentTest')->name('report_testsPresent');
 Route::get('/attendance_report_ue', 'ReportController@showattendance_all_ue')->name('report_ue');
+    Route::get('/attendance_report_ue/absentees/{courseValue}', 'ReportController@AbsenteeUe')->name('report_UeAbsentees');
+    Route::get('/attendance_report_ue/present/{courseValue}', 'ReportController@PresentUe')->name('report_UePresent');
 
-
+    Route::post('/autocompleteProgram/fetch', 'ReportController@AutoComplete')->name('autocomplete.prog');
+    Route::post('/autocompleteName/fetch', 'ReportController@AutoCompleteName')->name('autocomplete.name');
 Route::get('/', 'HomeController@index')->name('first');
 
+
+Route::get('/check_user_availability', 'ReportController@checkUser')->name('check_user');
+
+Route::get('/check_course_list', 'ReportController@checkCourse')->name('check_course');
+
+
+Route::get('/checkDegree_course_list', 'ReportController@checkDegreeCourses')->name('checkDegreeCourses');
 
 Route::get('/approval', 'reservationsController@showReservations')->name('approval');
 

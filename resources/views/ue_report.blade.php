@@ -16,10 +16,10 @@ div.dataTables_length label {
     font-weight: normal;
     text-align: left;
     white-space: nowrap;
-    display: inline-block;  
+    display: inline-block;
 }
 
-div.dataTables_length select { 
+div.dataTables_length select {
   height:25px;
   width:10px;
   font-size: 70%;
@@ -27,9 +27,9 @@ div.dataTables_length select {
 table.dataTable {
 font-family: "Nunito", sans-serif;
     font-size: 15px;
-    
 
-    
+
+
   }
   table.dataTable.no-footer {
     border-bottom: 0px solid #111;
@@ -47,7 +47,7 @@ hr {
 
 </style>
 
-@endsection 
+@endsection
 
 @section('content')
 <div class="classname">
@@ -56,7 +56,7 @@ hr {
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 84%">
@@ -72,7 +72,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
   </li>
@@ -210,7 +210,7 @@ hr {
           <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -226,24 +226,43 @@ hr {
 @if($_GET['selection']=='All courses')
 @if(count($all_courses)>0)
       <div class="col-xs-9"><legend>
-        <p class="note">UE attendance report for <b>{{$name}} ({{$reg_no}})</b></p>
-      <h5 class="note">Course(s): All </h5>
+              <div style="float: right;">
+                  <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                  <h6 class="note">Semester: {{$current_semester}}</h6></div>
+
+
+              @foreach($program_fullAllCourses as $var)
+                  <h4 class="note">Programme: {{$var->full}}</h4>
+              @endforeach
+      <h4 class="note">Case: All courses </h4>
+              <u><p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p></u>
       </legend> </div>
 @else
 
 @endif
-@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
+@elseif(!empty($_GET['input_name']) AND $_GET['selection']=='One course')
 @if(count($data)>0)
       <div class="col-xs-9"><legend>
-        <p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p>
-      <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
+              <div style="float: right;">
+                  <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                  <h6 class="note">Semester: {{$current_semester}}</h6></div>
+
+              @foreach($program_fullAllCourses as $var)
+                  <h4 class="note">Programme: {{$var->full}}</h4>
+              @endforeach
+      <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h4>
+              <u><p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p></u>
       </legend> </div>
 @else
 
 @endif
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} - {{$course_name}} </p></legend> </div>
+  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} - {{$course_name}} </p>
+        @foreach($program_fullAllCourses as $var)
+            <h5 class="note">Programme: {{$var->full}}</h5>
+        @endforeach
+    </legend> </div>
 @endif
 
 
@@ -258,9 +277,10 @@ hr {
         <th>S/N</th>
         <th>COURSE</th>
         <th>DATE</th>
-        <th>FROM TIME</th>
-        <th>TO TIME</th>
-        <th>STATUS</th>
+        <th>EXAM START TIME</th>
+        <th>EXAM END TIME</th>
+          <th>SIGNING TIME</th>
+          <th>STATUS</th>
       </tr>
     </thead>
 
@@ -272,7 +292,43 @@ hr {
         <td>{{date("d/m/Y",strtotime($var->datetime)) }}</td>
         <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
         <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
-        <td>PRESENT</td>
+          <td>
+              @if($var->status==1)
+                  @if($var->validity=='VALID')
+                      {{ date("H:i",strtotime($var->datetime))}}
+                  @else
+                      <?php
+
+                      $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                      $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                      $interval = $datetime1->diff($datetime2);
+
+
+                      if($interval->format('%h')=='0'){
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                      } else if ($interval->format('%h')=='1'){
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                      else {
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                      }
+
+
+                      ?>
+                  @endif
+              @else
+                  N/A
+              @endif
+          </td>
+
+          <td>@if($var->status==1)
+                  PRESENT
+              @else
+                  ABSENT
+              @endif </td>
       </tr>
       @endforeach
     </tbody>
@@ -319,18 +375,66 @@ hr {
 
 
 
-@elseif(!empty($_GET['reg_no']) AND $_GET['selection']=='One course')
+@elseif(!empty($_GET['input_name']) AND $_GET['selection']=='One course')
 
-
+<br>
 <div class="col-xs-6">
 
 
 @if (!empty($FromTime))
-<p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
-<p>Time: {{ date("H:i",strtotime($FromTime))}}  to  {{ date("H:i",strtotime($ToTime))}} </p>
-<span>STATUS: PRESENT</span> <span><i class="fa fa-check-square-o" style="font-size:18px;color:#3e8ed0"></i></span>
 
 
+    <center>
+    <div class="card ue_div p-5 mb-4  ">
+<p class="p_ue">EXAM DATE: <b>{{date("d/m/Y",strtotime($date)) }}</b> </p>
+        <p class="p_ue">EXAM TIME: <b>{{ date("H:i",strtotime($FromTime))}} hours  to  {{ date("H:i",strtotime($ToTime))}} hours</b> </p>
+
+        @foreach ($data as $var)
+            <p class="p_ue">SIGNING TIME:
+                @if($var->status==1)
+                    @if($var->validity=='VALID')
+                        <b>{{ date("H:i",strtotime($var->datetime))}} hours</b>
+                    @else
+                        <b>
+                        <?php
+
+                        $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                        $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                        $interval = $datetime1->diff($datetime2);
+
+
+                        if($interval->format('%h')=='0'){
+                            echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                        } else if ($interval->format('%h')=='1'){
+
+                            echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                        else {
+
+                            echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                        }
+
+
+                        ?>
+                        </b>
+                    @endif
+                @else
+                    N/A
+                @endif
+            </p>
+            <p class="p_ue">STATUS:
+            @if($var->status==1)
+                    <b> PRESENT<span><i class="fa fa-check-square-o" style="font-size:18px;color:#3e8ed0"></i></span></b>
+
+            @else
+                    <b>ABSENT</b>
+                @endif
+            </p>
+        @endforeach
+
+    </div>
+    </center>
   {{-- <br>
 
   <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
@@ -432,11 +536,11 @@ foreach($all_students as $values){
 
 <script type="text/javascript">
  $(document).ready(function() {
-  
-  
+
+
   // console.log(x);
     var table = $('#myTable2').DataTable( {
-        dom: '<"top"fl>rt<"bottom"pi>'     
+        dom: '<"top"fl>rt<"bottom"pi>'
     } );
 
 });
