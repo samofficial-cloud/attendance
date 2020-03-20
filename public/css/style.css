@@ -348,3 +348,50 @@ margin-left: 43.5%;
     padding-left: 21px;
     padding-right: 21px;
 }
+
+
+.status_back {
+
+
+    background-color: lavender;
+    padding: 5px;
+    margin-top: 7px;
+}
+
+
+.ue_div {
+
+    width: 50%;
+    margin-top: 25px;
+}
+
+.p_ue {
+    margin-top: 10px;
+    margin-bottom: 0;
+    border: 1px solid;
+    padding: 8px;
+    background-color: aliceblue;
+}
+
+
+.custom {
+
+}
+
+.custom  .dataTables_wrapper {
+
+    /*width: 80% !important;*/
+    /*margin-left: 10%;*/
+}
+
+
+#staff_programme {
+    font-size: 12px;
+
+}
+
+.major {
+    width: 100%;
+
+    margin-bottom: 10px;
+}

@@ -12,7 +12,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 84%">
@@ -28,7 +28,7 @@
   <li class="nav-item">
     <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
   </li>
@@ -166,7 +166,7 @@
           <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -179,30 +179,71 @@
 <br>
 <div class="container">
 
-  @if(count($all_test)>0)
+  @if((count($all_test)>0) OR (count($all_test2)>0) OR (count($all_test3)>0))
   <div class="col-xs-9"><legend>
-    <p class="note"> Test attendance report for all students</p>
-    <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
+          <div style="float: right;">
+              <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+              <h6 class="note">Semester: {{$current_semester}}</h6></div>
+
+          <h6 class="note">Programme:
+
+              <?php
+              $i=0;
+              $length=count($program_full);
+              foreach($program_full as $values){
+                  $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                  $val = (iterator_to_array($iterator,true));
+
+
+                  if($i!=($length-1)){
+                      print($val['full'].', ');
+                  }else{
+
+                      print($val['full'].' ');
+
+                  }
+                  $i++;
+              }
+              ?>
+
+          </h6>
+    <h5 class="note">Course
+        : {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
+         <u> <p class="note"> Test attendance report for all students</p></u>
   </legend> </div>
 
-  @else
 
-  @endif
 
 <br>
+    <div class="major">
+        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:left;" href="/attendance_report_tests/absentees/{{{$_GET['course_id']}}}">Show only absentee students</a>
 
-<!-- TEST 1 -->
+        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:right;" href="/attendance_report_tests/present/{{{$_GET['course_id']}}}">Show only students who are present</a>
+
+        <div style="clear: both;"></div>
+    </div>
+
+        <!-- TEST 1 -->
 <div class="col-xs-6">
-<h5>TEST 1 </h5>
+<u><h5>TEST 1 </h5></u>
   @if(count($all_test)>0)
-Date: {{date("d/m/Y",strtotime($date)) }}
+Date: {{date("d/m/Y",strtotime($date)) }} &nbsp
+
+
+            <span> Test start time: {{date("H:i",strtotime($times))}} </span> &nbsp &nbsp
+            <span>Test end time:{{date("H:i",strtotime( $timee))}}</span>
+
   <table id="myTable" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th class="order">Name</th>
-        <th>REGISTRATION NUMBER</th>
 
+
+          <th class="order">SURNAME</th>
+          <th class="order">OTHER NAMES</th>
+            <th>REGISTRATION NUMBER</th>
+          <th>PROGRAMME</th>
+          <th>SIGNING TIME</th>
         <th>STATUS</th>
       </tr>
     </thead>
@@ -211,11 +252,59 @@ Date: {{date("d/m/Y",strtotime($date)) }}
       @foreach ($all_test as $var)
       <tr>
         <td class="counterCell"></td>
-        <td>{{$var->name}}</td>
+
+          <?php
+          $temp1=explode(',', $var->name);
+          $surname=$temp1[0];
+              $temp2 = preg_split('/\s+/', $temp1[1]);
+              $first_name=$temp2[1];
+              $middle_name=$temp2[2];
+              $other_names=$temp1[1];
+              print('<td>'.$surname.'</td><td>'.$other_names.'</td>');
+          ?>
+
         <td>{{$var->reg_no}}</td>
+          <td>{{$var->program}}</td>
+          <td>
+              @if($var->status==1)
+                  @if($var->validity=='VALID')
+                      {{ date("H:i",strtotime($var->datetime))}}
+                  @else
+                      <?php
+
+                      $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                      $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                      $interval = $datetime1->diff($datetime2);
 
 
-        <td>PRESENT </td>
+                      if($interval->format('%h')=='0'){
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                      } else if ($interval->format('%h')=='1'){
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                      else {
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                      }
+
+
+                      ?>
+                  @endif
+              @else
+                  N/A
+              @endif
+          </td>
+
+          <td>@if($var->status==1)
+                  PRESENT
+              @else
+                  ABSENT
+              @endif </td>
+
+
+
       </tr>
       @endforeach
     </tbody>
@@ -230,18 +319,21 @@ Date: {{date("d/m/Y",strtotime($date)) }}
 
 <!-- TEST 2 -->
 <div class="col-xs-6">
-<h5>TEST 2</h5>
+<u><h5>TEST 2</h5></u>
   @if(count($all_test2)>0)
-Date: {{date("d/m/Y",strtotime($date2)) }}
+Date: {{date("d/m/Y",strtotime($date2)) }} &nbsp
+        <span> Test start time: {{date("H:i",strtotime($time2s))}} </span> &nbsp &nbsp
+        <span>Test end time:{{date("H:i",strtotime( $time2e))}}</span>
   <table id="myTable2" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th class="order">Name</th>
+          <th class="order">SURNAME</th>
+          <th class="order">OTHER NAMES</th>
         <th>REGISTRATION NUMBER</th>
-
-
-        <th>STATUS</th>
+          <th>PROGRAMME</th>
+          <th>SIGNING TIME</th>
+          <th>STATUS</th>
       </tr>
     </thead>
 
@@ -249,11 +341,54 @@ Date: {{date("d/m/Y",strtotime($date2)) }}
       @foreach ($all_test2 as $var)
       <tr>
         <td class="counterCell"></td>
-        <td>{{$var->name}}</td>
+          <?php
+          $temp1=explode(',', $var->name);
+          $surname=$temp1[0];
+          $temp2 = preg_split('/\s+/', $temp1[1]);
+          $first_name=$temp2[1];
+          $middle_name=$temp2[2];
+          $other_names=$temp1[1];
+          print('<td>'.$surname.'</td><td>'.$other_names.'</td>');
+          ?>
         <td>{{$var->reg_no}}</td>
+          <td>{{$var->program}}</td>
+          <td>
+              @if($var->status==1)
+                  @if($var->validity=='VALID')
+                      {{ date("H:i",strtotime($var->datetime))}}
+                  @else
+                      <?php
+
+                      $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                      $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                      $interval = $datetime1->diff($datetime2);
 
 
-        <td>PRESENT </td>
+                      if($interval->format('%h')=='0'){
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                      } else if ($interval->format('%h')=='1'){
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                      else {
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                      }
+
+
+                      ?>
+                  @endif
+              @else
+                  N/A
+              @endif
+          </td>
+
+          <td>@if($var->status==1)
+                  PRESENT
+              @else
+                  ABSENT
+              @endif </td>
       </tr>
       @endforeach
     </tbody>
@@ -269,18 +404,21 @@ Date: {{date("d/m/Y",strtotime($date2)) }}
 <!-- TEST 3 -->
 <div class="col-xs-6">
 
-<h5>TEST 3 </h5>
+<u><h5>TEST 3 </h5></u>
   @if(count($all_test3)>0)
-Date: {{date("d/m/Y",strtotime($date3)) }}
+Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
+        <span> Test start time: {{date("H:i",strtotime($time3s))}} </span> &nbsp &nbsp
+        <span>Test end time:{{date("H:i",strtotime( $time3e))}}</span>
   <table id="myTable3" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-        <th class="order">Name</th>
+          <th class="order">SURNAME</th>
+          <th class="order">OTHER NAMES</th>
         <th>REGISTRATION NUMBER</th>
-
-
-        <th>STATUS</th>
+          <th>PROGRAMME</th>
+          <th>SIGNING TIME</th>
+          <th>STATUS</th>
       </tr>
     </thead>
 
@@ -288,9 +426,54 @@ Date: {{date("d/m/Y",strtotime($date3)) }}
       @foreach ($all_test3 as $var)
       <tr>
         <td class="counterCell"></td>
-        <td>{{$var->name}}</td>
+          <?php
+          $temp1=explode(',', $var->name);
+          $surname=$temp1[0];
+          $temp2 = preg_split('/\s+/', $temp1[1]);
+          $first_name=$temp2[1];
+          $middle_name=$temp2[2];
+          $other_names=$temp1[1];
+          print('<td>'.$surname.'</td><td>'.$other_names.'</td>');
+          ?>
         <td>{{$var->reg_no}}</td>
-        <td>PRESENT </td>
+          <td>{{$var->program}}</td>
+          <td>
+              @if($var->status==1)
+                  @if($var->validity=='VALID')
+                      {{ date("H:i",strtotime($var->datetime))}}
+                  @else
+                      <?php
+
+                      $datetime1 = new DateTime($var->courseTimeFrom);//start time
+                      $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
+                      $interval = $datetime1->diff($datetime2);
+
+
+                      if($interval->format('%h')=='0'){
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
+
+
+                      } else if ($interval->format('%h')=='1'){
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
+                      else {
+
+                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
+                      }
+
+
+                      ?>
+                  @endif
+              @else
+                  N/A
+              @endif
+          </td>
+
+          <td>@if($var->status==1)
+                  PRESENT
+              @else
+                  ABSENT
+              @endif </td>
       </tr>
       @endforeach
     </tbody>
@@ -300,6 +483,76 @@ Date: {{date("d/m/Y",strtotime($date3)) }}
   <h4>No data to display</h4>
   @endif
 </div>
+
+<br>
+
+
+
+
+
+        @if((count($all_test)>0) OR (count($all_test2)>0) OR (count($all_test3)>0))
+        <!-- course key -->
+
+        <h6><u>KEY</u></h6>
+        <?php
+
+        $tempOut = array();
+        foreach($all_test as $values){
+            $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+            $val = (iterator_to_array($iterator,true));
+            $tempoIn=$val['program'];
+
+            if(!in_array($tempoIn, $tempOut))
+            {
+                print($val['program'].' - '.$val['full'].'<br>');
+                array_push($tempOut,$tempoIn);
+            }
+
+
+
+
+        }
+
+            foreach($all_test2 as $values){
+                $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                $val = (iterator_to_array($iterator,true));
+                $tempoIn=$val['program'];
+
+                if(!in_array($tempoIn, $tempOut))
+                {
+                    print($val['program'].' - '.$val['full'].'<br>');
+                    array_push($tempOut,$tempoIn);
+                }
+
+
+
+
+            }
+
+            foreach($all_test3 as $values){
+                $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
+                $val = (iterator_to_array($iterator,true));
+                $tempoIn=$val['program'];
+
+                if(!in_array($tempoIn, $tempOut))
+                {
+                    print($val['program'].' - '.$val['full'].'<br>');
+                    array_push($tempOut,$tempoIn);
+                }
+
+
+
+
+            }
+
+        ?>
+
+@else
+
+@endif
+        <br>
+
+
 
 
 <form action="{{route('testallpdf')}}" class="form-container form-horizontal" method="get">
@@ -320,6 +573,9 @@ Date: {{date("d/m/Y",strtotime($date3)) }}
      <center><button class="btn btn-primary" type="submit">Download</button></center>
      </form>
 
+    @else
+        <h4>No data to display</h4>
+    @endif
 
 
     <div class="col-xs-3">
