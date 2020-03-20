@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-
 @section('title')
   STUDENTS
 @endsection
@@ -9,7 +7,7 @@
 @section('style')
 <style>
 div.dataTables_filter{
-  padding-left:700px;
+  padding-left:760px;
   padding-bottom:20px;
 }
 
@@ -361,26 +359,28 @@ $id=$_GET['rid'];
   <div class="card-body">
    <center><h4>{{$_GET['rid']}}- {{$course_name}} </h4></center>
 
-   
+   <a class="btn btn-sm btn-success" style="float: right;" href="/generate-Students/courses-PDF?rid={{$_GET['rid']}}">PRINT</a>
+   <br>
     @foreach($program as $program)
     <?php
     $i='1';
       $deptId=department::select('DEPTID')->where('DEPTNAME',$program->program)->value('DEPTID');
       
-        $students=userinfo::where('DEFAULTDEPTID',$deptId)->get();
+        $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->orderby('name','asc')->get();
         $full= program::select('full')->where('initial',$program->program)->value('full');
 
     ?>
 
-    <h5>{{$a}}. {{$full}}</h5>
+    <h5>{{$a}}.{{$full}}</h5>
     <table class=" hover table table-striped table-bordered" id="example{{$a}}">
   <thead class="thead-dark">
      <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">NAME</th>
+      <th scope="col" style="color:#3490dc;">REGISTRATION No.</th>
       <th scope="col" style="color:#3490dc;">GENDER</th>
-     {{--  <th scope="col" style="color:#3490dc;">FEES STATUS</th> --}}
+      <th scope="col" style="color:#3490dc;">FEES STATUS</th>
+      <th scope="col" style="color:#3490dc;">FEES DURATION</th>
     </tr>
   </thead>
   <tbody>
@@ -388,10 +388,17 @@ $id=$_GET['rid'];
     @foreach($students as $student)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$student->SSN}}</td>
       <td>{{$student->name}}</td>
-      <td>{{$student->GENDER}}</td>
-      {{-- <td>{{$student->Fees_Status}}</td> --}}
+      <td>{{$student->SSN}}</td>
+      @if($student->GENDER =='Male')
+      <td>M</td>
+      @elseif($student->GENDER =='Female')
+      <td>F</td>
+      @else
+      <td></td>
+      @endif
+      <td>{{$student->Fees_Status}}</td>
+       <td>{{$student->Fees_Duration}}</td>
       </tr>
     <?php
     $i= $i+1;

@@ -220,17 +220,21 @@ hr {
 </div>
 
 <br>
-
+{{-- $pending = reservation::where('rstatus','-1')->where('flag','1')->whereDate(strtotime('Date'."-".'Month'."-".'Year'), '>=', date('j-n-Y'))->orderBy('Reservation_date','asc')->get(); 
+$pending=DB::RAW("select * from dbo.reservations where CONVERT(datetime,CONCAT(Month,'-',Date,'-',Year),101) > CONVERT(datetime,getdate(),101)");--}}
 <?php
 use App\reservation;
- $pending = reservation::where('rstatus','-1')->get();
-  $approved = reservation::where('rstatus','1')->get();
+$searchString = '3 12 2020';
+$pending=DB::select('EXEC reservationdate');
+ 
+$approved = DB::select('EXEC approvedreservationdate');
   $today=date('j');
   $tmonth=date('n');
   $tyear=date('Y');
  $i='1';
  $j='1';
 ?>
+{{$pending}}
 <div class="container2" >
   @if(Auth::user()->principal==1 or Auth::user()->Timetable_Master==1)
    @if ($errors->any())
@@ -249,8 +253,13 @@ use App\reservation;
         <p>{{$message}}</p>
       </div>
     @endif
+    <div class="tab">
+  <button class="tablinks" onclick="openInstructors(event, 'Pending Requests')" id="defaultOpen"><strong>PENDING REQUESTS</strong></button>
+  <button class="tablinks" style="float: right;" onclick="openInstructors(event, 'Approved Requests')"><strong>APPROVED REQUESTS</strong></button>
+</div>
+<div id="Pending Requests" class="tabcontent">
     <br>
-  <h4>PENDING REQUESTS</h4>
+  <h4>1. PENDING REQUESTS</h4>
   @if(count($pending)==0)
   <h5>You have no any pending request.</h5>
   @else
@@ -283,7 +292,28 @@ use App\reservation;
       <td>{{ $pending->fromTime}}-{{ $pending->toTime}}</td>
       <td>{{ $pending->Capacity}}</td>
       <td>{{ $pending->Reason}}</td>
-      <td>{{ $pending->Remarks}}</td>
+      <td>
+        @if(count($pending->Remarks)>0)
+        <center> <a data-toggle="modal" data-target="#Remarks{{$pending->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW <i class="fa fa-eye" style="font-size:14px; color: black;"></i></a></center>
+
+        <div class="modal fade" id="Remarks{{$pending->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">REMARKS</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            {{$pending->Remarks}}
+            
+</div>
+</div>
+</div>
+</div>
+@endif
+      </td>
       
       <td>
         @if($pending->Year<$tyear)
@@ -350,8 +380,10 @@ use App\reservation;
 
 <br>
 <br>
-<hr>
-  <h4>APPROVED REQUESTS</h4>
+</div>
+<div id="Approved Requests" class="tabcontent">
+  <br>
+  <h4>2. APPROVED REQUESTS</h4>
    @if(count($approved)==0)
   <h5>You have no any approved request.</h5>
   @else
@@ -384,7 +416,28 @@ use App\reservation;
      <td>{{ $approved->fromTime}}-{{ $approved->toTime}}</td>
      <td>{{ $approved->Capacity}}</td>
       <td>{{ $approved->Reason}}</td>
-      <td>{{ $approved->Remarks}}</td>
+      <td>
+        @if(count($approved->Remarks)>0)
+        <center> <a data-toggle="modal" data-target="#Remarks{{$approved->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW <i class="fa fa-eye" style="font-size:15px; color: black;"></i></a></center>
+
+        <div class="modal fade" id="Remarks{{$approved->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">REMARKS</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            {{$approved->Remarks}}
+            
+</div>
+</div>
+</div>
+</div>
+@endif
+        </td>
       <td>
          @if($approved->Year<$tyear)
         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete </a> 
@@ -408,10 +461,12 @@ use App\reservation;
 </tbody>
 </table>
 @endif
+</div>
 @else
 <h3 style="color: red;">SORRY!!!YOU DO NOT HAVE PERMISSION TO VIEW THIS PAGE</h3>
 @endif
 </div>
+
 
 
 @endsection
@@ -443,5 +498,28 @@ use App\reservation;
 
 });
 
+</script>
+<script type="text/javascript">
+  function openInstructors(evt, evtName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(evtName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
 </script>
 @endsection

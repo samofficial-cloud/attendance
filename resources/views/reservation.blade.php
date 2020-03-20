@@ -177,9 +177,9 @@ VENUE RESERVATION
 <?php
 
   use App\calendar;
-$timetabled = calendar::select('Date','Day','Month','Year')->where('Week',$_GET['wid'])->get();
+$timetabled = calendar::select('Date','Day','Month','Year')->where('Week',$_GET['wid'])->where('Semester','2')->where('Academic_year','2019/2020')->get();
 
-$Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('n'))->where('Year',date('Y'))->Value('Week');
+$Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('n'))->where('Year',date('Y'))->where('Semester','2')->where('Academic_year','2019/2020')->Value('Week');
 
   $today=date('j-n-Y');
   $tdate=date('j');

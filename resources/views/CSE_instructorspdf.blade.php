@@ -25,7 +25,7 @@ table {
   <?php
   Use App\lecturer;
 
-  $instructors1=lecturer::where('dept','CSE')->orderBy('semester','asc')->get();
+  $instructors1=lecturer::where('dept','CSE')->where('flag','1')->where('academic_year','2019/2020')->orderBy('semester','asc')->get();
   $i='1';
   ?>
 

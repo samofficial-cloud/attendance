@@ -84,15 +84,11 @@ Route::get('/instructors-CSE','lecturesController@indexCSE')->name('lecturers1')
 
 Route::get('/CSE-instructors','lecturesController@CSEindex')->name('lecturers21');
 
+Route::get('/mytests','testsController@mytest')->name('mytest');
 
 Route::get('/timetable', function () {
      return View ('timetable');
 });
-
-Route::get('/mytests', function () {
-     return View ('mytest');
-});
-
 
 Route::get('/test', function () {
      return View ('test');
@@ -129,6 +125,24 @@ Route::get('/studentsList2', function () {
      return View ('studentsList2');
 
 });
+
+Route::get('/generalReports', function () {
+     return View ('generalReports');
+});
+
+Route::get('/users', function () {
+     return View ('usermanagement');
+});
+
+Route::get('/getnewuser', function () {
+        return View::make('newuser');
+    });
+
+Route::get('/getactivateuser', array('as' => 'getactivateuser', 'uses' => 'USERINFOController@activateuserview'));
+
+Route::get('/getedituser', array('as' => 'getedituser', 'uses' => 'USERINFOController@edituserview'));
+
+Route::get('/getdeactivateuser', array('as' => 'getdeactivateuser', 'uses' => 'USERINFOController@deleteuserview'));
 
 Route::get('/join', 'coursesController@index');
 
@@ -169,6 +183,8 @@ Route::get('/venues/add', 'CapacityvenuesController@add')->name('newcapacity');
 
 Route::get('/instructors/edit', 'lecturesController@edit')->name('editinstructor');
 
+Route::get('/instructors/activate', 'lecturesController@activate')->name('activateinstructor');
+
 Route::get('/instructors/add', 'lecturesController@add')->name('newinstructor');
 
 Route::get('/instructors/delete/{id}', 'lecturesController@DeleteLecturer')->name('DeleteLecturer');
@@ -183,7 +199,9 @@ Route::get('/students/add', 'USERINFOController@add')->name('newstudents');
 
 Route::get('/students/delete/{USERID}', 'USERINFOController@DeactivateStudent')->name('DeactivateStudent');
 
-Route::get('/students/activate', 'USERINFOController@activate')->name('ActivateStudent');
+Route::get('/students/activate', 'USERINFOController@activatestudent')->name('ActivateStudent');
+
+Route::get('/staff/activate/{id}', 'USERINFOController@activatestaff')->name('ActivateStaff');
 
 Route::get('/SearchStudents', 'USERINFOController@showStudents')->name('then');
 
@@ -197,6 +215,27 @@ Route::get('/staffs', 'USERINFOController@staff');
 
 Route::get('/events/edit', 'calendarsController@edit')->name('editevents');
 
+Route::get('/mytests/edit', 'testsController@edit')->name('edittests');
+
+Route::post('/autocomplete/fetch', 'lecturesController@fetch')->name('autocomplete.fetch');
+
+Route::post('/autocomplete/fetch1', 'lecturesController@fetch1')->name('autocomplete.fetch1');
+
+Route::post('/autocomplete/fetch2', 'lecturesController@fetch2')->name('autocomplete.fetch2');
+
+Route::post('/autocomplete/fetch3', 'lecturesController@fetch3')->name('autocomplete.fetch3');
+
+Route::post('/autocomplete/fetch4', 'lecturesController@fetch4')->name('autocomplete.fetch4');
+
+Route::post('/autocomplete/fetch5', 'lecturesController@fetch5')->name('autocomplete.fetch5');
+
+Route::post('/autocomplete/fetch6', 'lecturesController@fetch6')->name('autocomplete.fetch6');
+
+Route::post('/autocomplete/fetch7', 'lecturesController@fetch7')->name('autocomplete.fetch7');
+
+Route::post('/autocomplete/course', 'lecturesController@course')->name('autocomplete.course');
+
+
 
 Route::get('/form', function () {
      return View ('form');
@@ -206,7 +245,7 @@ Route::get('/form', function () {
 
 
 Route::post('create','reservationsController@insert');
-Route::post('/edit1/{id}','usersystemController@update');
+Route::get('/edit1','usersystemController@update');
 Route::post('/changepassword','usersystemController@changePassword');
 
 Route::post('/u_course','timetablesController@updatecourse')->name('u_course');
@@ -253,6 +292,7 @@ Route::get('/programme', function () {
 
 });
 
+
 Route::get('/form2', function () {
      return View ('form2');
 
@@ -271,6 +311,14 @@ Route::get('/LectureConflicts', function () {
 
 
 Route::get('students','USERINFOController@index');
+
+Route::get('newuser','USERINFOController@newuser');
+
+Route::get('deactivateuser','USERINFOController@deleteuserview');
+
+Route::get('activateuser','USERINFOController@activateuserview');
+
+Route::post('newuser/add','USERINFOController@adduser')->name('addnewuser');
 
 Route::get('managestudents','USERINFOController@managestudents');
 
@@ -299,6 +347,8 @@ Route::get('generate-Course-pdf','coursesController@CS1PDF')->name('CS1pdf');
 Route::get('generate-CSE-Staff-pdf','USERINFOController@staffCSEPDF')->name('staffCSEpdf');
 
 Route::get('generate-ETE-Staff-pdf','USERINFOController@staffETEPDF')->name('staffETEpdf');
+
+Route::get('events-pdf','calendarsController@eventsPDF')->name('eventspdf');
 
 
 Route::get('/reservation', 'reservationsController@show');
@@ -340,6 +390,20 @@ Route::get('/coursesCEIT4', 'coursesController@showCEIT4');
 Route::get('/editstudentsList', 'USERINFOController@showStudentList');
 
 Route::get('generate-Students-PDF','USERINFOController@studentsPDF')->name('studentspdf');
+
+Route::get('generate-General-Students-PDF','USERINFOController@GeneralstudentsPDF')->name('Generalstudentspdf');
+
+Route::get('generate-General-Staff-PDF','USERINFOController@GeneralstaffPDF')->name('Generalstaffpdf');
+
+Route::get('generate-General-Events-PDF','calendarsController@GeneraleventsPDF')->name('Generaleventspdf');
+
+Route::get('generate-General-Course-PDF','coursesController@GeneralcoursePDF')->name('Generalcoursepdf');
+
+Route::get('generate-Students/courses-PDF','USERINFOController@studentsCoursesPDF')->name('studentscoursespdf');
+
+Route::get('generate-Inactive-Students-PDF','USERINFOController@inactivestudentsPDF')->name('inactivestudentspdf');
+
+Route::get('generate-reservations-PDF','reservationsController@reservationsPDF')->name('reservationspdf');
 
 
 Route::get('/room', 'timetablesController@index');

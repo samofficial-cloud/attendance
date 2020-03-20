@@ -340,20 +340,8 @@ $extraC2=$val->TotalRecords;
 <!-- Last case -->
 @else
 @if(!empty($name))
-<div class="col-xs-9">
-  <legend>
-    <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
   <p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p>
 <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
-</div>
   @else
 
   @endif
@@ -366,31 +354,18 @@ $extraC2=$val->TotalRecords;
 
         <div class="col-xs-6">
             @if(count($dataSingle_all)>0)
-                <div class="col-xs-9">
-                  <legend>
-                    <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
-           <p class="note"> Class attendance report for <b>{{$name}} ({{$reg_no}})</b> </p>
-                <h5 class="note">Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}}</h5>
-                    </div>
-
-            <br>
-
+               
+           <p> Class attendance report for <b>{{$name}} ({{$reg_no}})</b> </p>
+                <h5>Course(s): {{strtoupper($_GET['course_id'])}} - {{$course_name}}</h5>
+                   
 
                 <table class="hover table table-bordered table-striped" id="myTable1">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -444,28 +419,16 @@ $extraC2=$val->TotalRecords;
 
             <div class="col-xs-6">
             @if(count($instructor_data)>0)
-                    <div class="col-xs-9">
-                      <legend>
-                        <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
+                    
                             <p class="note">Instructor:  {{$instructor}} ({{$instructor_reg}}) </p>
-                        </div>
-                <br>
-
+                       
   <table class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
         <th>DATE</th>
-        <th>COURSE START TIME</th>
-        <th>COURSE END TIME</th>
+        <th>START TIME</th>
+        <th>END TIME</th>
         <th>SIGNING TIME</th>
         <th>STATUS</th>
       </tr>
@@ -509,29 +472,15 @@ $extraC2=$val->TotalRecords;
         <div class="col-xs-6">
             @if(count($instructor2_data)>0)
 
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
                         <p class="note">Instructor:  {{$instructor_2}} ({{$instructor2_reg}}) </p>
-
-                    </div>
-                <br>
-
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -576,29 +525,15 @@ $extraC2=$val->TotalRecords;
         <div class="col-xs-6">
             @if(count($instructor3_data)>0)
 
-
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
                         <p class="note">Instructor:  {{$instructor_3}} ({{$instructor3_reg}}) </p>
-                    </div>
-                <br>
-
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -643,27 +578,15 @@ $extraC2=$val->TotalRecords;
         <div class="col-xs-6">
             @if(count($instructor4_data)>0)
 
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
                         <p class="note">Instructor:  {{$instructor_4}} ({{$instructor4_reg}})</p>
-                  </div>
-                <br>
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -708,28 +631,15 @@ $extraC2=$val->TotalRecords;
         <div class="col-xs-6">
             @if(count($instructor5_data)>0)
 
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
                         <p class="note">Instructor:  {{$instructor_5}} ({{$instructor5_reg}})</p>
-                    </div>
-                <br>
-
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -775,27 +685,16 @@ $extraC2=$val->TotalRecords;
         <div class="col-xs-6">
             @if(count($Tutorial_Assistant_data)>0)
 
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
-                        <p class="note">Tutorial Assistant:  {{$Tutorial_Assistant}} ({{ $Tutorial_Assistant_reg}})</p>
-                     </div>
-                <br>
+                <p class="note">Tutorial Assistant:  {{$Tutorial_Assistant}} ({{ $Tutorial_Assistant_reg}})</p>
+                     
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -839,27 +738,16 @@ $extraC2=$val->TotalRecords;
         <div class="col-xs-6">
             @if(count($technical_staff_data)>0)
 
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
                         <p class="note">Technical staff:  {{$technical_staff}} ({{ $technical_staff_reg}})</p>
-                    </div>
-                <br>
+                   
 
                 <table class="hover table table-bordered table-striped" id="myTable1">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -903,28 +791,15 @@ $extraC2=$val->TotalRecords;
         <!-- Techinal_staff 2 -->
         <div class="col-xs-6">
             @if(count($Technical_Staff_2_data)>0)
-
-                <div class="col-xs-9"><legend>
-                  <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
-                  <p class="note">Technical staff:  {{$Technical_Staff_2}} ({{ $Technical_Staff_2_reg}})</p>
-                    </div>
-                <br>
+            <p class="note">Technical staff:  {{$Technical_Staff_2}} ({{ $Technical_Staff_2_reg}})</p>
 
                 <table class="table table-bordered table-striped">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>
@@ -968,18 +843,8 @@ $extraC2=$val->TotalRecords;
         <!-- Technical staff3 -->
         <div class="col-xs-6">
             @if(count($Technical_Staff_3_data)>0)
-                <div class="col-xs-9"><legend>
-                        <center><b><br><br>UNIVERSITY OF DAR ES SALAAM
-                 <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-                  <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-                  <br>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM
-                 </b>
-               </center>
-  
-</legend> 
-<br>
-                        <p class="note">Technical staff:  {{$Technical_Staff_3}} ({{ $Technical_Staff_3_reg}})</p>
-                    </div>
+               
+            <p class="note">Technical staff:  {{$Technical_Staff_3}} ({{ $Technical_Staff_3_reg}})</p>
 
 
                 <table class="table table-bordered table-striped">
@@ -987,8 +852,8 @@ $extraC2=$val->TotalRecords;
                     <tr>
                         <th>S/N</th>
                         <th>DATE</th>
-                        <th>COURSE START TIME</th>
-                        <th>COURSE END TIME</th>
+                        <th>START TIME</th>
+                        <th>END TIME</th>
                         <th>SIGNING TIME</th>
                         <th>STATUS</th>
                     </tr>

@@ -11,6 +11,7 @@ use App\Notifications\ApprovalStatus;
 use App\Notifications\DeclineStatus;
 use App\Notifications\PendingStatus;
 use Auth;
+use PDF;
 
      
 
@@ -27,8 +28,6 @@ public function venue(){
 }
 
 public function showReservations(){
-
-
       return view('tmaster');
 }
 
@@ -57,8 +56,9 @@ public function changestatus(Request $request){
 
       $user=User::where('name',$name)->first();
       $user->notify(new DeclineStatus($venue, $date, $month, $year, $day, $time,$Reason,$name,$ReservationDate));
-
-    $reservations->delete();
+    $reservations->flag='0';
+    $reservations->decline_reason=$Reason;
+    $reservations->save();
     
     
        return redirect()->route('approval')
@@ -139,8 +139,9 @@ public function changestatusb($id)
   public function DeleteRequest($id)
   {
     $reservations = reservation::find($id);
+    $reservations->flag='0';
 
-    $reservations->delete();
+    $reservations->save();
     
     
       return redirect()->route('approval')
@@ -172,12 +173,20 @@ $toTime = $request->input('toTime');
 $Date =$request->input('Date');
 $Remarks = $request->input('remark');
 $Capacity = $request->input('capacity');
+$combined_date = $request->input('Year').'-'.$request->input('Month').'-'.$request->input('Date');
 $rstatus = '-1';
-$ReservationDate=$request->input('ReservationDate');
-$data=array('Venue'=>$Venue,"Day"=>$Day,"Month"=>$Month,"Year"=>$Year,"Week"=>$Week,"Name"=>$Name,"Reason"=>$Reason,"fromTime"=>$fromTime,"toTime"=>$toTime,"Date"=>$Date,"rstatus"=>$rstatus, "Capacity"=>$Capacity,"Remarks"=>$Remarks,"Reservation_date"=>$ReservationDate);
+$ReservationDate=date("Y-m-d", strtotime($request->input('ReservationDate')));
+$data=array('Venue'=>$Venue,"Day"=>$Day,"Month"=>$Month,"Year"=>$Year,"Week"=>$Week,"Name"=>$Name,"Reason"=>$Reason,"fromTime"=>$fromTime,"toTime"=>$toTime,"Date"=>$Date,"rstatus"=>$rstatus, "Capacity"=>$Capacity,"Remarks"=>$Remarks,"Reservation_date"=>$ReservationDate, "flag"=>1,"combined_date"=>$combined_date);
 DB::table('reservations')->insert($data);
  return redirect()->back()->with('success', 'Request Submitted Successfully');
 }
+
+public function reservationsPDF(){
+       
+        $pdf = PDF::loadView('generalreservationpdf');
+  
+        return $pdf->stream('RESERVATIONS LIST.pdf');
+    }
 
 
 

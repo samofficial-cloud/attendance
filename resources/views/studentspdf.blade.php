@@ -28,7 +28,7 @@ table {
   use App\program;
 
   $deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEPTID');
-        $students=userinfo::where('DEFAULTDEPTID',$deptId)->orderBy('NAME','asc')->get();
+        $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->orderBy('NAME','asc')->get();
         $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
         $i='1';
         ?>
@@ -45,32 +45,28 @@ table {
   <thead class="thead-dark">
      <tr>
       <th scope="col">S/N</th>
-      <th scope="col">SSN</th>
       <th scope="col">NAME</th>
+      <th scope="col">REGISTRATION NO.</th>
       <th scope="col">GENDER</th>
       <th scope="col">FEES STATUS</th>
+       <th scope="col">FEES DURATION</th>
     </tr>
   </thead>
   <tbody>
 
     @foreach($students as $student)
-     @if($student->flag=='0')
-    <tr style="color: red;">
-      <th scope="row">{{ $i }}.</th>
-      <td>{{$student->SSN}}</td>
-      <td>{{$student->name}}</td>
-      <td>{{$student->GENDER}}</td>
-      <td>{{$student->Fees_Status}}</td>
-      </tr>
-      @else
       <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$student->SSN}}</td>
       <td>{{$student->name}}</td>
-      <td>{{$student->GENDER}}</td>
+      <td>{{$student->SSN}}</td>
+      @if($student->GENDER=="Male")
+       <td>M</td>
+       @elseif($student->GENDER=="Female")
+       <td>F</td>
+       @endif
       <td>{{$student->Fees_Status}}</td>
+      <td>{{$student->Fees_Duration}}</td>
       </tr>
-      @endif
       <?php
       $i=$i+1;
       ?>

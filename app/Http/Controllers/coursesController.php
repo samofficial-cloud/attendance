@@ -133,4 +133,11 @@ DB::table('courses')->insert($data);
       return redirect()->back()
                   ->with('success', 'Course Deleted Successfully');
   }
+
+  public function GeneralcoursePDF(){
+       
+        $pdf = PDF::loadView('generalcoursepdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('COURSE LIST.pdf');
+    }
 }

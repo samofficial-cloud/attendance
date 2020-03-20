@@ -331,7 +331,7 @@ $i='1';
       <th scope="col"  style="color:#3490dc;">Credit</th>
       <th scope="col"  style="color:#3490dc;">Semester</th>
       <th scope="col"  style="color:#3490dc;">Criteria</th>
-      <th scope="col"  style="color:#3490dc;">Lecture No.</th>
+      <th scope="col"  style="color:#3490dc;">No. of Hours per Semester</th>
     </tr>
   </thead>
   <tbody>

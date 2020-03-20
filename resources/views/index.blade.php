@@ -45,7 +45,7 @@
 </center>
 </div>
 @elseif(Auth::user()->principal==1)
-<div class="container3" style="padding-left: 135px;">
+<div class="container3" style="padding-left: 94px;">
   <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link active" style="color:#060606"href="/">HOME</a>
@@ -64,9 +64,6 @@
     <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
   <li class="nav-item">
@@ -77,6 +74,9 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORT</a>
   </li>
 
   <li class="nav-item dropdown">
@@ -90,6 +90,7 @@
           <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+          <a class="dropdown-item" style="color:#060606" href="/users">USERS</a>
         </div>
       </li>
 

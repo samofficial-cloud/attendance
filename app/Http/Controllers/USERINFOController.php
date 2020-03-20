@@ -26,8 +26,8 @@ class USERINFOController extends Controller
       if(Auth::user()->DEFAULTDEPTID==32 and Auth::user()->HoD==1){
         if($_GET['rid']=='TE1'or $_GET['rid']=='TE2' or $_GET['rid']=='TE3' or $_GET['rid']=='TE4' or $_GET['rid']=='EE1' OR $_GET['rid']=='EE2' or $_GET['rid']=='EE3' or $_GET['rid']=='EE4' or $_GET['rid']=='ESC1' or $_GET['rid']=='ESC2' or $_GET['rid']=='ESC3'){
     	$deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEPTID');
-        $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->get();
-        $students2=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->get();
+        $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->orderBy('name','asc')->get();
+        $students2=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->orderBy('name','asc')->get();
         $badgeno=userinfo::select('BADGENUMBER')->orderBy('USERID','DESC')->first();
         $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
       return view('editstudents')->with('students',$students)->with('students2',$students2)->with('badgeno',$badgeno)->with('full',$full);
@@ -40,8 +40,8 @@ class USERINFOController extends Controller
       elseif(Auth::user()->DEFAULTDEPTID==31 and Auth::user()->HoD==1){
        if($_GET['rid']=='CS1(in)'or $_GET['rid']=='CS2(in)' or $_GET['rid']=='CS3(in)' or $_GET['rid']=='CS1(with)' or $_GET['rid']=='CS2(with)' OR $_GET['rid']=='CS3(with)' or $_GET['rid']=='CEIT1' or $_GET['rid']=='CEIT2' or $_GET['rid']=='CEIT3' or $_GET['rid']=='CEIT4' or $_GET['rid']=='BIT1'or $_GET['rid']=='BIT2' or $_GET['rid']=='BIT3' or $_GET['rid']=='CS(Cert)' or $_GET['rid']=='CS1(Dipl.)' or $_GET['rid']=='CS2(Dipl.)'){
             $deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEPTID');
-            $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->get();
-            $students2=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->get();
+            $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->orderBy('name','asc')->get();
+            $students2=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->orderBy('name','asc')->get();
             $badgeno=userinfo::select('BADGENUMBER')->orderBy('USERID','DESC')->first();
             $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
           return view('editstudents')->with('students',$students)->with('students2',$students2)->with('badgeno',$badgeno)->with('full',$full);
@@ -53,8 +53,8 @@ class USERINFOController extends Controller
       }
       elseif(Auth::user()->principal==1){
         $deptId=department::select('DEPTID')->where('DEPTNAME',$_GET['rid'])->value('DEPTID');
-            $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->get();
-            $students2=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->get();
+            $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','1')->orderBy('name','asc')->get();
+            $students2=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->orderBy('name','asc')->get();
             $badgeno=userinfo::select('BADGENUMBER')->orderBy('USERID','DESC')->first();
             $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
           return view('editstudents')->with('students',$students)->with('students2',$students2)->with('badgeno',$badgeno)->with('full',$full);
@@ -67,9 +67,37 @@ class USERINFOController extends Controller
 
      public function studentsPDF(){
        
-        $pdf = PDF::loadView('studentspdf');
+        $pdf = PDF::loadView('studentspdf')->setPaper('a4', 'landscape');
   
         return $pdf->stream('STUDENTS LIST.pdf');
+    }
+
+    public function GeneralstudentsPDF(){
+       
+        $pdf = PDF::loadView('generalstudentspdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('STUDENTS LIST.pdf');
+    }
+
+    public function GeneralstaffPDF(){
+       
+        $pdf = PDF::loadView('generalstaffpdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('STAFF LIST.pdf');
+    }
+
+    public function studentscoursesPDF(){
+       
+        $pdf = PDF::loadView('students2pdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('STUDENTS LIST.pdf');
+    }
+
+    public function inactivestudentsPDF(){
+       
+        $pdf = PDF::loadView('inactiveStudentspdf')->setPaper('a4', 'landscape');
+  
+        return $pdf->stream('INACTIVE STUDENTS LIST.pdf');
     }
 
 
@@ -87,68 +115,173 @@ class USERINFOController extends Controller
         return $pdf->stream('ETE STAFF LIST.pdf');
     }
 
-//     public function add(Request $request){
-//       $regNo = $request->get('regNo');
-//       $reg=userinfo::where('SSN',$regNo)->get();
-//       $dept=userinfo::select('DEFAULTDEPTID')->where('SSN',$regNo)->value('DEFAULTDEPTID');
-//       if(count($reg)>0){
-//         $prog=department::select('DEPTNAME')->where('DEPTID',$dept)->value('DEPTNAME');
-//         return redirect()->back()
-//                     ->with('errors', 'Cannot Add This Student Because This Student Already Exists In ')
-//                     ->with('prog',$prog);
-//       }
-//       else{
-//         $regNo = $request->get('regNo');
-//       $name = $request->get('name');
-//     $gender = $request->get('Gender');
-//     $badgeno=$request->get('badgeno');
-//     $fees=$request->get('Fees');
-//     $verificationmethod=$request->get('verificationmethod');
+    public function newuser(){
+      $badgeno=userinfo::select('BADGENUMBER')->orderBy('USERID','desc')->first();
+      return view('newuser')->with('badgeno',$badgeno);
+    }
+
+    public function edituserview(Request $request ){
+      $title=$request->get('title');
+      $dept=$request->get('dept');
+      $program=$request->get('dprogram');
+
+     
+      
+      if($title=='staff'){
+      $initial=department::select('DEPTNAME')->where('DEPTID',$dept)->value('DEPTNAME');
+      $full=program::select('full')->where('initial',$initial)->value('full');
+        $staff=userinfo::where('TITLE',$title)->where('DEFAULTDEPTID',$dept)->where('flag','1')->orderBy('name','asc')->get();
+         return view('editusers')->with('staff',$staff)->with('full',$full)->with('title',$title);
+      }
+      elseif ($title=='student') {
+    $initial=department::select('DEPTNAME')->where('DEPTID',$program)->value('DEPTNAME');
+     $full=program::select('full')->where('initial',$initial)->value('full');
+        $student=userinfo::where('TITLE',$title)->where('DEFAULTDEPTID',$program)->where('flag','1')->orderBy('name','asc')->get();
+        return view('editusers')->with('student',$student)->with('full',$full)->with('title',$title);
+        
+      }
+      
+    }
+
+     public function deleteuserview(){
+     $staff=userinfo::join('DEPARTMENTS','USERINFO.DEFAULTDEPTID','=','DEPARTMENTS.DEPTID')->where('TITLE','staff')->where('flag',1)->orderBy('name','asc')->get();
+     $student=userinfo::join('DEPARTMENTS','USERINFO.DEFAULTDEPTID','=','DEPARTMENTS.DEPTID')->where('TITLE','student')->where('flag',1)->orderBy('name','asc')->get();
+     return \View::make('deactivateuser')->with('staff',$staff)->with('student',$student);
+    }
+
+    public function activateuserview(){
+     $staff=userinfo::join('DEPARTMENTS','USERINFO.DEFAULTDEPTID','=','DEPARTMENTS.DEPTID')->where('TITLE','staff')->where('flag',0)->orderBy('name','asc')->get();
+     $student=userinfo::join('DEPARTMENTS','USERINFO.DEFAULTDEPTID','=','DEPARTMENTS.DEPTID')->where('TITLE','student')->where('flag',0)->orderBy('name','asc')->get();
+     return \View::make('activateusers')->with('staff',$staff)->with('student',$student);
+    }
+
+    public function activatestaff($id){
+    
+    $staff = userinfo::find($id);
+    
+
+    $staff->flag='1';
+    $staff->reasons=NULL;
+    $staff->remarks=NULL;
+
+    $staff->save();
+    return redirect()->back()
+                    ->with('success', 'Staff Activated successfully');
+
+    }
+
+    public function adduser(Request $request){
+      $title=$request->get('title');
+      $password=bcrypt("@camis");
+
+      if($title=='staff'){
+        $staff=userinfo::where('SSN',$request->get('staffID'))->get();
+        if(count($staff)>0){
+           return redirect()->back()
+                    ->with('errors', 'Cannot Add This Staff Because This Staff Already Exists');
+      }
+      else{
+        $name=$request->get('Name');
+        $SSN=$request->get('staffID');
+        $GENDER=$request->get('gender');
+        $DEFAULTDEPTID=$request->get('department');
+        $email=$request->get('email');
+        $phone_number=$request->get('phoneNumber');
+       $BADGENUMBER=$request->get('BADGENUMBER');
+
+        $data=array('name' =>$name,'TITLE'=>$title,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'BADGENUMBER'=>$BADGENUMBER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>1,'principal'=>0,'HoD'=>0,'Timetable_Master'=>0,'password'=>$password);
+
+        DB::table('USERINFO')->insert($data);
 
 
-//     $deptId = department::select('DEPTID')->where('DEPTNAME',$request->get('program'))->value('DEPTID');
+      return redirect()->back()
+                    ->with('success', 'Staff added successfully');
 
 
-//     $data=array("SSN"=>$regNo,"name"=>$name,"GENDER"=>$gender,"DEFAULTDEPTID"=>$deptId,"BADGENUMBER"=>$badgeno, "VERIFICATIONMETHOD"=>$verificationmethod, "Fees_Status"=>$fees,"flag"=>'1');
-// DB::table('USERINFO')->insert($data);
+      }
+
+      }
+
+      elseif($title=='student'){
+        $student=userinfo::where('SSN',$request->get('regNo'))->get();
+        if(count($student)>0){
+           return redirect()->back()
+                    ->with('errors', 'Cannot Add This Student Because This Student Already Exists');
+      }
+      else{
+        $name=$request->get('Name');
+        $SSN=$request->get('regNo');
+        $GENDER=$request->get('gender');
+        $DEFAULTDEPTID=$request->get('dprogram');
+        $email=$request->get('email');
+        $phone_number=$request->get('phoneNumber');
+       $BADGENUMBER=$request->get('BADGENUMBER');
+       $Fees_Status=$request->get('Fees_Status');
+       if($Fees_Status=='PAID'){
+       $Fees_Duration=$request->get('Fees_Duration');
+     }
+     else{
+      $Fees_Duration=NULL;
+     }
+
+       $data=array('name' =>$name,'TITLE'=>$title, 'BADGENUMBER'=>$BADGENUMBER,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>0,'principal'=>0,'HoD'=>0,'Timetable_Master'=>0,'Fees_Status'=>$Fees_Status,'Fees_Duration'=>$Fees_Duration,'password'=>$password);
+
+       DB::table('USERINFO')->insert($data);
+
+        return redirect()->back()
+                    ->with('success', 'Student added successfully');
+
+      }
 
 
-//    return redirect()->back()
-//                     ->with('success', 'Student Details added successfully');
-//                   }
+      }
+   }
 
-//    }
-
-   public function DeactivateStudent($USERID)
+   public function DeactivateStudent(Request $request)
   {
+    $USERID=$request->get('idA');
     $student = userinfo::find($USERID);
+    $name=$student->name;
 
     $student->flag='0';
+    $student->reasons=$request->get('reasons');
+    $student->remarks=$request->get('remarks');
     
     $student->save();
       return redirect()->back()
-                  ->with('success', 'Student Deactivated Successfully');
+                  ->with('success','User Deactivated Successfully');
   }
 
   public function edit(Request $request){
      $id =$request->get('id');
-     $student = userinfo::find($id);
+     $user = userinfo::find($id);
 
-    $student->SSN= $request->get('regNo');
-    $student->name= $request->get('name');
-    $student->GENDER= $request->get('Gender');
-    $student->Fees_Status= $request->get('Fees');
-    
+    $user->SSN= $request->get('regNo');
+    $user->name= $request->get('name');
+    $user->GENDER= $request->get('Gender');
+    if($user->TITLE=='student'){
+    $user->Fees_Status= $request->get('Fees');
+    if($request->get('Fees')=='PAID'){
+    $user->Fees_Duration= $request->get('Fees_Duration');
+    }
+    else{
+       $user->Fees_Duration=NULL;
+    }
+  }
+  elseif($user->TITLE=='staff'){
+    $user->phone_number=$request->get('phone');
+    $user->email=$request->get('email');
+  }
 
-    $student->save();
+    $user->save();
     return redirect()->back()
-                    ->with('success', 'Student Details updated successfully');
+                    ->with('success', 'User Details updated successfully');
 
     
 
    }
 
-   public function activate(Request $request){
+   public function activatestudent(Request $request){
      $id =$request->get('id');
      $student = userinfo::find($id);
 
@@ -156,60 +289,42 @@ class USERINFOController extends Controller
     $student->name= $request->get('name');
     $student->GENDER= $request->get('Gender');
     $student->Fees_Status= $request->get('Fees');
+    if($request->get('Fees')=='PAID'){
+    $student->Fees_Duration= $request->get('Fees_Duration');
+    }
+    else{
+       $student->Fees_Duration=NULL;
+    }
     $student->DEFAULTDEPTID=$request->get('dprogram');
     $student->flag='1';
+    $student->reasons=NULL;
+    $student->remarks=NULL;
 
     $student->save();
     return redirect()->back()
                     ->with('success', 'Student Activated successfully');
 
-    
-
    }
 
 
-   public function insertpassword(){
-    $msg="done";
-    $userPassword=bcrypt("@camis");
-    $affected = DB::table('USERINFO')->update(array('LoginPassword' =>$userPassword));
-    return $msg;
-   }
+   // public function insertpassword(){
+   //  $msg="done";
+   //  $userPassword=bcrypt("@camis");
+   //  $affected = DB::table('USERINFO')->update(array('LoginPassword' =>$userPassword));
+   //  return $msg;
+   // }
 
    public function staff(){
-    $staffCSE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','31')->orderBy('NAME','asc')->get();
-    $staffETE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','32')->orderBy('NAME','asc')->get();
+    $staffCSE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','31')->where('flag','1')->orderBy('name','asc')->get();
+    $staffETE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','32')->where('flag','1')->orderBy('name','asc')->get();
     return view ('staffs')->with('staffCSE',$staffCSE)->with('staffETE',$staffETE);
    }
 
    public function editstaffCSE(){
     $badgeno=userinfo::select('BADGENUMBER')->orderBy('USERID','DESC')->first();
-     $staffCSE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','31')->orderBy('NAME','asc')->get();
+     $staffCSE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','31')->orderBy('name','asc')->get();
      return view ('editstaffCSE')->with('badgeno',$badgeno)->with('staffCSE',$staffCSE);
    }
 
-//    public function addstaffCSE (Request $request){
-
-//     $name = $request['name'];
-//     $SSN=$request['SSN'];
-//     $phone_number = $request['phone_number'];
-//       $email = $request['email'];
-//     $GENDER = $request['Gender'];
-//     $BADGENUMBER = $request['badgeno'];
-//      $DEFAULTDEPTID= $request['deptid'];
-//     $VERIFICATIONMETHOD = $request['verificationmethod'];
-//     $TITLE='staff';
-//     $MINZU='TANZANIA';
-
-
-//     $data=array("SSN"=>$SSN,"name"=>$name,"phone_number"=>$phone_number,"email"=>$email,"GENDER"=>$GENDER,"BADGENUMBER"=>$BADGENUMBER,"VERIFICATIONMETHOD"=>$VERIFICATIONMETHOD,"TITLE"=>$TITLE, "MINZU"=>$MINZU);
-// DB::table('USERINFO')->insert($data);
-
-
-//    return redirect()->back()
-//                     ->with('success', 'Test added successfully');
-                
-
-
-//     }
 
 }

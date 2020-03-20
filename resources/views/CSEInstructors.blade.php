@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+
 @section('title')
   INSTRUCTORS CSE
 @endsection
@@ -249,6 +249,11 @@ $j='1';
 <br>
 <br>
 <div class="container3">
+  <div class="tab">
+  <button class="tablinks" onclick="openInstructors(event, 'CSE')" id="defaultOpen"><strong>CSE</strong></button>
+  <button class="tablinks" style="float: right;" onclick="openInstructors(event, 'ETE')"><strong>ETE</strong></button>
+</div>
+<div id="CSE" class="tabcontent">
   <h4><b>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</b></h4>
    @if ($errors= Session::get('errors'))
           <div class="alert alert-danger">
@@ -307,10 +312,11 @@ $j='1';
 
 </tbody>
 </table>
-
-
-<hr>
-<h4><b>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATION ENGINEERING</b></h4>
+<center><a class="btn btn-sm btn-success" href="{{route('CSEpdf')}}">PRINT</a></center>
+<br>
+</div>
+<div id="ETE" class="tabcontent">
+<h4><b>DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING</b></h4>
 <table class="hover table table-striped table-bordered" id="myTablee">
   <thead class="thead-dark">
     <tr>
@@ -357,7 +363,10 @@ $j='1';
 </tbody>
 </table>
 
+<center><a class="btn btn-sm btn-success" href="{{route('ETEpdf')}}">PRINT</a></center>
 
+
+</div>
 </div>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -397,5 +406,28 @@ $("div#myTablee_wrapper").find($(".dt-buttons")).css("width", "53%").css("positi
 
 });
 
+</script>
+<script type="text/javascript">
+  function openInstructors(evt, evtName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(evtName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
 </script>
 @endsection

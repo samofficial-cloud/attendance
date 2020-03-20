@@ -251,7 +251,7 @@ use App\capacityvenue;
   <div class="slidecontainer form-group row">
         <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant</label>
         <div class="col-sm-7">
-  <input  class="form-control-lg" type="number" value=$("input[type='number']").inputSpinner() min="0" max={{ $capacity}} step="1" name="capacity" required />
+  <input  class="form-control-lg" type="number" value=$("input[type='number']").inputSpinner() min="1" max={{ $capacity}} step="1" name="capacity" required />
 </div>
 <script src="./src/bootstrap-input-spinner.js"></script>
 <script>

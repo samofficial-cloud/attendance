@@ -203,10 +203,7 @@
         <p>{{$message}}</p>
       </div>
     @endif
-@foreach($users as $users)
-<?php $user = $users->USERID ?>
-@endforeach
-      <form  method="post" action="{{url('edit1',$user)}}" >
+      <form  method="get" action="{{url('edit1')}}" >
         {{csrf_field()}}
       
         <div class="form-group row">
@@ -218,22 +215,26 @@
 
           <div class="form-group row">
           <div class="col-sm-3"><strong>ID NO. :</strong></div>
-          <div class="col-sm-7"><input type="text" name="email" class="form-control" value="{{ Auth::user()->SSN }}"  readonly>
+          <div class="col-sm-7"><input type="text" name="SSN" class="form-control" value="{{ Auth::user()->SSN }}"  readonly>
           </div>
           </div>
 
           <div class="form-group row">
           <div class="col-sm-3"><strong>Email Address :</strong></div>
-          <div class="col-sm-7"><input type="email" name="email" class="form-control" value="{{ Auth::user()->email }}">
+          <div class="col-sm-7"><input style="color: black;" required type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" onblur="validateEmail(this);" maxlength="25" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email address" value="{{ Auth::user()->email }}">
           </div>
           </div>
 
           <div class="form-group row">
           <div class="col-sm-3"><strong>Phone Number :</strong></div>
           <div class="col-sm-7">
-            <input type="text" pattern="[^a-zA-Z]+" name="phoneNumber" class="form-control" value="{{ Auth::user()->phone_number }}">
+            <input style="color: black;" required type="text" name="phoneNumber"
+maxlength = "10" minlength = "10"
+class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Enter phone number" onkeypress="return (event.charCode >= 48 && event.charCode <= 57 ) || event.charCode==43 " value="{{ Auth::user()->phone_number }}">
           </div>
           </div>
+
+          <input type="text"  name="ID"  value="{{ Auth::user()->SSN }}" hidden="">
 
 
           <div class="form-group">
