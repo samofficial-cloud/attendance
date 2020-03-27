@@ -279,8 +279,11 @@ hr {
 @if($_GET['sort_criteria']==1)
 @if(count($all_studentsFilter)>0)
     <div class="col-xs-9"><legend>
-      <p class="note">Attendance report for all students whose class attendance is below {{$percentage}}% </p>
-            <h5 class="note">Programme:
+            <div style="float: right;">
+                <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                <h6 class="note">Semester: {{$current_semester}}</h6></div>
+
+            <h6 class="note">Programme:
 
                 <?php
                 $i=0;
@@ -301,11 +304,10 @@ hr {
                 }
                 ?>
 
-            </h5>
-    <h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
+            </h6>
+    <h5 class="note">Course: {{$fullCourse}}</h5>
+           <b><p class="note">Attendance report for all students whose class attendance is below {{$percentage}}% </p></b>
 
-            <h6 class="note">Academic year: {{$current_academic_year}}</h6>
-            <h6 class="note">Semester: {{$current_semester}}</h6>
     </legend> </div>
 
     @else
@@ -316,8 +318,11 @@ hr {
 
         @if(count($all_studentsFilter)>0)
             <div class="col-xs-9"><legend>
-                    <p class="note">Attendance report for all students whose class attendance is above {{$percentage}}% </p>
-                    <h5 class="note">Programme:
+                    <div style="float: right;">
+                        <h6 class="note">Academic year: {{$current_academic_year}}</h6>
+                        <h6 class="note">Semester: {{$current_semester}}</h6></div>
+
+                    <h6 class="note">Programme:
 
                         <?php
                         $i=0;
@@ -338,10 +343,11 @@ hr {
                         }
                         ?>
 
-                    </h5>
-                    <h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
-                    <h6 class="note">Academic year: {{$current_academic_year}}</h6>
-                    <h6 class="note">Semester: {{$current_semester}}</h6>
+                    </h6>
+                    <h5 class="note">Course: {{$fullCourse}}</h5>
+
+                   <b><p class="note">Attendance report for all students whose class attendance is above {{$percentage}}% </p></b>
+
                 </legend> </div>
 
         @else
@@ -452,7 +458,7 @@ foreach($all_studentsFilter as $values){
 
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 

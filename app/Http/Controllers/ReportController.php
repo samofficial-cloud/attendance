@@ -618,29 +618,65 @@ if($title=='staff'){
 
 
 
-    public function checkDegreeCourses(Request $request)
-    {
+   public function checkDegreeCourses(Request $request)
+   {
 
 
 
-            $inputProg = $request->inputProg;
-            $DegreeCourseList = DB::table('courses')->select('course','course_name')->where('program', $inputProg)->get();
+           $inputProg = $request->inputProg;
+           $DegreeCourseList = DB::table('courses')->select('course','course_name')->where('program', $inputProg)->get();
 
-            foreach ($DegreeCourseList as $var ){
+           foreach ($DegreeCourseList as $var ){
 
-                echo "
-             <option>".$var->course."-".$var->course_name."</option>";
+               echo "
+            <option>".$var->course."-".$var->course_name."</option>";
 
 
-            }
+           }
 //echo $DegreeCourseList;
 
 
 
 
 
-    }
+   }
 
+
+
+
+
+    public function autoCompleteCourse(Request $request)
+    {
+
+
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+
+            $data=DB::table('courses')->select('course','course_name')->where('course', 'LIKE', "%{$query}%")->get();
+            if(count($data)!=0){
+                $output = '<ul class="dropdown-menu" style="display:block; width: 91%; margin-left: 5%;  padding: 3%; margin-top:0% ">';
+                foreach($data as $row)
+                {
+                    $output .= '
+       <li id="list">'.$row->course."-".$row->course_name.'</li>
+       ';
+                }
+                $output .= '</ul>';
+                echo $output;
+            }
+            else{
+                echo "0";
+            }
+
+        }
+
+
+
+
+
+    }
 
 
 
@@ -676,12 +712,208 @@ if($title=='staff'){
 
     public function AutoCompleteName(Request $request) {
 
+
+
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+$course_input=$request->get('course_input');
+
+            $temp_course1=strtoupper($course_input);
+
+            $temp_course2=explode('-', strtoupper($temp_course1));
+
+            $course=$temp_course2[0];
+
+
+
+
+            $parameters=[$course,$query];
+            $data = DB::select('EXEC getNamePerCourse ?,?',$parameters);
+//            $data=DB::table('USERINFO')->where('name', 'LIKE', "%{$query}%")->get();
+            if(count($data)!=0){
+                $output = '<ul class="dropdown-menu" style="display:block; width: 89%; margin-left: 5%; margin-top:0% ">';
+                foreach($data as $row)
+                {
+                    $output .= '
+       <li id="listNamePerCourse">'.$row->name.'</li>
+       ';
+                }
+                $output .= '</ul>';
+                echo $output;
+            }
+            else{
+                echo "0";
+            }
+
+        }
+
+
+    }
+
+
+
+    public function AutoCompleteStaffNames(Request $request) {
+
+
+
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $course_input=$request->get('course_input');
+
+            $temp_course1=strtoupper($course_input);
+
+            $temp_course2=explode('-', strtoupper($temp_course1));
+
+            $course=$temp_course2[0];
+
+
+            $instructor= DB::table('lecturers')->whereRaw("instructor LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('instructor');
+            $instructor2= DB::table('lecturers')->whereRaw("instructor_2 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('instructor_2');
+            $instructor3= DB::table('lecturers')->whereRaw("instructor_3 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Instructor_3');
+            $instructor4= DB::table('lecturers')->whereRaw("instructor_4 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Instructor_4');
+            $instructor5= DB::table('lecturers')->whereRaw("instructor_5 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Instructor_5');
+            $TutorialAssistant= DB::table('lecturers')->whereRaw("Tutorial_Assistant LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Tutorial_Assistant');
+            $technical_staff= DB::table('lecturers')->whereRaw("technical_staff LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('technical_staff');
+            $TechnicalStaff2= DB::table('lecturers')->whereRaw("Technical_Staff_2 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Technical_Staff_2');
+            $TechnicalStaff3= DB::table('lecturers')->whereRaw("Technical_Staff_3 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Technical_Staff_3');
+
+
+            if((count($instructor)>0) OR (count($instructor2)>0) OR (count($instructor3)>0) OR (count($instructor4)>0) OR (count($instructor5)>0) OR (count($TutorialAssistant)>0) OR (count($technical_staff)>0) OR (count($TechnicalStaff2)>0) OR (count($TechnicalStaff3)>0)) {
+
+            $output = '<ul class="dropdown-menu" style="display:block; width: 89%; margin-left: 5%; margin-top:0% ">';
+
+
+            if (count($instructor) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $instructor . '</li>
+       ';
+            } else {
+
+
+            }
+
+
+            if (count($instructor2) != 0) {
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $instructor2 . '</li>
+       ';
+
+            } else {
+
+
+            }
+
+
+            if (count($instructor3) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $instructor3 . '</li>
+       ';
+            } else {
+
+
+            }
+
+
+            if (count($instructor4) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $instructor4 . '</li>
+       ';
+            } else {
+
+
+            }
+
+
+            if (count($instructor5) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $instructor5 . '</li>
+       ';
+            } else {
+
+
+            }
+
+
+            if (count($TutorialAssistant) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $TutorialAssistant . '</li>
+       ';
+            } else {
+
+
+            }
+
+
+            if (count($technical_staff) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $technical_staff . '</li>
+       ';
+
+            } else {
+
+
+            }
+
+
+            if (count($TechnicalStaff2) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $TechnicalStaff2 . '</li>
+       ';
+            } else {
+
+
+            }
+
+
+            if (count($TechnicalStaff3) != 0) {
+
+                $output .= '
+       <li id="listNameStaffPerCourse">' . $TechnicalStaff3 . '</li>
+       ';
+
+            } else {
+
+
+            }
+
+            $output .= '</ul>';
+
+
+            echo $output;
+
+        }else{
+                echo "0";
+            }
+
+        }
+
+
+    }
+
+
+
+
+    public function AutoCompleteNameAllStudents(Request $request) {
+
+
+
         if($request->get('query'))
         {
             $query = $request->get('query');
 
 
-            $data=DB::table('USERINFO')->where('name', 'LIKE', "%{$query}%")->get();
+
+
+            $data=DB::table('USERINFO')->where('name', 'LIKE', "%{$query}%")->where('title', '=', 'student')->get();
             if(count($data)!=0){
                 $output = '<ul class="dropdown-menu" style="display:block; width: 89%; margin-left: 5%; margin-top:0% ">';
                 foreach($data as $row)
@@ -703,7 +935,43 @@ if($title=='staff'){
     }
 
 
-    public function sortClass(Request $request,$courseValue) {
+
+    public function AutoCompleteNameAllStaff(Request $request) {
+
+
+
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+
+
+
+
+            $data=DB::table('USERINFO')->where('name', 'LIKE', "%{$query}%")->where('title', '=', 'staff')->get();
+            if(count($data)!=0){
+                $output = '<ul class="dropdown-menu" style="display:block; width: 89%; margin-left: 5%; margin-top:0% ">';
+                foreach($data as $row)
+                {
+                    $output .= '
+       <li id="list">'.$row->name.'</li>
+       ';
+                }
+                $output .= '</ul>';
+                echo $output;
+            }
+            else{
+                echo "0";
+            }
+
+        }
+
+
+    }
+
+
+
+
+    public function sortClass(Request $request,$courseValue,$fullCourse) {
 
         $today=date('Y-m-d');
 
@@ -764,7 +1032,7 @@ if($request->get('sort_criteria')==1) {
     }
 
 
-    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester);
+    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
 
 }elseif ($request->get('sort_criteria')==2){
 
@@ -785,7 +1053,7 @@ if($request->get('sort_criteria')==1) {
     }
 
 
-    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester);
+    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
 
 
 
@@ -797,7 +1065,7 @@ if($request->get('sort_criteria')==1) {
     }
 
 
-    public function AbsenteeTest($courseValue) {
+    public function AbsenteeTest($courseValue,$fullCourse) {
 
         $temp_course1=strtoupper($courseValue);
 
@@ -846,7 +1114,7 @@ if($request->get('sort_criteria')==1) {
         // $all_students = array();
 
 
-        return View('test_report_all2')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester);
+        return View('test_report_all2')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
 
 
 
@@ -855,7 +1123,7 @@ if($request->get('sort_criteria')==1) {
 
 
 
-    public function AbsenteeUe($courseValue) {
+    public function AbsenteeUe($courseValue,$fullCourse) {
 
         $temp_course1=strtoupper($courseValue);
 
@@ -885,7 +1153,7 @@ if($request->get('sort_criteria')==1) {
         // $all_students = array();
 
 
-        return View('ue_report_all2')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester);
+        return View('ue_report_all2')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
 
 
 
@@ -895,7 +1163,7 @@ if($request->get('sort_criteria')==1) {
 
     //present starts
 
-    public function PresentTest($courseValue) {
+    public function PresentTest($courseValue,$fullCourse) {
 
         $temp_course1=strtoupper($courseValue);
 
@@ -941,7 +1209,7 @@ if($request->get('sort_criteria')==1) {
         // $all_students = array();
 
 
-        return View('test_report_all3')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester);
+        return View('test_report_all3')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
 
 
 
@@ -950,7 +1218,7 @@ if($request->get('sort_criteria')==1) {
 
 
 
-    public function PresentUe($courseValue) {
+    public function PresentUe($courseValue,$fullCourse) {
 
         $temp_course1=strtoupper($courseValue);
 
@@ -980,7 +1248,7 @@ if($request->get('sort_criteria')==1) {
         // $all = DB::table('attendance')->select('reg_no')->where([['courseId', '=', $course],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('reg_no')->get();
         // $all_students = array();
 
-        return View('ue_report_all3')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester);
+        return View('ue_report_all3')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
 
 
 

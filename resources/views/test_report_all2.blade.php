@@ -208,8 +208,8 @@
 
           </h6>
     <h5 class="note">Course
-        : {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
-          <u><p class="note"> Test attendance report showing only absentee students</p></u>
+        : {{$fullCourse}} </h5>
+          <b><p class="note"> Test attendance report showing only absentee students</p></b>
   </legend> </div>
 
 
@@ -304,7 +304,7 @@ Date: {{date("d/m/Y",strtotime($date)) }} &nbsp
 
   </table>
   @else
-  <h4>No absentees, all students were present</h4>
+  <h4>All students were present</h4>
   @endif
 </div>
 <br>
@@ -388,7 +388,7 @@ Date: {{date("d/m/Y",strtotime($date2)) }} &nbsp
 
   </table>
   @else
-  <h4>No absentees, all students were present</h4>
+  <h4>All students were present</h4>
   @endif
 </div>
 
@@ -473,7 +473,7 @@ Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
 
   </table>
   @else
-  <h4>No absentees, all students were present</h4>
+  <h4>All students were present</h4>
   @endif
 </div>
 
@@ -567,7 +567,7 @@ Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
      </form>
 
     @else
-        <h4>No absentees in any test, all students were present</h4>
+        <h4>All students were present in all tests</h4>
     @endif
 
     <div class="col-xs-3">
@@ -586,9 +586,23 @@ Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
 
 <script>
         $(document).ready( function () {
-                $("#myTable").tablesorter();
-                $("#myTable2").tablesorter();
-                $("#myTable3").tablesorter();
+                // $("#myTable").tablesorter();
+                // $("#myTable2").tablesorter();
+                // $("#myTable3").tablesorter();
+
+                var table = $('#myTable').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+                var table = $('#myTable2').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+                var table = $('#myTable3').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+
         });
 </script>
 

@@ -253,8 +253,8 @@ hr {
                 </h6>
 
 
-        <h5 class="note">Course: {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
-                <u><p class="note">UE attendance report showing only absentee students</p></u>
+        <h5 class="note">Course: {{$fullCourse}} </h5>
+                <b><p class="note">UE attendance report showing only absentee students</p></b>
         </legend> </div>
   @else
 
@@ -336,7 +336,7 @@ hr {
 
   </table>
   @else
-  <h4>No absentees, all students were present</h4>
+  <h4>All students were present</h4>
   @endif
 </div>
 
