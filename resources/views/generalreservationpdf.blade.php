@@ -26,56 +26,60 @@ table {
   $i=1;
   use App\reservation;
   if($_GET['category']=='name' && $_GET['Selection'] != 'All' && $_GET['Selection'] != '0' && $_GET['checkbox']=='true' ){
-  $reservations=reservation::where('Name',$_GET['Name'])->where('rstatus',$_GET['Selection'])->where('flag','1')->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+  $reservations=reservation::where('Name',$_GET['Name'])->where('rstatus',$_GET['Selection'])->where('flag','1')->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='name' && $_GET['Selection'] == 'All' && $_GET['Selection'] != '0' && $_GET['checkbox']=='true'){
-  $reservations=reservation::where('Name',$_GET['Name'])->where('flag','1')->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+  $reservations=reservation::where('Name',$_GET['Name'])->where('flag','1')->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='name' && $_GET['Selection'] != 'All' && $_GET['Selection'] == '0' && $_GET['checkbox']=='true'){
-  $reservations=reservation::where('flag',$_GET['Selection'])->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+  $reservations=reservation::where('flag',$_GET['Selection'])->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
   }
 elseif($_GET['category']=='1' && $_GET['checkbox']=='true'){
-  $reservations=reservation::where('rstatus',$_GET['category'])->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+  $reservations=reservation::where('rstatus',$_GET['category'])->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='0' && $_GET['checkbox']=='true'){
-$reservations=reservation::where('flag',$_GET['category'])->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+$reservations=reservation::where('flag',$_GET['category'])->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='-1' && $_GET['checkbox']=='true'){
-$reservations=reservation::where('flag',1)->where('rstatus',-1)->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+$reservations=reservation::where('flag',1)->where('rstatus',-1)->whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='All' && $_GET['checkbox']=='true'){
-$reservations=reservation::whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->get();
+$reservations=reservation::whereBetween('combined_date',[$_GET['FromDate'],$_GET['ToDate']])->orderBy('combined_date','asc')->get();
 }
 
 elseif($_GET['category']=='name' && $_GET['Selection'] != 'All' && $_GET['Selection'] != '0'  ){
-  $reservations=reservation::where('Name',$_GET['Name'])->where('rstatus',$_GET['Selection'])->where('flag','1')->get();
+  $reservations=reservation::where('Name',$_GET['Name'])->where('rstatus',$_GET['Selection'])->where('flag','1')->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='name' && $_GET['Selection'] == 'All' && $_GET['Selection'] != '0' ){
-  $reservations=reservation::where('Name',$_GET['Name'])->where('flag','1')->get();
+  $reservations=reservation::where('Name',$_GET['Name'])->where('flag','1')->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='name' && $_GET['Selection'] != 'All' && $_GET['Selection'] == '0' ){
-  $reservations=reservation::where('flag',$_GET['Selection'])->get();
+  $reservations=reservation::where('flag',$_GET['Selection'])->orderBy('combined_date','asc')->get();
   }
 elseif($_GET['category']=='1' ){
-  $reservations=reservation::where('rstatus',$_GET['category'])->get();
+  $reservations=reservation::where('rstatus',$_GET['category'])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='0' ){
-$reservations=reservation::where('flag',$_GET['category'])->get();
+$reservations=reservation::where('flag',$_GET['category'])->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='-1' ){
-$reservations=reservation::where('flag',1)->where('rstatus',-1)->get();
+$reservations=reservation::where('flag',1)->where('rstatus',-1)->orderBy('combined_date','asc')->get();
 }
 elseif($_GET['category']=='All'){
-$reservations=reservation::get();
+$reservations=reservation::orderBy('combined_date','asc')->get();
 }
 
 $today=date('j');
 $tmonth=date('n');
 $tyear=date('Y');
+use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
   ?>
 
+@if(count($reservations)>0)
+
 @if($_GET['category']=='name')
-<center><b>UNIVERSITY OF DAR ES SALAAM
+<center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br><br>
@@ -223,7 +227,7 @@ $tyear=date('Y');
 </table>
 
 @elseif($_GET['category']=='-1')
-<center><b>UNIVERSITY OF DAR ES SALAAM
+<center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br><br>
@@ -277,7 +281,7 @@ $tyear=date('Y');
 </tbody>
 </table>
 @elseif($_GET['category']=='0')
-<center><b>UNIVERSITY OF DAR ES SALAAM
+<center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br><br>
@@ -320,7 +324,7 @@ $tyear=date('Y');
 </tbody>
 </table>
 @elseif($_GET['category']=='1')
-<center><b>UNIVERSITY OF DAR ES SALAAM
+<center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br><br>
@@ -363,7 +367,7 @@ $tyear=date('Y');
 </tbody>
 </table>
 @elseif($_GET['category']=='All')
-<center><b>UNIVERSITY OF DAR ES SALAAM
+<center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br><br>
@@ -398,7 +402,7 @@ $tyear=date('Y');
       <td><center>{{$reservation->Reason}}</center></td>
       @if($reservation->rstatus=='1')
       <td><center>Approved</center></td>
-      @elseif(new DateTime($reservation->combined_date) > new DateTime(date('Y-m-d')))
+      @elseif(new DateTime($reservation->combined_date) >= new DateTime(date('Y-m-d')))
       @if(($reservation->rstatus=='-1') and ($reservation->flag=='1'))
       <td><center>Pending</center></td>
       @elseif(($reservation->rstatus=='-1') and ($reservation->flag=='0'))
@@ -416,6 +420,15 @@ $tyear=date('Y');
 </tbody>
 </table>
 @endif
+@else
+<center><b>{{$camistitle}}
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+      <br><br>
+      </b></center>
+      <br>
+      <p style="font-size: 20px;"><b>No reservations found</b></p>
+      @endif
 
 
 

@@ -72,7 +72,7 @@ div.dt-buttons {
   
     @if(Auth::user()->staff==1)
     <div class="container">
- <center><ul class="nav1 nav-tabs" style="width: 84%">
+ <center><ul class="nav1 nav-tabs" style="width: 98%">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -85,23 +85,29 @@ div.dt-buttons {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
-
       <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
+  </li>
+
 </ul>
 </center>
 </div>
 @elseif(Auth::user()->principal==1)
-<div class="container" style="max-width: 1165px;">
-  <center><ul class="nav1 nav-tabs">
+<div class="container3" style="padding-left: 154px;">
+  <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -114,19 +120,20 @@ div.dt-buttons {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
-
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
 
   <li class="nav-item dropdown">
@@ -134,21 +141,24 @@ div.dt-buttons {
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
-          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
-          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
-          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
+           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
+          
         </div>
       </li>
 
 </ul>
-</center>
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
-<div class="container2">
-  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+<div class="container3" style="padding-left: 153px;">
+  
+    <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -161,12 +171,8 @@ div.dt-buttons {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
       <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
@@ -175,18 +181,29 @@ div.dt-buttons {
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+          
+        </div>
+      </li>
 
   </ul>
-  </center>
+  
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
-  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <center><ul class="nav1 nav-tabs" style="align-content: center;">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -198,36 +215,90 @@ div.dt-buttons {
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
    <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+          <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
           @if(Auth::user()->DEFAULTDEPTID==31)
-          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">INSTRUCTORS</a>
           @elseif(Auth::user()->DEFAULTDEPTID==32)
-          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">INSTRUCTORS</a>
           @endif
-          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
-          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+         {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
     
 </ul>
 </center>
 </div>
+@elseif(Auth::user()->admin==1)
+<div class="container">
+  <ul class="nav1 nav-tabs">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INSTRUCTORS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="manage/instructors-CSE">CSE</a>
+          <a class="dropdown-item" href="manage/instructors-ETE">ETE</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="manage/courses">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/managestudents">MANAGE STUDENTS</a>
+  </li>
+
+
+</ul>
+</div>
 @endif
 
 
@@ -410,19 +481,19 @@ $j='1';
   <thead class="thead-dark">
     <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-     <th scope="col" style="color:#3490dc;">Course ID</th>
-      <th scope="col" style="color:#3490dc;">Course Name</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_1</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_2</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_3</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_4</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_5</th>
-      <th scope="col"  style="color:#3490dc;">Tutorial Assistant</th>
-      <th scope="col"  style="color:#3490dc;">Technical Staff 1</th>
-      <th scope="col"  style="color:#3490dc;">Technical Staff 2</th>
+     <th scope="col" style="color:#3490dc;"><center>Course ID</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Course Name</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_1</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_2</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_3</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_4</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_5</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Tutorial Assistant</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Technical Staff 1</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Technical Staff 2</center></th>
       {{-- <th scope="col" style="color:#3490dc;">Course Type</th> --}}
-      <th scope="col" style="color:#3490dc;">Semester</th>
-       <th scope="col" style="width: 114px; color:#3490dc;">Action</th>
+      <th scope="col" style="color:#3490dc;"><center>Semester</center></th>
+       <th scope="col" style="width: 114px; color:#3490dc;"><center>Action</center></th>
     </tr>
   </thead>
   <tbody>
@@ -430,7 +501,7 @@ $j='1';
       @foreach($instructors1 as $instructors)
       <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{ $instructors->course}}</td>
+      <td><center>{{ $instructors->course}}</center></td>
       <td>{{$instructors->course_name}}</td>
       <td>{{ $instructors->instructor }}</td>
       <td>{{ $instructors->Instructor_2}}</td>
@@ -441,7 +512,7 @@ $j='1';
       <td>{{ $instructors->technical_staff }}</td>
       <td>{{ $instructors->Technical_Staff_2}}</td>
       {{-- <td>{{ $instructors->course_type}}</td> --}}
-      <td>{{ $instructors->semester}}</td>
+      <td><center>{{ $instructors->semester}}</center></td>
       <td><center><a data-toggle="modal" data-target="#edit{{$instructors->id}}" role="button" aria-pressed="true" name="editC"><i class="fa fa-edit" style="font-size:30px; color: green;"></i></a>
 
         <div class="modal fade" id="edit{{$instructors->id}}" role="dialog">
@@ -645,19 +716,19 @@ $i='1';
   <thead class="thead-dark">
     <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-     <th scope="col" style="color:#3490dc;">Course ID</th>
-      <th scope="col" style="color:#3490dc;">Course Name</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_1</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_2</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_3</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_4</th>
-      <th scope="col"  style="color:#3490dc;">Instructor_5</th>
-      <th scope="col"  style="color:#3490dc;">Tutorial Assistant</th>
-      <th scope="col"  style="color:#3490dc;">Technical Staff 1</th>
-      <th scope="col"  style="color:#3490dc;">Technical Staff 2</th>
-      <th scope="col" style="color:#3490dc;">Course Type</th>
-      <th scope="col" style="color:#3490dc;">Semester</th>
-       <th scope="col" style="width: 114px; color:#3490dc;">Action</th>
+     <th scope="col" style="color:#3490dc;"><center>Course ID</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Course Name</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_1</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_2</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_3</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_4</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Instructor_5</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Tutorial Assistant</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Technical Staff 1</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>Technical Staff 2</center></th>
+     {{--  <th scope="col" style="color:#3490dc;"><center>Course Type</center></th> --}}
+      <th scope="col" style="color:#3490dc;"><center>Semester</center></th>
+       <th scope="col" style="width: 114px; color:#3490dc;"><center>Action</center></th>
     </tr>
   </thead>
   <tbody>
@@ -665,7 +736,7 @@ $i='1';
       @foreach($instructors11 as $instructors)
       <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{ $instructors->course}}</td>
+      <td><center>{{ $instructors->course}}</center></td>
       <td>{{$instructors->course_name}}</td>
       <td>{{ $instructors->instructor }}</td>
       <td>{{ $instructors->Instructor_2}}</td>
@@ -675,8 +746,8 @@ $i='1';
       <td>{{ $instructors->Tutorial_Assistant}}</td>
       <td>{{ $instructors->technical_staff }}</td>
       <td>{{ $instructors->Technical_Staff_2}}</td>
-      <td>{{ $instructors->course_type}}</td>
-      <td>{{ $instructors->semester}}</td>
+      {{-- <td>{{ $instructors->course_type}}</td> --}}
+      <td><center>{{ $instructors->semester}}</center></td>
       <td><center><a data-toggle="modal" data-target="#edit{{$instructors->id}}" role="button" aria-pressed="true"><i class="fa fa-check-circle" style="font-size:30px; color: green;"></i></a></center>
 
         <div class="modal fade" id="edit{{$instructors->id}}" role="dialog">

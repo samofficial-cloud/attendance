@@ -12,9 +12,7 @@ class calendarsController extends Controller
     //
 
     public function index(){
-        $status="CANCELLATION";
-
-    	$events=calendar::where('status','HOLIDAY')->orWhere('status',$status)->get();
+        $events=calendar::where('Semester','2')->where('status','HOLIDAY')->orWhere('status','CANCELLATION')->get();
         return view('events')->with('events',$events);
     }
 

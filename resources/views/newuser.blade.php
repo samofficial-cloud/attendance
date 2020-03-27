@@ -6,6 +6,8 @@
 </style>
 <body>
 <?php
+use App\userinfo;
+$badgeno=userinfo::select('BADGENUMBER')->orderBy('USERID','desc')->first();
 $badge=$badgeno->BADGENUMBER;
 $newbadgeno = $badge + 1;
 ?>
@@ -78,12 +80,38 @@ $newbadgeno = $badge + 1;
         <span id="message2"></span>
     </div>
     </div>
+
+    <div class="form-group row" id="staffrole" style="display: none;">
+      <label for="role"  class="col-sm-3 col-form-label"><strong>Role:</strong></label>
+      <div class="col-sm-9">
+          <select id="role" name="role" class="custom-select">
+            <option value=""> Select Role</option>
+           <option value="staff">Staff</option>
+           <option value="principal">Principal</option>
+           <option value="tmaster">Timetable Master</option>
+           <option value="HoD">Head of Department</option>
+        </select>
+        <span id="message10"></span>
+    </div>
+    </div>
+
+    <div class="form-group row" id="studentDepartmentA" style="display: none;">
+<label for="studentdepartmentB"  class="col-sm-3 col-form-label"><strong>Department:</strong></label>
+      <div class="col-sm-9">
+          <select id="studentdepartmentB" name="studentdepartment" class="custom-select">
+            <option value=""> Select Department</option>
+           <option value="CSE">Computer Science and Engineering</option>
+           <option value="ETE">Electronics and Telecommunication Engineering</option>
+        </select>
+        <span id="message11"></span>
+    </div>
+    </div>
      
 
-    <div class="form-group row" id="studentProgram" style="display: none;">
-  <label for="dprogram"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
+    <div class="form-group row" id="cseProgramA" style="display: none;">
+  <label for="csedprogram"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
     <div class="col-sm-9">
-   <select class="custom-select Reason" name="dprogram" id="dprogram" >
+   <select class="custom-select Reason" name="csedprogram" id="csedgrprogram" >
    	<option value="">Select Degree Program</option>
    	 <option value="18">BSc. in Business Information Technology year 1</option>
     <option value="19">BSc. in Business Information Technology year 2</option>
@@ -101,6 +129,16 @@ $newbadgeno = $badge + 1;
     <option value="28">Certificate in Computer Science</option>
     <option value="29">Diploma in Computer Science year 1</option>
     <option value="30">Diploma in Computer Science year 2</option>
+  </select>
+  <span id="message3"></span>
+  </div>
+  </div>
+
+   <div class="form-group row" id="eteProgramA" style="display: none;">
+  <label for="etedprogram"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
+    <div class="col-sm-9">
+   <select class="custom-select Reason" name="etedprogram" id="etedgrprogram">
+    <option value="">Select Degree Program</option>
     <option value="24">B.Sc. in Electronic Engineering year 1</option>
     <option value="25">B.Sc. in Electronic Engineering year 2</option>
     <option value="26">B.Sc. in Electronic Engineering year 3</option>
@@ -112,10 +150,10 @@ $newbadgeno = $badge + 1;
     <option value="15">B.Sc. in Telecommunications Engineering year 2</option>
     <option value="16">B.Sc. in Telecommunications Engineering year 3</option>
     <option value="17">B.Sc. in Telecommunications Engineering 4</option>
-  </select>
-  <span id="message3"></span>
-  </div>
-  </div>
+   </select>
+   <span id="message30"></span>
+ </div>
+</div>
    
 
          <div class="form-group row">
@@ -154,7 +192,7 @@ class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Enter 
          <label for="Fees_Duration"  class="col-sm-3 col-form-label"><strong>Fees Duration:</strong></label>
          <div class="col-sm-9">
          <select class="custom-select Reason" name="Fees_Duration" id="Fees_Duration">
-          <option>Select Fees Duration</option>
+          <option value="">Select Fees Duration</option>
          <option value="PAID HALF">PAID HALF</option>
          <option value="PAID FULL">PAID FULL</option>
          </select>
@@ -166,8 +204,11 @@ class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Enter 
   
 
 
-
-          <center><button type="submit" class="btn btn-primary">Submit</button></center>
+<div align="right">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="button" class="btn btn-danger" onclick="reloadPage();">CLOSE</button>
+    </div>
+  </div>
 
     </form>
   </div>
@@ -181,13 +222,26 @@ class="form-control" id="phone" aria-describedby="emailHelp" placeholder="Enter 
 
 <script>
 $(document).ready(function() {
+  $("#resetbutton").click(function(e){
+    $("#error").hide();
+    $.ajax({
+      url: "getnewuser",
+      context: document.body
+    }).done(function(fragment) { 
+      $("#content").html(fragment);
+    });
+    return false;
+});
 	$('#title').click(function(){
 		var query=$(this).val();
 		if(query=='staff'){
 			$('#studentId').hide();
-			$('#studentProgram').hide();
+			$('#cseProgramA').hide();
+      $('#eteProgramA').hide();
 			$('#feesStatus').hide();
 			$('#duration').hide();
+      $('#studentDepartmentA').hide();
+      $('#message11').hide();
 			$('#message1').hide();
 			$('#message3').hide();
 			$('#message4').hide();
@@ -196,19 +250,22 @@ $(document).ready(function() {
 			$('#message').show();
 			$('#message2').show();
 			$('#staffDepartment').show();
+      $('#staffrole').show();
 		}
 		else if(query=='student'){
 			$('#staffNo').hide();
 			$('#staffDepartment').hide();
 			$('#message').hide();
 			$('#message2').hide();
+      $('#staffrole').hide();
 			$('#message1').show();
 			$('#message3').show();
 			$('#message4').show();
 			$('#message5').show();
 			$('#studentId').show();
-			$('#studentProgram').show();
 			$('#feesStatus').show();
+      $('#studentDepartmentA').show();
+      $('#message11').show();
 			$('#Fees').click(function(){
 			var query2=$(this).val();
 			if(query2=='PAID'){
@@ -217,10 +274,46 @@ $(document).ready(function() {
 			else {
 				$('#duration').hide();
 			}
-
 			});
-			
+
+      $('#studentdepartmentB').click(function(){
+        console.log(2);
+        var query3=$(this).val();
+        if(query3=='CSE'){
+          console.log(3);
+          $('#eteProgramA').hide();
+          $('#cseProgramA').show();
+        }
+        else if(query3=='ETE'){
+          console.log(4);
+           $('#cseProgramA').hide();
+          $('#eteProgramA').show();
+        }
+        else{
+          $('#eteProgramA').hide();
+          $('#cseProgramA').hide();
+        }
+			});
 		}
+    else{
+      $('#staffNo').hide();
+      $('#message').hide();
+      $('#message2').hide();
+      $('#staffDepartment').hide();
+      $('#message1').hide();
+      $('#message3').hide();
+      $('#message4').hide();
+      $('#message5').hide();
+      $('#studentId').hide();
+      $('#cseProgramA').hide();
+      $('#eteProgramA').hide();
+      $('#feesStatus').hide();
+      $('#duration').hide();
+      $('#staffrole').hide();
+      $('#studentDepartmentA').hide();
+      $('#message11').hide();
+      $('#message10').hide();
+    }
 
 		});
 
@@ -261,7 +354,19 @@ $(document).ajaxComplete(function(){
             return false;
        	    }
             else{
-            document.getElementById('message2').style.display = "none";
+            document.getElementById('message2').style.display="none";
+            }
+
+            var textten=document.forms["myForm"]["role"].value;
+            if(textten==''){
+              var message=document.getElementById('message10');
+            message.style.display = "block";
+            message.style.color = 'red';
+            message.innerHTML="Please fill out this field";
+            return false;
+            }
+            else{
+               document.getElementById('message10').style.display="none";
             }
 
        }
@@ -279,18 +384,47 @@ $(document).ajaxComplete(function(){
        	 	message.innerHTML="";
        	 }
 
-       	 var textfive = document.forms["myForm"]["dprogram"].value;
-       	 if(textfive==''){
-       	 	var message=document.getElementById('message3');
+         var textnine=document.forms["myForm"]["studentdepartmentB"].value;
+         if(textnine==''){
+          var message=document.getElementById('message11');
+          message.style.display = "block";
            message.style.color='red';
             message.innerHTML="Please fill out this field";
            return false;
-       	 }
-       	 else if (textfive != ''){
-       	 	var message=document.getElementById('message3');
-       	 	message.innerHTML="";
-       	 }
+         }
+         else if(textnine=='CSE'){
+          document.getElementById('message11').style.display="none";
+  var textfiven = document.getElementById('csedgrprogram').value;
+         if(textfiven==''){
+          var message=document.getElementById('message3');
+           message.style.color='red';
+            message.innerHTML="Please fill out this field";
+           return false;
+         }
+         else if (textfiven != ''){
+          var message=document.getElementById('message3');
+          message.innerHTML="";
+         }
+         }
 
+         else if(textnine=='ETE'){
+          console.log(8);
+          document.getElementById('message11').style.display="none";
+          var textfive = document.getElementById('etedgrprogram').value;
+         if(textfive==''){
+          console.log(9);
+          var message=document.getElementById('message30');
+           message.style.color='red';
+            message.innerHTML="Please fill out this field";
+           return false;
+         }
+         else if (textfive != ''){
+          console.log(10);
+          var message=document.getElementById('message30');
+          message.innerHTML="";
+         }
+         }
+         
        	 var textsix = document.forms["myForm"]["Fees_Status"].value;
        	 if(textsix==''){
        	 	var message=document.getElementById('message4');
@@ -300,14 +434,15 @@ $(document).ajaxComplete(function(){
        	 }
        	 
        
-       	 else if(textsix=='PAID'){
+       	 else if(textsix =='PAID'){
+          var message=document.getElementById('message4');
+          message.innerHTML="";
        	 	var textseven = document.forms["myForm"]["Fees_Duration"].value;
-       	 	if(textseven==''){
+       	 	if(textseven== ''){
        	 	var message=document.getElementById('message5');
            message.style.color='red';
-            message.innerHTML="Please fill out this field";
+           message.innerHTML="Please fill out this field";
            return false;
-
        	 	}
        	 	else if (textseven != ''){
        	 	var message=document.getElementById('message5');
@@ -323,5 +458,10 @@ $(document).ajaxComplete(function(){
        
    }
    }
+</script>
+<script>
+    function reloadPage(){
+        location.reload(true);
+    }
 </script>
 </html>

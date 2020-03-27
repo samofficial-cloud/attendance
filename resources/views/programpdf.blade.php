@@ -495,7 +495,8 @@ table {
        Use App\program;
        $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
 
-
+use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
   ?> 
 
   <div class="card hero-image border-info">
@@ -503,7 +504,7 @@ table {
 
     {{-- <h5 class="card-title"><b>PROGRAM:{{$full}}</b></h5> --}}
     
-<center><b>UNIVERSITY OF DAR ES SALAAM
+<center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       

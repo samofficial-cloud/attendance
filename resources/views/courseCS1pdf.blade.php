@@ -30,10 +30,13 @@ table {
    use App\program;
    $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
 
+   use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
+
   ?>
 
   <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
@@ -45,12 +48,12 @@ table {
   <thead class="thead-dark">
     <tr>
       <th scope="col">S/N</th>
-      <th scope="col">Course ID</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Credit</th>
-      <th scope="col">Semester</th>
-      <th scope="col">Criteria</th>
-      <th scope="col">No. of Hours per Semester</th>
+      <th scope="col"><center>Course ID</center></th>
+      <th scope="col"><center>Course Name</center></th>
+      <th scope="col"><center>Credit</center></th>
+      <th scope="col"><center>Semester</center></th>
+      <th scope="col"><center>Criteria</center></th>
+      <th scope="col"><center>No. of Hours per Semester</center></th>
       
     </tr>
   </thead>
@@ -59,12 +62,12 @@ table {
     @foreach($course as $course)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$course->course}}</td>
+      <td><center>{{$course->course}}</center></td>
       <td>{{$course->course_name}}</td>
-      <td>{{$course->credit}}</td>
-       <td>{{$course->semester}}</td>
-      <td>{{$course->criteria}}</td>
-      <td>{{$course->lectures_no}}</td>
+      <td><center>{{$course->credit}}</center></td>
+       <td><center>{{$course->semester}}</center></td>
+      <td><center>{{$course->criteria}}</center></td>
+      <td><center>{{$course->lectures_no}}</center></td>
      
     </tr>
     <?php

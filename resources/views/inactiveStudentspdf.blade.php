@@ -31,10 +31,13 @@ table {
         $students=userinfo::where('DEFAULTDEPTID',$deptId)->where('flag','0')->orderBy('NAME','asc')->get();
         $full= program::select('full')->where('initial',$_GET['rid'])->value('full');
         $i='1';
+
+        use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
         ?>
 
         <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>{{$full}} <br>List of Inactive Students

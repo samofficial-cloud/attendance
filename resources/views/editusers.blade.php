@@ -274,6 +274,7 @@ hr {
       <th scope="col" style="color:#3490dc;">NAME</th>
       <th scope="col" style="color:#3490dc;"><center>EMPLOYEE ID</center></th>
       <th scope="col" style="color:#3490dc; width: 8%;"><center>GENDER</center></th>
+      <th scope="col" style="color:#3490dc;">ROLE</th>
       <th scope="col" style="color:#3490dc;"><center>PHONE NUMBER</center></th>
       <th scope="col" style="color:#3490dc;"><center>EMAIL</center></th>
       <th scope="col" style="color:#3490dc;width: 10%">ACTION</th>
@@ -290,6 +291,17 @@ hr {
        <td><center>M</center></td>
        @elseif($staff->GENDER=="Female")
        <td><center>F</center></td>
+       @endif
+       @if($staff->principal=='1')
+       <td>Principal</td>
+       @elseif($staff->staff=='1')
+       <td>Staff</td>
+       @elseif($staff->HoD=='1')
+       <td>Head of Department</td>
+       @elseif($staff->Timetable_Master=='1')
+       <td>Timetable Master</td>
+       @else
+       <td></td>
        @endif
       <td><center>{{$staff->phone_number}}</center></td>
       <td><center>{{$staff->email}}</center></td>
@@ -343,6 +355,42 @@ hr {
   </div>
   </div>
   <br>
+
+  <div class="form-group row">
+      <label for="role{{$staff->USERID}}"  class="col-sm-3 col-form-label"><strong>Role:</strong></label>
+      <div class="col-sm-8">
+          <select id="role{{$staff->USERID}}" name="role" class="custom-select" required="">
+            @if($staff->principal=='1')
+          <option value="principal">Principal</option>
+           <option value="staff">Staff</option>
+           <option value="tmaster">Timetable Master</option>
+           <option value="HoD">Head of Department</option>
+           @elseif($staff->staff=='1')
+           <option value="staff">Staff</option>
+            <option value="principal">Principal</option>
+           <option value="tmaster">Timetable Master</option>
+           <option value="HoD">Head of Department</option>
+           @elseif($staff->HoD=='1')
+           <option value="HoD">Head of Department</option>
+           <option value="staff">Staff</option>
+           <option value="principal">Principal</option>
+           <option value="tmaster">Timetable Master</option>
+           @elseif($staff->Timetable_Master)
+           <option value="tmaster">Timetable Master</option>
+           <option value="HoD">Head of Department</option>
+           <option value="staff">Staff</option>
+           <option value="principal">Principal</option>
+           @else
+            <option value="">Select Role</option>
+           <option value="staff">Staff</option>
+            <option value="principal">Principal</option>
+           <option value="tmaster">Timetable Master</option>
+           <option value="HoD">Head of Department</option>
+           @endif  
+        </select>
+    </div>
+    </div>
+    <br>
 
   <div class="form-group row">
     <label for="phone{{$staff->USERID}}"  class="col-sm-3 col-form-label"><strong>Phone No.:</strong></label>

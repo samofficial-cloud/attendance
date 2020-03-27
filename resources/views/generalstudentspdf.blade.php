@@ -26,13 +26,22 @@ table {
   use App\userinfo;
   use App\program;
   use App\courses;
+  if($_GET['studentdepartment']=='CSE'){
+$dprog=$_GET['csedprogram'];
+  }
+  elseif($_GET['studentdepartment']=='ETE'){
+$dprog=$_GET['etedprogram'];
+  }
+  else{
+    $dprog='';
+  }
 if($_GET['category']==1){
-  $depname=department::select('DEPTNAME')->where('DEPTID',$_GET['dprogram'])->value('DEPTNAME');
+  $depname=department::select('DEPTNAME')->where('DEPTID',$dprog)->value('DEPTNAME');
   if(($_GET['Selection']) != 'All'){
-        $students=userinfo::where('DEFAULTDEPTID',$_GET['dprogram'])->where('flag',$_GET['Selection'])->orderBy('NAME','asc')->get();
+        $students=userinfo::where('DEFAULTDEPTID',$dprog)->where('flag',$_GET['Selection'])->orderBy('NAME','asc')->get();
       }
       elseif($_GET['Selection'] == 'All'){
-        $students=userinfo::where('DEFAULTDEPTID',$_GET['dprogram'])->orderBy('NAME','asc')->get();
+        $students=userinfo::where('DEFAULTDEPTID',$dprog)->orderBy('NAME','asc')->get();
       }
         $full= program::select('full')->where('initial',$depname)->value('full');
         $i='1';
@@ -43,12 +52,14 @@ $course_name=courses::select('course_name')->where('course',$_GET['courseid'])->
 $total=count($program);
 $a='1';
 }
+use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
         ?>
-
 @if($_GET['category']==1)
-@if((!is_null($_GET['dprogram'])) and ($_GET['Selection']==1))
+@if(count($students)>0)
+@if((!is_null($dprog)) and ($_GET['Selection']==1))
         <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>{{$full}} Active Student List
@@ -92,9 +103,9 @@ $a='1';
   </tbody>
 </table>
 </div>
-@elseif((!is_null($_GET['dprogram'])) and ($_GET['Selection']== '0'))
+@elseif((!is_null($dprog)) and ($_GET['Selection']== '0'))
         <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>{{$full}} Inactive Student List
@@ -142,9 +153,9 @@ $a='1';
   </tbody>
 </table>
 </div>
-@elseif((!is_null($_GET['dprogram'])) and ($_GET['Selection']=='All'))
+@elseif((!is_null($dprog)) and ($_GET['Selection']=='All'))
         <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>{{$full}} All Student List
@@ -206,10 +217,19 @@ $a='1';
 </table>
 </div>
 @endif
+@else
+<center><b>{{$camistitle}}
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+    </b>
+  </center>
+  <br>
+  <p style="font-size: 20px;"><b>No registered student found</b></p>
+  @endif
 
 @elseif($_GET['category']==2)
 <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br> <h4>{{$_GET['courseid']}} - {{$course_name}}</h4>
@@ -222,7 +242,7 @@ $a='1';
     @endif
     </b>
   </center>
- 
+ @if(count($program)>0)
     @foreach($program as $program)
     <?php
     $i='1';
@@ -322,8 +342,14 @@ $a='1';
     @endforeach
     <div><h5><u>NOTE:</u></h5>
       <p>Please note the students listed above are only those who this course is core to them. To get list of students who have opted this course please visit <a href="https://aris2.udsm.ac.tz/">ARIS.</a> </p></div>
+      @else
+  <br>
+  <p style="font-size: 20px;"><b>No registered student found</b></p>
+  @endif
 </div>
 @endif
+
+
 <script>
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||

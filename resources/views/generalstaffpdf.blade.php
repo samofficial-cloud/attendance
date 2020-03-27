@@ -41,9 +41,11 @@ else{
  }
 }
    $j='1';
+   use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
   ?>
   <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>
@@ -75,30 +77,59 @@ else{
   @if($_GET['category']!=100)
   <thead class="thead-dark">
     <tr>
-      <th scope="col"  style="color:#3490dc;">S/N</th>
-     <th scope="col"  style="color:#3490dc;">NAME</th>
-      <th scope="col"  style="color:#3490dc;">EMPLOYEE ID</th>
-       <th scope="col"  style="color:#3490dc;">GENDER</th>
-      <th scope="col"  style="color:#3490dc;">PHONE NUMBER</th>
-      <th scope="col"  style="color:#3490dc;">EMAIL</th>
+      <th scope="col"  style="color:#3490dc; width: 3%;">S/N</th>
+     <th scope="col"  style="color:#3490dc;width: 20%;"><center>NAME</center></th>
+      <th scope="col"  style="color:#3490dc;width: 13%;"><center>EMPLOYEE ID</center></th>
+       <th scope="col"  style="color:#3490dc;width: 10%;"><center>GENDER</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>PHONE NUMBER</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>EMAIL</center></th>
+      @if($_GET['Selection']==0)
+      <th scope="col"  style="color:#3490dc;"><center>REASON</center></th>
+      <th scope="col"  style="color:#3490dc;"><center>REMARKS</center></th>
+      @endif
     </tr>
   </thead>
   <tbody>
      @foreach($staffs as $staff)
-      <tr>
+     @if($_GET['Selection']=='All' and $staff->flag==0)
+     <tr style="color: red;">
       <th scope="row">{{ $j }}.</th>
        <td>{{$staff->name}}</td>
-      <td>{{ $staff->SSN}}</td>
+      <td><center>{{ $staff->SSN}}</center></td>
       @if($staff->GENDER =='Male')
-      <td>M</td>
+      <td><center>M</center></td>
       @elseif($staff->GENDER =='Female')
-      <td>F</td>
+      <td><center>F</center></td>
       @else
       <td></td>
       @endif
       <td>{{ $staff->phone_number}}</td>
       <td>{{ $staff->email}}</td>
+      @if($_GET['Selection']==0)
+      <td><center>{{$staff->reasons}}</center></td>
+      <td>{{$staff->remarks}}</td>
+      @endif
        </tr>
+       @else
+      <tr>
+      <th scope="row">{{ $j }}.</th>
+       <td>{{$staff->name}}</td>
+      <td><center>{{ $staff->SSN}}</center></td>
+      @if($staff->GENDER =='Male')
+      <td><center>M</center></td>
+      @elseif($staff->GENDER =='Female')
+      <td><center>F</center></td>
+      @else
+      <td></td>
+      @endif
+      <td>{{ $staff->phone_number}}</td>
+      <td>{{ $staff->email}}</td>
+      @if($_GET['Selection']==0)
+      <td><center>{{$staff->reasons}}</center></td>
+      <td>{{$staff->remarks}}</td>
+      @endif
+       </tr>
+       @endif
       <?php
       $j=$j+1;
       ?>

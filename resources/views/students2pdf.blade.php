@@ -61,10 +61,12 @@ $id=$_GET['rid'];
      <tr>
       <th scope="col">S/N</th>
       <th scope="col">NAME</th>
-      <th scope="col">REGISTRATION NUMBER</th>
-      <th scope="col">GENDER</th>
-      <th scope="col">FEES STATUS</th>
-      <th scope="col">FEES DURATION</th>
+      <th scope="col"><center>REGISTRATION NUMBER</center></th>
+      <th scope="col"><center>GENDER</center></th>
+      @if($_GET['feescheckbox']=='true')
+      <th scope="col"><center>FEES STATUS</center></th>
+      <th scope="col"><center>FEES DURATION</center></th>
+      @endif
     </tr>
   </thead>
   <tbody>
@@ -73,16 +75,18 @@ $id=$_GET['rid'];
     <tr>
       <th scope="row">{{ $i }}.</th>
       <td>{{$student->name}}</td>
-      <td>{{$student->SSN}}</td>
+      <td><center>{{$student->SSN}}</center></td>
       @if($student->GENDER =='Male')
-      <td>M</td>
+      <td><center>M</center></td>
       @elseif($student->GENDER =='Female')
-      <td>F</td>
+      <td><center>F</center></td>
       @else
       <td></td>
       @endif
-      <td>{{$student->Fees_Status}}</td>
-      <td>{{$student->Fees_Duration}}</td>
+      @if($_GET['feescheckbox']=='true')
+      <td><center>{{$student->Fees_Status}}</center></td>
+      <td><center>{{$student->Fees_Duration}}</center></td>
+      @endif
       </tr>
     <?php
     $i= $i+1;

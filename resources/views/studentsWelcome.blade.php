@@ -175,6 +175,10 @@
 
 </nav>
 </div>
+@php
+ use App\camis_configuration;
+$camistitle=camis_configuration::select('camis_title')->value('camis_title');
+@endphp
 <br>
 <br>
 
@@ -365,12 +369,12 @@
     <h5 class="card-title"><b></b></h5>
 
     <div align="center">
-      <h1 style="text-align: center;"><b>UNIVERSITY OF DAR ES SALAAM</b></h1>
+      <h1 style="text-align: center;"><b>{{$camistitle}}</b></h1>
     <h2 style="text-align: center;"><b>COLLEGE OF ICT</b></h2>
     
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
     
-    <h1>LIST OF STUDENTS</h1>
+    <h1><b>STUDENT DETAILS</b></h1>
     
 
   

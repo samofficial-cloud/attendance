@@ -150,8 +150,11 @@ $i='1';
            <div class="modal-body">
             <h5>Are you sure you want to activate this Staff?</h5>
             <hr style="border: 1px;">
-<a class="btn btn-sm btn-secondary" style="float: left;" href="/activateuser">Back</a>
-<a class="btn btn-sm btn-info" style="float: right;" href="{{route('ActivateStaff',$staff->USERID)}}">Proceed</a>
+            <div align="right">
+<a class="btn btn-info" type="button" href="{{route('ActivateStaff',$staff->USERID)}}">Proceed</a>
+{{-- <a class="btn btn-sm btn-secondary" style="float: left;" href="/activateuser">Back</a> --}}
+<a class="btn btn-danger" type="button" class="close" data-dismiss="modal">Cancel</a>
+</div>
 
 </div>
 </div>

@@ -4,6 +4,50 @@
   My Reservations
 @endsection
 
+@section('style')
+<style>
+div.dataTables_filter{
+  padding-left:686px;
+  padding-bottom:20px;
+}
+
+div.dataTables_length label {
+    font-weight: normal;
+    text-align: left;
+    white-space: nowrap;
+    display: inline-block;  
+}
+
+div.dataTables_length select { 
+  height:25px;
+  width:10px;
+  font-size: 70%;
+}
+table.dataTable {
+font-family: "Nunito", sans-serif;
+    font-size: 15px;
+    
+
+    
+  }
+  table.dataTable.no-footer {
+    border-bottom: 0px solid #111;
+}
+
+hr {
+    margin-top: 0rem;
+    margin-bottom: 2rem;
+    border: 0;
+    border: 2px solid #505559;
+}
+.form-inline .form-control {
+    width: 100%;
+}
+
+</style>
+
+@endsection 
+
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -14,7 +58,7 @@
   
     @if(Auth::user()->staff==1)
     <div class="container">
- <center><ul class="nav1 nav-tabs" style="width: 84%">
+ <center><ul class="nav1 nav-tabs" style="width: 98%">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -27,23 +71,29 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-  
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
-
       <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
+  </li>
+
 </ul>
 </center>
 </div>
 @elseif(Auth::user()->principal==1)
-<div class="container" style="max-width: 1165px;">
-  <center><ul class="nav1 nav-tabs">
+<div class="container3" style="padding-left: 154px;">
+  <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -56,19 +106,20 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
-
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
 
   <li class="nav-item dropdown">
@@ -76,21 +127,24 @@
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
-          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
-          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
-          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
+           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
+          
         </div>
       </li>
 
 </ul>
-</center>
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
-<div class="container2">
-  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+<div class="container3" style="padding-left: 153px;">
+  
+    <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -103,12 +157,8 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
       <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
@@ -117,18 +167,29 @@
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+          
+        </div>
+      </li>
 
   </ul>
-  </center>
+  
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
-  <center><ul class="nav1 nav-tabs" style="align-content: center; width: 93%">
+  <center><ul class="nav1 nav-tabs" style="align-content: center;">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -140,36 +201,90 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
    <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+          <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
           @if(Auth::user()->DEFAULTDEPTID==31)
-          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">INSTRUCTORS</a>
           @elseif(Auth::user()->DEFAULTDEPTID==32)
-          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">INSTRUCTORS</a>
           @endif
-          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
-          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+         {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
     
 </ul>
 </center>
 </div>
+@elseif(Auth::user()->admin==1)
+<div class="container">
+  <ul class="nav1 nav-tabs">
+  <li class="nav-item">
+   <a class="nav-link" style="color:#060606"href="/">HOME</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
+    </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
+  </li>
 
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          INSTRUCTORS
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="manage/instructors-CSE">CSE</a>
+          <a class="dropdown-item" href="manage/instructors-ETE">ETE</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="manage/courses">COURSES</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/managestudents">MANAGE STUDENTS</a>
+  </li>
+
+
+</ul>
+</div>
 @endif
 
 
@@ -179,8 +294,8 @@
 <br>
 <?php
 use App\reservation;
- $pending = reservation::where('rstatus','-1')->where('Name',  Auth::user()->name)->get();
-  $approved = reservation::where('rstatus','1')->where('Name', Auth::user()->name)->get();
+ $pending = reservation::where('rstatus','-1')->where('Name',  Auth::user()->name)->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
+  $approved = reservation::where('rstatus','1')->where('Name', Auth::user()->name)->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
  $i='1';
  $j='1';
 ?>
@@ -203,38 +318,91 @@ use App\reservation;
       </div>
     @endif
    <a href="/venue"><i class="fa fa-plus" style="font-size:36px;color:green"></i></a>
+
+   <div class="tab">
+  <button class="tablinks" onclick="openInstructors(event, 'Pending Requests')" id="defaultOpen"><strong>PENDING REQUESTS</strong></button>
+  <button class="tablinks" onclick="openInstructors(event, 'Approved Requests')"><strong>APPROVED REQUESTS</strong></button>
+</div>
+<div id="Pending Requests" class="tabcontent">
    <br>
-  <h4>PENDING REQUESTS</h4>
-   @if(count($pending)==0)
+  <h4>1. PENDING REQUESTS</h4>
+   {{-- @if(count($pending)==0)
   <h5>You have no any pending request.</h5>
-  @else
-<table class="table table-striped table-bordered">
+  @else --}}
+<table class="hover table table-striped table-bordered" id="table1">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Venue</th>
-      <th scope="col">Day</th>
-      <th scope="col">Date</th>
-      <th scope="col">Week</th>
-      <th scope="col">Time</th>
-       <th scope="col">Reason</th>
-      <th scope="col">Approval</th>
+      <th scope="col" style="color:#3490dc;">S/N</th>
+      <th scope="col" style="color:#3490dc;"><center>Venue</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Day</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Date</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Week</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Time</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Action</center></th>
     </tr>
   </thead>
   <tbody>
     
       @foreach($pending as $pending)
       <tr>
-      <th scope="row">{{ $i }}</th>
-      <td>{{$pending->Venue}}</td>
+      <th scope="row">{{ $i }}.</th>
+      <td><center>{{$pending->Venue}}</center></td>
       <td>{{ $pending->Day }}</td>
-      <td>{{ $pending->Date }}/{{ $pending->Month}}/{{ $pending->Year}}</td>
-       <td>{{$pending->Week}}</td>
-      <td>{{ $pending->fromTime}}-{{ $pending->toTime}}</td>
+      <td><center>{{ $pending->combined_date}}</center></td>
+       <td><center>{{$pending->Week}}</center></td>
+      <td><center>{{ $pending->fromTime}}-{{ $pending->toTime}}</center></td>
+      <td><center>{{ $pending->Capacity}}</center></td>
       <td>{{ $pending->Reason}}</td>
+      <td>
+         @if(count($pending->Remarks)>0)
+        <center> <a data-toggle="modal" data-target="#Remarks{{$pending->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW</a></center>
+
+        <div class="modal fade" id="Remarks{{$pending->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">REMARKS</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            {{$pending->Remarks}}
+            <br>
+            <br>
+            
+</div>
+</div>
+</div>
+</div>
+@endif
+      </td>
       
-      <td><a class="btn btn-sm btn-success" href="{{route('changestatusd',$pending->id)}}">Cancel</a>
-        
+      <td>
+        <center><a data-toggle="modal" data-target="#Cancel{{$pending->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Cancel</a></center>
+        <div class="modal fade" id="Cancel{{$pending->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title" style="color: red;"><b>WARNING</b></h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <p style="font-size: 20px;">Are you sure you want to cancel?</p>
+            <br>
+           <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">Cancel</button> 
+<a class="btn btn-sm btn-danger" href="{{route('changestatusd',$pending->id)}}" style="float: right;">Proceed</a>
+      
+</div>
+</div>
+</div>
+</div>
+        </td>
       </tr>
       <?php
       $i=$i+1;
@@ -244,26 +412,28 @@ use App\reservation;
 
 </tbody>
 </table>
-@endif
+{{-- @endif --}}
 </div>
 
-<br>
-<div class="container">
-  <h4>APPROVED REQUESTS</h4>
-   @if(count($approved)==0)
+<div id="Approved Requests" class="tabcontent">
+  <br>
+  <h4>2. APPROVED REQUESTS</h4>
+   {{-- @if(count($approved)==0)
   <h5>You have no any approved request.</h5>
-  @else
-<table class="table table-striped table-bordered">
+  @else --}}
+<table class="hover table table-striped table-bordered" id="table2">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Venue</th>
-      <th scope="col">Day</th>
-      <th scope="col">Date</th>
-      <th scope="col">Week</th>
-       <th scope="col">Time</th>
-      <th scope="col">Reason</th>
-      <th scope="col">Approval</th>
+      <th scope="col" style="color:#3490dc;">S/N</th>
+      <th scope="col" style="color:#3490dc;"><center>Venue</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Day</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Date</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Week</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Time</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
+      {{-- <th scope="col" style="color:#3490dc;"><center>Action</center></th> --}}
     </tr>
   </thead>
   <tbody>
@@ -271,16 +441,42 @@ use App\reservation;
       @foreach($approved as $approved)
       <tr>
       <th scope="row">{{ $j }}</th>
-      <td>{{$approved->Venue}}</td>
+      <td><center>{{$approved->Venue}}</center></td>
       <td>{{ $approved->Day }}</td>
-      <td>{{ $approved->Date }}/{{ $approved->Month}}/{{ $approved->Year}}</td>
-       <td>{{$approved->Week}}</td>
-      <td>{{ $approved->fromTime}}-{{ $approved->toTime}}</td>
+      <td><center>{{ $pending->combined_date}}</center></td>
+       <td><center>{{$approved->Week}}</center></td>
+      <td><center>{{ $approved->fromTime}}-{{ $approved->toTime}}</center></td>
+      <td><center>{{ $approved->Capacity}}</center></td>
       <td>{{ $approved->Reason}}</td>
-     
       <td>
+         @if(count($approved->Remarks)>0)
+        <center> <a data-toggle="modal" data-target="#Remarks{{$approved->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW</a></center>
+
+        <div class="modal fade" id="Remarks{{$approved->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">REMARKS</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            {{$approved->Remarks}}
+<br>
+<br>
+  {{-- <center><button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">Close</button></center> --}}
+            
+</div>
+</div>
+</div>
+</div>
+@endif
+      </td>
+     
+     {{--  <td>
        <a class="btn btn-sm btn-success" href="{{route('changestatusd',$approved->id)}}">Cancel</a>
-        </td>
+        </td> --}}
       </tr>
       <?php
       $j=$j+1;
@@ -290,11 +486,51 @@ use App\reservation;
 
 </tbody>
 </table>
-@endif
+{{-- @endif --}}
 </div>
+</div>
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
+@endsection
+
+@section('pagescript')
+<script type="text/javascript">
+  $(document).ready(function() {
+  
+    var table = $('#table1').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+    var table = $('#table2').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+});
+  function openInstructors(evt, evtName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(evtName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+document.getElementById("defaultOpen").click();
+</script>
 
 @endsection

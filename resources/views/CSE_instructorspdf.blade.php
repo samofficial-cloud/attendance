@@ -27,14 +27,18 @@ table {
 
   $instructors1=lecturer::where('dept','CSE')->where('flag','1')->where('academic_year','2019/2020')->orderBy('semester','asc')->get();
   $i='1';
+  use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
   ?>
 
   <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
       <br>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
-      <br>TEACHING STAFF
+      <br>ASSIGNED INSTRUCTORS FOR THE ACADEMIC YEAR 2019/2020
+      <br>
+      <br>
 
     </b></center>
   
@@ -43,18 +47,18 @@ table {
   <thead class="thead-dark">
     <tr>
       <th scope="col">S/N</th>
-      <th scope="col">Course ID</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Instructor 1</th>
-      <th scope="col">Instructor 2</th>
-      <th scope="col">Instructor 3</th>
-      <th scope="col">Instructor 4</th>
-      <th scope="col">Instructor 5</th>
-      <th scope="col">Tutorial Assistant</th>
-      <th scope="col">Technical Staff 1</th>
-      <th scope="col">Technical Staff 2</th>
-      <th scope="col">Course Type</th>
-      <th scope="col">Semester</th>
+      <th scope="col"><center>Course ID</center></th>
+      <th scope="col"><center>Course Name</center></th>
+      <th scope="col"><center>Instructor 1</center></th>
+      <th scope="col"><center>Instructor 2</center></th>
+      <th scope="col"><center>Instructor 3</center></th>
+      <th scope="col"><center>Instructor 4</center></th>
+      <th scope="col"><center>Instructor 5</center></th>
+      <th scope="col"><center>Tutorial Assistant</center></th>
+      <th scope="col"><center>Technical Staff 1</center></th>
+      <th scope="col"><center>Technical Staff 2</center></th>
+      <th scope="col"><center>Course Type</center></th>
+      <th scope="col"><center>Semester</center></th>
       
     </tr>
   </thead>
@@ -63,7 +67,7 @@ table {
       @foreach($instructors1 as $instructors)
       <tr>
       <th scope="row">{{ $i }}.</th>
-      <td style="align-content: center;">{{ $instructors->course}}</td>
+      <td><center>{{ $instructors->course}}</center></td>
       <td>{{$instructors->course_name}}</td>
       <td>{{ $instructors->instructor }}</td>
       <td>{{ $instructors->Instructor_2}}</td>
@@ -73,8 +77,8 @@ table {
       <td>{{ $instructors->Tutorial_Assistant}}</td>
       <td>{{ $instructors->technical_staff }}</td>
       <td>{{ $instructors->Technical_staff_2}}</td>
-      <td>{{ $instructors->course_type}}</td>
-      <td>{{ $instructors->semester}}</td>
+      <td><center>{{ $instructors->course_type}}</center></td>
+      <td><center>{{ $instructors->semester}}</center></td>
      
        </tr>
       <?php
