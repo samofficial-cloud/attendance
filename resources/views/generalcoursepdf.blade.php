@@ -26,37 +26,50 @@ table {
   use App\courses;
   use App\program;
   $i='1';
+  if($_GET['coursedepartment']=='CSE'){
+    $dprog=$_GET['csedcourse'];
+  }
+  elseif($_GET['coursedepartment']=='ETE'){
+    $dprog=$_GET['etedcourse'];
+  }
+
 if(($_GET['category']=='All') and ($_GET['semester']=='All')){
-  $course=courses::where('program',$_GET['dprogram'])->orderBy('semester', 'asc')->get();
+  $course=courses::where('program',$dprog)->orderBy('semester', 'asc')->get();
   }
   elseif (($_GET['category']!='All') and ($_GET['semester']=='All')) {
-      $course=courses::where('program',$_GET['dprogram'])->where('criteria',$_GET['category'])->orderBy('semester', 'asc')->get();
+      $course=courses::where('program',$dprog)->where('criteria',$_GET['category'])->orderBy('semester', 'asc')->get();
     } 
     elseif (($_GET['category']!='All') and ($_GET['semester']!='All')) {
-      $course=courses::where('program',$_GET['dprogram'])->where('criteria',$_GET['category'])->where('semester',$_GET['semester'])->orderBy('semester', 'asc')->get();
+      $course=courses::where('program',$dprog)->where('criteria',$_GET['category'])->where('semester',$_GET['semester'])->orderBy('semester', 'asc')->get();
     }
     elseif(($_GET['category']=='All') and ($_GET['semester']!='All')){
-  $course=courses::where('program',$_GET['dprogram'])->where('semester',$_GET['semester'])->orderBy('semester', 'asc')->get();
+  $course=courses::where('program',$dprog)->where('semester',$_GET['semester'])->orderBy('semester', 'asc')->get();
   }  
-  $full= program::select('full')->where('initial',$_GET['dprogram'])->value('full');
+  $full= program::select('full')->where('initial',$dprog)->value('full');
+
+  use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
 
   ?>
 
   <div class="container">
-    <center><b>UNIVERSITY OF DAR ES SALAAM
+    <center><b>{{$camistitle}}
       <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
       <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-      <br>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
+      <br>@if($_GET['coursedepartment']=='CSE')DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING
+      @elseif($_GET['coursedepartment']=='ETE')
+      DEPARTMENT OF ELECTRONICS AND TELECOMMUNICATIONS ENGINEERING
+      @endif
       </b></center>
       <center>
       @if(($_GET['category']=='All') and ($_GET['semester']=='All'))
-      <br>{{$full}} All Courses For The Academic Year 2019/2020
+      <b>{{$full}}</b><br> All Courses For The Academic Year 2019/2020
       @elseif(($_GET['category']!='All') and ($_GET['semester']=='All'))
-      <br>{{$full}} {{$_GET['category']}} Courses For The Academic Year 2019/2020
+      <b>{{$full}}</b><br> {{$_GET['category']}} Courses For The Academic Year 2019/2020
       @elseif($_GET['category']=='All'and ($_GET['semester']!='All'))
-       <br>{{$full}} All Courses In Semester {{$_GET['semester']}} For The Academic Year 2019/2020
+       <b>{{$full}}</b><br> All Courses In Semester {{$_GET['semester']}} For The Academic Year 2019/2020
       @elseif($_GET['category']!='All'and ($_GET['semester']!='All'))
-      <br>{{$full}} {{$_GET['category']}} Courses In Semester {{$_GET['semester']}} For The Academic Year 2019/2020
+      <b>{{$full}}</b><br> {{$_GET['category']}} Courses In Semester {{$_GET['semester']}} For The Academic Year 2019/2020
       @endif
       </center>
     
@@ -66,12 +79,12 @@ if(($_GET['category']=='All') and ($_GET['semester']=='All')){
   <thead class="thead-dark">
     <tr>
       <th scope="col">S/N</th>
-      <th scope="col">Course ID</th>
-      <th scope="col">Course Name</th>
-      <th scope="col">Credit</th>
-      <th scope="col">Semester</th>
-      <th scope="col">Criteria</th>
-      <th scope="col">No. of Hours per Semester</th>
+      <th scope="col"><center>Course ID</center></th>
+      <th scope="col"><center>Course Name</center></th>
+      <th scope="col"><center>Credit</center></th>
+      <th scope="col"><center>Semester</center></th>
+      <th scope="col"><center>Criteria</center></th>
+      <th scope="col"><center>No. of Hours per Semester</center></th>
       
     </tr>
   </thead>
@@ -82,10 +95,10 @@ if(($_GET['category']=='All') and ($_GET['semester']=='All')){
       <th scope="row">{{ $i }}.</th>
       <td>{{$course->course}}</td>
       <td>{{$course->course_name}}</td>
-      <td>{{$course->credit}}</td>
-       <td>{{$course->semester}}</td>
-      <td>{{$course->criteria}}</td>
-      <td>{{$course->lectures_no}}</td>
+      <td><center>{{$course->credit}}</center></td>
+       <td><center>{{$course->semester}}</center></td>
+      <td><center>{{$course->criteria}}</center></td>
+      <td><center>{{$course->lectures_no}}</center></td>
      
     </tr>
     <?php

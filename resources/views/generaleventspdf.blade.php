@@ -38,9 +38,12 @@ table {
     }
       $i='1';
 
+      use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
+
       ?>
       <div class="col-xs-9">
-        <center><b>UNIVERSITY OF DAR ES SALAAM
+        <center><b>{{$camistitle}}
                  <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
                   <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
                   <h5>@if(($_GET['category']=='All') and ($_GET['semester']=='All'))
@@ -88,27 +91,27 @@ table {
     @foreach($events as $events)
     <tr>
       <th scope="row"><center>{{ $i }}.</center></th>
-      <td><center>{{$events->Day}}</center></td>
-      <td><center>{{$events->Date}}/{{$events->Month}}/{{$events->Year}}</center></td>
+      <td>{{$events->Day}}</td>
+      <td>{{$events->Date}}/{{$events->Month}}/{{$events->Year}}</td>
       @if($_GET['category']!='HOLIDAY')
       @if(strtotime($events->FromTime) ==strtotime("07:00") and strtotime($events->ToTime) == strtotime("20:00"))
-       <td><center>All Day</center></td>
+       <td>All Day</td>
       @else
-       <td><center>{{$events->FromTime}}-{{$events->ToTime}}</center></td>
+       <td>{{$events->FromTime}}-{{$events->ToTime}}</td>
        @endif
        @endif
 
        @if($_GET['category']=='All')
        @if($events->status=='HOLIDAY')
-      <td><center>Public Holiday</center></td>
+      <td>Public Holiday</td>
       @elseif($events->status=='CANCELLATION')
-      <td><center>Cancellation</center></td>
+      <td>Cancellation</td>
       @else
       <td></td>
       @endif
       @endif
       @if($_GET['category']=='All' or $_GET['category']=='HOLIDAY')
-      <td><center>{{$events->holiday_name}}</center></td>
+      <td>{{$events->holiday_name}}</td>
       @endif
       </tr>
       <?php

@@ -10,7 +10,7 @@
    <!--  <title>{{ config('app.name', 'Laravel') }}</title> -->
    <title> @yield('title')</title>
 
-   <link rel="icon" type="image.jpg" href="img/logo_udsm.jpg"></link>
+   <link rel="icon" type="image.jpg" href="{{ asset('img/logo_udsm.jpg') }}"></link>
 
     <!-- Scripts -->
       <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
@@ -50,10 +50,15 @@
                     <!-- {{ config('app.name', 'Laravel') }} -->
                     <div class="d-flex flex-row">
                      <div class="pl-2">
-                      <img src="/img/logo_udsm.jpg" height="100px"/>
+                      <img src="{{ asset('img/logo_udsm.jpg') }}" height="100px"/>
                     </div>
                     <div class="pl-3 pt-3"><h2>CLASS ATTENDANCE MANAGEMENT INFORMATION SYSTEM</h2>
-                      <h4>UNIVERSITY OF DAR ES SALAAM</h4>
+                      @php
+                        use App\camis_configuration;
+                        $camistitle=camis_configuration::select('camis_title')->value('camis_title');
+
+                      @endphp
+                      <h4>{{$camistitle}}</h4>
                     </div>
                 </div>
 

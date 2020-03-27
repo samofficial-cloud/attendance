@@ -66,17 +66,26 @@ class USERINFOController extends Controller
     }
 
      public function studentsPDF(){
-       
+       if($_GET['feescheckbox']=='true'){
         $pdf = PDF::loadView('studentspdf')->setPaper('a4', 'landscape');
+      }
+      else{
+        $pdf = PDF::loadView('studentspdf');
+      }
   
         return $pdf->stream('STUDENTS LIST.pdf');
     }
 
     public function GeneralstudentsPDF(){
-       
+       if($_GET['studentcheckbox']=='true'){
         $pdf = PDF::loadView('generalstudentspdf')->setPaper('a4', 'landscape');
   
         return $pdf->stream('STUDENTS LIST.pdf');
+      }
+      else{
+        $pdf = PDF::loadView('generalstudentspdf');
+        return $pdf->stream('STUDENTS LIST.pdf');
+      }
     }
 
     public function GeneralstaffPDF(){
@@ -87,8 +96,12 @@ class USERINFOController extends Controller
     }
 
     public function studentscoursesPDF(){
-       
+       if($_GET['feescheckbox']=='true'){
         $pdf = PDF::loadView('students2pdf')->setPaper('a4', 'landscape');
+      }
+      else{
+       $pdf = PDF::loadView('students2pdf'); 
+      }
   
         return $pdf->stream('STUDENTS LIST.pdf');
     }
@@ -123,22 +136,26 @@ class USERINFOController extends Controller
     public function edituserview(Request $request ){
       $title=$request->get('title');
       $dept=$request->get('dept');
-      $program=$request->get('dprogram');
+      $studentdepartment=$request->get('studentdepartment');
 
-     
-      
+      if($studentdepartment=='CSE'){
+        $program=$request->get('csedprogram');
+      }
+      elseif ($studentdepartment=='ETE') {
+         $program=$request->get('etedprogram');
+      }
+
       if($title=='staff'){
       $initial=department::select('DEPTNAME')->where('DEPTID',$dept)->value('DEPTNAME');
       $full=program::select('full')->where('initial',$initial)->value('full');
-        $staff=userinfo::where('TITLE',$title)->where('DEFAULTDEPTID',$dept)->where('flag','1')->orderBy('name','asc')->get();
-         return view('editusers')->with('staff',$staff)->with('full',$full)->with('title',$title);
+      $staff=userinfo::where('TITLE',$title)->where('DEFAULTDEPTID',$dept)->where('flag','1')->orderBy('name','asc')->get();
+      return view('editusers')->with('staff',$staff)->with('full',$full)->with('title',$title);
       }
       elseif ($title=='student') {
     $initial=department::select('DEPTNAME')->where('DEPTID',$program)->value('DEPTNAME');
-     $full=program::select('full')->where('initial',$initial)->value('full');
-        $student=userinfo::where('TITLE',$title)->where('DEFAULTDEPTID',$program)->where('flag','1')->orderBy('name','asc')->get();
-        return view('editusers')->with('student',$student)->with('full',$full)->with('title',$title);
-        
+    $full=program::select('full')->where('initial',$initial)->value('full');
+    $student=userinfo::where('TITLE',$title)->where('DEFAULTDEPTID',$program)->where('flag','1')->orderBy('name','asc')->get();
+    return view('editusers')->with('student',$student)->with('full',$full)->with('title',$title); 
       }
       
     }
@@ -188,8 +205,23 @@ class USERINFOController extends Controller
         $email=$request->get('email');
         $phone_number=$request->get('phoneNumber');
        $BADGENUMBER=$request->get('BADGENUMBER');
+       $role=$request->get('role');
 
-        $data=array('name' =>$name,'TITLE'=>$title,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'BADGENUMBER'=>$BADGENUMBER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>1,'principal'=>0,'HoD'=>0,'Timetable_Master'=>0,'password'=>$password);
+       if($role=='staff'){
+$data=array('name' =>$name,'TITLE'=>$title,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'BADGENUMBER'=>$BADGENUMBER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>1,'principal'=>0,'HoD'=>0,'Timetable_Master'=>0,'password'=>$password);
+}
+
+elseif($role=='principal'){
+  $data=array('name' =>$name,'TITLE'=>$title,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'BADGENUMBER'=>$BADGENUMBER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>0,'principal'=>1,'HoD'=>0,'Timetable_Master'=>0,'password'=>$password);
+}
+
+elseif($role=='HoD'){
+  $data=array('name' =>$name,'TITLE'=>$title,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'BADGENUMBER'=>$BADGENUMBER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>0,'principal'=>0,'HoD'=>1,'Timetable_Master'=>0,'password'=>$password);
+}
+
+elseif($role=='tmaster'){
+  $data=array('name' =>$name,'TITLE'=>$title,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'BADGENUMBER'=>$BADGENUMBER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>0,'principal'=>0,'HoD'=>0,'Timetable_Master'=>1,'password'=>$password);
+}
 
         DB::table('USERINFO')->insert($data);
 
@@ -212,17 +244,29 @@ class USERINFOController extends Controller
         $name=$request->get('Name');
         $SSN=$request->get('regNo');
         $GENDER=$request->get('gender');
-        $DEFAULTDEPTID=$request->get('dprogram');
         $email=$request->get('email');
         $phone_number=$request->get('phoneNumber');
        $BADGENUMBER=$request->get('BADGENUMBER');
        $Fees_Status=$request->get('Fees_Status');
+       $studentdepartment=$request->get('studentdepartment');
        if($Fees_Status=='PAID'){
        $Fees_Duration=$request->get('Fees_Duration');
      }
      else{
       $Fees_Duration=NULL;
      }
+
+     if($studentdepartment=='CSE'){
+      $DEFAULTDEPTID=$request->get('csedprogram');
+     }
+     elseif($studentdepartment=='ETE'){
+      $DEFAULTDEPTID=$request->get('etedprogram');
+     }
+     else{
+      return redirect()->back()
+                    ->with('errors', 'Degree Program for the student has not been captured, please repeat again');
+     }
+
 
        $data=array('name' =>$name,'TITLE'=>$title, 'BADGENUMBER'=>$BADGENUMBER,'SSN'=>$SSN, 'GENDER'=>$GENDER, 'DEFAULTDEPTID'=>$DEFAULTDEPTID,'email'=>$email,'phone_number'=>$phone_number,'flag'=>1,'VERIFICATIONMETHOD'=>1,'ATT'=>1,'INLATE'=>0,'OUTEARLY'=>0, 'OVERTIME'=>1,'SEP'=>1,'HOLIDAY'=>1,'MINZU'=>TANZANIA,'LUNCHDURATION'=>1, 'privilege'=>0,'inheritDeptSch'=>1, 'inheritDeptSchClass'=>1,'AutoSChPlan'=>1,'MinAutoSchInterval'=>24,'RegisterOT'=>1,'InheritDeptRule'=>0,'EMPRIVILEGE'=>0,'staff'=>0,'principal'=>0,'HoD'=>0,'Timetable_Master'=>0,'Fees_Status'=>$Fees_Status,'Fees_Duration'=>$Fees_Duration,'password'=>$password);
 
@@ -271,6 +315,31 @@ class USERINFOController extends Controller
   elseif($user->TITLE=='staff'){
     $user->phone_number=$request->get('phone');
     $user->email=$request->get('email');
+    $role=$request->get('role');
+    if($role=='staff'){
+      $user->staff='1';
+      $user->principal='0';
+      $user->HoD='0';
+      $user->Timetable_Master='0';
+    }
+    elseif($role=='principal'){
+      $user->principal='1';
+      $user->HoD='0';
+      $user->Timetable_Master='0';
+       $user->staff='0';
+    }
+    elseif($role=='tmaster'){
+      $user->Timetable_Master='1';
+      $user->principal='0';
+      $user->HoD='0';
+       $user->staff='0';
+    }
+    elseif($role=='HoD'){
+      $user->HoD='1';
+       $user->Timetable_Master='0';
+      $user->principal='0';
+       $user->staff='0';
+    }
   }
 
     $user->save();
@@ -315,8 +384,8 @@ class USERINFOController extends Controller
    // }
 
    public function staff(){
-    $staffCSE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','31')->where('flag','1')->orderBy('name','asc')->get();
-    $staffETE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','32')->where('flag','1')->orderBy('name','asc')->get();
+    $staffCSE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','31')->orderBy('name','asc')->get();
+    $staffETE=userinfo::where('TITLE','staff')->where('DEFAULTDEPTID','32')->orderBy('name','asc')->get();
     return view ('staffs')->with('staffCSE',$staffCSE)->with('staffETE',$staffETE);
    }
 

@@ -249,14 +249,14 @@ use App\capacityvenue;
   </div>
 
   <div class="slidecontainer form-group row">
-        <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant</label>
-        <div class="col-sm-7">
-  <input  class="form-control-lg" type="number" value=$("input[type='number']").inputSpinner() min="1" max={{ $capacity}} step="1" name="capacity" required />
+  <label for="inputCapacity"  class="col-sm-3 col-form-label">No. of Participant....</label>
+  <div class="col-sm-7">
+  <input  class="form-control-lg" type="number" value="" min="10" max="{{ $capacity}}" step="1" name="capacity" required maxlength="3" onkeypress="if(this.value.length<=2){return event.charCode >= 48 && event.charCode <= 57} else return false;"/>
 </div>
-<script src="./src/bootstrap-input-spinner.js"></script>
+{{-- <script src="./src/bootstrap-input-spinner.js"></script>
 <script>
     $("input[type='number']").inputSpinner()
-</script>
+</script> --}}
 </div>
 
    <div class="form-group row">
@@ -282,7 +282,7 @@ use App\capacityvenue;
 
 
 
-<script>
+{{-- <script>
 var slider = document.getElementById("myRange");
 var output = document.getElementById("demo");
 output.innerHTML = slider.value;
@@ -290,7 +290,7 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
-</script>
+</script> --}}
 
 
 

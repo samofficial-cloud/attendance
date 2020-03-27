@@ -23,7 +23,7 @@ $newbadgeno = $badge + 1;
   
     @if(Auth::user()->staff==1)
     <div class="container">
- <center><ul class="nav1 nav-tabs" style="width: 84%">
+ <center><ul class="nav1 nav-tabs" style="width: 98%">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -36,24 +36,28 @@ $newbadgeno = $badge + 1;
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
+  </li>
       <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
-  </li>
+  
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
 
 </ul>
 </center>
 </div>
 @elseif(Auth::user()->principal==1)
-<div class="container3" style="padding-left: 107px;">
+<div class="container3" style="padding-left: 154px;">
   <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
@@ -67,10 +71,6 @@ $newbadgeno = $badge + 1;
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
-  </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
   </li>
@@ -78,10 +78,13 @@ $newbadgeno = $badge + 1;
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
 
   <li class="nav-item dropdown">
@@ -89,20 +92,24 @@ $newbadgeno = $badge + 1;
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">ETE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS</a>
-          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES</a>
-          <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
-          <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
+           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
+          
         </div>
       </li>
 
 </ul>
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
-<div class="container2">
-  <center><ul class="nav1 nav-tabs" style="padding-left: 35px;">
+<div class="container3" style="padding-left: 153px;">
+  
+    <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
   </li>
@@ -115,12 +122,8 @@ $newbadgeno = $badge + 1;
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
-
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
   </li>
       <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
@@ -129,17 +132,25 @@ $newbadgeno = $badge + 1;
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/events">EVENTS</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
+  <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          MANAGE
+        </a>
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
+           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
+           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+          
+        </div>
+      </li>
 
   </ul>
-  </center>
+  
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
@@ -156,31 +167,34 @@ $newbadgeno = $badge + 1;
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
+  </li>
+   <li class="nav-item">
+    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  </li>
    <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/CSE-instructors">INSTRUCTORS</a>
-  </li>
-  <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
   </li>
   <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle active" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+          <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
           @if(Auth::user()->DEFAULTDEPTID==31)
-          <a class="dropdown-item" style="color:#060606"href="/instructors-CSE">INSTRUCTORS MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">INSTRUCTORS</a>
           @elseif(Auth::user()->DEFAULTDEPTID==32)
-          <a class="dropdown-item" style="color:#060606"href="/instructors-ETE">INSTRUCTORS MANAGEMENT</a>
+          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">INSTRUCTORS</a>
           @endif
-          <a class="dropdown-item" style="color:#060606" href="/courses">COURSES MANAGEMENT</a>
-          <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a>
+         {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
     
@@ -218,13 +232,13 @@ $newbadgeno = $badge + 1;
           INSTRUCTORS
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="/instructors-ETE">ETE</a>
+          <a class="dropdown-item" href="manage/instructors-CSE">CSE</a>
+          <a class="dropdown-item" href="manage/instructors-ETE">ETE</a>
         </div>
       </li>
 
       <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/courses">COURSES</a>
+    <a class="nav-link" style="color:#060606" href="manage/courses">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
@@ -264,7 +278,7 @@ $newbadgeno = $badge + 1;
 
      <div class="modal fade" id="edituser" role="dialog">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 135%">
         <div class="modal-header">
           <b><h5 class="modal-title">Complete the Form Below</h5></b>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -275,7 +289,7 @@ $newbadgeno = $badge + 1;
 
   <div class="form-group row" id="DivTitle">
       <label for="getTitle" class="col-sm-3 col-form-label"><strong>Title:</strong></label>
-      <div class="col-sm-8">
+      <div class="col-sm-9">
       <select name="title" id="getTitle" class="custom-select Reason" required="">
       <option value="" id="">Select Title</option>
       <option value="staff" id="Option" >STAFF</option>
@@ -287,7 +301,7 @@ $newbadgeno = $badge + 1;
 
   <div class="form-group row" id="DivDept" style="display: none;">
       <label for="" class="col-sm-3 col-form-label"><strong>Department:</strong></label>
-      <div class="col-sm-8">
+      <div class="col-sm-9">
     <select name="dept" id="getDepartment" class="custom-select Reason" >
       <option value="" id="">Select Department</option>
       <option value="31" id="Option" >CSE</option>
@@ -296,6 +310,65 @@ $newbadgeno = $badge + 1;
       <span id="dept_alert"></span>
       </div>
   </div>
+
+  <div class="form-group row" id="studentDepartment" style="display: none;">
+      <label for="studentdepartment"  class="col-sm-3 col-form-label"><strong>Department:</strong></label>
+      <div class="col-sm-9">
+          <select id="studentdepartment" name="studentdepartment" class="custom-select">
+            <option value=""> Select Department</option>
+           <option value="CSE">Computer Science and Engineering</option>
+           <option value="ETE">Electronics and Telecommunication Engineering</option>
+        </select>
+        <span id="studdept_alert"></span>
+    </div>
+    </div>
+
+     <div class="form-group row" id="csestudentProgram" style="display: none;">
+  <label for="csedprogram"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
+    <div class="col-sm-9">
+   <select class="custom-select Reason" name="csedprogram" id="csedprogram" >
+    <option value="">Select Degree Program</option>
+     <option value="18">BSc. in Business Information Technology year 1</option>
+    <option value="19">BSc. in Business Information Technology year 2</option>
+    <option value="20">BSc. in Business Information Technology year 3</option>
+    <option value="5"> B.Sc. in Computer Engineering and Information Technology year 1</option>
+    <option value="6">B.Sc. in Computer Engineering and Information Technology year 2</option>
+    <option value="7">B.Sc. in Computer Engineering and Information Technology year 3</option>
+    <option value="4">B.Sc. in Computer Engineering and Information Technology year 4</option>
+    <option value="11">B.Sc. in Computer Science year 1</option>
+    <option value="12">B.Sc. in Computer Science year 2</option>
+    <option value="13">B.Sc. in Computer Science year 3</option>
+    <option value="21">B.Sc. with Computer Science 1</option>
+    <option value="22">B.Sc. with Computer Science</option>
+    <option value="23">B.Sc. with Computer Science 3</option>
+    <option value="28">Certificate in Computer Science</option>
+    <option value="29">Diploma in Computer Science year 1</option>
+    <option value="30">Diploma in Computer Science year 2</option>
+  </select>
+  <span id="csedprogram_alert"></span>
+  </div>
+  </div>
+
+   <div class="form-group row" id="etestudentProgram" style="display: none;">
+  <label for="etedprogram"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
+    <div class="col-sm-9">
+   <select class="custom-select Reason" name="etedprogram" id="etedprogram">
+    <option value="">Select Degree Program</option>
+    <option value="24">B.Sc. in Electronic Engineering year 1</option>
+    <option value="25">B.Sc. in Electronic Engineering year 2</option>
+    <option value="26">B.Sc. in Electronic Engineering year 3</option>
+    <option value="27">B.Sc. in Electronic Engineering year 4</option>
+    <option value="8">B.Sc. in Electronic Science and Communication year 1</option>
+    <option value="9">B.Sc. in Electronic Science and Communication year 2</option>
+    <option value="10">B.Sc. in Electronic Science and Communication year 3</option>
+    <option value="14">B.Sc. in Telecommunications Engineering year 1</option>
+    <option value="15">B.Sc. in Telecommunications Engineering year 2</option>
+    <option value="16">B.Sc. in Telecommunications Engineering year 3</option>
+    <option value="17">B.Sc. in Telecommunications Engineering 4</option>
+   </select>
+   <span id="etedprogram_alert"></span>
+ </div>
+</div>
 
   <div class="form-group row" id="Divdprogram" style="display: none;">
   <label for="dprogram"  class="col-sm-3 col-form-label"><strong>Degree Program:</strong></label>
@@ -334,8 +407,10 @@ $newbadgeno = $badge + 1;
   </div>
   </div>
   
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary" id="edituserbutton">SUBMIT</button></center>
+  <div align="right">
+    
+     <button type="submit" class="btn btn-primary" id="edituserbutton">SUBMIT</button>
+     <button type="button" class="btn btn-danger" onclick="reloadPage();">CLOSE</button>
     </div>
 </form>
 </div>
@@ -373,7 +448,7 @@ $newbadgeno = $badge + 1;
       <h1 style="text-align: center;"><b>UNIVERSITY OF DAR ES SALAAM</b></h1>
     <h2 style="text-align: center;"><b>COLLEGE OF ICT</b></h2>
     <div id="loading"></div>
-   <div><img src="img/logo_udsm.jpg" height="200px" width="170px"></div>
+   <div><img src="{{asset('img/logo_udsm.jpg')}}" height="200px" width="170px"></div>
     <br>
     <br>
     <h1><b>SYSTEM USERS MANAGEMENT</b></h1>
@@ -435,15 +510,34 @@ $(document).ajaxComplete(function(){
      var query=$(this).val();
      if (query=='staff') {
       $('#DivDept').show();
-      $('#Divdprogram').hide();
+      $('#studentDepartment').hide();
+      $('#etestudentProgram').hide();
+      $('#csestudentProgram').hide();
      }
      else if(query=='student'){
       $('#DivDept').hide();
-      $('#Divdprogram').show();
+      $('#studentDepartment').show();
+     $("#studentdepartment").click(function(e) {
+      var query3=$(this).val();
+        if(query3=='CSE'){
+          $('#etestudentProgram').hide();
+          $('#csestudentProgram').show();
+        }
+        else if(query3=='ETE'){
+           $('#csestudentProgram').hide();
+          $('#etestudentProgram').show();
+        }
+        else{
+          $('#etestudentProgram').hide();
+          $('#csestudentProgram').hide();
+        }
+       });
      }
      else{
       $('#DivDept').hide();
-      $('#Divdprogram').hide();
+      $('#studentDepartment').hide();
+      $('#etestudentProgram').hide();
+      $('#csestudentProgram').hide();
 
      }
 
@@ -461,6 +555,7 @@ $(document).ajaxComplete(function(){
     else{
       $('#title_alert').hide();
     }
+
      if($('#getTitle').val()=='staff'){
       if($('#getDepartment').val()==''){
         $('#dept_alert').show();
@@ -473,28 +568,56 @@ $(document).ajaxComplete(function(){
          $('#dept_alert').hide();
       }
      }
+
      else if ($('#getTitle').val()=='student'){
-      if($('#dprogram').val()==''){
-        $('#dprogram_alert').show();
-        var message=document.getElementById('dprogram_alert');
+      var query=$('#studentdepartment').val();
+      if(query==''){
+        $('#studdept_alert').show();
+        var message=document.getElementById('studdept_alert');
         message.style.color='red';
         message.innerHTML="This Field is Required.";
       return false;
       }
-      else{
-         $('#dprogram_alert').hide();
+      else if(query=='CSE'){
+        $('#studdept_alert').hide();
+        var textfive = document.getElementById('csedprogram').value;
+         if(textfive==''){
+          var message=document.getElementById('csedprogram_alert');
+           message.style.color='red';
+            message.innerHTML="Please fill out this field";
+           return false;
+         }
+         else if (textfive != ''){
+          var message=document.getElementById('csedprogram_alert');
+          message.innerHTML="";
+         }
+      }
+      else if(query=='ETE'){
+        var textfive = document.getElementById('etedprogram').value;
+         if(textfive==''){
+          var message=document.getElementById('etedprogram_alert');
+           message.style.color='red';
+            message.innerHTML="Please fill out this field";
+           return false;
+         }
+         else if (textfive != ''){
+          var message=document.getElementById('etedprogram_alert');
+          message.innerHTML="";
+         }
       }
 
      }
     $('#edituser').modal('hide');
     var title = $('#getTitle').val();
     var dept= $('#getDepartment').val();
-    var dprogram=$('#dprogram').val();
+    var studentdepartment=$('#studentdepartment').val();
+    var csedprogram=$('#csedprogram').val();
+    var etedprogram=$('#etedprogram').val();
     var _token = $('input[name="_token"]').val();
     $.ajax({
       url: "getedituser",
       method:"Get",
-      data:{title:title, dept:dept, dprogram:dprogram, _token:_token},
+      data:{title:title, dept:dept, studentdepartment:studentdepartment, csedprogram:csedprogram, etedprogram:etedprogram, _token:_token},
       context: document.body
     }).done(function(fragment) { 
       $("#content").html(fragment);
@@ -515,6 +638,12 @@ window.addEventListener( "pageshow", function ( event ) {
     window.location.reload();
   }
 });
+</script>
+
+<script>
+    function reloadPage(){
+        location.reload(true);
+    }
 </script>
 
 @endsection

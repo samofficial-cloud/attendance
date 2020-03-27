@@ -78,11 +78,11 @@ Route::post('/addtest','testsController@updatetest')->name('addtest');
 
 Route::post('/addstaffCSE','USERINFOController@addstaffCSE')->name('addstaffCSE');
 
-Route::get('/instructors-ETE','lecturesController@index')->name('lecturers');
+Route::get('manage/instructors-ETE','lecturesController@index')->name('lecturers');
 
-Route::get('/instructors-CSE','lecturesController@indexCSE')->name('lecturers1');
+Route::get('manage/instructors-CSE','lecturesController@indexCSE')->name('lecturers1');
 
-Route::get('/CSE-instructors','lecturesController@CSEindex')->name('lecturers21');
+Route::get('/course_instructors','lecturesController@CSEindex')->name('lecturers21');
 
 Route::get('/mytests','testsController@mytest')->name('mytest');
 
@@ -116,6 +116,31 @@ Route::get('/Up', function () {
 
 });
 
+Route::get('/newtimetable', function () {
+     return View ('newtimetable');
+
+});
+
+Route::get('/timetablemenu', function () {
+     return View ('timetablemenu');
+
+});
+
+Route::get('/room2', function () {
+     return View ('room_revised');
+
+});
+
+Route::get('/timetablehome', function () {
+     return View ('timetablehome');
+
+});
+
+Route::get('/menukey', function () {
+     return View ('menukey');
+
+});
+
 Route::get('/studentsList', function () {
      return View ('studentsList');
 
@@ -130,19 +155,27 @@ Route::get('/generalReports', function () {
      return View ('generalReports');
 });
 
-Route::get('/users', function () {
+Route::get('manage/users', function () {
      return View ('usermanagement');
 });
 
-Route::get('/getnewuser', function () {
+Route::get('manage/getnewuser', function () {
         return View::make('newuser');
     });
 
-Route::get('/getactivateuser', array('as' => 'getactivateuser', 'uses' => 'USERINFOController@activateuserview'));
+Route::get('gettimetable', function () {
+        return View::make('room_revised');
+    });
 
-Route::get('/getedituser', array('as' => 'getedituser', 'uses' => 'USERINFOController@edituserview'));
+Route::get('gettimetable2', function () {
+        return View::make('programme_revised');
+    });
 
-Route::get('/getdeactivateuser', array('as' => 'getdeactivateuser', 'uses' => 'USERINFOController@deleteuserview'));
+Route::get('manage/getactivateuser', array('as' => 'getactivateuser', 'uses' => 'USERINFOController@activateuserview'));
+
+Route::get('manage/getedituser', array('as' => 'getedituser', 'uses' => 'USERINFOController@edituserview'));
+
+Route::get('manage/getdeactivateuser', array('as' => 'getdeactivateuser', 'uses' => 'USERINFOController@deleteuserview'));
 
 Route::get('/join', 'coursesController@index');
 
@@ -312,7 +345,7 @@ Route::get('/LectureConflicts', function () {
 
 Route::get('students','USERINFOController@index');
 
-Route::get('newuser','USERINFOController@newuser');
+// Route::get('newuser','USERINFOController@newuser');
 
 Route::get('deactivateuser','USERINFOController@deleteuserview');
 
@@ -353,7 +386,7 @@ Route::get('events-pdf','calendarsController@eventsPDF')->name('eventspdf');
 
 Route::get('/reservation', 'reservationsController@show');
 
-Route::get('/courses', 'coursesController@index');
+Route::get('manage/courses', 'coursesController@index');
 
 Route::get('/coursee', 'coursesController@indexcoursee');
 

@@ -1,28 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Timetable</title>
+	<title></title>
 </head>
-<style>
-table {
-  border-collapse: collapse;
-   width: 100%;
-}
-
-table, td, th {
-  border: 1px solid black;
-}
-table {
-  counter-reset: tableCount;
-  }
-
-  .counterCell:before {
-  content: counter(tableCount);
-  counter-increment: tableCount;
-  }
-</style>
-
-<body>
-  <?php
+<?php
 
   use App\timetable;
   $timetabled = timetable::where('venue',$_GET['rid'])->get();
@@ -32,19 +13,12 @@ table {
   $timetabled3[] = timetable::where('venue',$_GET['rid'])->where('day','Thursday')->get();
   $timetabled4[] = timetable::where('venue',$_GET['rid'])->where('day','Friday')->get();
 
-use App\camis_configuration;
-   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
-  ?> 
 
-  <div class="card hero-image border-info">
-  <div class="card-body">
-    
-<center><b>{{$camistitle}}
-      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
-      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
-      
-    </b></center>
-<div style="color: #29234a"><H3><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H3></div>
+  ?> 
+<body>
+    <h5><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
+
+<div style="color: #29234a"><H1><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H1></div>
 <table border="4" align="center" id="tid">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
@@ -324,11 +298,13 @@ use App\camis_configuration;
  
 @endfor
 </tr>
-
-    
-    
 </table>
-</div>
-</div>
+<br>
+<form action="{{route('roompdf')}}" class="form-container form-horizontal" method="get">
+                 {{csrf_field()}}
+                 
+    <input type="text" class="form-control" id="rid" name="rid" value="{{$_GET['rid']}}" hidden>
+    <center><button class="btn btn-success" type="submit">Print</button></center>
+     </form>
 </body>
 </html>
