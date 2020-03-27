@@ -208,17 +208,28 @@
 
           </h6>
     <h5 class="note">Course
-        : {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h5>
-         <u> <p class="note"> Test attendance report for all students</p></u>
+        : {{$_GET['course_id']}} </h5>
+         <b> <p class="note"> Test attendance report for all students</p></b>
   </legend> </div>
 
 
 
 <br>
     <div class="major">
-        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:left;" href="/attendance_report_tests/absentees/{{{$_GET['course_id']}}}">Show only absentee students</a>
+        <?php
+        $temp_course1=strtoupper($_GET['course_id']);
 
-        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:right;" href="/attendance_report_tests/present/{{{$_GET['course_id']}}}">Show only students who are present</a>
+        $temp_course2=explode('-', strtoupper($temp_course1));
+
+        $course=$temp_course2[0];
+        ?>
+
+
+            <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:left;" href="/attendance_report_tests/present/{{{$course}}}/{{{$_GET['course_id']}}}">Show only students who are present</a>
+
+        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:right;" href="/attendance_report_tests/absentees/{{{$course}}}/{{{$_GET['course_id']}}}">Show only absentee students</a>
+
+
 
         <div style="clear: both;"></div>
     </div>
@@ -311,7 +322,7 @@ Date: {{date("d/m/Y",strtotime($date)) }} &nbsp
 
   </table>
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 <br>
@@ -395,7 +406,7 @@ Date: {{date("d/m/Y",strtotime($date2)) }} &nbsp
 
   </table>
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -480,7 +491,7 @@ Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
 
   </table>
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -574,7 +585,7 @@ Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
      </form>
 
     @else
-        <h4>No data to display</h4>
+        <h4>No data could be found for the specified parameters</h4>
     @endif
 
 
@@ -594,9 +605,23 @@ Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
 
 <script>
         $(document).ready( function () {
-                $("#myTable").tablesorter();
-                $("#myTable2").tablesorter();
-                $("#myTable3").tablesorter();
+                // $("#myTable").tablesorter();
+                // $("#myTable2").tablesorter();
+                // $("#myTable3").tablesorter();
+
+                var table = $('#myTable').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+                var table = $('#myTable2').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+                var table = $('#myTable3').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+
         });
 </script>
 

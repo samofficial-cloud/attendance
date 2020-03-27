@@ -19,12 +19,12 @@ class configController extends Controller
         $class_validity=DB::table('camis_configuration')->where('id', 1)->value('class_validity_duration');
         $test_validity=DB::table('camis_configuration')->where('id', 1)->value('test_validity_duration');
         $ue_validity=DB::table('camis_configuration')->where('id', 1)->value('ue_validity_duration');
-        $ue_validity=DB::table('camis_configuration')->where('id', 1)->value('ue_validity_duration');
+        $test_allowance=DB::table('camis_configuration')->where('id', 1)->value('test_allowance_time');
+        $class_allowance=DB::table('camis_configuration')->where('id', 1)->value('class_allowance_time');
+        $ue_allowance=DB::table('camis_configuration')->where('id', 1)->value('ue_allowance_time');
 
 
-
-
-return view('system_config')->with('minimum_percentage',$minimum_percentage)->with('class_validity',$class_validity)->with('test_validity',$test_validity)->with('ue_validity',$ue_validity)->with('academic_year',$academic_year)->with('semester',$semester)->with('title',$title);
+return view('system_config')->with('minimum_percentage',$minimum_percentage)->with('class_validity',$class_validity)->with('test_validity',$test_validity)->with('ue_validity',$ue_validity)->with('academic_year',$academic_year)->with('semester',$semester)->with('title',$title)->with('class_allowance',$class_allowance)->with('test_allowance',$test_allowance)->with('ue_allowance',$ue_allowance);
     }
 
 
@@ -59,6 +59,9 @@ return view('system_config')->with('minimum_percentage',$minimum_percentage)->wi
         $class_validity=$request->class_validity;
         $test_validity=$request->test_validity;
         $ue_validity=$request->ue_validity;
+        $ue_allowance=$request->ue_allowance;
+        $class_allowance=$request->class_allowance;
+        $test_allowance=$request->test_allowance;
 
 
         DB::table('camis_configuration')
@@ -76,8 +79,22 @@ return view('system_config')->with('minimum_percentage',$minimum_percentage)->wi
             ->update(['class_validity_duration' => $class_validity]);
 
 
+        DB::table('camis_configuration')
+            ->where('id', 1)
+            ->update(['test_allowance_time' => $test_allowance]);
+
+
+        DB::table('camis_configuration')
+            ->where('id', 1)
+            ->update(['class_allowance_time' => $class_allowance]);
+
+        DB::table('camis_configuration')
+            ->where('id', 1)
+            ->update(['ue_allowance_time' => $ue_allowance]);
+
+
         return redirect()->back()
-            ->with('success', 'Minimum required percentage updated successfully');
+            ->with('success', 'Settings updated successfully');
 
 //
 //        return view('system_config');

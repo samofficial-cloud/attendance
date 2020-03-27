@@ -253,8 +253,8 @@ hr {
                 </h6>
 
 
-        <h5 class="note">Course: {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h5>
-                <u><p class="note">UE attendance report for all students</p></u>
+        <h5 class="note">Course: {{$_GET['course_id']}} </h5>
+                <b><p class="note">UE attendance report for all students</p></b>
         </legend> </div>
   @else
 
@@ -262,9 +262,20 @@ hr {
 <div class="col-xs-6">
   @if(count($all_test)>0)
       <div class="major">
-        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:left;" href="/attendance_report_ue/absentees/{{{$_GET['course_id']}}}">Show only absentee students</a>
 
-        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:right;" href="/attendance_report_ue/present/{{{$_GET['course_id']}}} ">Show only students who are present</a>
+          <?php
+          $temp_course1=strtoupper($_GET['course_id']);
+
+          $temp_course2=explode('-', strtoupper($temp_course1));
+
+          $course=$temp_course2[0];
+          ?>
+
+              <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:left;" href="/attendance_report_ue/present/{{{$course}}}/{{{$_GET['course_id']}}}">Show only students who are present</a>
+
+        <a class="btn styling mb-2 button_color active" style="color: rgba(17,17,17,1); float:right;" href="/attendance_report_ue/absentees/{{{$course}}}/{{{$_GET['course_id']}}}">Show only absentee students</a>
+
+
           <div style="clear: both;"></div>
       </div>
   <p>Date: {{date("d/m/Y",strtotime($date)) }} </p>
@@ -341,7 +352,7 @@ hr {
 
   </table>
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 

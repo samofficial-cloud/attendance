@@ -16,6 +16,7 @@
       <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>
       <script src="{{ asset('js/app.js') }}" ></script>
       <script src="{{ asset('js/tablesorter.js') }}" defer></script>
+      <script src="{{ asset('js/jquery.filter_input.js') }}" ></script>
 
 <script src="{{ asset('js/jquery.dataTables.min.js') }}" ></script>
 <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>

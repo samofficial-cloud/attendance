@@ -289,9 +289,9 @@ hr {
 
                     @endif
 
-                    <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h4>
+                    <h4 class="note">Course: {{$_GET['course_id']}} </h4>
 
-                    <u><p class="note"> Class attendance report for staffs</p></u>
+                    <b><p class="note"> Class attendance report for staffs</p></b>
 
 
 
@@ -314,7 +314,7 @@ hr {
             @endforeach
             <h4 class="note">Case: All courses </h4>
 
-      <u><p class="note">Class attendance report for {{$name}} ({{$reg_no}})</p></u>
+      <b><p class="note">Class attendance report for {{$name}} ({{$reg_no}})</p></b>
 
 
 
@@ -356,8 +356,8 @@ hr {
 
             </h6>
 
-            <h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>
-      <u><p class="note">Class attendance report for all students </p></u>
+            <h5 class="note">Course: {{$_GET['course_id']}}</h5>
+      <b><p class="note">Class attendance report for all students </p></b>
 
 
     </legend> </div>
@@ -391,7 +391,7 @@ hr {
                         </legend> </div>
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedinstructor" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -455,7 +455,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor}}%</p>
+                  <b>  <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor}}%</p></b>
                 @else
 
                 @endif
@@ -472,7 +472,7 @@ hr {
 
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedinstructor2" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -535,7 +535,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_2}}%</p>
+                  <b>  <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_2}}%</p></b>
                 @else
 
                 @endif
@@ -553,7 +553,7 @@ hr {
 
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedinstructor3"  class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -616,7 +616,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_3}}%</p>
+                  <b>  <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_3}}%</p></b>
                 @else
 
                 @endif
@@ -631,7 +631,7 @@ hr {
                         </legend> </div>
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedinstructor4" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -694,7 +694,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_4}}%</p>
+                <b>    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_4}}%</p></b>
                 @else
 
                 @endif
@@ -711,7 +711,7 @@ hr {
 
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedinstructor5" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -775,7 +775,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_5}}%</p>
+                <b>    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageInstructor_5}}%</p> </b>
                 @else
 
                 @endif
@@ -791,7 +791,7 @@ hr {
                         </legend> </div>
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedTutorial" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -855,7 +855,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTutorial_Assistant}}%</p>
+                  <b>  <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTutorial_Assistant}}%</p></b>
                 @else
 
                 @endif
@@ -870,7 +870,7 @@ hr {
                         </legend> </div>
 
 
-                    <table class="hover table table-bordered table-striped" id="myTable1">
+                    <table id="mytableDetailedtech1" class="hover table table-bordered table-striped" >
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -934,7 +934,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentagetechnical_staff}}%</p>
+                <b>    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentagetechnical_staff}}%</p></b>
                 @else
 
                 @endif
@@ -950,7 +950,7 @@ hr {
                         </legend> </div>
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedtech2" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -1016,7 +1016,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTechnical_Staff_2}}%</p>
+                  <b>  <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTechnical_Staff_2}}%</p></b>
                 @else
 
                 @endif
@@ -1032,7 +1032,7 @@ hr {
 
 
 
-                    <table class="table table-bordered table-striped">
+                    <table id="mytableDetailedtech3" class="table table-bordered table-striped">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -1098,7 +1098,7 @@ hr {
 
 
 
-                    <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTechnical_Staff_3}}%</p>
+                  <b>  <p style="font-size: 17px; ">Overall attendance percentage: {{$percentageTechnical_Staff_3}}%</p></b>
                 @else
 
                 @endif
@@ -1143,7 +1143,7 @@ hr {
 
 
                 @else
-                    <h4>No data to display</h4>
+                    <h4>No data could be found for the specified parameters</h4>
                 @endif
 
             </div>
@@ -1162,7 +1162,7 @@ hr {
                             {{--@foreach($program_fullAllCourses as $var)--}}
                                 {{--<h5 class="note">Programme: {{$var->full}}</h5>--}}
                             {{--@endforeach--}}
-                            {{--<h5 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h5>--}}
+                            {{--<h5 class="note">Course: {{$_GET['course_id']}}</h5>--}}
                         {{--</legend> </div>--}}
 
                     {{--<br>--}}
@@ -1183,9 +1183,9 @@ hr {
                             @endif
 
 
-                            <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h4>
+                            <h4 class="note">Course: {{$_GET['course_id']}} </h4>
 
-                            <u><p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p></u>
+                            <b><p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p></b>
 
                         </legend> </div>
 
@@ -1202,7 +1202,7 @@ hr {
                     <div class="center location"><p>Overall percantage so far</p></div>
 <br><br><br>
 
-                    <table class="hover table table-bordered table-striped" id="myTable1">
+                    <table id="mytableOneCourse" class="hover table table-bordered table-striped" >
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -1313,7 +1313,7 @@ hr {
 
 
                 @else
-                    <h4>No data to display</h4>
+                    <h4>No data could be found for the specified parameters</h4>
                 @endif
             </div>
 
@@ -1327,13 +1327,13 @@ hr {
 <div class="col-xs-6 custom">
   @if(count($all_courses)>0)
   <br>
-  <table style="width:60%;" class="hover table table-striped table-bordered" id="myTable">
+  <table style="width:60%;" class="hover table table-striped table-bordered" id="sorter2">
     <thead class="thead-dark">
       <tr>
         <th >S/N</th>
-        <th>Course code</th>
-          <th>Course name</th>
-        <th>Percentage</th>
+        <th class="order">Course code</th>
+          <th class="order">Course name</th>
+        <th class="order">Percentage</th>
       </tr>
     </thead>
 
@@ -1382,7 +1382,7 @@ hr {
 
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -1407,7 +1407,14 @@ hr {
                     </div>
 
                     <div class="modal-body">
-                        <form id="test_form"  action="/attendance_report/sortClass/{{{$_GET['course_id']}}}" class="form-container form-horizontal" method="get">
+                    <?php
+                        $temp_course1=strtoupper($_GET['course_id']);
+
+                        $temp_course2=explode('-', strtoupper($temp_course1));
+
+                        $course=$temp_course2[0];
+                    ?>
+                        <form id="test_form"  action="/attendance_report/sortClass/{{{$course}}}/{{$_GET['course_id']}}" class="form-container form-horizontal" method="get">
                             {{csrf_field()}}
                             <div class="form-group row">
                                 <label for="" class="col-sm-4 col-form-label">Criteria:</label>
@@ -1536,7 +1543,7 @@ foreach($all_students as $values){
 
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -1601,6 +1608,8 @@ window.addEventListener( "pageshow", function ( event ) {
      //         $(this).find('td:gt(11)').hide();
      //     });
 
+     $("#sorter2").tablesorter();
+
 
 
   // console.log(x);
@@ -1608,9 +1617,42 @@ window.addEventListener( "pageshow", function ( event ) {
         dom: '<"top"fl>rt<"bottom"pi>'
     } );
 
+    var table = $('#mytableOneCourse').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'
+    } );
 
 
+     var table = $('#mytableDetailedinstructor').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
 
+     var table = $('#mytableDetailedinstructor2').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
+
+     var table = $('#mytableDetailedinstructor3').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
+
+     var table = $('#mytableDetailedinstructor4').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
+
+     var table = $('#mytableDetailedinstructor5').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
+
+     var table = $('#mytableDetailedtech1').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
+
+     var table = $('#mytableDetailedtech2').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
+
+     var table = $('#mytableDetailedtech3').DataTable( {
+         dom: '<"top"fl>rt<"bottom"pi>'
+     } );
 
 
 });

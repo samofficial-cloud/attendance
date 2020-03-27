@@ -85,7 +85,7 @@
                     @endforeach
                     <h4 class="note">Case: All courses </h4>
 
-                    <u><p class="note">Class attendance report for {{$name}} ({{$reg_no}}) </p></u>
+                    <b><p class="note">Class attendance report for {{$name}} ({{$reg_no}}) </p></b>
 
 
                 </legend> </div>
@@ -120,8 +120,8 @@
                             @foreach($program_fullAllCourses as $var)
                                 <h4 class="note">Programme: {{$var->full}}</h4>
                             @endforeach
-                            <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}})</h4>
-                            <u><p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p></u>
+                            <h4 class="note">Course: {{$_GET['course_id']}}</h4>
+                            <b><p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p></b>
                         </legend> </div>
 
                     <br>
@@ -144,7 +144,7 @@
                     <br>
 <br>
 
-                    <table class="hover table table-bordered table-striped" id="myTable1">
+                    <table  class="hover table table-bordered table-striped" id="myTable1">
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
@@ -251,7 +251,7 @@
 
 
                 @else
-                    <h4>No data to display</h4>
+                    <h4>No data could be found for the specified parameters</h4>
                 @endif
             </div>
 
@@ -260,13 +260,13 @@
         <div class="col-xs-6 ">
             @if(count($all_courses)>0)
                 <br>
-                <table style="width: 60%" class="hover table table-striped table-bordered" id="myTable1">
+                <table id="sorter1" style="width: 60%" class="hover table table-striped table-bordered" >
                     <thead class="thead-dark">
                     <tr>
                         <th >S/N</th>
-                        <th>Course code</th>
-                        <th>Course name</th>
-                        <th>Percentage</th>
+                        <th class="order">Course code</th>
+                        <th class="order">Course name</th>
+                        <th class="order">Percentage</th>
                     </tr>
                     </thead>
 
@@ -311,7 +311,7 @@
 
 
             @else
-                <h4>No data to display</h4>
+                <h4>No data could be found for the specified parameters</h4>
             @endif
         </div>
 
@@ -362,7 +362,13 @@
 
 <script>
         $(document).ready( function () {
-                $("#myTable").tablesorter();
+                $("#sorter1").tablesorter();
+
+                var table = $('#myTable1').DataTable( {
+                    dom: '<"top"fl>rt<"bottom"pi>'
+                } );
+
+
         });
 </script>
 

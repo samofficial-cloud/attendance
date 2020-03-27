@@ -232,7 +232,7 @@ hr {
                   <h4 class="note">Programme: {{$var->full}}</h4>
               @endforeach
       <h4 class="note">Case: All courses </h4>
-              <u><p class="note">Test attendance report for {{$name}} ({{$reg_no}})</p></u>
+              <b><p class="note">Test attendance report for {{$name}} ({{$reg_no}})</p></b>
       </legend> </div>
 @else
 
@@ -250,7 +250,7 @@ hr {
 <div class="col-xs-6">
   <h5>TEST 1 </h5>
   @if(count($all_courses)>0)
-  <table class="hover table table-bordered table-striped" id="myTable2">
+  <table class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -327,7 +327,7 @@ foreach($all_courses as $values){
 
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -338,7 +338,7 @@ foreach($all_courses as $values){
 <div class="col-xs-6">
   <h5>TEST 2 </h5>
   @if(count($all_courses2)>0)
-  <table class="hover table table-bordered table-striped" id="myTable3">
+  <table class="hover table table-bordered table-striped" id="myTable2">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -415,7 +415,7 @@ foreach($all_courses as $values){
   ?>
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -426,7 +426,7 @@ foreach($all_courses as $values){
 <div class="col-xs-6">
   <h5>TEST 3 </h5>
   @if(count($all_courses3)>0)
-  <table class="hover table table-bordered table-striped" id="myTable4">
+  <table class="hover table table-bordered table-striped" id="myTable3">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -524,7 +524,7 @@ foreach($all_courses as $values){
 
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -540,8 +540,8 @@ foreach($all_courses as $values){
                 @foreach($program_fullAllCourses as $var)
                     <h4 class="note">Programme: {{$var->full}}</h4>
                 @endforeach
-                <h4 class="note">Course: {{strtoupper($_GET['course_id'])}} - {{$course_name}} </h4>
-                <u><p class="note"> Test attendance report for {{$name}} ({{$reg_no}})</p></u>
+                <h4 class="note">Course: {{$_GET['course_id']}} </h4>
+                <b><p class="note"> Test attendance report for {{$name}} ({{$reg_no}})</p></b>
             </legend> </div>
 
     <br>
@@ -549,7 +549,7 @@ foreach($all_courses as $values){
 
         <div class="col-xs-6">
             @if(count($dataSingle_all)>0)
-                <table class="hover table table-bordered table-striped" id="myTable1">
+                <table class="hover table table-bordered table-striped" id="myTable4">
                     <thead class="thead-dark">
                     <tr>
                         <th>S/N</th>
@@ -639,7 +639,7 @@ foreach($all_courses as $values){
 
 
             @else
-                <h4>No data to display</h4>
+                <h4>No data could be found for the specified parameters</h4>
             @endif
         </div>
 
@@ -649,7 +649,7 @@ foreach($all_courses as $values){
 
 <div class="col-xs-6">
   @if(count($all_students)>0)
-  <table id="myTable" class="table table-bordered table-striped">
+  <table id="myTable5" class="table table-bordered table-striped">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -673,7 +673,7 @@ foreach($all_students as $values){
 
   </table>
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -699,47 +699,19 @@ foreach($all_students as $values){
 <script type="text/javascript">
  $(document).ready(function() {
 
-
   // console.log(x);
     var table = $('#myTable1').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'
     } );
 
-});
-
-</script>
-
-<script type="text/javascript">
- $(document).ready(function() {
-
-
-  // console.log(x);
     var table = $('#myTable2').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'
     } );
 
-});
-
-</script>
-
-<script type="text/javascript">
- $(document).ready(function() {
-
-
-  // console.log(x);
     var table = $('#myTable3').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'
     } );
 
-});
-
-</script>
-
-<script type="text/javascript">
- $(document).ready(function() {
-
-
-  // console.log(x);
     var table = $('#myTable4').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'
     } );
@@ -747,6 +719,8 @@ foreach($all_students as $values){
 });
 
 </script>
+
+
 
 <script>
 window.addEventListener( "pageshow", function ( event ) {

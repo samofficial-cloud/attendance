@@ -235,7 +235,7 @@ hr {
                   <h4 class="note">Programme: {{$var->full}}</h4>
               @endforeach
       <h4 class="note">Case: All courses </h4>
-              <u><p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p></u>
+              <b><p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p></b>
       </legend> </div>
 @else
 
@@ -250,15 +250,15 @@ hr {
               @foreach($program_fullAllCourses as $var)
                   <h4 class="note">Programme: {{$var->full}}</h4>
               @endforeach
-      <h4 class="note">Course: {{strtoupper($_GET['course_id'])}}({{$course_name}}) </h4>
-              <u><p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p></u>
+      <h4 class="note">Course: {{$_GET['course_id']}} </h4>
+              <b><p class="note">UE attendance report for {{$name}} ({{$reg_no}})</p></b>
       </legend> </div>
 @else
 
 @endif
 @else
 <div class="col-xs-9"><legend>
-  <p class="note"> UE attendance report for {{strtoupper($_GET['course_id'])}} - {{$course_name}} </p>
+  <p class="note"> UE attendance report for {{$_GET['course_id']}} </p>
         @foreach($program_fullAllCourses as $var)
             <h5 class="note">Programme: {{$var->full}}</h5>
         @endforeach
@@ -271,7 +271,7 @@ hr {
 
 <div class="col-xs-6">
   @if(count($all_courses)>0)
-  <table class="hover table table-bordered table-striped" id="myTable2">
+  <table class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
@@ -369,7 +369,7 @@ hr {
    <br>
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -457,7 +457,7 @@ hr {
 
 
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -511,7 +511,7 @@ foreach($all_students as $values){
 
   <br>
   @else
-  <h4>No data to display</h4>
+  <h4>No data could be found for the specified parameters</h4>
   @endif
 </div>
 
@@ -539,7 +539,7 @@ foreach($all_students as $values){
 
 
   // console.log(x);
-    var table = $('#myTable2').DataTable( {
+    var table = $('#myTable1').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'
     } );
 

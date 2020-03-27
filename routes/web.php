@@ -44,19 +44,19 @@ Route::get('/system_settings/change_academic_year', 'configController@changeAcad
 
 Route::get('/system_settings/change_title', 'configController@changeTitle')->name('change_title');
 
-Route::get('/attendance_report/sortClass/{courseValue}', 'ReportController@sortClass')->name('sortClass');
+Route::get('/attendance_report/sortClass/{courseValue}/{fullCourse}', 'ReportController@sortClass')->name('sortClass');
 
 Route::get('/attendance_report_tests', 'ReportController@showattendance_all_tests')->name('report_tests');
 
-Route::get('/attendance_report_tests/absentees/{courseValue}', 'ReportController@AbsenteeTest')->name('report_testsAbsentees');
+Route::get('/attendance_report_tests/absentees/{courseValue}/{fullCourse}', 'ReportController@AbsenteeTest')->name('report_testsAbsentees');
 
-Route::get('/attendance_report_tests/present/{courseValue}', 'ReportController@PresentTest')->name('report_testsPresent');
+Route::get('/attendance_report_tests/present/{courseValue}/{fullCourse}', 'ReportController@PresentTest')->name('report_testsPresent');
 Route::get('/attendance_report_ue', 'ReportController@showattendance_all_ue')->name('report_ue');
-    Route::get('/attendance_report_ue/absentees/{courseValue}', 'ReportController@AbsenteeUe')->name('report_UeAbsentees');
-    Route::get('/attendance_report_ue/present/{courseValue}', 'ReportController@PresentUe')->name('report_UePresent');
+    Route::get('/attendance_report_ue/absentees/{courseValue}/{fullCourse}', 'ReportController@AbsenteeUe')->name('report_UeAbsentees');
+    Route::get('/attendance_report_ue/present/{courseValue}/{fullCourse}', 'ReportController@PresentUe')->name('report_UePresent');
 
     Route::post('/autocompleteProgram/fetch', 'ReportController@AutoComplete')->name('autocomplete.prog');
-    Route::post('/autocompleteName/fetch', 'ReportController@AutoCompleteName')->name('autocomplete.name');
+    Route::post('/autocompleteNamePer_course/fetch', 'ReportController@AutoCompleteName')->name('autocomplete.name');
 Route::get('/', 'HomeController@index')->name('first');
 
 
@@ -235,7 +235,13 @@ Route::post('/autocomplete/fetch7', 'lecturesController@fetch7')->name('autocomp
 
 Route::post('/autocomplete/course', 'lecturesController@course')->name('autocomplete.course');
 
+Route::post('/autocompleteCourse', 'ReportController@autoCompleteCourse')->name('autocompleteCourse');
 
+Route::post('/autocomplete_name_all_students', 'ReportController@AutoCompleteNameAllStudents')->name('autocomplete.allStudent_names');
+
+    Route::post('/autocomplete_name_all_staff', 'ReportController@AutoCompleteNameAllStaff')->name('autocomplete.allStaff_names');
+
+    Route::post('/autocomplete_staff_names', 'ReportController@AutoCompleteStaffNames')->name('autocomplete.staff_names');
 
 Route::get('/form', function () {
      return View ('form');
