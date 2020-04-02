@@ -12,7 +12,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 98%">
@@ -37,7 +37,7 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
@@ -92,7 +92,7 @@
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
-          
+
         </div>
       </li>
 
@@ -100,7 +100,7 @@
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
 <div class="container3" style="padding-left: 153px;">
-  
+
     <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
@@ -137,12 +137,12 @@
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          
+
         </div>
       </li>
 
   </ul>
-  
+
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
@@ -189,7 +189,7 @@
          {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -218,7 +218,7 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-  
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           INSTRUCTORS
@@ -280,7 +280,7 @@
           </h6>
     <h5 class="note">Course
         : {{$fullCourse}} </h5>
-          <b><p class="note"> Test attendance report showing only absentee students</p></b>
+          <b><p class="note"> Test Attendance Report Showing Only Absentee Students</p></b>
   </legend> </div>
 
 
@@ -289,7 +289,7 @@
 
 <!-- TEST 1 -->
 <div class="col-xs-6">
-<u><h5>TEST 1 </h5></u>
+    <b><p style="font-size: 18px;">TEST 1 </p></b>
   @if(count($all_test)>0)
 Date: {{date("d/m/Y",strtotime($date)) }} &nbsp
 
@@ -383,7 +383,7 @@ Date: {{date("d/m/Y",strtotime($date)) }} &nbsp
 
 <!-- TEST 2 -->
 <div class="col-xs-6">
-<u><h5>TEST 2</h5></u>
+    <b><p style="font-size: 18px;">TEST 2 </p></b>
   @if(count($all_test2)>0)
 Date: {{date("d/m/Y",strtotime($date2)) }} &nbsp
         <span> Test start time: {{date("H:i",strtotime($time2s))}} </span> &nbsp &nbsp
@@ -468,7 +468,7 @@ Date: {{date("d/m/Y",strtotime($date2)) }} &nbsp
 <!-- TEST 3 -->
 <div class="col-xs-6">
 
-<u><h5>TEST 3 </h5></u>
+    <b><p style="font-size: 18px;">TEST 3 </p></b>
   @if(count($all_test3)>0)
 Date: {{date("d/m/Y",strtotime($date3)) }} &nbsp
         <span> Test start time: {{date("H:i",strtotime($time3s))}} </span> &nbsp &nbsp

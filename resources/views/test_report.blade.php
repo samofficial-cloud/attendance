@@ -54,7 +54,7 @@ hr {
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 98%">
@@ -79,7 +79,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
@@ -134,7 +134,7 @@ hr {
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
-          
+
         </div>
       </li>
 
@@ -142,7 +142,7 @@ hr {
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
 <div class="container3" style="padding-left: 153px;">
-  
+
     <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
@@ -179,12 +179,12 @@ hr {
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          
+
         </div>
       </li>
 
   </ul>
-  
+
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
@@ -231,7 +231,7 @@ hr {
          {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -260,7 +260,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-  
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           INSTRUCTORS
@@ -303,7 +303,7 @@ hr {
                   <h4 class="note">Programme: {{$var->full}}</h4>
               @endforeach
       <h4 class="note">Case: All courses </h4>
-              <b><p class="note">Test attendance report for {{$name}} ({{$reg_no}})</p></b>
+              <b><p class="note">Test Attendance Report for {{$name}} ({{$reg_no}})</p></b>
       </legend> </div>
 @else
 
@@ -319,7 +319,7 @@ hr {
 
 <!-- TEST 1 -->
 <div class="col-xs-6">
-  <h5>TEST 1 </h5>
+    <b><p style="font-size: 18px;">TEST 1 </p></b>
   @if(count($all_courses)>0)
   <table class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
@@ -407,7 +407,7 @@ foreach($all_courses as $values){
 <hr>
 <!-- TEST 2 -->
 <div class="col-xs-6">
-  <h5>TEST 2 </h5>
+    <b><p style="font-size: 18px;">TEST 2 </p></b>
   @if(count($all_courses2)>0)
   <table class="hover table table-bordered table-striped" id="myTable2">
     <thead class="thead-dark">
@@ -495,7 +495,7 @@ foreach($all_courses as $values){
 <!-- TEST 3 -->
 <hr>
 <div class="col-xs-6">
-  <h5>TEST 3 </h5>
+    <b><p style="font-size: 18px;">TEST 3 </p></b>
   @if(count($all_courses3)>0)
   <table class="hover table table-bordered table-striped" id="myTable3">
     <thead class="thead-dark">
@@ -612,7 +612,7 @@ foreach($all_courses as $values){
                     <h4 class="note">Programme: {{$var->full}}</h4>
                 @endforeach
                 <h4 class="note">Course: {{$_GET['course_id']}} </h4>
-                <b><p class="note"> Test attendance report for {{$name}} ({{$reg_no}})</p></b>
+                <b><p class="note"> Test Attendance Report for {{$name}} ({{$reg_no}})</p></b>
             </legend> </div>
 
     <br>

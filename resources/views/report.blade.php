@@ -12,7 +12,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 98%">
@@ -37,7 +37,7 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
@@ -92,7 +92,7 @@
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
-          
+
         </div>
       </li>
 
@@ -100,7 +100,7 @@
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
 <div class="container3" style="padding-left: 153px;">
-  
+
     <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
@@ -137,12 +137,12 @@
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          
+
         </div>
       </li>
 
   </ul>
-  
+
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
@@ -189,7 +189,7 @@
          {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -218,7 +218,7 @@
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-  
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           INSTRUCTORS
@@ -370,21 +370,21 @@ $camistitle=camis_configuration::select('camis_title')->value('camis_title');
                    </div>
 
 
-                   <div id="DivCheckStaff" style="display:none;">
+
+
+
+                   <div id="DivCheckStaff" style="display:block;">
                        <div class="form-group row">
                            <label for="inputEmail3" class="col-sm-4 col-form-label">Staff's name:</label>
                            <div class="col-sm-8">
-                               <input type="text" name="input_name" disabled class="form-control" id="input_nameStaff"  autocomplete="off"  placeholder="">
-                               <div id="namelistStaff"></div>
+                             <select class="form-control" name="input_name" id="selectDivInput_nameStaff">
 
+
+                             </select>
 
                            </div>
                        </div>
-
-
                    </div>
-
-
 
                    {{--<div id="DivCheckAll_coursesStaff" style="display:none;">--}}
                        {{--<div class="form-group row">--}}
@@ -682,7 +682,7 @@ $camistitle=camis_configuration::select('camis_title')->value('camis_title');
   <div class="card-body">
     <center><h1 class="card-title"><b>{{$camistitle}}</b></h1>
       <h2><b>COLLEGE OF ICT</b></h2></center>
-    
+
     <div align="center">
 
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
@@ -715,6 +715,9 @@ function SelectCheck(nameSelect){
           document.getElementById("DivCheckRadio").style.display = "none";
 
           document.getElementById("DivCheckStaff").style.display = "none";
+
+          document.getElementById("inputProg").disabled=false;
+
           document.getElementById("coursediv_plusProgram").style.display = "block";
           document.getElementById("coursediv").style.display = "none";
               document.getElementById("coursediv").disabled = true;
@@ -747,17 +750,15 @@ function SelectCheck(nameSelect){
           var ele = document.getElementById("one_course");
           ele.checked = true;
 
-          var input650 = document.getElementById("input_nameStaff");
-          input650.value ="";
+          document.getElementById("selectDivInput_nameStaff").disabled=false;
 
           document.getElementById("coursediv_plusProgram").style.display = "none";
-    document.getElementById("DivCheckAll_courses").style.display = "none";
+          document.getElementById("DivCheckAll_courses").style.display = "none";
           document.getElementById("DivCheckbox").style.display = "block";
 
           document.getElementById("DivCheckStaff").style.display = "block";
-          document.getElementById("DivCheck").style.display = "none";
 
-          document.getElementById("input_nameStaff").disabled = false;
+          document.getElementById("DivCheck").style.display = "none";
 
 
           document.getElementById("DivCheckRadio").style.display = "block";
@@ -774,8 +775,7 @@ function SelectCheck(nameSelect){
           var ele4 = document.getElementById("input_name");
           ele4.required = false;
 
-          var ele46 = document.getElementById("input_nameStaff");
-          ele46.required = true;
+          $('#selectDivInput_nameStaff').html("<option>Select name</option>");
 
           var ele2 = document.getElementById("show_all");
           ele2.checked = false;
@@ -788,16 +788,19 @@ function SelectCheck(nameSelect){
                   document.getElementById("DivCheck").style.display = "none";
 
                   document.getElementById("DivCheckStaff").style.display = "block";
+                  document.getElementById("DivCheckStaffAll_courses").style.display = "none";
 
-                  document.getElementById("input_nameStaff").disabled = false;
+                  document.getElementById("input_name").disabled=true;
 
-                  var input = document.getElementById("input_name");
-                  input.value ="";
+                  document.getElementById("inputProg").disabled=true;
+
+                  document.getElementById("selectDivInput_nameStaff").disabled=false;
+
                   document.getElementById("input_nameAll_courses").disabled = true;
 
+                  document.getElementById("input_nameStaffAll_courses").disabled = true;
 
-
-                  $('#selectDiv').html("<option>Select Course</option>");
+                  $('#selectDivInput_nameStaff').html("<option>Select name</option>");
               } else {
                   document.getElementById("coursediv").style.display = "none";
                   // var ele7 = document.getElementById("inputProg");
@@ -854,6 +857,11 @@ function SelectCheck(nameSelect){
           var ele7 = document.getElementById("inputProg");
           ele7.required = false;
 
+          document.getElementById("inputProg").disabled=true;
+
+
+          document.getElementById("selectDivInput_nameStaff").disabled=true;
+
           var ele4 = document.getElementById("input_name");
           ele4.required = true;
 
@@ -867,6 +875,12 @@ function SelectCheck(nameSelect){
 
                   var ele4 = document.getElementById("input_name");
                   ele4.required = true;
+
+                  document.getElementById("inputProg").disabled=true;
+
+
+
+                  document.getElementById("selectDivInput_nameStaff").disabled=true;
 
                   document.getElementById("DivCheck").style.display = "block";
 
@@ -1390,19 +1404,18 @@ $(document).ready(function() {
         });
         //course already selected now using the same course variable select staff names per course
 
-        $('#input_nameStaff').keyup(function(e){
-            e.preventDefault();
-            var query = $(this).val();
-            if(query != '')
+
+
+            if(course_input != '')
             {
                 var _token = $('input[name="_token"]').val();
                 $.ajax({
                     url:"{{ route('autocomplete.staff_names') }}",
                     method:"POST",
-                    data:{query:query, _token:_token,course_input:course_input},
+                    data:{_token:_token,course_input:course_input},
                     success:function(data){
                         if(data=='0'){
-                            $('#input_nameStaff').attr('style','border:1px solid #f00');
+
 
 
                         }
@@ -1410,36 +1423,21 @@ $(document).ready(function() {
 
 
 
-                            $('#input_nameStaff').attr('style','border:1px solid #ced4da');
-                            $('#namelistStaff').fadeIn();
-                            $('#namelistStaff').html(data);
+                            // $('#input_nameStaff').attr('style','border:1px solid #ced4da');
+                            // $('#namelistStaff').fadeIn();
+                            $('#selectDivInput_nameStaff').html(data);
                         }
                     }
                 });
             }
-            else if(query==''){
+            else if(course_input==''){
 
-                $('#input_nameStaff').attr('style','border:1px solid #ced4da');
+
             }
-        });
-
-
-        $(document).on('click', '#listNameStaffPerCourse', function(){
-
-
-            $('#input_nameStaff').attr('style','border:1px solid #ced4da');
-
-            $('#input_nameStaff').val($(this).text());
 
 
 
 
-            $('#namelistStaff').fadeOut();
-        });
-
-        $(document).on('click', 'form', function(){
-            $('#namelistStaff').fadeOut();
-        });
 
 //end of staff names per course
         $('#nameListCourse').fadeOut();
@@ -1471,7 +1469,6 @@ $(document).ready(function() {
 
                     }
                     else{
-
 
                         $('#input_nameAll_courses').attr('style','border:1px solid #ced4da');
                         $('#namelistAll_courses').fadeIn();
@@ -2296,10 +2293,13 @@ $("#getSelection").trigger('change');
               var input = document.getElementById("input_name");
               input.value = "";
 
+
+
+
               var input40 = document.getElementById("input_nameAll_courses");
               input40.value = "";
 
-              $('#selectDiv').html(" <option>Select Course</option>");
+              $('#selectDiv').html("<option>Select Course</option>");
 
               var ele7 = document.getElementById("inputProg");
               ele7.required = false;
@@ -2316,10 +2316,10 @@ $("#getSelection").trigger('change');
 
               document.getElementById("DivCheck").style.display = "none";
               document.getElementById("DivCheckStaff").style.display = "none";
-              document.getElementById("input_nameStaff").required = false;
+              document.getElementById("input_nameStaffAll_courses").value=" ";
 
-                  document.getElementById("input_nameStaffAll_courses").disabled = false;
-  document.getElementById("DivCheckStaffAll_courses").style.display = "block";
+              document.getElementById("input_nameStaffAll_courses").disabled = false;
+              document.getElementById("DivCheckStaffAll_courses").style.display = "block";
               document.getElementById("DivCheckAll_courses").style.display = "none";
               document.getElementById("input_nameAll_courses").disabled = false;
               var input = document.getElementById("input_name");
@@ -2366,13 +2366,12 @@ $("#getSelection").trigger('change');
                 document.getElementById("DivCheckStaff").style.display = "none";
                 document.getElementById("programmediv").style.display = "block";
                 document.getElementById("coursediv_plusProgram").style.display = "block";
-document.getElementById("coursediv").style.display = "none";
+                document.getElementById("coursediv").style.display = "none";
                 var ele21 = document.getElementById("input_name");
                 ele21.required = false;
 
-                var ele251 = document.getElementById("input_nameStaff");
-                ele251.required = false;
 
+                document.getElementById("inputProg").disabled = false;
 
 
                 $('#selectDivPlusProg').html(" <option>Select Course</option>");
@@ -2382,12 +2381,14 @@ document.getElementById("coursediv").style.display = "none";
                 var input = document.getElementById("input_name");
                 input.value ="";
                 document.getElementById("DivCheckRadio").style.display = "block";
-                document.getElementById("DivCheck").style.display = "block";
+                document.getElementById("DivCheckStaff").style.display = "block";
+                document.getElementById("coursediv").style.display = "block";
+                document.getElementById("coursediv_plusProgram").style.display = "none";
                 var ele21 = document.getElementById("input_name");
                 ele21.required = true;
                 document.getElementById("programmediv").style.display = "none";
 
-                $('#selectDiv').html(" <option>Select Course</option>");
+                $('#selectDivInput_nameStaff').html(" <option>Select name</option>");
             }
 
 
