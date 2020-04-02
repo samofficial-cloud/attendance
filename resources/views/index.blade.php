@@ -89,6 +89,7 @@
            <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
+           <a class="dropdown-item" style="color:#060606"href="manage/optionalstudent">OPTIONAL STUDENTS</a>
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>

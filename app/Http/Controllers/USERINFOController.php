@@ -395,5 +395,21 @@ elseif($role=='tmaster'){
      return view ('editstaffCSE')->with('badgeno',$badgeno)->with('staffCSE',$staffCSE);
    }
 
+   function fetchstudent(Request $request){
+     if($request->get('query'))
+     {
+      $query = $request->get('query');
+      $data = userinfo::select('name')->where('SSN', 'LIKE', "%{$query}%")->value('name');
+      if(count($data)!=0){
+     
+      
+       $output = $data;
+     
+      echo $output;
+     }
+     
+   }
+ }
+
 
 }

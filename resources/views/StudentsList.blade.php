@@ -329,6 +329,7 @@ $id=$_GET['rid'];
 <div class="card border-info">
   <div class="card-body">
     <h5>GET BY</h5>
+    <hr>
     <a data-toggle="modal" data-target="#courses" class="btn styling color_nav3 active" role="button" aria-pressed="true">COURSE ID</a>
     <div class="modal fade" id="courses" role="dialog">
       <div class="modal-dialog" role="document">
@@ -406,10 +407,10 @@ $id=$_GET['rid'];
      <option value="BIT1">BSc. in Business Information Technology year 1</option>
     <option value="BIT2">BSc. in Business Information Technology year 2</option>
     <option value="BIT3">BSc. in Business Information Technology year 3</option>
-    <option value="CEIT1"> B.Sc. in Computer Engineering and Information Technology year 1</option>
-    <option value="CEIT2">B.Sc. in Computer Engineering and Information Technology year 2</option>
-    <option value="CEIT3">B.Sc. in Computer Engineering and Information Technology year 3</option>
-    <option value="CEIT4">B.Sc. in Computer Engineering and Information Technology year 4</option>
+    <option value="CIT1"> B.Sc. in Computer Engineering and Information Technology year 1</option>
+    <option value="CIT2">B.Sc. in Computer Engineering and Information Technology year 2</option>
+    <option value="CIT3">B.Sc. in Computer Engineering and Information Technology year 3</option>
+    <option value="CIT4">B.Sc. in Computer Engineering and Information Technology year 4</option>
     <option value="CS1(in)">B.Sc. in Computer Science year 1</option>
     <option value="CS2(in)">B.Sc. in Computer Science year 2</option>
     <option value="CS3(in)">B.Sc. in Computer Science year 3</option>

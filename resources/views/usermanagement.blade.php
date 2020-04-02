@@ -92,7 +92,7 @@ $newbadgeno = $badge + 1;
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/manage/users">USERS</a>
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
            <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
@@ -261,7 +261,7 @@ $newbadgeno = $badge + 1;
   <div class="col-2" >
   <div class="card border-info">
   <div class="card-body" >
-  	 <a class="btn btn-light color_nav2 active" id="newuser" href="" role="button"style="background-color: #b0d0ff;">ADD USER
+  	 <a class="btn btn-light color_nav2 active" id="newuser" href="#" role="button"style="background-color: #b0d0ff;">ADD USER
   	 </a>
   <br>
   <br>
@@ -273,7 +273,7 @@ $newbadgeno = $badge + 1;
   	 </a>
      <br>
      <br> --}}
-     <a class="btn btn-light color_nav2" id="activateuser" href="" role="button"style="background-color: #b0d0ff;">ACTIVATE USER
+     <a class="btn btn-light color_nav2" id="activateuser" href="#" role="button"style="background-color: #b0d0ff;">ACTIVATE USER
      </a>
 
      <div class="modal fade" id="edituser" role="dialog">

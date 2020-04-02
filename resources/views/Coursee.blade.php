@@ -130,13 +130,13 @@ font-family: "Nunito", sans-serif;
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/manage/users">USERS</a>
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
-           <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
+           <a class="dropdown-item" style="color:#060606" href="/manage/courses">COURSES</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
           
         </div>
@@ -225,12 +225,12 @@ font-family: "Nunito", sans-serif;
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
-          <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
+          <a class="dropdown-item" style="color:#060606" href="/manage/users">USERS</a>
+          <a class="dropdown-item" style="color:#060606" href="/manage/courses">COURSES</a>
           @if(Auth::user()->DEFAULTDEPTID==31)
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-CSE">INSTRUCTORS</a>
           @elseif(Auth::user()->DEFAULTDEPTID==32)
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-ETE">INSTRUCTORS</a>
           @endif
          {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
@@ -270,13 +270,13 @@ font-family: "Nunito", sans-serif;
           INSTRUCTORS
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="manage/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="manage/instructors-ETE">ETE</a>
+          <a class="dropdown-item" href="/manage/instructors-CSE">CSE</a>
+          <a class="dropdown-item" href="/manage/instructors-ETE">ETE</a>
         </div>
       </li>
 
       <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="manage/courses">COURSES</a>
+    <a class="nav-link" style="color:#060606" href="/manage/courses">COURSES</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
@@ -349,14 +349,14 @@ $i='1';
 
 <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    CEIT
+    C-IT
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/courses/show?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/courses/show?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/courses/show?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/courses/show?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/courses/show?rid=CIT1" class="list-group-item list-group-item-action dropdown-item">C-IT1</a>
+     <a href="/courses/show?rid=CIT2" class="list-group-item list-group-item-action dropdown-item">C-IT2</a>
+    <a href="/courses/show?rid=CIT3" class="list-group-item list-group-item-action dropdown-item">C-IT3</a>
+    <a href="/courses/show?rid=CIT4" class="list-group-item list-group-item-action dropdown-item">C-IT4</a>
 </div>
 </div>
 
