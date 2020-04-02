@@ -624,7 +624,10 @@ if($title=='staff'){
 
 
            $inputProg = $request->inputProg;
-           $DegreeCourseList = DB::table('courses')->select('course','course_name')->where('program', $inputProg)->get();
+
+
+
+           $DegreeCourseList = DB::table('courses')->select('courses.course','courses.course_name')->join('programs','programs.initial','=','courses.program')->where('programs.half_full', $inputProg)->get();
 
            foreach ($DegreeCourseList as $var ){
 
@@ -688,13 +691,13 @@ if($title=='staff'){
             $query = $request->get('query');
 
 
-            $data=DB::table('programs')->where('initial', 'LIKE', "%{$query}%")->get();
+            $data=DB::table('programs')->where('half_full', 'LIKE', "%{$query}%")->get();
             if(count($data)!=0){
                 $output = '<ul class="dropdown-menu" style="display:block; width: 89%; margin-left: 5%; margin-top:0% ">';
                 foreach($data as $row)
                 {
                     $output .= '
-       <li id="list">'.$row->initial.'</li>
+       <li id="list">'.$row->half_full.'</li>
        ';
                 }
                 $output .= '</ul>';
@@ -757,9 +760,9 @@ $course_input=$request->get('course_input');
 
 
 
-        if($request->get('query'))
+        if($request->get('course_input'))
         {
-            $query = $request->get('query');
+
             $course_input=$request->get('course_input');
 
             $temp_course1=strtoupper($course_input);
@@ -769,28 +772,27 @@ $course_input=$request->get('course_input');
             $course=$temp_course2[0];
 
 
-            $instructor= DB::table('lecturers')->whereRaw("instructor LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('instructor');
-            $instructor2= DB::table('lecturers')->whereRaw("instructor_2 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('instructor_2');
-            $instructor3= DB::table('lecturers')->whereRaw("instructor_3 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Instructor_3');
-            $instructor4= DB::table('lecturers')->whereRaw("instructor_4 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Instructor_4');
-            $instructor5= DB::table('lecturers')->whereRaw("instructor_5 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Instructor_5');
-            $TutorialAssistant= DB::table('lecturers')->whereRaw("Tutorial_Assistant LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Tutorial_Assistant');
-            $technical_staff= DB::table('lecturers')->whereRaw("technical_staff LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('technical_staff');
-            $TechnicalStaff2= DB::table('lecturers')->whereRaw("Technical_Staff_2 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Technical_Staff_2');
-            $TechnicalStaff3= DB::table('lecturers')->whereRaw("Technical_Staff_3 LIKE '%$query%'")->where('course', 'LIKE', "%{$course}%")->value('Technical_Staff_3');
+            $instructor= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('instructor');
+            $instructor2= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('instructor_2');
+            $instructor3= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('Instructor_3');
+            $instructor4= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('Instructor_4');
+            $instructor5= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('Instructor_5');
+            $TutorialAssistant= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('Tutorial_Assistant');
+            $technical_staff= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('technical_staff');
+            $TechnicalStaff2= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('Technical_Staff_2');
+            $TechnicalStaff3= DB::table('lecturers')->where('course', 'LIKE', "%{$course}%")->value('Technical_Staff_3');
 
 
             if((count($instructor)>0) OR (count($instructor2)>0) OR (count($instructor3)>0) OR (count($instructor4)>0) OR (count($instructor5)>0) OR (count($TutorialAssistant)>0) OR (count($technical_staff)>0) OR (count($TechnicalStaff2)>0) OR (count($TechnicalStaff3)>0)) {
-
-            $output = '<ul class="dropdown-menu" style="display:block; width: 89%; margin-left: 5%; margin-top:0% ">';
 
 
             if (count($instructor) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $instructor . '</li>
+       <option>' . $instructor . '</option>
        ';
             } else {
+
 
 
             }
@@ -798,7 +800,7 @@ $course_input=$request->get('course_input');
 
             if (count($instructor2) != 0) {
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $instructor2 . '</li>
+       <option>' . $instructor2 . '</option>
        ';
 
             } else {
@@ -810,7 +812,7 @@ $course_input=$request->get('course_input');
             if (count($instructor3) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $instructor3 . '</li>
+       <option>' . $instructor3 . '</option>
        ';
             } else {
 
@@ -821,7 +823,7 @@ $course_input=$request->get('course_input');
             if (count($instructor4) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $instructor4 . '</li>
+       <option>' . $instructor4 . '</option>
        ';
             } else {
 
@@ -832,7 +834,7 @@ $course_input=$request->get('course_input');
             if (count($instructor5) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $instructor5 . '</li>
+       <option>' . $instructor5 . '</option>
        ';
             } else {
 
@@ -843,7 +845,7 @@ $course_input=$request->get('course_input');
             if (count($TutorialAssistant) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $TutorialAssistant . '</li>
+       <option>' . $TutorialAssistant . '</option>
        ';
             } else {
 
@@ -854,7 +856,7 @@ $course_input=$request->get('course_input');
             if (count($technical_staff) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $technical_staff . '</li>
+       <option>' . $technical_staff . '</option>
        ';
 
             } else {
@@ -866,7 +868,7 @@ $course_input=$request->get('course_input');
             if (count($TechnicalStaff2) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $TechnicalStaff2 . '</li>
+       <option>' . $TechnicalStaff2 . '</option>
        ';
             } else {
 
@@ -877,7 +879,7 @@ $course_input=$request->get('course_input');
             if (count($TechnicalStaff3) != 0) {
 
                 $output .= '
-       <li id="listNameStaffPerCourse">' . $TechnicalStaff3 . '</li>
+       <option>' . $TechnicalStaff3 . '</option>
        ';
 
             } else {
@@ -885,7 +887,7 @@ $course_input=$request->get('course_input');
 
             }
 
-            $output .= '</ul>';
+
 
 
             echo $output;

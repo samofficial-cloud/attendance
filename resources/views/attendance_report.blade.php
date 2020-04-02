@@ -56,7 +56,7 @@ hr {
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-  
+
     @if(Auth::user()->staff==1)
     <div class="container">
  <center><ul class="nav1 nav-tabs" style="width: 98%">
@@ -81,7 +81,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
   </li>
-  
+
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
@@ -136,7 +136,7 @@ hr {
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
-          
+
         </div>
       </li>
 
@@ -144,7 +144,7 @@ hr {
 </div>
 @elseif(Auth::user()->Timetable_Master==1)
 <div class="container3" style="padding-left: 153px;">
-  
+
     <ul class="nav1 nav-tabs">
   <li class="nav-item">
    <a class="nav-link" style="color:#060606"href="/">HOME</a>
@@ -181,12 +181,12 @@ hr {
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          
+
         </div>
       </li>
 
   </ul>
-  
+
 </div>
 @elseif(Auth::user()->HoD==1)
 <div class="container">
@@ -233,7 +233,7 @@ hr {
          {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
         </div>
       </li>
-    
+
 </ul>
 </center>
 </div>
@@ -262,7 +262,7 @@ hr {
   <li class="nav-item">
     <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
   </li>
-  
+
   <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           INSTRUCTORS
@@ -314,7 +314,7 @@ hr {
 
                     <h4 class="note">Course: {{$_GET['course_id']}} </h4>
 
-                    <b><p class="note"> Class attendance report for staffs</p></b>
+                    <b><p class="note"> Class Attendance Report for Staffs</p></b>
 
 
 
@@ -337,7 +337,7 @@ hr {
             @endforeach
             <h4 class="note">Case: All courses </h4>
 
-      <b><p class="note">Class attendance report for {{$name}} ({{$reg_no}})</p></b>
+      <b><p class="note">Class Attendance Report for {{$name}} ({{$reg_no}})</p></b>
 
 
 
@@ -380,7 +380,7 @@ hr {
             </h6>
 
             <h5 class="note">Course: {{$_GET['course_id']}}</h5>
-      <b><p class="note">Class attendance report for all students </p></b>
+      <b><p class="note">Class Attendance Report for All Students </p></b>
 
 
     </legend> </div>
@@ -1181,7 +1181,7 @@ hr {
             <div class="col-xs-6">
                 @if(count($dataSingle)>0)
                     {{--<div class="col-xs-9"><legend>--}}
-                            {{--<p class="note"> Class attendance report for <b>{{$name}} ({{$reg_no}})</b> </p>--}}
+                            {{--<p class="note"> Class Attendance Report for <b>{{$name}} ({{$reg_no}})</b> </p>--}}
                             {{--@foreach($program_fullAllCourses as $var)--}}
                                 {{--<h5 class="note">Programme: {{$var->full}}</h5>--}}
                             {{--@endforeach--}}
@@ -1208,7 +1208,7 @@ hr {
 
                             <h4 class="note">Course: {{$_GET['course_id']}} </h4>
 
-                            <b><p class="note"> Class attendance report for {{$name}} ({{$reg_no}}) </p></b>
+                            <b><p class="note"> Class Attendance Report for {{$name}} ({{$reg_no}}) </p></b>
 
                         </legend> </div>
 
@@ -1457,15 +1457,15 @@ hr {
                                 <div class="form-group row">
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">Percentage:</label>
                                     <div class="col-sm-8">
-                                        <input type="number" required name="percentage" class="form-control"  autocomplete="off" >
-
+                                        <input type="number" id="percent" required name="percentage" class="form-control" oninput="validatePercentage()" autocomplete="off" >
+                                        <p class="mt-2 p-1"  id="messagePercentage"></p>
                                     </div>
 
                                 </div>
                             </div>
 
-
-                            <center><button id="generate_btnt"  class="btn btn-primary" type="submit">Sort</button></center>
+                            <div style="margin-left: 52.5%;"><button id="percent_btn"  class="btn btn-primary" type="submit">Sort</button>        <button type="button" style="margin-left: 6%;" class="btn btn-danger" id="btnclose" data-dismiss="modal">Cancel</button></div>
+                            {{--<center><button id="percent_btn"  class="btn btn-primary" type="submit">Sort</button></center>--}}
                         </form>
                     </div>
 
@@ -1612,6 +1612,34 @@ foreach($all_students as $values){
 	</script>
 
 <script>
+
+
+    function validatePercentage(){
+        var percentage=document.getElementById("percent").value;
+
+        if(percentage <=0 || percentage>100){
+
+            document.getElementById("messagePercentage").style.backgroundColor ='#ccd8e263';
+            document.getElementById("messagePercentage").style.color ='red';
+            document.getElementById("messagePercentage").innerHTML ='Invalid input';
+            document.getElementById("percent_btn").disabled=true;
+
+
+        }
+
+        else{
+            document.getElementById("messagePercentage").innerHTML ='';
+            document.getElementById("percent_btn").disabled=false;
+            document.getElementById("messagePercentage").style.backgroundColor ='';
+        }
+
+    }
+
+
+
+
+
+
 window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted ||
                          ( typeof window.performance != "undefined" &&

@@ -730,7 +730,9 @@ window.onload = function() {
 
 function countCharacters() {
   var myInput = document.getElementById('input_academic_year');
-if(myInput.length===9){
+
+
+    if(myInput.length===9){
 
   document.getElementById("academicSeason_btn").disabled=false;
 
@@ -776,7 +778,34 @@ if(myInput.length===9){
               document.getElementById("messageAcademicYear").style.backgroundColor ='';
 
               if(value.length===4){
-          document.getElementById("input_academic_year").value =value+'/';
+
+                  var year=document.getElementById('input_academic_year').value;
+
+                  var current_year=new Date().getFullYear();
+                  var diff;
+
+                  if (current_year > year) {
+                      diff=current_year-year;
+                  } else {
+                      diff=year-current_year;
+                  }
+
+                  if (diff===0 || diff===1 ){
+
+                      document.getElementById("input_academic_year").setAttribute("maxlength", "9");
+                      document.getElementById("input_academic_year").value =value+'/';
+
+
+                  }else{
+                      document.getElementById("input_academic_year").setAttribute("maxlength", "4");
+                      document.getElementById("messageAcademicYear").style.backgroundColor ='#ccd8e263';
+                      document.getElementById("messageAcademicYear").style.color ='red';
+                      document.getElementById("messageAcademicYear").innerHTML ='Invalid input';
+                      document.getElementById("academicSeason_btn").disabled=true;
+
+                  }
+
+          // document.getElementById("input_academic_year").value =value+'/';
               }
 
 if(value.length<9){
