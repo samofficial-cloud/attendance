@@ -492,7 +492,8 @@ Use App\exam;
        ->where('exams.fromTime','15:00')
        ->get();
 
-
+use App\program;
+$full=program::select('full')->where('initial',$_GET['cid'])->value('full');
 
 
 ?>
@@ -621,14 +622,14 @@ Use App\exam;
 
  <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    CEIT
+    C-IT
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/examcourse?cid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/examcourse?cid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/examcourse?cid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/examcourse?cid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/examcourse?cid=CIT1" class="list-group-item list-group-item-action dropdown-item">C-IT1</a>
+     <a href="/examcourse?cid=CIT2" class="list-group-item list-group-item-action dropdown-item">C-IT2</a>
+    <a href="/examcourse?cid=CIT3" class="list-group-item list-group-item-action dropdown-item">C-IT3</a>
+    <a href="/examcourse?cid=CIT4" class="list-group-item list-group-item-action dropdown-item">C-IT4</a>
 </div>
 </div>
 
@@ -647,7 +648,7 @@ Use App\exam;
   <div class="card hero-image border-info">
   <div class="card-body">
     <div style="color: #29234a"><H1><CENTER><b>UNIVERSITY EXAMINATION TIMETABLE</b></CENTER></H1></div>
-    <h3 class="card-title"><center><b>PROGRAM:{{ $_GET['cid'] }}</b></center></h3>
+    <h3 class="card-title"><center><b>Program: {{ $full }}</b></center></h3>
 
 
 <table border="4" cellspacing="3" align="center" id="tid">

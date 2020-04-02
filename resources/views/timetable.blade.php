@@ -392,14 +392,14 @@ $academicyear=camis_configuration::select('current_academic_year')->value('curre
 
  <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    CEIT
+    C-IT
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" id="ceitdropdown">
-    <a href="#" id="CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="#" id="CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="#" id="CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="#" id="CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="#" id="CIT1" class="list-group-item list-group-item-action dropdown-item">C-IT1</a>
+     <a href="#" id="CIT2" class="list-group-item list-group-item-action dropdown-item">C-IT2</a>
+    <a href="#" id="CIT3" class="list-group-item list-group-item-action dropdown-item">C-IT3</a>
+    <a href="#" id="CIT4" class="list-group-item list-group-item-action dropdown-item">C-IT4</a>
 </div>
 </div>
 

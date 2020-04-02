@@ -58,6 +58,7 @@ public function changestatus(Request $request){
       $user->notify(new DeclineStatus($venue, $date, $month, $year, $day, $time,$Reason,$name,$ReservationDate));
     $reservations->flag='0';
     $reservations->decline_reason=$Reason;
+    $reservations->approved_by=Auth::user()->name;
     $reservations->save();
     
     
@@ -86,6 +87,7 @@ public function changestatusb($id)
     $reservations = reservation::find($id);
     // return view('admin.edit', compact('users'));
     $reservations->rstatus= '-1';
+    $reservations->approved_by=Auth::user()->name;
 
     $name=$reservations->Name;
     $ReservationDate=$reservations->Reservation_date;
@@ -114,6 +116,7 @@ public function changestatusb($id)
     $reservations = reservation::find($id);
     // return view('admin.edit', compact('users'));
     $reservations->rstatus= '1';
+    $reservations->approved_by=Auth::user()->name;
     $name=$reservations->Name;
     $ReservationDate=$reservations->Reservation_date;
     $venue=$reservations->Venue;

@@ -291,21 +291,20 @@ hr {
 </div>
 
 <br>
-{{-- $pending = reservation::where('rstatus','-1')->where('flag','1')->whereDate(strtotime('Date'."-".'Month'."-".'Year'), '>=', date('j-n-Y'))->orderBy('Reservation_date','asc')->get(); 
-$pending=DB::RAW("select * from dbo.reservations where CONVERT(datetime,CONCAT(Month,'-',Date,'-',Year),101) > CONVERT(datetime,getdate(),101)");--}}
 <?php
 use App\reservation;
-$searchString = '3 12 2020';
-$pending=DB::select('EXEC reservationdate');
+//$pending=DB::select('EXEC reservationdate');
+$pending=reservation::where('flag','1')->where('rstatus','-1')->orderBy('combined_date','asc')->get();
  
-$approved = DB::select('EXEC approvedreservationdate');
+//$approved = DB::select('EXEC approvedreservationdate');
+$approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combined_date','asc')->get();
+
   $today=date('j');
   $tmonth=date('n');
   $tyear=date('Y');
  $i='1';
  $j='1';
 ?>
-{{$pending}}
 <div class="container2" >
   @if(Auth::user()->principal==1 or Auth::user()->Timetable_Master==1)
    @if ($errors->any())
@@ -326,7 +325,7 @@ $approved = DB::select('EXEC approvedreservationdate');
     @endif
     <div class="tab">
   <button class="tablinks" onclick="openInstructors(event, 'Pending Requests')" id="defaultOpen"><strong>PENDING REQUESTS</strong></button>
-  <button class="tablinks" style="float: right;" onclick="openInstructors(event, 'Approved Requests')"><strong>APPROVED REQUESTS</strong></button>
+  <button class="tablinks" onclick="openInstructors(event, 'Approved Requests')"><strong>APPROVED REQUESTS</strong></button>
 </div>
 <div id="Pending Requests" class="tabcontent">
     <br>
@@ -338,16 +337,16 @@ $approved = DB::select('EXEC approvedreservationdate');
   <thead class="thead-dark">
     <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;">Name</th>
-      <th scope="col" style="color:#3490dc;">Venue</th>
-      <th scope="col" style="color:#3490dc;">Day</th>
-      <th scope="col" style="color:#3490dc;">Date</th>
-      <th scope="col" style="color:#3490dc;">Week</th>
-      <th scope="col" style="color:#3490dc;">Time</th>
-      <th scope="col" style="color:#3490dc;">Capacity</th>
-       <th scope="col" style="color:#3490dc;">Reason</th>
-      <th scope="col" style="color:#3490dc;">Remarks</th>
-      <th scope="col" style="color:#3490dc;">Approval</th>
+      <th scope="col" style="color:#3490dc;"><center>Name</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Venue</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Day</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Date</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Week</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Time</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -356,12 +355,12 @@ $approved = DB::select('EXEC approvedreservationdate');
       <tr>
       <th scope="row">{{ $i }}.</th>
       <td>{{ $pending->Name}}</td>
-      <td>{{$pending->Venue}}</td>
+      <td><center>{{$pending->Venue}}</center></td>
       <td>{{ $pending->Day }}</td>
-      <td>{{ $pending->Date }}/{{ $pending->Month}}/{{ $pending->Year}}</td>
-       <td>{{$pending->Week}}</td>
-      <td>{{ $pending->fromTime}}-{{ $pending->toTime}}</td>
-      <td>{{ $pending->Capacity}}</td>
+      <td><center>{{ $pending->combined_date}}</center></td>
+       <td><center>{{$pending->Week}}</center></td>
+      <td><center>{{ $pending->fromTime}}-{{ $pending->toTime}}</center></td>
+      <td><center>{{ $pending->Capacity}}</center></td>
       <td>{{ $pending->Reason}}</td>
       <td>
         @if(count($pending->Remarks)>0)
@@ -385,15 +384,10 @@ $approved = DB::select('EXEC approvedreservationdate');
 </div>
 @endif
       </td>
-      
+     {{--  href="{{route('DeleteRequest',$pending->id)}}" --}}
       <td>
-        @if($pending->Year<$tyear)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">Obsolete  </a>
-        @elseif($pending->Year==$tyear)
-        @if($pending->Month<$tmonth)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">Obsolete  </a>
-        @elseif($pending->Month==$tmonth and $pending->Date<$today)
-         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$pending->id)}}">Obsolete </a>
+        @if($pending->combined_date<date('Y-m-d'))
+        <center><p>Obsolete</p></center>
          @else
         {{-- <a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a> --}}
 
@@ -434,7 +428,7 @@ $approved = DB::select('EXEC approvedreservationdate');
 
         
 <a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a>
-@endif
+
 @endif
 </td>
 
@@ -462,16 +456,17 @@ $approved = DB::select('EXEC approvedreservationdate');
   <thead class="thead-dark">
     <tr>
       <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;">Name</th>
-      <th scope="col" style="color:#3490dc;">Venue</th>
-      <th scope="col" style="color:#3490dc;">Day</th>
-      <th scope="col" style="color:#3490dc;">Date</th>
-      <th scope="col" style="color:#3490dc;">Week</th>
-      <th scope="col" style="color:#3490dc;">Time</th>
-      <th scope="col" style="color:#3490dc;">Capacity</th>
-       <th scope="col" style="color:#3490dc;">Reason</th>
-       <th scope="col" style="color:#3490dc;">Remarks</th>
-      <th scope="col" style="color:#3490dc;">Approval</th>
+      <th scope="col" style="color:#3490dc;"><center>Name</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Venue</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Day</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Date</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Week</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Time</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Approved By</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Action</center></th>
     </tr>
   </thead>
   <tbody>
@@ -480,12 +475,12 @@ $approved = DB::select('EXEC approvedreservationdate');
       <tr>
       <th scope="row">{{ $j }}.</th>
       <td>{{ $approved->Name}}</td>
-      <td>{{$approved->Venue}}</td>
+      <td><center>{{$approved->Venue}}</center></td>
       <td>{{ $approved->Day }}</td>
-      <td>{{ $approved->Date }}/{{ $approved->Month}}/{{ $approved->Year}}</td>
-       <td>{{$approved->Week}}</td>
-     <td>{{ $approved->fromTime}}-{{ $approved->toTime}}</td>
-     <td>{{ $approved->Capacity}}</td>
+      <td><center>{{ $approved->combined_date}}</center></td>
+       <td><center>{{$approved->Week}}</center></td>
+     <td><center>{{ $approved->fromTime}}-{{ $approved->toTime}}</center></td>
+     <td><center>{{ $approved->Capacity}}</center></td>
       <td>{{ $approved->Reason}}</td>
       <td>
         @if(count($approved->Remarks)>0)
@@ -509,17 +504,13 @@ $approved = DB::select('EXEC approvedreservationdate');
 </div>
 @endif
         </td>
+        <td>{{$approved->approved_by}}</td>
       <td>
-         @if($approved->Year<$tyear)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete </a> 
-        @elseif($approved->Year==$tyear)
-        @if($approved->Month<$tmonth)
-        <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete</a>
-        @elseif($approved->Month==$tmonth and $approved->Date<$today)
-         <a class="btn btn-sm btn-danger" href="{{route('DeleteRequest',$approved->id)}}">Obsolete </a>
+         @if($approved->combined_date<date('Y-m-d'))
+        <center><p>Obsolete</p></center>
          @else
        <a class="btn btn-sm btn-success" href="{{route('changestatusb',$approved->id)}}">Change</a>
-       @endif
+       
        @endif
         </td>
       </tr>

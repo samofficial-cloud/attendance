@@ -131,9 +131,8 @@ Route::get('/room2', function () {
 
 });
 
-Route::get('/timetablehome', function () {
-     return View ('timetablehome');
-
+Route::get('manage/optionalstudent', function () {
+     return View ('optionalstudent');
 });
 
 Route::get('/menukey', function () {
@@ -161,6 +160,12 @@ Route::get('manage/users', function () {
 
 Route::get('manage/getnewuser', function () {
         return View::make('newuser');
+    });
+Route::get('manage/addoption', function () {
+        return View::make('addoptionstudents');
+    });
+Route::get('manage/viewoptionstudent', function () {
+        return View::make('viewoptionstudent');
     });
 
 Route::get('gettimetable', function () {
@@ -230,6 +235,11 @@ Route::get('/courses/delete/{id}', 'coursesController@DeleteCourse')->name('Dele
 
 Route::get('/students/add', 'USERINFOController@add')->name('newstudents');
 
+Route::get('/optionstudents/add', 'carry_optional_studentController@addstudents')->name('optionstudentsadd');
+Route::get('/optionstudents/edit', 'carry_optional_studentController@editstudents')->name('optionstudentsedit');
+
+Route::get('/optionstudents/delete/{id}', 'carry_optional_studentController@deletestudents')->name('optionstudentsdelete');
+
 Route::get('/students/delete/{USERID}', 'USERINFOController@DeactivateStudent')->name('DeactivateStudent');
 
 Route::get('/students/activate', 'USERINFOController@activatestudent')->name('ActivateStudent');
@@ -276,6 +286,8 @@ Route::post('/autocomplete_name_all_students', 'ReportController@AutoCompleteNam
 
     Route::post('/autocomplete_staff_names', 'ReportController@AutoCompleteStaffNames')->name('autocomplete.staff_names');
 
+    Route::post('/autocomplete/student', 'USERINFOController@fetchstudent')->name('autocomplete.student');
+
 Route::get('/form', function () {
      return View ('form');
 
@@ -321,6 +333,10 @@ Route::get('/profile', function () {
 
 });
 
+Route::get('addoptionstudents', function () {
+     return View ('addoptionstudents');
+
+});
 // Route::get('/reservation', function () {
 //      return View ('reservation');
 

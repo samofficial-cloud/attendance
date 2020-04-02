@@ -263,7 +263,8 @@
 <div class="col-2 ">
 <div class="card border-info">
   <div class="card-body">
-    <h5 class="card-title">Choose Degree Program</h5>
+    <h6 class="card-title" style="font-size: 17px;"><b>Choose Degree Program</b></h6>
+    <hr>
     @if(Auth::user()->HoD==1 & Auth::user()->DEFAULTDEPTID==31)
     <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
@@ -284,14 +285,14 @@
 
 <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    CEIT
+    C-IT
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/Showcourses?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/Showcourses?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/Showcourses?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/Showcourses?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/Showcourses?rid=CIT1" class="list-group-item list-group-item-action dropdown-item">C-IT1</a>
+     <a href="/Showcourses?rid=CIT2" class="list-group-item list-group-item-action dropdown-item">C-IT2</a>
+    <a href="/Showcourses?rid=CIT3" class="list-group-item list-group-item-action dropdown-item">C-IT3</a>
+    <a href="/Showcourses?rid=CIT4" class="list-group-item list-group-item-action dropdown-item">C-IT4</a>
 </div>
 </div>
 
@@ -368,14 +369,14 @@
 
 <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    CEIT
+    C-IT
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/Showcourses?rid=CEIT1" class="list-group-item list-group-item-action dropdown-item">CEIT1</a>
-     <a href="/Showcourses?rid=CEIT2" class="list-group-item list-group-item-action dropdown-item">CEIT2</a>
-    <a href="/Showcourses?rid=CEIT3" class="list-group-item list-group-item-action dropdown-item">CEIT3</a>
-    <a href="/Showcourses?rid=CEIT4" class="list-group-item list-group-item-action dropdown-item">CEIT4</a>
+    <a href="/Showcourses?rid=CIT1" class="list-group-item list-group-item-action dropdown-item">C-IT1</a>
+     <a href="/Showcourses?rid=CIT2" class="list-group-item list-group-item-action dropdown-item">C-IT2</a>
+    <a href="/Showcourses?rid=CIT3" class="list-group-item list-group-item-action dropdown-item">C-IT3</a>
+    <a href="/Showcourses?rid=CIT4" class="list-group-item list-group-item-action dropdown-item">C-IT4</a>
 </div>
 </div>
 

@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
 @section('title')
-  TIMETABLE
+  OPTIONAL STUDENTS
 @endsection
-
+@section('style')
+<style type="text/css">
+  .dropdown-menu
+ {
+   max-height: 380px;
+   overflow-y: scroll;
+  }
+</style>
+@endsection
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -83,13 +91,14 @@
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/manage/users">USERS</a>
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
-           <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
+           <a class="dropdown-item" style="color:#060606" href="/manage/courses">COURSES</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
+            <a class="dropdown-item" style="color:#060606"href="manage/optionalstudent">OPTIONAL STUDENTS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
           
         </div>
@@ -246,180 +255,138 @@
 
 </nav>
 </div>
-<br>
-<div class="container">
-  <div class="row2">
-<div class="col-2 ">
-<div class="card border-info">
-  <div class="card-body">
-    <h5 class="card-title"><b>ROOMS</b></h5>
-
-    <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    BLOCK B
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/exam?rid=B106" class="list-group-item list-group-item-action dropdown-item">B105</a>
-    <a href="/exam?rid=B106" class="list-group-item list-group-item-action dropdown-item">B106</a>
-    <a href="/exam?rid=B205" class="list-group-item list-group-item-action dropdown-item">B205</a>
-    <a href="/exam?rid=B206" class="list-group-item list-group-item-action dropdown-item">B206</a>
-    <a href="/exam?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
-    <a href="/exam?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
-    <a href="/exam?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
-    <a href="/exam?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
-    <a href="/exam?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
-    <a href="/exam?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
-    <a href="/exam?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
-    <a href="/exam?rid=B310" class="list-group-item list-group-item-action dropdown-item">B311</a>
-    
-  </div>
-</div>
-
-
- <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    BLOCK C
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C01</a>
-     <a href="#" class="list-group-item list-group-item-action dropdown-item">C02</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C03</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C04</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C05</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C06</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C07</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C08</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C09</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">C10</a>
-  </div>
-</div>
-
-<div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    BLOCK D
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D01</a>
-     <a href="#" class="list-group-item list-group-item-action dropdown-item">D02</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D03</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D04</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D05</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D06</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D07</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D08</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D09</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D10</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D11</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D12</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D13</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D14</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D15</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D16</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D17</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D18</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D19</a>
-    <a href="#" class="list-group-item list-group-item-action dropdown-item">D20</a>
-  </div>
-</div>
-
-<br>
- <h5><b>PROGRAM</b></h5>
-
- <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    CS
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/examcourse?cid=CS1" class="list-group-item list-group-item-action dropdown-item">CS1</a>
-     <a href="/examcourse?cid=CS2" class="list-group-item list-group-item-action dropdown-item">CS2</a>
-    <a href="/examcourse?cid=CS3" class="list-group-item list-group-item-action dropdown-item">CS3</a>
-</div>
-</div>
-
- <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    TE
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/examcourse?cid=TE1" class="list-group-item list-group-item-action dropdown-item">TE1</a>
-     <a href="/examcourse?cid=TE2" class="list-group-item list-group-item-action dropdown-item">TE2</a>
-    <a href="/examcourse?cid=TE3" class="list-group-item list-group-item-action dropdown-item">TE3</a>
-    <a href="/examcourse?cid=TE4" class="list-group-item list-group-item-action dropdown-item">TE4</a>
-</div>
-</div>
-
-    <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    ESC
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/examcourse?cid=ESC1" class="list-group-item list-group-item-action dropdown-item">ESC1</a>
-     <a href="/examcourse?cid=ESC2" class="list-group-item list-group-item-action dropdown-item">ESC2</a>
-    <a href="/examcourse?cid=ESC3" class="list-group-item list-group-item-action dropdown-item">ESC3</a>
-  </div>
-</div>
-
-
-
- <div class="dropright">
-  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
-    C-IT
-  </a>
-
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a href="/examcourse?cid=CIT1" class="list-group-item list-group-item-action dropdown-item">C-IT1</a>
-     <a href="/examcourse?cid=CIT2" class="list-group-item list-group-item-action dropdown-item">C-IT2</a>
-    <a href="/examcourse?cid=CIT3" class="list-group-item list-group-item-action dropdown-item">C-IT3</a>
-    <a href="/examcourse?cid=CIT4" class="list-group-item list-group-item-action dropdown-item">C-IT4</a>
-</div>
-</div>
-
-<br>
-<br>
-<a class="btn btn-light" href="/timetable" role="button" style="background-color: #d6d6d6;"> <b>Lectures Timetable</b></a>
-
-</div>
-
-</div>
-
-</div>
 @php
 use App\camis_configuration;
 $camistitle=camis_configuration::select('camis_title')->value('camis_title');
 $academicyear=camis_configuration::select('current_academic_year')->value('current_academic_year');
   $semester=camis_configuration::select('current_semester')->value('current_semester');
-@endphp
 
+  use App\lecturer;
+$mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->orWhere('Instructor_2',Auth::user()->name)->orWhere('Instructor_3',Auth::user()->name)->orWhere('Instructor_4',Auth::user()->name)->orWhere('Instructor_5',Auth::user()->name)->orWhere('Tutorial_Assistant',Auth::user()->name)->orWhere('technical_staff',Auth::user()->name)->orWhere('Technical_Staff_2',Auth::user()->name)->get();
+@endphp
+<br>
+<div class="container2" style="width: 1230px;">
+  <div class="row" style="width: 120%;">
+  <div class="col-2" >
+  <div class="card border-info">
+  <div class="card-body" >
+     <a class="btn btn-light color_nav2" id="addoptionstudent" href="#" role="button"style="background-color: #b0d0ff;">ADD STUDENTS
+     </a>
+  <br>
+  <br>
+  <a data-toggle="modal" data-target="#viewstudents"  role="button" class="btn btn-light color_nav2" aria-pressed="true" style="background-color: #b0d0ff;">EDIT STUDENTS</a>
+  <div class="modal fade" id="viewstudents" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Select Course ID</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form method="get" action="" id="edituserform">
+      <div class="form-group row" id="DivCourse">
+      <label for="courseid" class="col-sm-3 col-form-label"><strong>Course Id:</strong></label>
+      <div class="col-sm-9">
+      <select name="courseid" id="courseid" class="custom-select Reason" required="">
+      <option value="">Select Course ID</option>
+       @foreach($mycourse as $mycoursess)
+    <option value="{{$mycoursess->course}}">{{$mycoursess->course}}</option>
+    @endforeach
+      </select>
+      <span id="message"></span>
+      </div>
+  </div>
+  <div align="right">
+  <button class="btn btn-primary" type="submit" id="viewstudentbutton">Submit</button>
+  <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">Cancel</button>
+</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+</div>
+</div>
 
 <div class="col-10">
-  <div class="card hero-image border-info" style="height: 100%">
+<div id="error">
+  @if ($errors=Session::get('errors'))
+          <div class="alert alert-danger">
+            <p>{{$errors}}</p>
+          </div>
+        @endif
+
+      @if ($message = Session::get('success'))
+      <div class="alert alert-success">
+        <p>{{$message}}</p>
+      </div>
+    @endif
+  </div>
+    <div id="content">
+<div class="card hero-image border-info" style="height: 100%">
   <div class="card-body">
-    <h5 class="card-title"></h5>
-
     <div align="center">
-      <h1 style="text-align: center;"><b>{{$camistitle}}</b></h1>
-    <h2 style="text-align: center;"><b>COLLEGE OF ICT </b></h2>
+      <h1 style="text-align: center;"><b>UNIVERSITY OF DAR ES SALAAM</b></h1>
+    <h2 style="text-align: center;"><b>COLLEGE OF ICT</b></h2>
+    <div id="loading"></div>
+   <div><img src="{{asset('img/logo_udsm.jpg')}}" height="200px" width="170px"></div>
     <br>
-   <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
     <br>
-    <h1>SEMESTER {{$semester}} {{$academicyear}}</h1>
-    <h1><b>UNIVERSITY EXAMINATION TIMETABLE</b></h1>
+    <h1><b>OPTIONAL STUDENTS MANAGEMENT</b></h1>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+@endsection
 
-  
-</div>
+@section('pagescript')
+<script type="text/javascript">
+   $(document).ajaxSend(function(){
+    $("#loading").fadeIn(250);
+});
+$(document).ajaxComplete(function(){
+    $("#loading").fadeOut(250);
+});
+  $(document).ready(function() {
 
+  $("#addoptionstudent").click(function(e){
+    $("#error").hide();
+    $.ajax({
+      url: "addoption",
+      context: document.body
+    }).done(function(fragment) { 
+      $("#content").html(fragment);
+    });
+    return false;
+});
 
-</div>
-</div>
-</div>
-</div>
-</div>
-
-
+  $("#viewstudentbutton").click(function(e){
+    $('#viewstudents').modal('hide');
+    $("#error").hide();
+    var courseid = $('#courseid').val();
+    if(courseid==''){
+      var message=document.getElementById('message');
+        message.style.color='red';
+        message.innerHTML="Please fill this field"
+      return false;
+    }
+    else{
+    $.ajax({
+      url: "viewoptionstudent",
+      method:"Get",
+       data:{courseid:courseid},
+      context: document.body
+    }).done(function(fragment) { 
+      $("#content").html(fragment);
+    });
+    return false;
+  }
+});
+});
+</script>
 @endsection

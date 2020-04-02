@@ -440,7 +440,7 @@ use App\reservation;
     
       @foreach($approved as $approved)
       <tr>
-      <th scope="row">{{ $j }}</th>
+      <th scope="row">{{ $j }}.</th>
       <td><center>{{$approved->Venue}}</center></td>
       <td>{{ $approved->Day }}</td>
       <td><center>{{ $pending->combined_date}}</center></td>
