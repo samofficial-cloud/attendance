@@ -63,6 +63,11 @@ return view('system_config')->with('minimum_percentage',$minimum_percentage)->wi
         $class_allowance=$request->class_allowance;
         $test_allowance=$request->test_allowance;
 
+        DB::update('EXEC updateTimeClass ?',[$class_allowance]);
+        DB::update('EXEC updateTimeTest ?',[$test_allowance]);
+        DB::update('EXEC updateTimeUe ?',[$ue_allowance]);
+
+
 
         DB::table('camis_configuration')
             ->where('id', 1)
