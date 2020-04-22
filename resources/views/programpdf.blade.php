@@ -510,7 +510,7 @@ use App\camis_configuration;
       
     </b></center>
 <div style="color: #29234a"><H3><CENTER>{{$full}} Timetable</CENTER></H3></div>
-<table border="4" cellspacing="3" align="center" id="tid">
+<table border="4" cellspacing="3" align="center" id="tid" bgcolor="#deeaf3">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
@@ -536,7 +536,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled1 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -545,7 +545,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled2 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -553,7 +553,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled3 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -562,7 +562,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled4 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -572,7 +572,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled5 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -580,7 +580,7 @@ use App\camis_configuration;
 <td></td>
 @else
  @foreach ($timetabled6 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -589,7 +589,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled7 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -597,7 +597,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled8 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -605,7 +605,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled9 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -614,7 +614,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled10 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -622,7 +622,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabledC as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -631,7 +631,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabledA as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -639,7 +639,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabledB as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -652,7 +652,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled11 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -660,7 +660,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled12 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -668,7 +668,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled13 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -676,7 +676,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled14 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -684,7 +684,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled15 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -692,7 +692,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled16 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -700,7 +700,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled17 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -708,7 +708,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled18 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -716,7 +716,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled19 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -724,7 +724,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled110 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -732,7 +732,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled111 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -740,7 +740,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled112 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -748,7 +748,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled113 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -761,7 +761,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled21 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -769,7 +769,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled22 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -777,7 +777,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled23 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -785,7 +785,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled24 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -793,7 +793,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled25 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -801,7 +801,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled26 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -809,7 +809,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled27 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -817,7 +817,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled28 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -825,7 +825,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled29 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -833,7 +833,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled210 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -841,7 +841,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled211 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -849,7 +849,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled212 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -857,7 +857,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled213 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -871,7 +871,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled31 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -879,7 +879,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled32 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -887,7 +887,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled33 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -895,7 +895,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled34 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -903,7 +903,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled35 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -911,7 +911,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled36 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -919,7 +919,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled37 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -927,7 +927,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled38 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -935,7 +935,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled39 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -943,7 +943,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled310 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -951,7 +951,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled311 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -959,7 +959,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled312 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -967,7 +967,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled313 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -981,7 +981,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled41 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -989,7 +989,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled42 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -997,7 +997,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled43 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1005,7 +1005,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled44 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1013,7 +1013,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled45 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1021,7 +1021,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled46 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1029,7 +1029,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled47 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1037,7 +1037,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled48 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1045,7 +1045,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled49 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1053,7 +1053,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled410 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1061,7 +1061,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled411 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1069,7 +1069,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled412 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 
@@ -1077,7 +1077,7 @@ use App\camis_configuration;
 <td></td>
 @else
   @foreach ($timetabled413 as $times)
-<td bgcolor="#ffffff">{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</td>
+<td bgcolor="#ffffff"><b>{{ $times['venue']}}<br><font color="green">{{ $times['criteria']}}</font><br>{{ $times['course']}}</b></td>
 @endforeach
 @endif
 </tr>

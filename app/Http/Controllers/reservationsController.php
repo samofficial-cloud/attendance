@@ -12,7 +12,7 @@ use App\Notifications\DeclineStatus;
 use App\Notifications\PendingStatus;
 use Auth;
 use PDF;
-
+use App\system_notification;
      
 
 
@@ -59,8 +59,12 @@ public function changestatus(Request $request){
     $reservations->flag='0';
     $reservations->decline_reason=$Reason;
     $reservations->approved_by=Auth::user()->name;
+    $reservations->approved_date=date('Y-m-d');
     $reservations->save();
     
+    $message="Your reservation for date $reservations->combined_date and venue $reservations->Venue has been declined.";
+    $data=array('message'=>$message,'name'=>$name,'flag'=>1,'source'=>Auth::user()->name);
+    DB::table('system_notifications')->insert($data);
     
        return redirect()->route('approval')
                   ->with('success', 'Request Successfully Declined');
@@ -74,11 +78,15 @@ public function changestatus(Request $request){
     $reservations = reservation::find($id);
     // return view('admin.edit', compact('users'));
 
+    $message="$reservations->Name has cancelled his reservation for date $reservations->combined_date and venue $reservations->Venue.";
+    $data=array('message'=>$message,'receiver_role'=>'tmaster','flag'=>1,'source'=>Auth::user()->name);
+    DB::table('system_notifications')->insert($data);
+
     $reservations->delete();
     
     
        return redirect()->route('myreservations')
-                  ->with('success', 'Request Successfully Deleted.');
+                  ->with('success', 'Request Cancelled Successfully.');
   }
 
 
@@ -100,6 +108,11 @@ public function changestatusb($id)
     if ($reservations->save()) {
       $user=User::where('name',$name)->first();
       $user->notify(new PendingStatus($venue, $date,$month,$year,$day,$name,$ReservationDate));
+
+    $message="Your reservation for date $reservations->combined_date and venue $reservations->Venue has been revoked to pending status.";
+    $data=array('message'=>$message,'name'=>$name,'flag'=>1,'source'=>Auth::user()->name);
+    DB::table('system_notifications')->insert($data);
+
        return redirect()->route('approval')
                   ->with('success', 'Request has been Changed Successfully.');
     }
@@ -117,6 +130,7 @@ public function changestatusb($id)
     // return view('admin.edit', compact('users'));
     $reservations->rstatus= '1';
     $reservations->approved_by=Auth::user()->name;
+    $reservations->approved_date=date('Y-m-d');
     $name=$reservations->Name;
     $ReservationDate=$reservations->Reservation_date;
     $venue=$reservations->Venue;
@@ -127,6 +141,10 @@ public function changestatusb($id)
     if ($reservations->save()) {
        $user=User::where('name',$name)->first();
       $user->notify(new ApprovalStatus($venue, $date,$month,$year,$day, $name,$ReservationDate));
+
+    $message="Your reservation for date $reservations->combined_date and venue $reservations->Venue has been approved.";
+    $data=array('message'=>$message,'name'=>$name,'flag'=>1,'source'=>Auth::user()->name);
+    DB::table('system_notifications')->insert($data);
       
       return redirect()->route('approval')
                   ->with('success', 'Request Successfully Approved.');
@@ -139,17 +157,17 @@ public function changestatusb($id)
   }
 
 
-  public function DeleteRequest($id)
-  {
-    $reservations = reservation::find($id);
-    $reservations->flag='0';
+  // public function DeleteRequest($id)
+  // {
+  //   $reservations = reservation::find($id);
+  //   $reservations->flag='0';
 
-    $reservations->save();
+  //   $reservations->save();
     
     
-      return redirect()->route('approval')
-                  ->with('success', 'Request Deleted Successfully.');
-  }
+  //     return redirect()->route('approval')
+  //                 ->with('success', 'Request Deleted Successfully.');
+  // }
 
 
    public function index()
@@ -181,6 +199,11 @@ $rstatus = '-1';
 $ReservationDate=date("Y-m-d", strtotime($request->input('ReservationDate')));
 $data=array('Venue'=>$Venue,"Day"=>$Day,"Month"=>$Month,"Year"=>$Year,"Week"=>$Week,"Name"=>$Name,"Reason"=>$Reason,"fromTime"=>$fromTime,"toTime"=>$toTime,"Date"=>$Date,"rstatus"=>$rstatus, "Capacity"=>$Capacity,"Remarks"=>$Remarks,"Reservation_date"=>$ReservationDate, "flag"=>1,"combined_date"=>$combined_date);
 DB::table('reservations')->insert($data);
+
+$message="$Name has made a reservation for date $combined_date and venue $Venue.";
+    $data=array('message'=>$message,'receiver_role'=>'tmaster','flag'=>1,'source'=>Auth::user()->name);
+    DB::table('system_notifications')->insert($data);
+
  return redirect()->back()->with('success', 'Request Submitted Successfully');
 }
 
@@ -191,6 +214,17 @@ public function reservationsPDF(){
         return $pdf->stream('RESERVATIONS LIST.pdf');
     }
 
+    public function ShowSystemNotifications($id){
+    $notification=system_notification::find($id);
+    $notification->flag='0';
+    $notification->save();
+    if($notification->receiver_role=='tmaster'){
+      return View('tmaster');
+    }
+    else{
+      return view('myreservations');
+    }
+    }
 
 
   public function show(){
@@ -267,75 +301,75 @@ public function reservationsPDF(){
 
 
 
- $state = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','07:00')->get();
- $state1 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','08:00')->get();
- $state2 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','09:00')->get();
- $state3 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','10:00')->get();
- $state4 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','11:00')->get();
- $state5 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','12:00')->get();
- $state6 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','13:00')->get();
- $state7 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','14:00')->get();
- $state8 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','15:00')->get();
- $state9 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','16:00')->get();
- $state10 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','17:00')->get();
- $state11 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','18:00')->get();
- $state12 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','19:00')->get();
+ $state = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','07:00')->get();
+ $state1 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','08:00')->get();
+ $state2 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','09:00')->get();
+ $state3 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','10:00')->get();
+ $state4 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','11:00')->get();
+ $state5 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','12:00')->get();
+ $state6 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','13:00')->get();
+ $state7 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','14:00')->get();
+ $state8 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','15:00')->get();
+ $state9 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','16:00')->get();
+ $state10 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','17:00')->get();
+ $state11 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','18:00')->get();
+ $state12 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','19:00')->get();
 
-$stateA2 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','07:00')->get();
-$state21 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','08:00')->get();
-$state22 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','09:00')->get();
-$state23 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','10:00')->get();
-$state24 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','11:00')->get();
-$state25 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','12:00')->get();
-$state26 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','13:00')->get();
-$state27 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','14:00')->get();
-$state28 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','15:00')->get();
-$state29 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','16:00')->get();
-$state210 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','17:00')->get();
-$state211 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','18:00')->get();
-$state212 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','19:00')->get();
+$stateA2 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','07:00')->get();
+$state21 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','08:00')->get();
+$state22 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','09:00')->get();
+$state23 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','10:00')->get();
+$state24 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','11:00')->get();
+$state25 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','12:00')->get();
+$state26 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','13:00')->get();
+$state27 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','14:00')->get();
+$state28 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','15:00')->get();
+$state29 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','16:00')->get();
+$state210 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','17:00')->get();
+$state211 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','18:00')->get();
+$state212 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','19:00')->get();
 
-$stateA3 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','07:00')->get();
-$state31 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','08:00')->get();
-$state32 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','09:00')->get();
-$state33 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','10:00')->get();
-$state34 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','11:00')->get();
-$state35 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','12:00')->get();
-$state36 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','13:00')->get();
-$state37 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','14:00')->get();
-$state38 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','15:00')->get();
-$state39 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','16:00')->get();
-$state310 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','17:00')->get();
-$state311 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','18:00')->get();
-$state312 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','19:00')->get();
+$stateA3 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','07:00')->get();
+$state31 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','08:00')->get();
+$state32 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','09:00')->get();
+$state33 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','10:00')->get();
+$state34 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','11:00')->get();
+$state35 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','12:00')->get();
+$state36 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','13:00')->get();
+$state37 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','14:00')->get();
+$state38 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','15:00')->get();
+$state39 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','16:00')->get();
+$state310 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','17:00')->get();
+$state311 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','18:00')->get();
+$state312 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','19:00')->get();
 
-$stateA4 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','07:00')->get();
-$state41 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','08:00')->get();
-$state42 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','09:00')->get();
-$state43 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','10:00')->get();
-$state44 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','11:00')->get();
-$state45 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','12:00')->get();
-$state46 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','13:00')->get();
-$state47 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','14:00')->get();
-$state48 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','15:00')->get();
-$state49 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','16:00')->get();
-$state410 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','17:00')->get();
-$state411 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','18:00')->get();
-$state412 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','19:00')->get();
+$stateA4 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','07:00')->get();
+$state41 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','08:00')->get();
+$state42 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','09:00')->get();
+$state43 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','10:00')->get();
+$state44 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','11:00')->get();
+$state45 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','12:00')->get();
+$state46 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','13:00')->get();
+$state47 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','14:00')->get();
+$state48 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','15:00')->get();
+$state49 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','16:00')->get();
+$state410 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','17:00')->get();
+$state411 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','18:00')->get();
+$state412 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','19:00')->get();
 
-$stateA5 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','07:00')->get();
-$state51 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','08:00')->get();
-$state52 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','09:00')->get();
-$state53 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','10:00')->get();
-$state54 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','11:00')->get();
-$state55 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','12:00')->get();
-$state56 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','13:00')->get();
-$state57 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','14:00')->get();
-$state58 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','15:00')->get();
-$state59 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','16:00')->get();
-$state510 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','17:00')->get();
-$state511 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','18:00')->get();
-$state512 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','19:00')->get();
+$stateA5 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','07:00')->get();
+$state51 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','08:00')->get();
+$state52 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','09:00')->get();
+$state53 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','10:00')->get();
+$state54 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','11:00')->get();
+$state55 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','12:00')->get();
+$state56 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','13:00')->get();
+$state57 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','14:00')->get();
+$state58 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','15:00')->get();
+$state59 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','16:00')->get();
+$state510 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','17:00')->get();
+$state511 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','18:00')->get();
+$state512 = reservation::select('rstatus','toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','19:00')->get();
 
 $next=timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','07:00')->value('course');
 $next1=timetable::select('course')->where('venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','08:00')->value('course');
@@ -409,146 +443,146 @@ $next512=timetable::select('course')->where('venue',$_GET['rid'])->where('Day','
 
 
 
-$statex = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','07:00')->value('toTime');
-$statex1 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','08:00')->value('toTime');
-$statex2 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','09:00')->value('toTime');
-$statex3 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','10:00')->value('toTime');
-$statex4 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','11:00')->value('toTime');
-$statex5 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','12:00')->value('toTime');
-$statex6 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','13:00')->value('toTime');
-$statex7 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','14:00')->value('toTime');
-$statex8 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','15:00')->value('toTime');
-$statex9 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','16:00')->value('toTime');
-$statex10 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','17:00')->value('toTime');
-$statex11 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','18:00')->value('toTime');
-$statex12 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','19:00')->value('toTime');
+$statex = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','07:00')->value('toTime');
+$statex1 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','08:00')->value('toTime');
+$statex2 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','09:00')->value('toTime');
+$statex3 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','10:00')->value('toTime');
+$statex4 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','11:00')->value('toTime');
+$statex5 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','12:00')->value('toTime');
+$statex6 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','13:00')->value('toTime');
+$statex7 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','14:00')->value('toTime');
+$statex8 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','15:00')->value('toTime');
+$statex9 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','16:00')->value('toTime');
+$statex10 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','17:00')->value('toTime');
+$statex11 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','18:00')->value('toTime');
+$statex12 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','19:00')->value('toTime');
 
-$statexA2 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','07:00')->value('toTime');
-$statex21 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','08:00')->value('toTime');
-$statex22 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','09:00')->value('toTime');
-$statex23 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','10:00')->value('toTime');
-$statex24 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','11:00')->value('toTime');
-$statex25 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','12:00')->value('toTime');
-$statex26 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','13:00')->value('toTime');
-$statex27 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','14:00')->value('toTime');
-$statex28 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','15:00')->value('toTime');
-$statex29 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','16:00')->value('toTime');
-$statex210 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','17:00')->value('toTime');
-$statex211 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','18:00')->value('toTime');
-$statex212 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','19:00')->value('toTime');
+$statexA2 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','07:00')->value('toTime');
+$statex21 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','08:00')->value('toTime');
+$statex22 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','09:00')->value('toTime');
+$statex23 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','10:00')->value('toTime');
+$statex24 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','11:00')->value('toTime');
+$statex25 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','12:00')->value('toTime');
+$statex26 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','13:00')->value('toTime');
+$statex27 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','14:00')->value('toTime');
+$statex28 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','15:00')->value('toTime');
+$statex29 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','16:00')->value('toTime');
+$statex210 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','17:00')->value('toTime');
+$statex211 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','18:00')->value('toTime');
+$statex212 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','19:00')->value('toTime');
 
-$statexA3 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','07:00')->value('toTime');
-$statex31 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','08:00')->value('toTime');
-$statex32 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','09:00')->value('toTime');
-$statex33 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','10:00')->value('toTime');
-$statex34 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','11:00')->value('toTime');
-$statex35 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','12:00')->value('toTime');
-$statex36 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','13:00')->value('toTime');
-$statex37 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','14:00')->value('toTime');
-$statex38 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','15:00')->value('toTime');
-$statex39 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','16:00')->value('toTime');
-$statex310 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','17:00')->value('toTime');
-$statex311 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','18:00')->value('toTime');
-$statex312 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','19:00')->value('toTime');
+$statexA3 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','07:00')->value('toTime');
+$statex31 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','08:00')->value('toTime');
+$statex32 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','09:00')->value('toTime');
+$statex33 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','10:00')->value('toTime');
+$statex34 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','11:00')->value('toTime');
+$statex35 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','12:00')->value('toTime');
+$statex36 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','13:00')->value('toTime');
+$statex37 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','14:00')->value('toTime');
+$statex38 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','15:00')->value('toTime');
+$statex39 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','16:00')->value('toTime');
+$statex310 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','17:00')->value('toTime');
+$statex311 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','18:00')->value('toTime');
+$statex312 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','19:00')->value('toTime');
 
-$statexA4 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','07:00')->value('toTime');
-$statex41 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','08:00')->value('toTime');
-$statex42 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','09:00')->value('toTime');
-$statex43 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','10:00')->value('toTime');
-$statex44 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','11:00')->value('toTime');
-$statex45 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','12:00')->value('toTime');
-$statex46 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','13:00')->value('toTime');
-$statex47 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','14:00')->value('toTime');
-$statex48 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','15:00')->value('toTime');
-$statex49 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','16:00')->value('toTime');
-$statex410 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','17:00')->value('toTime');
-$statex411 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','18:00')->value('toTime');
-$statex412 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','19:00')->value('toTime');
+$statexA4 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','07:00')->value('toTime');
+$statex41 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','08:00')->value('toTime');
+$statex42 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','09:00')->value('toTime');
+$statex43 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','10:00')->value('toTime');
+$statex44 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','11:00')->value('toTime');
+$statex45 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','12:00')->value('toTime');
+$statex46 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','13:00')->value('toTime');
+$statex47 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','14:00')->value('toTime');
+$statex48 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','15:00')->value('toTime');
+$statex49 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','16:00')->value('toTime');
+$statex410 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','17:00')->value('toTime');
+$statex411 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','18:00')->value('toTime');
+$statex412 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','19:00')->value('toTime');
 
-$statexA5 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','07:00')->value('toTime');
-$statex51 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','08:00')->value('toTime');
-$statex52 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','09:00')->value('toTime');
-$statex53 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','10:00')->value('toTime');
-$statex54 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','11:00')->value('toTime');
-$statex55 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','12:00')->value('toTime');
-$statex56 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','13:00')->value('toTime');
-$statex57 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','14:00')->value('toTime');
-$statex58 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','15:00')->value('toTime');
-$statex59 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','16:00')->value('toTime');
-$statex510 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','17:00')->value('toTime');
-$statex511 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','18:00')->value('toTime');
-$statex512 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','19:00')->value('toTime');
+$statexA5 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','07:00')->value('toTime');
+$statex51 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','08:00')->value('toTime');
+$statex52 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','09:00')->value('toTime');
+$statex53 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','10:00')->value('toTime');
+$statex54 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','11:00')->value('toTime');
+$statex55 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','12:00')->value('toTime');
+$statex56 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','13:00')->value('toTime');
+$statex57 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','14:00')->value('toTime');
+$statex58 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','15:00')->value('toTime');
+$statex59 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','16:00')->value('toTime');
+$statex510 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','17:00')->value('toTime');
+$statex511 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','18:00')->value('toTime');
+$statex512 = reservation::select('toTime')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','19:00')->value('toTime');
 
 
-$nexts = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','07:00')->value('rstatus');
-$nexts1 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','08:00')->value('rstatus');
-$nexts2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','09:00')->value('rstatus');
-$nexts3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','10:00')->value('rstatus');
-$nexts4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','11:00')->value('rstatus');
-$nexts5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','12:00')->value('rstatus');
-$nexts6 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','13:00')->value('rstatus');
-$nexts7 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','14:00')->value('rstatus');
-$nexts8 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','15:00')->value('rstatus');
-$nexts9 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','16:00')->value('rstatus');
-$nexts10 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','17:00')->value('rstatus');
-$nexts11 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','18:00')->value('rstatus');
-$nexts12 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('fromTime','19:00')->value('rstatus');
+$nexts = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','07:00')->value('rstatus');
+$nexts1 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','08:00')->value('rstatus');
+$nexts2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','09:00')->value('rstatus');
+$nexts3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','10:00')->value('rstatus');
+$nexts4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','11:00')->value('rstatus');
+$nexts5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','12:00')->value('rstatus');
+$nexts6 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','13:00')->value('rstatus');
+$nexts7 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','14:00')->value('rstatus');
+$nexts8 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','15:00')->value('rstatus');
+$nexts9 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','16:00')->value('rstatus');
+$nexts10 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','17:00')->value('rstatus');
+$nexts11 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','18:00')->value('rstatus');
+$nexts12 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('flag','1')->where('fromTime','19:00')->value('rstatus');
 
-$nextsA2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','07:00')->value('rstatus');
-$nexts21 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','08:00')->value('rstatus');
-$nexts22 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','09:00')->value('rstatus');
-$nexts23 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','10:00')->value('rstatus');
-$nexts24 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','11:00')->value('rstatus');
-$nexts25 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','12:00')->value('rstatus');
-$nexts26 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','13:00')->value('rstatus');
-$nexts27 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','14:00')->value('rstatus');
-$nexts28 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','15:00')->value('rstatus');
-$nexts29 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','16:00')->value('rstatus');
-$nexts210 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','17:00')->value('rstatus');
-$nexts211 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','18:00')->value('rstatus');
-$nexts212 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('fromTime','19:00')->value('rstatus');
+$nextsA2 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','07:00')->value('rstatus');
+$nexts21 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','08:00')->value('rstatus');
+$nexts22 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','09:00')->value('rstatus');
+$nexts23 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','10:00')->value('rstatus');
+$nexts24 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','11:00')->value('rstatus');
+$nexts25 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','12:00')->value('rstatus');
+$nexts26 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','13:00')->value('rstatus');
+$nexts27 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','14:00')->value('rstatus');
+$nexts28 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','15:00')->value('rstatus');
+$nexts29 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','16:00')->value('rstatus');
+$nexts210 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','17:00')->value('rstatus');
+$nexts211 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','18:00')->value('rstatus');
+$nexts212 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Tuesday')->where('flag','1')->where('fromTime','19:00')->value('rstatus');
 
-$nextsA3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','07:00')->value('rstatus');
-$nexts31 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','08:00')->value('rstatus');
-$nexts32 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','09:00')->value('rstatus');
-$nexts33 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','10:00')->value('rstatus');
-$nexts34 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','11:00')->value('rstatus');
-$nexts35 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','12:00')->value('rstatus');
-$nexts36 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','13:00')->value('rstatus');
-$nexts37 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','14:00')->value('rstatus');
-$nexts38 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','15:00')->value('rstatus');
-$nexts39 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','16:00')->value('rstatus');
-$nexts310 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','17:00')->value('rstatus');
-$nexts311 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','18:00')->value('rstatus');
-$nexts312 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('fromTime','19:00')->value('rstatus');
+$nextsA3 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','07:00')->value('rstatus');
+$nexts31 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','08:00')->value('rstatus');
+$nexts32 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','09:00')->value('rstatus');
+$nexts33 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','10:00')->value('rstatus');
+$nexts34 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','11:00')->value('rstatus');
+$nexts35 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','12:00')->value('rstatus');
+$nexts36 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','13:00')->value('rstatus');
+$nexts37 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','14:00')->value('rstatus');
+$nexts38 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','15:00')->value('rstatus');
+$nexts39 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','16:00')->value('rstatus');
+$nexts310 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','17:00')->value('rstatus');
+$nexts311 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','18:00')->value('rstatus');
+$nexts312 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Wednesday')->where('flag','1')->where('fromTime','19:00')->value('rstatus');
 
-$nextsA4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','07:00')->value('rstatus');
-$nexts41 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','08:00')->value('rstatus');
-$nexts42 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','09:00')->value('rstatus');
-$nexts43 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','10:00')->value('rstatus');
-$nexts44 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','11:00')->value('rstatus');
-$nexts45 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','12:00')->value('rstatus');
-$nexts46 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','13:00')->value('rstatus');
-$nexts47 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','14:00')->value('rstatus');
-$nexts48 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','15:00')->value('rstatus');
-$nexts49 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','16:00')->value('rstatus');
-$nexts410 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','17:00')->value('rstatus');
-$nexts411 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','18:00')->value('rstatus');
-$nexts412 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('fromTime','19:00')->value('rstatus');
+$nextsA4 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','07:00')->value('rstatus');
+$nexts41 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','08:00')->value('rstatus');
+$nexts42 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','09:00')->value('rstatus');
+$nexts43 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','10:00')->value('rstatus');
+$nexts44 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','11:00')->value('rstatus');
+$nexts45 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','12:00')->value('rstatus');
+$nexts46 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','13:00')->value('rstatus');
+$nexts47 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','14:00')->value('rstatus');
+$nexts48 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','15:00')->value('rstatus');
+$nexts49 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','16:00')->value('rstatus');
+$nexts410 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','17:00')->value('rstatus');
+$nexts411 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','18:00')->value('rstatus');
+$nexts412 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Thursday')->where('flag','1')->where('fromTime','19:00')->value('rstatus');
 
-$nextsA5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','07:00')->value('rstatus');
-$nexts51 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','08:00')->value('rstatus');
-$nexts52 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','09:00')->value('rstatus');
-$nexts53 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','10:00')->value('rstatus');
-$nexts54 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','11:00')->value('rstatus');
-$nexts55 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','12:00')->value('rstatus');
-$nexts56 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','13:00')->value('rstatus');
-$nexts57 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','14:00')->value('rstatus');
-$nexts58 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','15:00')->value('rstatus');
-$nexts59 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','16:00')->value('rstatus');
-$nexts510 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','17:00')->value('rstatus');
-$nexts511 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','18:00')->value('rstatus');
-$nexts512 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('fromTime','19:00')->value('rstatus');
+$nextsA5 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','07:00')->value('rstatus');
+$nexts51 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','08:00')->value('rstatus');
+$nexts52 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','09:00')->value('rstatus');
+$nexts53 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','10:00')->value('rstatus');
+$nexts54 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','11:00')->value('rstatus');
+$nexts55 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','12:00')->value('rstatus');
+$nexts56 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','13:00')->value('rstatus');
+$nexts57 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','14:00')->value('rstatus');
+$nexts58 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','15:00')->value('rstatus');
+$nexts59 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','16:00')->value('rstatus');
+$nexts510 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','17:00')->value('rstatus');
+$nexts511 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','18:00')->value('rstatus');
+$nexts512 = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Friday')->where('flag','1')->where('fromTime','19:00')->value('rstatus');
 
 
 

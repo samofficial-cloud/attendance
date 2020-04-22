@@ -4,6 +4,16 @@
     TIMETABLE MANAGEMENT
 @endsection
 
+@section('style')
+<style type="text/css">
+  .dropdown-menu
+ {
+   max-height: 380px;
+   overflow-y: scroll;
+  }
+</style>
+@endsection
+
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -435,7 +445,7 @@
 <div class="col-10">
   <div class="card hero-image border-info" style="height:100%">
   <div class="card-body">
-    <h5 class="card-title"><b>ROOM NO: #</b></h5>
+   {{--  <h5 class="card-title"><b>ROOM NO: #</b></h5> --}}
 
     <div align="center">
       <h1 style="text-align: center;"><b>{{$camistitle}}</b></h1>

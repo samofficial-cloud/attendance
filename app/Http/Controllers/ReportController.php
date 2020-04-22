@@ -108,7 +108,7 @@ $minimum_percentage=DB::table('camis_configuration')->where('id', 1)->value('min
 
     }elseif ($request->get('category')== 2) {
       //echo one lecturer
-      if ($request->get('checkbox')=='all cases') {
+      if ($request->get('checkbox')=='all cases'){
 
           $valuesP=[$course,$today,$semday1];
           $tempHP= DB::select('EXEC extra_countH ?,?,?',$valuesP);
@@ -1032,7 +1032,7 @@ if($request->get('sort_criteria')==1) {
     }
 
 
-    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
+    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse)->with('courseValue',$courseValue);
 
 }elseif ($request->get('sort_criteria')==2){
 
@@ -1053,7 +1053,7 @@ if($request->get('sort_criteria')==1) {
     }
 
 
-    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
+    return View('attendance_report3')->with('all_studentsFilter', $all_studentsFilter)->with('all_studentsProgKey', $all_studentsProgKey)->with('course_name', $course_name)->with('program_full', $program_full)->with('percentage', $percentage)->with('minimum_percentage', $minimum_percentage)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse)->with('courseValue',$courseValue);
 
 
 
@@ -1263,6 +1263,20 @@ if($request->get('sort_criteria')==1) {
         return $pdf->stream('class attendance.pdf');
     }
 
+    public function classPDF2(){
+
+        $pdf = PDF::loadView('classpdf2');
+
+        return $pdf->stream('class attendance.pdf');
+    }
+
+    public function classPDF3(){
+
+        $pdf = PDF::loadView('classpdf3');
+
+        return $pdf->stream('class attendance.pdf');
+    }
+
     public function testPDF(){
 
         $pdf = PDF::loadView('testpdf');
@@ -1281,7 +1295,7 @@ if($request->get('sort_criteria')==1) {
 
         $pdf = PDF::loadView('testinvalidpdf');
 
-        return $pdf->stream('Test Invalid attendance.pdf');
+        return $pdf->stream('All Tests attendance.pdf');
     }
 
     public function UEPDF(){

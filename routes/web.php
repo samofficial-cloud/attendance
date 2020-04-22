@@ -76,6 +76,8 @@ Route::post('/u_course1','examsController@updateexam')->name('u_course1');
 
 Route::post('/addtest','testsController@updatetest')->name('addtest');
 
+Route::get('/add temporary_timetable','temp_timetablesController@insert')->name('inserttemp_timetables');
+
 Route::post('/addstaffCSE','USERINFOController@addstaffCSE')->name('addstaffCSE');
 
 Route::get('manage/instructors-ETE','lecturesController@index')->name('lecturers');
@@ -194,6 +196,10 @@ Route::get('/TimetableManagement', 'timetablesController@TimetableManagement')->
 
 Route::get('/VenueCapacity', 'CapacityvenuesController@index');
 
+Route::get('/temporary_timetable', 'temp_timetablesController@index');
+Route::get('/temporary_timetable/edit', 'temp_timetablesController@edit')->name('edittemp');
+
+
 Route::view('/ue_and_test_report', 'ue_and_test_report');
 
 Route::get('/myreservations', 'reservationsController@myreservations')->name('myreservations');
@@ -201,6 +207,8 @@ Route::get('/myreservations', 'reservationsController@myreservations')->name('my
 
 
 Route::get('/mytests/cancel/{id}', 'testsController@canceltest')->name('canceltest');
+
+Route::get('/temporary_timetable/delete/{id}','temp_timetablesController@canceltemp')->name('canceltemp');
 
  Route::get('/approval/changestatus', 'reservationsController@changestatus')->name('changestatus');
 
@@ -211,9 +219,10 @@ Route::get('/approvalb/changestatus/{id}', 'reservationsController@changestatusb
 
 Route::get('/approvalc/changestatus/{id}', 'reservationsController@changestatusc')->name('changestatusc');
 
-Route::get('/approvale/changestatus/{id}', 'reservationsController@DeleteRequest')->name('DeleteRequest');
+// Route::get('/approvale/changestatus/{id}', 'reservationsController@DeleteRequest')->name('DeleteRequest');
 
 Route::get('/venue', 'reservationsController@venue')->name('venue');
+Route::get('/notification/{id}', 'reservationsController@ShowSystemNotifications')->name('ShowSystemNotifications');
 
 Route::get('/venues/edit', 'CapacityvenuesController@edit')->name('editvenue');
 
@@ -379,6 +388,10 @@ Route::get('managestudents','USERINFOController@managestudents');
 
 Route::get('generate-pdf','ReportController@classPDF')->name('classpdf');
 
+Route::get('generate-pdf2','ReportController@classPDF2')->name('classpdf2');
+
+Route::get('generate-pdf3','ReportController@classPDF3')->name('classpdf3');
+
 Route::get('generate-timetable-pdf','timetablesController@programPDF')->name('programpdf');
 
 Route::get('generate-timetable1-pdf','timetablesController@roomPDF')->name('roompdf');
@@ -387,7 +400,7 @@ Route::get('generate-pdf1','ReportController@testPDF')->name('testpdf');
 
 Route::get('generate-testpdf','ReportController@testallPDF')->name('testallpdf');
 
-Route::get('generate-test-invalidpdf','ReportController@testinvalidPDF')->name('testinvalidpdf');
+Route::get('generate-test-all-pdf','ReportController@testinvalidPDF')->name('testinvalidpdf');
 
 Route::get('generate-UEpdf','ReportController@UEPDF')->name('UEpdf');
 

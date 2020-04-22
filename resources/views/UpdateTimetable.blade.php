@@ -4,6 +4,15 @@
   Update Timetable
 @endsection
 
+@section('style')
+<style type="text/css">
+  .dropdown-menu
+ {
+   max-height: 380px;
+   overflow-y: scroll;
+  }
+</style>
+@endsection
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -262,8 +271,7 @@
 <div class="col-2 ">
 <div class="card border-info">
   <div class="card-body">
-    <h5 class="card-title"><b>ROOMS</b></h5>
-
+    <h5 class="card-title"><b>Lectures</b></h5>
     <div class="dropright">
   <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
     BLOCK B
@@ -344,6 +352,87 @@
     <a href="#" class="list-group-item list-group-item-action dropdown-item">D20</a>
   </div>
 </div>
+<br>
+<h5><b>Examinations</b></h5>
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    BLOCK B
+  </a>
+
+<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="/examupdate?rid=B106" class="list-group-item list-group-item-action dropdown-item">B105</a>
+    <a href="/examupdate?rid=B106" class="list-group-item list-group-item-action dropdown-item">B106</a>
+    <a href="/examupdate?rid=B205" class="list-group-item list-group-item-action dropdown-item">B205</a>
+    <a href="/examupdate?rid=B206" class="list-group-item list-group-item-action dropdown-item">B206</a>
+    <a href="/examupdate?rid=B302" class="list-group-item list-group-item-action dropdown-item">B301</a>
+    <a href="/examupdate?rid=B302" class="list-group-item list-group-item-action dropdown-item">B302</a>
+    <a href="/examupdate?rid=B305" class="list-group-item list-group-item-action dropdown-item">B304</a>
+    <a href="/examupdate?rid=B305" class="list-group-item list-group-item-action dropdown-item">B305</a>
+    <a href="/examupdate?rid=B307" class="list-group-item list-group-item-action dropdown-item">B307</a>
+    <a href="/examupdate?rid=B307" class="list-group-item list-group-item-action dropdown-item">B308</a>
+    <a href="/examupdate?rid=B310" class="list-group-item list-group-item-action dropdown-item">B310</a>
+    <a href="/examupdate?rid=B310" class="list-group-item list-group-item-action dropdown-item">B311</a>
+    
+  </div>
+</div>
+
+
+ <div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    BLOCK C
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C01</a>
+     <a href="#" class="list-group-item list-group-item-action dropdown-item">C02</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C03</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C04</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C05</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C06</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C07</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C08</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C09</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">C10</a>
+  </div>
+</div>
+
+<div class="dropright">
+  <a class="btn btn-light dropdown-toggle color_nav2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #d6d6d6;">
+    BLOCK D
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D01</a>
+     <a href="#" class="list-group-item list-group-item-action dropdown-item">D02</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D03</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D04</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D05</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D06</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D07</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D08</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D09</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D10</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D11</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D12</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D13</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D14</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D15</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D16</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D17</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D18</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D19</a>
+    <a href="#" class="list-group-item list-group-item-action dropdown-item">D20</a>
+  </div>
+</div>
+<br>
+<a class="btn btn-light" href="/LectureConflicts" role="button" style="background-color: #d6d6d6; width: 84%"> <b>Lecture Collisions</b></a>
+<br>
+<br>
+<a class="btn btn-light" href="/conflicts" role="button" style="background-color: #d6d6d6; width: 84%"> <b>Exam Collisions</b></a>
+<br>
+<br>
+<a class="btn btn-light" href="/VenueCapacity" role="button" style="background-color: #d6d6d6; width: 84%"> <b>Room capacity</b></a>
+
 
 </div>
 
@@ -370,9 +459,8 @@
     @endif
   <div class="card hero-image border-info">
   <div class="card-body">
-    <h5 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h5>
-
-<div style="color: #29234a"><H1><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H1></div>
+<div style="color: #29234a"><H1><CENTER><b>LECTURE TIME TABLE</b></CENTER></H1></div>
+<h4 class="card-title"><b>ROOM NO:{{ $_GET['rid'] }}</b></h4>
 <table border="4" cellspacing="3" align="center" id="tid">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>

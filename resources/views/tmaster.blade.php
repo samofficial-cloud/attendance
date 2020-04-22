@@ -298,12 +298,14 @@ $pending=reservation::where('flag','1')->where('rstatus','-1')->orderBy('combine
  
 //$approved = DB::select('EXEC approvedreservationdate');
 $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combined_date','asc')->get();
+$declined=reservation::where('flag','0')->where('rstatus','-1')->orderBy('combined_date','asc')->get();
 
   $today=date('j');
   $tmonth=date('n');
   $tyear=date('Y');
  $i='1';
  $j='1';
+ $k='1';
 ?>
 <div class="container2" >
   @if(Auth::user()->principal==1 or Auth::user()->Timetable_Master==1)
@@ -326,6 +328,7 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
     <div class="tab">
   <button class="tablinks" onclick="openInstructors(event, 'Pending Requests')" id="defaultOpen"><strong>PENDING REQUESTS</strong></button>
   <button class="tablinks" onclick="openInstructors(event, 'Approved Requests')"><strong>APPROVED REQUESTS</strong></button>
+  <button class="tablinks" onclick="openInstructors(event, 'Declined Requests')"><strong>DECLINED REQUESTS</strong></button>
 </div>
 <div id="Pending Requests" class="tabcontent">
     <br>
@@ -346,7 +349,7 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
       <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
        <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
       <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
-      <th scope="col" style="color:#3490dc;"><center>Action</th>
+      <th scope="col" style="color:#3490dc; width: 117px;"><center>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -364,19 +367,21 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
       <td>{{ $pending->Reason}}</td>
       <td>
         @if(count($pending->Remarks)>0)
-        <center> <a data-toggle="modal" data-target="#Remarks{{$pending->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW <i class="fa fa-eye" style="font-size:14px; color: black;"></i></a></center>
+        <center> <a data-toggle="modal" data-target="#Remarks{{$pending->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-success">VIEW</a></center>
 
         <div class="modal fade" id="Remarks{{$pending->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <b><h5 class="modal-title">REMARKS</h5></b>
+          <b><h4 class="modal-title">REMARKS</h4></b>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
            <div class="modal-body">
-            {{$pending->Remarks}}
+            <p style="font-size: 18px;">{{$pending->Remarks}}</p>
+            <br>
+            <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
             
 </div>
 </div>
@@ -391,7 +396,7 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
          @else
         {{-- <a class="btn btn-sm btn-success" href="{{route('changestatus',$pending->id)}}">Decline</a> --}}
 
-        <a data-toggle="modal" data-target="#Decline{{$pending->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Decline</a>
+        <a data-toggle="modal" data-target="#Decline{{$pending->id}}" class="btn btn-sm btn-danger" role="button" aria-pressed="true">Decline</a>
         <div class="modal fade" id="Decline{{$pending->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
@@ -425,9 +430,30 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
 </div>
 </div>
 
+<a data-toggle="modal" data-target="#Approve{{$pending->id}}" class="btn btn-sm btn-info" role="button" aria-pressed="true">Approve</a>
+         <div class="modal fade" id="Approve{{$pending->id}}" role="dialog">
 
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title" style="color: red;"><b>WARNING</b></h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <p style="font-size: 20px;">Are you sure you want to approve this reservation?</p>
+            <br>
+            <div align="right">
+      <a class="btn btn-info" href="{{route('changestatusc',$pending->id)}}">Approve</a>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+</div>
+      
+</div>
+</div>
+</div>
+</div> 
         
-<a class="btn btn-sm btn-success" href="{{route('changestatusc',$pending->id)}}">Approve</a>
+
 
 @endif
 </td>
@@ -472,6 +498,11 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
   <tbody>
     
       @foreach($approved as $approved)
+      <?php
+      $date1 = new DateTime($approved->Reservation_date);
+      $date2 = new DateTime($approved->approved_date);
+      $interval= $date2->diff($date1);
+      ?>
       <tr>
       <th scope="row">{{ $j }}.</th>
       <td>{{ $approved->Name}}</td>
@@ -484,19 +515,21 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
       <td>{{ $approved->Reason}}</td>
       <td>
         @if(count($approved->Remarks)>0)
-        <center> <a data-toggle="modal" data-target="#Remarks{{$approved->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW <i class="fa fa-eye" style="font-size:15px; color: black;"></i></a></center>
+        <center> <a data-toggle="modal" data-target="#Remarks{{$approved->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-success">VIEW</a></center>
 
         <div class="modal fade" id="Remarks{{$approved->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-          <b><h5 class="modal-title">REMARKS</h5></b>
+          <b><h4 class="modal-title">REMARKS</h4></b>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
            <div class="modal-body">
-            {{$approved->Remarks}}
+            <p style="font-size: 18px;">{{$approved->Remarks}}</p>
+            <br>
+            <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
             
 </div>
 </div>
@@ -504,13 +537,33 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
 </div>
 @endif
         </td>
-        <td>{{$approved->approved_by}}</td>
+        <td>{{$approved->approved_by}} - {{$interval->days}} day(s) after</td>
       <td>
          @if($approved->combined_date<date('Y-m-d'))
         <center><p>Obsolete</p></center>
          @else
-       <a class="btn btn-sm btn-success" href="{{route('changestatusb',$approved->id)}}">Change</a>
-       
+         <center><a data-toggle="modal" data-target="#Change{{$approved->id}}" class="btn btn-sm btn-info" role="button" aria-pressed="true">Change</a></center>
+         <div class="modal fade" id="Change{{$approved->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title" style="color: red;"><b>WARNING</b></h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <p style="font-size: 20px;">Are you sure you want to change this reservation?</p>
+            <br>
+            <div align="right">
+      <a class="btn btn-info" href="{{route('changestatusb',$approved->id)}}">Change</a>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+</div>
+      
+</div>
+</div>
+</div>
+</div> 
        @endif
         </td>
       </tr>
@@ -523,6 +576,126 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
 </tbody>
 </table>
 @endif
+</div>
+<div id="Declined Requests" class="tabcontent">
+  <br>
+  <h4>3. DECLINED REQUESTS</h4>
+  <table class="hover table table-striped table-bordered" id="myTable3">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="color:#3490dc;">S/N</th>
+      <th scope="col" style="color:#3490dc;"><center>Name</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Venue</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Date</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Time</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Decline Reason</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Approved By</center></th>
+      {{-- <th scope="col" style="color:#3490dc;"><center>Action</center></th> --}}
+    </tr>
+  </thead>
+  <tbody>
+    
+      @foreach($declined as $declined)
+      <?php
+      $date1 = new DateTime($declined->Reservation_date);
+      $date2 = new DateTime($declined->approved_date);
+      $interval= $date2->diff($date1);
+      ?>
+      <tr>
+      <th scope="row">{{ $k }}.</th>
+      <td>{{ $declined->Name}}</td>
+      <td><center>{{$declined->Venue}}</center></td>
+      <td><center>{{ $declined->combined_date}}</center></td>
+     <td><center>{{ $declined->fromTime}}-{{ $declined->toTime}}</center></td>
+     <td><center>{{ $declined->Capacity}}</center></td>
+      <td>{{ $declined->Reason}}</td>
+      <td>
+        @if(count($declined->Remarks)>0)
+        <center> <a data-toggle="modal" data-target="#Remarks{{$declined->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-success">VIEW</a></center>
+
+        <div class="modal fade" id="Remarks{{$declined->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h4 class="modal-title">REMARKS</h4></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <p style="font-size: 18px;">{{$declined->Remarks}}</p>
+            <br>
+            <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
+            
+</div>
+</div>
+</div>
+</div>
+@endif
+        </td>
+        <td>
+          <center> <a data-toggle="modal" data-target="#Decline{{$declined->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW</a></center>
+
+        <div class="modal fade" id="Decline{{$declined->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Decline Reason(s)</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+           {{$declined->decline_reason}}
+<br>
+<br>
+ <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
+            
+</div>
+</div>
+</div>
+</div>
+</td>
+        <td>{{$declined->approved_by}} - {{$interval->days}} day(s) after</td>
+      {{-- <td>
+         @if($declined->combined_date<date('Y-m-d'))
+        <center><p>Obsolete</p></center>
+         @else
+         <center><a data-toggle="modal" data-target="#Change{{$declined->id}}" class="btn btn-sm btn-info" role="button" aria-pressed="true">Change</a></center>
+         <div class="modal fade" id="Change{{$declined->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title" style="color: red;"><b>WARNING</b></h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <p style="font-size: 20px;">Are you sure you want to change this reservation?</p>
+            <br>
+            <div align="right">
+      <a class="btn btn-info" href="{{route('changestatusb',$declined->id)}}">Change</a>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+</div>
+      
+</div>
+</div>
+</div>
+</div> 
+       @endif
+        </td> --}}
+      </tr>
+      <?php
+      $k=$k+1;
+      ?>
+
+      @endforeach
+    </tbody>
+  </table>
 </div>
 @else
 <h3 style="color: red;">SORRY!!!YOU DO NOT HAVE PERMISSION TO VIEW THIS PAGE</h3>
@@ -545,22 +718,17 @@ $approved=reservation::where('flag','1')->where('rstatus','1')->orderBy('combine
         dom: '<"top"fl>rt<"bottom"pi>'     
     } );
 
-});
-
-</script>
-
-<script type="text/javascript">
- $(document).ready(function() {
-  
-  
-  // console.log(x);
     var table = $('#myTablee').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'     
     } );
 
-});
+    var table = $('#myTable3').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
 
+});
 </script>
+
 <script type="text/javascript">
   function openInstructors(evt, evtName) {
   // Declare all variables

@@ -62,7 +62,7 @@ class examsController extends Controller
     $exams->course = $request['courseid'];
     $exams->fromTime = $request['fromTime'];
      $exams->toTime= $request['toTime'];
-    $exams->Week = $request['Week'];
+    //$exams->Week = $request['Week'];
 
  if ( $exams->save()) {
 

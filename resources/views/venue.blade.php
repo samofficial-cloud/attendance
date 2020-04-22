@@ -2,6 +2,15 @@
 @section('title')
 VENUE RESERVATION
 @endsection
+@section('style')
+<style type="text/css">
+  .dropdown-menu
+ {
+   max-height: 380px;
+   overflow-y: scroll;
+  }
+</style>
+@endsection
 @section('content')
 <div class="classname">
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
@@ -254,10 +263,12 @@ $Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('
 
 use App\camis_configuration;
 $camistitle=camis_configuration::select('camis_title')->value('camis_title');
+$academicyear=camis_configuration::select('current_academic_year')->value('current_academic_year');
+$semester=camis_configuration::select('current_semester')->value('current_semester');
 ?>
 
-<div class="container ">
-  <div class="row">
+<div class="container2">
+  <div class="row2">
 <div class="col-2 ">
 <div class="card border-info">
   <div class="card-body">
@@ -370,16 +381,21 @@ $camistitle=camis_configuration::select('camis_title')->value('camis_title');
         <p>{{$message}}</p>
       </div>
     @endif
-  <div class="card hero-image border-info" >
+  <div class="card hero-image border-info" style="height: 110%">
   <div class="card-body">
+    <div id="loading" style="margin: auto;"></div>
+    <div id="content">
      {{-- <h5 class="card-title"><b>ROOM NO: #</b></h5> --}}
     <center><h1 class="card-title"><b>{{$camistitle}}</b></h1></center>
     <center><h2 class="card-title"><b>COLLEGE OF ICT</b></h2></center>
 
     <div align="center">
-    
+    <br>
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
-    <h1 class="card-title"><b>ROOM RESERVATION PORTAL</b></h1>
+   <br>
+   <br>
+   <h1 >SEMESTER {{$semester}} {{$academicyear}}</h1><br>
+  <h1 class="card-title"><b>ROOM RESERVATION PORTAL</b></h1>
   
 </div>
 
@@ -389,5 +405,17 @@ $camistitle=camis_configuration::select('camis_title')->value('camis_title');
 </div>
 </div>
 </div>
+</div>
 
+@endsection
+
+@section('pagescript')
+<script type="text/javascript">
+  $(document).ajaxSend(function(){
+    $("#loading").fadeIn(250);
+});
+$(document).ajaxComplete(function(){
+    $("#loading").fadeOut(250);
+});
+</script>
 @endsection

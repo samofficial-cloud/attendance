@@ -191,9 +191,10 @@ a.ex1:hover, a.ex1:active {color: red;}
 
 
 #tid {
-  border: 3px solid black;
+  border: 2px solid black;
   width: 100%;
-  font-family: "Times New Roman", Times, serif;
+  /*font-family: "Times New Roman", Times, serif;*/
+  font-family: "Nunito", sans-serif;
   font-weight: bold;
   border-collapse: separate;
    border-spacing: 3px;
@@ -249,9 +250,17 @@ background-color: #9561e2;
 
 }
 
+html{
+  position:relative; 
+  min-height: 100%;
+}
+.pageContentWrapper{
+  margin-bottom:100px;/* Height of footer*/
+} 
 .footer {
-  position: relative;
+  position: absolute;
   left: 0;
+  right: 0
   bottom: 0;
   width: 100%;
   background-color: #ffffff;
