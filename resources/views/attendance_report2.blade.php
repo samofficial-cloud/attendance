@@ -1,3 +1,4 @@
+{{-- classpdf --}}
 @extends('layouts.app')
 
 @section('title')
@@ -428,12 +429,14 @@
 
                         <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
 
-                        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+                        <input type="text" class="form-control" id="prog" name="prog" value="{{$_GET['prog']}}" hidden>
+
+                        {{-- <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden> --}}
 
                         <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
 
 
-                        <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+                        <input type="text" class="form-control" id="input_name" name="input_name" value="{{$_GET['input_name']}}" hidden>
 
 
                         <center><button class="btn btn-primary" type="submit">Download</button></center>
@@ -488,12 +491,12 @@
 
                     <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
 
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+                    <input type="text" class="form-control" id="show_all" name="prog" value="{{$_GET['prog']}}" hidden>
 
                     <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
 
 
-                    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+                    <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
 
 
                     <center><button class="btn btn-primary" type="submit">Download</button></center>

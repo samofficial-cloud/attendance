@@ -260,8 +260,8 @@
 <br>
 <br>
 
-<div class="container">
-  <div class="row">
+<div class="container2">
+  <div class="row2">
 <div class="col-2 ">
 <div class="card border-info">
   <div class="card-body">
@@ -356,16 +356,17 @@
   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
 @endphp
 <div class="col-10">
-  <div class="card hero-image border-info">
+  <div class="card hero-image border-info" style="height: 110%">
   <div class="card-body">
     <h5 class="card-title"><b></b></h5>
 
     <div align="center">
       <h1 style="text-align: center;"><b>{{$camistitle}}</b></h1>
     <h2 style="text-align: center;"><b>COLLEGE OF ICT</b></h2>
-    
+    <br>
    <div><img src="img/logo_udsm.jpg" height="180px" width="150px"></div>
-    
+    <br>
+    <br>
     <h1><b>COURSES</b></h1>
     
 

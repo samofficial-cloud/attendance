@@ -399,13 +399,16 @@ elseif($role=='tmaster'){
      if($request->get('query'))
      {
       $query = $request->get('query');
-      $data = userinfo::select('name')->where('SSN', 'LIKE', "%{$query}%")->value('name');
+      $data = userinfo::select('name')->where('SSN', 'LIKE', "%{$query}%")->where('TITLE','student')->value('name');
       if(count($data)!=0){
      
       
        $output = $data;
      
       echo $output;
+     }
+     else{
+      echo 0;
      }
      
    }

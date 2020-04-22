@@ -294,10 +294,12 @@ hr {
 <br>
 <?php
 use App\reservation;
- $pending = reservation::where('rstatus','-1')->where('Name',  Auth::user()->name)->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
-  $approved = reservation::where('rstatus','1')->where('Name', Auth::user()->name)->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
+ $pending = reservation::where('rstatus','-1')->where('Name',  Auth::user()->name)->where('flag','1')->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
+  $approved = reservation::where('rstatus','1')->where('Name', Auth::user()->name)->where('flag','1')->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
+  $declined=reservation::where('flag','0')->where('rstatus','-1')->where('Name', Auth::user()->name)->whereDate('combined_date','>=',date('Y-m-d'))->orderBy('combined_date','asc')->get();
  $i='1';
  $j='1';
+ $k='1';
 ?>
 
 <div class="container">
@@ -322,6 +324,7 @@ use App\reservation;
    <div class="tab">
   <button class="tablinks" onclick="openInstructors(event, 'Pending Requests')" id="defaultOpen"><strong>PENDING REQUESTS</strong></button>
   <button class="tablinks" onclick="openInstructors(event, 'Approved Requests')"><strong>APPROVED REQUESTS</strong></button>
+  <button class="tablinks" onclick="openInstructors(event, 'Declined Requests')"><strong>DECLINED REQUESTS</strong></button>
 </div>
 <div id="Pending Requests" class="tabcontent">
    <br>
@@ -373,6 +376,7 @@ use App\reservation;
             {{$pending->Remarks}}
             <br>
             <br>
+            <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
             
 </div>
 </div>
@@ -393,10 +397,12 @@ use App\reservation;
           </div>
 
            <div class="modal-body">
-            <p style="font-size: 20px;">Are you sure you want to cancel?</p>
+            <p style="font-size: 20px;">Are you sure you want to cancel this reservation?</p>
             <br>
-           <button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">Cancel</button> 
-<a class="btn btn-sm btn-danger" href="{{route('changestatusd',$pending->id)}}" style="float: right;">Proceed</a>
+            <div align="right">
+      <a class="btn btn-info" href="{{route('changestatusd',$pending->id)}}">Proceed</a>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+</div>
       
 </div>
 </div>
@@ -433,7 +439,7 @@ use App\reservation;
       <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
       <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
       <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
-      {{-- <th scope="col" style="color:#3490dc;"><center>Action</center></th> --}}
+      <th scope="col" style="color:#3490dc;"><center>Action</center></th>
     </tr>
   </thead>
   <tbody>
@@ -443,7 +449,7 @@ use App\reservation;
       <th scope="row">{{ $j }}.</th>
       <td><center>{{$approved->Venue}}</center></td>
       <td>{{ $approved->Day }}</td>
-      <td><center>{{ $pending->combined_date}}</center></td>
+      <td><center>{{ $approved->combined_date}}</center></td>
        <td><center>{{$approved->Week}}</center></td>
       <td><center>{{ $approved->fromTime}}-{{ $approved->toTime}}</center></td>
       <td><center>{{ $approved->Capacity}}</center></td>
@@ -465,7 +471,7 @@ use App\reservation;
             {{$approved->Remarks}}
 <br>
 <br>
-  {{-- <center><button type="button" class="btn btn-sm btn-dark" data-dismiss="modal">Close</button></center> --}}
+  <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
             
 </div>
 </div>
@@ -474,9 +480,30 @@ use App\reservation;
 @endif
       </td>
      
-     {{--  <td>
-       <a class="btn btn-sm btn-success" href="{{route('changestatusd',$approved->id)}}">Cancel</a>
-        </td> --}}
+     <td>
+        <center><a data-toggle="modal" data-target="#Cancel{{$approved->id}}" class="btn btn-sm btn-success" role="button" aria-pressed="true">Cancel</a></center>
+        <div class="modal fade" id="Cancel{{$approved->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title" style="color: red;"><b>WARNING</b></h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            <p style="font-size: 20px;">Are you sure you want to cancel this reservation?</p>
+            <br>
+            <div align="right">
+      <a class="btn btn-info" href="{{route('changestatusd',$approved->id)}}">Proceed</a>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> 
+</div>
+      
+</div>
+</div>
+</div>
+</div>
+        </td>
       </tr>
       <?php
       $j=$j+1;
@@ -488,6 +515,90 @@ use App\reservation;
 </table>
 {{-- @endif --}}
 </div>
+<div id="Declined Requests" class="tabcontent">
+  <br>
+  <h4>3. DECLINED REQUESTS</h4>
+  <table class="hover table table-striped table-bordered" id="table3">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="color:#3490dc;">S/N</th>
+      <th scope="col" style="color:#3490dc;"><center>Venue</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Day</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Date</center></th>
+       <th scope="col" style="color:#3490dc;"><center>Time</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Capacity</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Reason</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Remarks</center></th>
+      <th scope="col" style="color:#3490dc;"><center>Decline Reason(s)</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+      @foreach($declined as $declined)
+      <tr>
+        <th scope="row">{{ $k }}.</th>
+      <td><center>{{$declined->Venue}}</center></td>
+      <td>{{ $declined->Day }}</td>
+      <td><center>{{ $pending->combined_date}}</center></td>
+      <td><center>{{ $declined->fromTime}}-{{ $declined->toTime}}</center></td>
+      <td><center>{{ $declined->Capacity}}</center></td>
+      <td>{{ $declined->Reason}}</td>
+      <td>
+         @if(count($declined->Remarks)>0)
+        <center> <a data-toggle="modal" data-target="#Remarks{{$declined->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW</a></center>
+
+        <div class="modal fade" id="Remarks{{$declined->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">REMARKS</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+            {{$declined->Remarks}}
+<br>
+<br>
+  <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
+            
+</div>
+</div>
+</div>
+</div>
+@endif
+      </td>
+      <td>
+        <center> <a data-toggle="modal" data-target="#Decline{{$declined->id}}" role="button" aria-pressed="true" class="btn btn-sm btn-info">VIEW</a></center>
+
+        <div class="modal fade" id="Decline{{$declined->id}}" role="dialog">
+
+        <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Decline Reason(s)</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+
+           <div class="modal-body">
+           {{$declined->decline_reason}}
+<br>
+<br>
+ <center><button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button></center>
+            
+</div>
+</div>
+</div>
+</div>
+      </td>
+      </tr>
+      <?php
+      $k=$k+1;
+      ?>
+      @endforeach
+    </tbody>
+  </table>
+  </div>
 </div>
 
 
@@ -506,6 +617,10 @@ use App\reservation;
     } );
 
     var table = $('#table2').DataTable( {
+        dom: '<"top"fl>rt<"bottom"pi>'     
+    } );
+
+    var table = $('#table3').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'     
     } );
 

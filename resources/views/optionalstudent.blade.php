@@ -270,8 +270,39 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
   <div class="col-2" >
   <div class="card border-info">
   <div class="card-body" >
-     <a class="btn btn-light color_nav2" id="addoptionstudent" href="#" role="button"style="background-color: #b0d0ff;">ADD STUDENTS
-     </a>
+     {{-- <a class="btn btn-light color_nav2" id="addoptionstudent" href="#" role="button"style="background-color: #b0d0ff;">ADD STUDENTS
+     </a> --}}
+     <a data-toggle="modal" data-target="#addstudents"  role="button" class="btn btn-light color_nav2" aria-pressed="true" style="background-color: #b0d0ff;">ADD STUDENTS</a>
+     <div class="modal fade" id="addstudents" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+          <b><h5 class="modal-title">Select Course ID</h5></b>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form method="get" action="" >
+      <div class="form-group row" id="DivCourse">
+      <label for="courseid" class="col-sm-3 col-form-label"><strong>Course Id:</strong></label>
+      <div class="col-sm-9">
+      <select name="courseid" id="courseidA" class="custom-select Reason" required="">
+      <option value="">Select Course ID</option>
+       @foreach($mycourse as $mycoursess)
+    <option value="{{$mycoursess->course}}">{{$mycoursess->course}}</option>
+    @endforeach
+      </select>
+      <span id="messageA"></span>
+      </div>
+  </div>
+  <div align="right">
+  <button class="btn btn-primary" type="submit" id="addoptionstudentbutton">Submit</button>
+  <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">Cancel</button>
+</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   <br>
   <br>
   <a data-toggle="modal" data-target="#viewstudents"  role="button" class="btn btn-light color_nav2" aria-pressed="true" style="background-color: #b0d0ff;">EDIT STUDENTS</a>
@@ -354,15 +385,27 @@ $(document).ajaxComplete(function(){
 });
   $(document).ready(function() {
 
-  $("#addoptionstudent").click(function(e){
+  $("#addoptionstudentbutton").click(function(e){
+    $('#addstudents').modal('hide');
     $("#error").hide();
+    var courseid = $('#courseidA').val();
+    if(courseid==''){
+      var message=document.getElementById('messageA');
+        message.style.color='red';
+        message.innerHTML="Please fill this field"
+      return false;
+    }
+    else{
     $.ajax({
       url: "addoption",
+      method:"Get",
+      data:{courseid:courseid},
       context: document.body
     }).done(function(fragment) { 
       $("#content").html(fragment);
     });
     return false;
+  }
 });
 
   $("#viewstudentbutton").click(function(e){
@@ -379,7 +422,7 @@ $(document).ajaxComplete(function(){
     $.ajax({
       url: "viewoptionstudent",
       method:"Get",
-       data:{courseid:courseid},
+      data:{courseid:courseid},
       context: document.body
     }).done(function(fragment) { 
       $("#content").html(fragment);

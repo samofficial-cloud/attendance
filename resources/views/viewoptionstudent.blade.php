@@ -100,7 +100,7 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
   </div>
 <br>
 <div class="form-group row">
-    <label for="regNo{{$student->id}}"  class="col-sm-3 col-form-label"><strong>Registration NO:</strong></label>
+    <label for="regNo{{$student->id}}"  class="col-sm-3 col-form-label"><strong>Registration No:</strong></label>
     <div class="col-sm-9">
     <input type="text" class="form-control" id="regNo{{$student->id}}" name="regNo" value="{{$student->reg_no}}" readonly="">
   </div>

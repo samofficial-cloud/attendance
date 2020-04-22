@@ -141,13 +141,13 @@ div.dt-buttons {
           MANAGE
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
+           <a class="dropdown-item" style="color:#060606" href="/manage/users">USERS</a>
            <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
            <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
            <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
            <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-CSE">CSE-INSTRUCTORS</a>
+          <a class="dropdown-item" style="color:#060606"href="/manage/instructors-ETE">ETE-INSTRUCTORS</a>
           <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
           
         </div>
@@ -684,10 +684,13 @@ $j='1';
 
            <div class="modal-body">
             <h5>Are you sure you want to deactivate this course?</h5>
-            <hr>
-<a class="btn btn-sm btn-info" style="float: left;" href="/instructors-ETE">Back</a>
-<a class="btn btn-sm btn-danger" style="float: right;" href="{{route('DeleteLecturer',$instructors->id)}}">Proceed</a>
+            <br>
+            <br>
+           <div align="right">
+<a class="btn btn-sm btn-info" href="{{route('DeleteLecturer',$instructors->id)}}">Proceed</a>
+<a class="btn btn-sm btn-danger" data-dismiss="modal">Cancel</a>
 
+</div>
 </div>
 </div>
 </div>
@@ -748,7 +751,7 @@ $i='1';
       <td>{{ $instructors->Technical_Staff_2}}</td>
       {{-- <td>{{ $instructors->course_type}}</td> --}}
       <td>{{ $instructors->semester}}</td>
-      <td><center><a data-toggle="modal" data-target="#edit{{$instructors->id}}" role="button" aria-pressed="true"><i class="fa fa-check-circle" style="font-size:30px; color: green;"></i></a></center>
+      <td><center><a data-toggle="modal" data-target="#edit{{$instructors->id}}" role="button" aria-pressed="true" class="btn btn-info">ACTIVATE <i class="fa fa-check-circle" style="font-size:16px; color: green;"></i></a></center>
 
         <div class="modal fade" id="edit{{$instructors->id}}" role="dialog">
 

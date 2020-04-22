@@ -461,20 +461,16 @@ foreach($all_studentsFilter as $values){
         <br>
 
 
-  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+  <form action="{{route('classpdf3')}} " class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
 
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+      <input type="text" class="form-control" id="getSelection" name="sort_criteria" value="{{$_GET['sort_criteria']}}" hidden>
 
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
+      <input type="text" class="form-control" id="one_course" name="percentage" value="{{$_GET['percentage']}}" hidden>
 
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
+       <input type="text" class="form-control" id="fullCourse" name="fullCourse" value="{{$fullCourse}}" hidden>
 
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
-
+      <input type="text" class="form-control" id="courseValue" name="courseValue" value="{{$courseValue}}" hidden>
 
        <center><button class="btn btn-primary" type="submit">Download</button></center>
        </form>

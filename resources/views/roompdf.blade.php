@@ -45,7 +45,7 @@ use App\camis_configuration;
       
     </b></center>
 <div style="color: #29234a"><H3><CENTER><b>{{ $_GET['rid'] }} TIME TABLE</b></CENTER></H3></div>
-<table border="4" align="center" id="tid">
+<table border="4" align="center" id="tid" bgcolor="#deeaf3">
 <tr style="background-color:#afbbc5">
 <th align="center"></th>
  <th>7:00-8:00</th>
@@ -80,7 +80,7 @@ use App\camis_configuration;
  @if($timetabled1[0][0]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled1[0][0]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled1[0][0]->criteria}}</font><br>{{ $timetabled1[0][0]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled1[0][0]->criteria}}</font><br>{{ $timetabled1[0][0]->course }}</b></td>
   @endif
  <?php
  $z=1;
@@ -90,7 +90,7 @@ use App\camis_configuration;
  @if($timetabled1[0][$l]->course=='')
  <td colspan="{{ $p}}">{{ $timetabled1[0][$l]->course }}</td>
  @else
- <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled1[0][$l]->criteria}}</font><br> {{ $timetabled1[0][$l]->course }}</td>
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><b><font color="green">{{  $timetabled1[0][$l]->criteria}}</font><br> {{ $timetabled1[0][$l]->course }}</b></td>
  @endif
  <?php
  $p=1;
@@ -104,7 +104,7 @@ use App\camis_configuration;
  @if($timetabled1[0][12]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled1[0][12]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled1[0][12]->criteria}}</font><br>{{ $timetabled1[0][12]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled1[0][12]->criteria}}</font><br>{{ $timetabled1[0][12]->course }}</b></td>
   @endif
  @break;
  @endif
@@ -133,7 +133,7 @@ use App\camis_configuration;
  @if($timetablede[0][0]->course=='')
  <td colspan="{{ $p }}">{{ $timetablede[0][0]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetablede[0][0]->criteria}}</font><br>{{ $timetablede[0][0]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetablede[0][0]->criteria}}</font><br>{{ $timetablede[0][0]->course }}</b></td>
   @endif
  <?php
  $z=1;
@@ -143,7 +143,7 @@ use App\camis_configuration;
  @if($timetablede[0][$l]->course=='')
  <td colspan="{{ $p}}">{{ $timetablede[0][$l]->course }}</td>
  @else
- <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetablede[0][$l]->criteria}}</font><br> {{ $timetablede[0][$l]->course }}</td>
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><b><font color="green">{{  $timetablede[0][$l]->criteria}}</font><br> {{ $timetablede[0][$l]->course }}</b></td>
  @endif
  <?php
  $p=1;
@@ -157,7 +157,7 @@ use App\camis_configuration;
  @if($timetablede[0][12]->course=='')
  <td colspan="{{ $p }}">{{ $timetablede[0][12]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetablede[0][12]->criteria}}</font><br>{{ $timetablede[0][12]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetablede[0][12]->criteria}}</font><br>{{ $timetablede[0][12]->course }}</b></td>
   @endif
  @break;
  @endif
@@ -182,7 +182,7 @@ use App\camis_configuration;
  @if($timetabled2[0][0]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled2[0][0]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled2[0][0]->criteria}}</font><br>{{ $timetabled2[0][0]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled2[0][0]->criteria}}</font><br>{{ $timetabled2[0][0]->course }}</b></td>
   @endif
  <?php
  $z=1;
@@ -192,7 +192,7 @@ use App\camis_configuration;
  @if($timetabled2[0][$l]->course=='')
  <td colspan="{{ $p}}">{{ $timetabled2[0][$l]->course }}</td>
  @else
- <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled2[0][$l]->criteria}}</font><br> {{ $timetabled2[0][$l]->course }}</td>
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><b><font color="green">{{  $timetabled2[0][$l]->criteria}}</font><br> {{ $timetabled2[0][$l]->course }}</b></td>
  @endif
  <?php
  $p=1;
@@ -206,7 +206,7 @@ use App\camis_configuration;
  @if($timetabled2[0][12]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled2[0][12]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled2[0][12]->criteria}}</font><br>{{ $timetabled2[0][12]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled2[0][12]->criteria}}</font><br>{{ $timetabled2[0][12]->course }}</b></td>
   @endif
  @break;
  @endif
@@ -244,7 +244,7 @@ use App\camis_configuration;
  @if($timetabled3[0][0]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled3[0][0]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled3[0][0]->criteria}}</font><br>{{ $timetabled3[0][0]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled3[0][0]->criteria}}</font><br>{{ $timetabled3[0][0]->course }}</b></td>
   @endif
  <?php
  $z=1;
@@ -254,7 +254,7 @@ use App\camis_configuration;
  @if($timetabled3[0][$l]->course=='')
  <td colspan="{{ $p}}">{{ $timetabled3[0][$l]->course }}</td>
  @else
- <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled3[0][$l]->criteria}}</font><br> {{ $timetabled3[0][$l]->course }}</td>
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><b><font color="green">{{  $timetabled3[0][$l]->criteria}}</font><br> {{ $timetabled3[0][$l]->course }}</b></td>
  @endif
  <?php
  $p=1;
@@ -268,7 +268,7 @@ use App\camis_configuration;
  @if($timetabled3[0][12]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled3[0][12]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled3[0][12]->criteria}}</font><br>{{ $timetabled3[0][12]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled3[0][12]->criteria}}</font><br>{{ $timetabled3[0][12]->course }}</b></td>
   @endif
  @break;
  @endif
@@ -293,7 +293,7 @@ use App\camis_configuration;
  @if($timetabled4[0][0]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled4[0][0]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled4[0][0]->criteria}}</font><br>{{ $timetabled4[0][0]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled4[0][0]->criteria}}</font><br>{{ $timetabled4[0][0]->course }}</b></td>
   @endif
  <?php
  $z=1;
@@ -303,7 +303,7 @@ use App\camis_configuration;
  @if($timetabled4[0][$l]->course=='')
  <td colspan="{{ $p}}">{{ $timetabled4[0][$l]->course }}</td>
  @else
- <td bgcolor="#ffffff" colspan="{{ $p}}"><font color="green">{{  $timetabled4[0][$l]->criteria}}</font><br> {{ $timetabled4[0][$l]->course }}</td>
+ <td bgcolor="#ffffff" colspan="{{ $p}}"><b><font color="green">{{  $timetabled4[0][$l]->criteria}}</font><br> {{ $timetabled4[0][$l]->course }}</b></td>
  @endif
  <?php
  $p=1;
@@ -317,7 +317,7 @@ use App\camis_configuration;
  @if($timetabled4[0][12]->course=='')
  <td colspan="{{ $p }}">{{ $timetabled4[0][12]->course }}</td>
  @else
-  <td bgcolor="#ffffff" colspan="{{ $p }}"><font color="green">{{  $timetabled4[0][12]->criteria}}</font><br>{{ $timetabled4[0][12]->course }}</td>
+  <td bgcolor="#ffffff" colspan="{{ $p }}"><b><font color="green">{{  $timetabled4[0][12]->criteria}}</font><br>{{ $timetabled4[0][12]->course }}</b></td>
   @endif
  @break;
  @endif

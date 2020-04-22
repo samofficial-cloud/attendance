@@ -1,297 +1,339 @@
-@extends('layouts.app')
-
-@section('title')
-  REPORT
-@endsection
-
-@section('style')
+<html>
+<head>
+	<title>Report</title>
+</head>
 <style>
-div.dataTables_filter{
-  padding-left:710px;
-  padding-bottom:20px;
+table {
+  border-collapse: collapse;
+   width: 100%;
 }
 
-div.dataTables_length label {
-    font-weight: normal;
-    text-align: left;
-    white-space: nowrap;
-    display: inline-block;
+table, td, th {
+  border: 1px solid black;
 }
-
-div.dataTables_length select {
-  height:25px;
-  width:10px;
-  font-size: 70%;
-}
-table.dataTable {
-font-family: "Nunito", sans-serif;
-    font-size: 15px;
-
-
-
+table {
+  counter-reset: tableCount;
   }
-  table.dataTable.no-footer {
-    border-bottom: 0px solid #111;
-}
 
-hr {
-    margin-top: 0rem;
-    margin-bottom: 2rem;
-    border: 0;
-    border: 2px solid #505559;
-}
-.form-inline .form-control {
-    width: 100%;
-}
-
+  .counterCell:before {
+  content: counter(tableCount);
+  counter-increment: tableCount;
+  }
 </style>
 
-@endsection
+<body>
+<?php
+use Illuminate\Support\Facades\DB;
+
+        $dataSingle="";
+        $data="";
+      $instructor_data="";
+      $instructor2_data="";
+      $instructor3_data="";
+      $instructor4_data="";
+      $instructor5_data="";
+      $Tutorial_Assistant_data="";
+      $technical_staff_data="";
+      $Technical_Staff_2_data="";
+      $Technical_Staff_3_data="";
+
+$minimum_percentage=DB::table('camis_configuration')->where('id', 1)->value('minimum_class_percentage');
+      $current_academic_year=DB::table('camis_configuration')->where('id', 1)->value('current_academic_year');
+      $current_semester=DB::table('camis_configuration')->where('id', 1)->value('current_semester');
+    $today=date('Y-m-d');
 
 
-@section('content')
-<div class="classname">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+      $semday1=DB::table('camis_configuration')->where('id', 1)->value('semester_startDate');
 
-    @if(Auth::user()->staff==1)
-    <div class="container">
- <center><ul class="nav1 nav-tabs" style="width: 98%">
-  <li class="nav-item">
-   <a class="nav-link" style="color:#060606"href="/">HOME</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
-    </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
-  </li>
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
-  </li>
+      $variables=[$today,$semday1];
+      $holidays = DB::select('EXEC getHolidays ?,?',$variables);
 
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
-  </li>
+      $temp_course=explode('-', strtoupper($_GET['course_id']));
 
-</ul>
-</center>
-</div>
-@elseif(Auth::user()->principal==1)
-<div class="container3" style="padding-left: 154px;">
-  <ul class="nav1 nav-tabs">
-  <li class="nav-item">
-   <a class="nav-link" style="color:#060606"href="/">HOME</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
-    </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
-  </li>
-
-  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          MANAGE
-        </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
-           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
-           <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
-           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
-           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">CSE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">ETE-INSTRUCTORS</a>
-          <a class="dropdown-item" style="color:#060606" href="/system_settings">SYSTEM SETTINGS</a>
-
-        </div>
-      </li>
-
-</ul>
-</div>
-@elseif(Auth::user()->Timetable_Master==1)
-<div class="container3" style="padding-left: 153px;">
-
-    <ul class="nav1 nav-tabs">
-  <li class="nav-item">
-   <a class="nav-link" style="color:#060606"href="/">HOME</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
-    </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
-  </li>
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
-  </li>
-  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          MANAGE
-        </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" style="color:#060606" href="/events">EVENTS</a>
-           <a class="dropdown-item" style="color:#060606" href="/TimetableManagement">TIMETABLE</a>
-           <a class="dropdown-item" style="color:#060606" href="/approval">RESERVATIONS</a>
-
-        </div>
-      </li>
-
-  </ul>
-
-</div>
-@elseif(Auth::user()->HoD==1)
-<div class="container">
-  <center><ul class="nav1 nav-tabs" style="align-content: center;">
-  <li class="nav-item">
-   <a class="nav-link" style="color:#060606"href="/">HOME</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
-    </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/course_instructors">INSTRUCTORS</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/coursee">COURSES</a>
-  </li>
-   <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/generalReports">REPORTS</a>
-  </li>
-  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          MANAGE
-        </a>
-         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" style="color:#060606" href="manage/users">USERS</a>
-          <a class="dropdown-item" style="color:#060606" href="manage/courses">COURSES</a>
-          @if(Auth::user()->DEFAULTDEPTID==31)
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-CSE">INSTRUCTORS</a>
-          @elseif(Auth::user()->DEFAULTDEPTID==32)
-          <a class="dropdown-item" style="color:#060606"href="manage/instructors-ETE">INSTRUCTORS</a>
-          @endif
-         {{--  <a class="dropdown-item" style="color:#060606" href="/managestudents">STUDENTS MANAGEMENT</a> --}}
-        </div>
-      </li>
-
-</ul>
-</center>
-</div>
-@elseif(Auth::user()->admin==1)
-<div class="container">
-  <ul class="nav1 nav-tabs">
-  <li class="nav-item">
-   <a class="nav-link" style="color:#060606"href="/">HOME</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/timetable">TIMETABLE</a>
-    </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/venue">VENUE RESERVATION</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link active" style="color:#060606"href="/report">ATTENDANCE REPORTS</a>
-  </li>
-
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/approval">APPROVAL</a>
-  </li>
-<li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/TimetableManagement">TIMETABLE MANAGEMENT</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606"href="/staffs">STAFF</a>
-  </li>
-
-  <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="color:#060606" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          INSTRUCTORS
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="manage/instructors-CSE">CSE</a>
-          <a class="dropdown-item" href="manage/instructors-ETE">ETE</a>
-        </div>
-      </li>
-
-      <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="manage/courses">COURSES</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/students">STUDENTS</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" style="color:#060606" href="/managestudents">MANAGE STUDENTS</a>
-  </li>
+      $course=$temp_course[0];
 
 
-</ul>
-</div>
-@endif
+      $program_initial=DB::select('EXEC getProgrammeInitial ?',[$course]);
+
+      foreach($program_initial as $var2){
+
+          $program_full[]=DB::select('EXEC getProgrammeFull ?',[$var2->program]);
+
+      }
+
+    $dept_short=DB::table('lecturers')->whereRaw("course LIKE '%$course%'")->value('dept');
 
 
-</nav>
-</div>
-<br>
+
+
+    $name=$_GET['input_name'];
+
+    $program_fullAllCourses=DB::select('EXEC getProgrammeFullAllCourses ?',[$name]);
+
+      $program_fullAllCoursesStaff=DB::select('EXEC getProgrammeFullAllCoursesStaff ?',[$name]);
+    $course_name= DB::table('courses')->whereRaw("course LIKE '%$course%'")->value('course_name');
+
+    $lectures_no = DB::table('courses')->whereRaw("course LIKE '%$course%'")->value('lectures_no');
+
+    $instructor=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND instructor IS NOT NULL")->value('instructor');
+      $instructor_2=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND instructor_2 IS NOT NULL")->value('instructor_2');
+      $instructor_3=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND instructor_3 IS NOT NULL")->value('instructor_3');
+      $instructor_4=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND instructor_4 IS NOT NULL")->value('instructor_4');
+      $instructor_5=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND instructor_5 IS NOT NULL")->value('instructor_5');
+      $Tutorial_Assistant=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND Tutorial_Assistant IS NOT NULL")->value('Tutorial_Assistant');
+      $technical_staff=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND technical_staff IS NOT NULL")->value('technical_staff');
+      $Technical_Staff_2=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND Technical_Staff_2 IS NOT NULL")->value('Technical_Staff_2');
+      $Technical_Staff_3=DB::table('lecturers')->whereRaw("course LIKE '%$course%' AND Technical_Staff_3 IS NOT NULL")->value('Technical_Staff_3');
+
+      $instructor_reg=DB::table('attendance')->where('name', $instructor)->value('reg_no');
+      $instructor2_reg=DB::table('attendance')->where('name', $instructor_2)->value('reg_no');
+      $instructor3_reg=DB::table('attendance')->where('name', $instructor_3)->value('reg_no');
+      $instructor4_reg=DB::table('attendance')->where('name', $instructor_4)->value('reg_no');
+      $instructor5_reg=DB::table('attendance')->where('name', $instructor_5)->value('reg_no');
+      $Tutorial_Assistant_reg=DB::table('attendance')->where('name', $Tutorial_Assistant)->value('reg_no');
+      $technical_staff_reg=DB::table('attendance')->where('name', $technical_staff)->value('reg_no');
+      $Technical_Staff_2_reg=DB::table('attendance')->where('name', $Technical_Staff_2)->value('reg_no');
+      $Technical_Staff_3_reg=DB::table('attendance')->where('name', $Technical_Staff_3)->value('reg_no');
+
+
+
+     if ($_GET['category']== 1) {
+
+      //Echo "All students";
+    $all = DB::select('EXEC getAllCoursesAndLectures_noAllStudents ?',[$course]);
+
+      foreach ($all as $val) {
+        $values=[$course,$val->reg_no,$val->lectures_no,$today,$semday1];
+        $all_students[] = DB::select('EXEC getAttendanceAll ?,?,?,?,?',$values);
+        array_multisort($all_students);
+      }
+
+        foreach ($all as $val) {
+            $values=[$course,$val->reg_no,$val->lectures_no,$today,$semday1];
+            $all_studentsProgKey[] = DB::select('EXEC getAttendanceAllProgKey ?,?,?,?,?',$values);
+            array_multisort($all_studentsProgKey);
+        }
+    }
+
+    elseif ($_GET['category']== 2) {
+      //echo one lecturer
+      if ($_GET['checkbox']=='all cases'){
+
+          $valuesP=[$course,$today,$semday1];
+          $tempHP= DB::select('EXEC extra_countH ?,?,?',$valuesP);
+          $tempCP= DB::select('EXEC extra_countC ?,?,?',$valuesP);
+
+          foreach ($tempHP as $val) {
+              $extraHP=$val->TotalRecords;
+          }
+
+          foreach ($tempCP as $val) {
+              $extraCP=$val->TotalRecords;
+          }
+
+
+
+
+
+
+          if($instructor!=NULL){
+
+              $instructor_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$instructor],['position', '=','LECTURER'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountInstructor = DB::table('attendance')->where([['name', '=',$instructor],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','LECTURER'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageInstructor=round(($CountInstructor+$extraHP+$extraCP)*100/$lectures_no);
+
+          }else {
+
+              $instructor_data=NULL;
+          }
+
+
+          if($instructor_2!=NULL){
+
+              $instructor2_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$instructor_2],['position', '=','LECTURER'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountInstructor_2 = DB::table('attendance')->where([['name', '=',$instructor_2],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','LECTURER'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageInstructor_2=round(($CountInstructor_2+$extraHP+$extraCP)*100/$lectures_no);
+
+
+          }else {
+
+              $instructor2_data=NULL;
+          }
+
+
+          if($instructor_3!=NULL){
+
+              $instructor3_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$instructor_3],['position', '=','LECTURER'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountInstructor_3 = DB::table('attendance')->where([['name', '=',$instructor_3],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','LECTURER'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageInstructor_3=round(($CountInstructor_3+$extraHP+$extraCP)*100/$lectures_no);
+
+          }else {
+
+              $instructor3_data=NULL;
+          }
+
+          if($instructor_4!=NULL){
+
+              $instructor4_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$instructor_4],['position', '=','LECTURER'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountInstructor_4 = DB::table('attendance')->where([['name', '=',$instructor_4],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','LECTURER'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageInstructor_4=round(($CountInstructor_4+$extraHP+$extraCP)*100/$lectures_no);
+
+          }else {
+
+              $instructor4_data=NULL;
+          }
+
+          if($instructor_5!=NULL){
+
+              $instructor5_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$instructor_5],['position', '=','LECTURER'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountInstructor_5 = DB::table('attendance')->where([['name', '=',$instructor_5],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','LECTURER'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageInstructor_5=round(($CountInstructor_5+$extraHP+$extraCP)*100/$lectures_no);
+
+
+          }else {
+
+              $instructor5_data=NULL;
+          }
+
+          if($Tutorial_Assistant!=NULL){
+
+              $Tutorial_Assistant_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$Tutorial_Assistant],['position', '=','TUT'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountTutorial_Assistant = DB::table('attendance')->where([['name', '=',$Tutorial_Assistant],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','TUT'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageTutorial_Assistant=round(($CountTutorial_Assistant+$extraHP+$extraCP)*100/$lectures_no);
+
+          }else {
+
+              $Tutorial_Assistant_data=NULL;
+          }
+
+          if($technical_staff!=NULL){
+
+              $technical_staff_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$technical_staff],['position', '=','TECH'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $Counttechnical_staff = DB::table('attendance')->where([['name', '=',$technical_staff],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','TECH'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentagetechnical_staff=round(($Counttechnical_staff+$extraHP+$extraCP)*100/$lectures_no);
+
+
+          }else {
+
+              $technical_staff_data=NULL;
+          }
+
+          if($Technical_Staff_2!=NULL){
+
+              $Technical_Staff_2_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$Technical_Staff_2],['position', '=','TECH'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountTechnical_Staff_2 = DB::table('attendance')->where([['name', '=',$Technical_Staff_2],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','TECH'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageTechnical_Staff_2=round(($CountTechnical_Staff_2+$extraHP+$extraCP)*100/$lectures_no);
+
+          }else {
+
+              $Technical_Staff_2_data=NULL;
+          }
+
+          if($Technical_Staff_3!=NULL){
+
+              $Technical_Staff_3_data=DB::table('attendance')->where([['title', '=','staff'],['name', '=',$Technical_Staff_3],['position', '=','TECH'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+              $CountTechnical_Staff_3 = DB::table('attendance')->where([['name', '=',$Technical_Staff_3],['validity', '=', 'VALID'],['status', '=', 1],['position', '=','TECH'],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+              $percentageTechnical_Staff_3=round(($CountTechnical_Staff_3+$extraHP+$extraCP)*100/$lectures_no);
+
+          }else {
+
+              $Technical_Staff_3_data=NULL;
+          }
+      }
+      elseif($_GET['selection']=='One course') {
+
+
+          $CountSingle = DB::table('attendance')->where([['name', '=', $name],['validity', '=', 'VALID'],['status', '=', 1],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+          $name = DB::table('attendance')->where([['name', '=', $name],['validity', '=', 'VALID'],['status', '=', 1],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('name');
+          $reg_no = DB::table('attendance')->where([['name', '=', $name],['validity', '=', 'VALID'],['status', '=', 1],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('reg_no');
+
+          $dataSingle = DB::table('attendance')->where([['name', '=', $name],['title', '=','staff'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+
+          $values2=[$course,$today,$semday1];
+          $tempH= DB::select('EXEC extra_countH ?,?,?',$values2);
+          $tempC= DB::select('EXEC extra_countC ?,?,?',$values2);
+
+          foreach ($tempH as $val) {
+              $extraH=$val->TotalRecords;
+          }
+
+          foreach ($tempC as $val) {
+              $extraC=$val->TotalRecords;
+          }
+
+          $percentage=round(($CountSingle+$extraH+$extraC)*100/$lectures_no);
+      }
+      //echo one lecturer all courses
+       else {
+
+      $all = DB::select('EXEC getAllCoursesAndLectures_noStaff ?',[$name]);
+       $name = DB::table('attendance')->where([['name', '=', $name],['title', '=','staff'],['validity', '=', 'VALID'],['status', '=', 1],['category', '=','CLASS']])->limit(1)->value('name');
+       $reg_no = DB::table('attendance')->where([['name', '=', $name],['title', '=','staff'],['validity', '=', 'VALID'],['status', '=', 1],['category', '=','CLASS']])->limit(1)->value('reg_no');
+       foreach ($all as $val) {
+         $values=[$name,$val->courseId,$val->lectures_no,$today,$semday1];
+         $all_courses[] = DB::select('EXEC getAllCoursesStaff ?,?,?,?,?',$values);
+       }
+
+      }
+
+
+    }else {
+
+      //echo one student
+
+      if ($_GET['checkbox']=='all cases') {
+
+      }
+
+      elseif($_GET['selection']=='One course') {
+
+          //from all cases start
+
+          $CountSingle = DB::table('attendance')->where([['name', '=', $name],['validity', '=', 'VALID'],['status', '=', 1],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->count('status');
+
+
+          $values3=[$course,$today,$semday1];
+          $tempH2= DB::select('EXEC extra_countH ?,?,?',$values3);
+          $tempC2= DB::select('EXEC extra_countC ?,?,?',$values3);
+
+          foreach ($tempH2 as $val) {
+              $extraH2=$val->TotalRecords;
+          }
+
+          foreach ($tempC2 as $val) {
+              $extraC2=$val->TotalRecords;
+          }
+
+
+          $percentage=round(($CountSingle+$extraH2+$extraC2)*100/$lectures_no);
+
+          //from all cases end
+
+
+          $name = DB::table('attendance')->where([['name', '=', $name],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('name');
+          $reg_no = DB::table('attendance')->where([['name', '=', $name],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->orderBy('id', 'desc')->limit(1)->value('reg_no');
+          $dataSingle_all = DB::table('attendance')->where([['name', '=', $name],['title', '=','student'],['category', '=','CLASS']])->whereRaw("courseId LIKE '%$course%'")->get();
+
+      } 
+      else {
+
+          //echo one student all courses
+        $all = DB::select('EXEC getAllCoursesAndLectures_noStudent ?',[$name]);
+        
+        $name = DB::table('attendance')->where([['name', '=', $name],['title', '=','student'],['validity', '=', 'VALID'],['status', '=', 1],['category', '=','CLASS']])->limit(1)->value('name');
+        $reg_no = DB::table('attendance')->where([['name', '=', $name],['title', '=','student'],['validity', '=', 'VALID'],['status', '=', 1],['category', '=','CLASS']])->limit(1)->value('reg_no');
+        foreach ($all as $val) {
+          $values3=[$name,$val->courseId,$val->lectures_no,$today,$semday1];
+          $all_courses[] = DB::select('EXEC getAllCourses ?,?,?,?,?',$values3);
+        }
+
+      }
+
+    }
+
+    use App\camis_configuration;
+   $camistitle=camis_configuration::select('camis_title')->value('camis_title');
+  ?>
 <div class="container">
 
     <!-- Detailed case -->
@@ -302,7 +344,6 @@ hr {
                     <div style="float: right;">
                     <h6 class="note">Academic year: {{$current_academic_year}}</h6>
                     <h6 class="note">Semester: {{$current_semester}}</h6></div>
-
                     @if($dept_short=='CSE')
                         <h4 class="note">Department: Computer science and Engineering</h4>
                     @elseif($dept_short=='ETE')
@@ -315,7 +356,7 @@ hr {
 
                     <h4 class="note">Course: {{$_GET['course_id']}} </h4>
 
-                    <b><p class="note"> Class Attendance Report for Staffs</p></b>
+                    <b><p class="note"> Class attendance report for staffs</p></b>
 
 
 
@@ -338,7 +379,7 @@ hr {
             @endforeach
             <h4 class="note">Case: All courses </h4>
 
-      <b><p class="note">Class Attendance Report for {{$name}} ({{$reg_no}})</p></b>
+      <b><p class="note">Class attendance report for {{$name}} ({{$reg_no}})</p></b>
 
 
 
@@ -354,10 +395,16 @@ hr {
 
 @if(count($all_students)>0)
     <div class="col-xs-9"><legend>
-            <div style="float: right;">
-                <h6 class="note">Academic year: {{$current_academic_year}}</h6>
-                <h6 class="note">Semester: {{$current_semester}}</h6></div>
-            <h6 class="note">Programme:
+      <center><b>{{$camistitle}}
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+    </b>
+  </center>
+  </legend> </div>
+              <p class="note" style="float: right; font-size: 15px;">Semester: <b>{{$current_semester}}</b></p>
+                <p class="note" style="font-size: 15px;">Academic year: <b>{{$current_academic_year}}</b></p>
+                
+            <p class="note" style="font-size: 15px;">Programme(s): <b>
 
                 <?php
                 $i=0;
@@ -377,14 +424,14 @@ hr {
                     $i++;
                 }
                 ?>
+              </b>
+            </p>
 
-            </h6>
-
-            <h5 class="note">Course: {{$_GET['course_id']}}</h5>
-      <b><p class="note">Class Attendance Report for All Students </p></b>
+            <p class="note">Course: <b>{{$_GET['course_id']}}</b></p>
+      <p class="note">Class attendance report for: <b>All students</b></p>
 
 
-    </legend> </div>
+    
 
     @else
 
@@ -1145,29 +1192,6 @@ hr {
                 <br>
                 <br>
 
-                <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
-
-                    <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                    <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                    <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-                    <input type="text" class="form-control" id="prog" name="prog" value="{{$_GET['prog']}}" hidden>
-
-                    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                    <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
-
-
-                    <center><button class="btn btn-primary" type="submit">Download</button></center>
-                </form>
-
-
-
-
                 @else
                     <h4>No data could be found for the specified parameters</h4>
                 @endif
@@ -1183,60 +1207,44 @@ hr {
 
             <div class="col-xs-6">
                 @if(count($dataSingle)>0)
-                    {{--<div class="col-xs-9"><legend>--}}
-                            {{--<p class="note"> Class Attendance Report for <b>{{$name}} ({{$reg_no}})</b> </p>--}}
-                            {{--@foreach($program_fullAllCourses as $var)--}}
-                                {{--<h5 class="note">Programme: {{$var->full}}</h5>--}}
-                            {{--@endforeach--}}
-                            {{--<h5 class="note">Course: {{$_GET['course_id']}}</h5>--}}
-                        {{--</legend> </div>--}}
-
-                    {{--<br>--}}
-
                     <div class="col-xs-9"><legend>
-                            <div style="float: right;">
-                                <h6 class="note">Academic year: {{$current_academic_year}}</h6>
-                                <h6 class="note">Semester: {{$current_semester}}</h6></div>
-
-                            @if($dept_short=='CSE')
-                                <h4 class="note">Department: Computer science and Engineering</h4>
+                      <center><b>{{$camistitle}}
+      <br><br><img src="{{public_path('/img/logo_udsm.jpg')}}" height="70px"></img>
+      <br>COLLEGE OF INFORMATION AND COMMUNICATION TECHNOLOGIES
+    </b>
+  </center>
+  </legend> </div>
+              
+              <p  style="float: right; font-size: 15px;">Semester: <b>{{$current_semester}}</b></p>
+                <p  style="font-size: 15px;">Academic year: <b>{{$current_academic_year}}</b></p>
+                
+                            @if($dept_short=="CSE")
+                                <p class="note">Department: <b>Computer science and Engineering</b></p>
                             @elseif($dept_short=='ETE')
-
-                                <h4 class="note">Department: Electronics and Telecommunications Engineering</h4>
+                                <p class="note">Department: <b>Electronics and Telecommunications Engineering</b></p>
                             @else
 
 
                             @endif
 
 
-                            <h4 class="note">Course: {{$_GET['course_id']}} </h4>
+                            <p class="note">Course: <b>{{$_GET['course_id']}}</b> </p>
+                            <p class="note"> Class attendance report for: <b>{{$name}} ({{$reg_no}})</b> </p>
 
-                            <b><p class="note"> Class Attendance Report for {{$name}} ({{$reg_no}}) </p></b>
+                        
 
-                        </legend> </div>
-
-                <br>
-
-                    {{--<center><h4>Overall percentage</h4></center>--}}
-
-
-                    <center><span class="chart " data-percent="{{$percentage}}">
-		<span class="percent"></span>
-	</span></center>
-                    <br>
-
-                    <div class="center location"><p>Overall percantage so far</p></div>
-<br><br><br>
+                    <p>Overall percantage so far: <b>{{$percentage}}%</b></p>
+<br>
 
                     <table id="mytableOneCourse" class="hover table table-bordered table-striped" >
                         <thead class="thead-dark">
                         <tr>
                             <th>S/N</th>
-                            <th>DATE</th>
-                            <th>COURSE START TIME</th>
-                            <th>COURSE END TIME</th>
-                            <th>SIGNING TIME</th>
-                            <th>STATUS</th>
+                            <th><center>DATE</center></th>
+                            <th><center>COURSE START TIME</center></th>
+                            <th><center>COURSE END TIME</center></th>
+                            <th style="width: 28%"><center>SIGNING TIME</center></th>
+                            <th><center>STATUS</center></th>
                         </tr>
                         </thead>
 
@@ -1244,9 +1252,9 @@ hr {
                         @foreach ($dataSingle as $var)
                             <tr>
                                 <td class="counterCell">.</td>
-                                <td>{{date("d/m/Y",strtotime($var->datetime))  }}</td>
-                                <td>{{ date("H:i",strtotime($var->courseTimeFrom))}}</td>
-                                <td>{{ date("H:i",strtotime($var->courseTimeTo))}}</td>
+                                <td><center>{{date("d/m/Y",strtotime($var->datetime))  }}</center></td>
+                                <td><center>{{ date("H:i",strtotime($var->courseTimeFrom))}}</center></td>
+                                <td><center>{{ date("H:i",strtotime($var->courseTimeTo))}}</center></td>
                                 <td>
                                     @if($var->status==1)
                                         @if($var->validity=='VALID')
@@ -1287,9 +1295,9 @@ hr {
                                     @endif
                                 </td>
                                 <td>@if($var->status==1)
-                                        PRESENT
+                                        <center>PRESENT</center>
                                     @else
-                                        ABSENT
+                                        <center>ABSENT</center>
                                     @endif </td>
                             </tr>
                         @endforeach
@@ -1301,7 +1309,7 @@ hr {
                     <br>
 
 
-                    <h6><u>PUBLIC HOLIDAYS</u></h6>
+                    <h4><u>PUBLIC HOLIDAYS</u></h4>
                     <?php
                     foreach($holidays as $values){
                         $iterator = new RecursiveIteratorIterator(new RecursiveArrayIterator($values));
@@ -1315,29 +1323,6 @@ hr {
 
 
                     <br>
-
-
-
-
-                    <form action="{{route('classpdf2')}} " class="form-container form-horizontal" method="get">
-                        {{csrf_field()}}
-
-                        <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-                        <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-                        <input type="text" class="form-control" id="inputCourse" name="prog" value="{{$_GET['prog']}}" hidden>
-
-                        <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-                        <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
-
-
-                        <center><button class="btn btn-primary" type="submit">Download</button></center>
-                    </form>
-
-
                 @else
                     <h4>No data could be found for the specified parameters</h4>
                 @endif
@@ -1358,7 +1343,7 @@ hr {
       <tr>
         <th >S/N</th>
         <th class="order">Course code</th>
-          <th class="order">Course name</th>
+          <th>Course name</th>
         <th class="order">Percentage</th>
       </tr>
     </thead>
@@ -1388,25 +1373,6 @@ hr {
 
   <br>
 
-  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
-
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="prog" value="{{$_GET['prog']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
-
-
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
-
-
   @else
   <h4>No data could be found for the specified parameters</h4>
   @endif
@@ -1421,71 +1387,15 @@ hr {
 <div class="col-xs-6">
   @if(count($all_students)>0)
   <br>
-
-        <a data-toggle="modal" data-target="#sortClass" class="btn styling mb-2 button_color active" role="button" aria-pressed="true">Sort by percentage</a> &nbsp;
-        <div class="modal fade" id="sortClass" role="dialog">
-
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <b><h5 class="modal-title">Sort by percentage</h5></b>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-
-                    <div class="modal-body">
-                    <?php
-                        $temp_course1=strtoupper($_GET['course_id']);
-
-                        $temp_course2=explode('-', strtoupper($temp_course1));
-
-                        $course=$temp_course2[0];
-                    ?>
-                        <form id="test_form"  action="/attendance_report/sortClass/{{{$course}}}/{{$_GET['course_id']}}" class="form-container form-horizontal" method="get">
-                            {{csrf_field()}}
-                            <div class="form-group row">
-                                <label for="" class="col-sm-4 col-form-label">Criteria:</label>
-                                <div class="col-sm-8">
-                                    <select name="sort_criteria" id="getSortCriteria" >
-
-                                        <option value="1" >Below</option>
-                                        <option value="2" >Above</option>
-                                    </select>
-                                </div>
-                            </div>
-
-
-
-
-                            <div id="DivCheckt" style="display:block;">
-                                <div class="form-group row">
-                                    <label for="inputEmail3" class="col-sm-4 col-form-label">Percentage:</label>
-                                    <div class="col-sm-8">
-                                        <input type="number" id="percent" required name="percentage" class="form-control" oninput="validatePercentage()" autocomplete="off" >
-                                        <p class="mt-2 p-1"  id="messagePercentage"></p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <div style="margin-left: 52.5%;"><button id="percent_btn"  class="btn btn-primary" type="submit">Sort</button>        <button type="button" style="margin-left: 6%;" class="btn btn-danger" id="btnclose" data-dismiss="modal">Cancel</button></div>
-                            {{--<center><button id="percent_btn"  class="btn btn-primary" type="submit">Sort</button></center>--}}
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-  <table id="myTable1" class="table table-bordered table-striped" >
+  <table  class="hover table table-bordered table-striped" id="myTable1">
     <thead class="thead-dark">
       <tr>
         <th>S/N</th>
-          <th class="order">SURNAME</th>
-          <th class="order">OTHER NAMES</th>
-        <th>Registration number</th>
-          <th>Programme</th>
-        <th>Percentage</th>
+          <th><center>Surname</center></th>
+          <th><center>Other Name(s)</center></th>
+        <th><center>Registration number</center></th>
+        <th><center>Programme</center></th>
+        <th><center>Percentage</center></th>
       </tr>
     </thead>
 
@@ -1501,10 +1411,7 @@ foreach($all_students as $values){
     $first_name=$temp2[1];
     $middle_name=$temp2[2];
     $other_names=$temp1[1];
-    print('<tr><td class="counterCell">.</td>'.'<td>'.$surname.'</td><td>'.$other_names.'</td><td>'.$val['reg_no'].'</td><td>'.$val['program'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
-
-
-//       print('<tr><td class="counterCell">.</td>'.'<td>'.$val['name'].'</td><td>'.$val['reg_no'].'</td><td>'.round($val['PERCENTAGE']).'%'.'</td></tr>');
+    print('<tr><td class="counterCell">.</td>'.'<td>'.$surname.'</td><td>'.$other_names.'</td><td><center>'.$val['reg_no'].'</center></td><td><center>'.$val['program'].'</center></td><td><center>'.round($val['PERCENTAGE']).'%'.'</center></td></tr>');
 
 }
 ?>
@@ -1535,39 +1442,11 @@ foreach($all_students as $values){
                 print($val['program'].' - '.$val['full'].'<br>');
                 array_push($tempOut,$tempoIn);
             }
-
-
-
-
         }
         ?>
 
 
         <br>
-
-
-
-
-
-  <form action="{{route('classpdf2')}} " class="form-container form-horizontal" method="get">
-                   {{csrf_field()}}
-
-      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
-
-      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-        <input type="text" class="form-control" id="show_all" name="prog" value="{{$_GET['prog']}}" hidden>
-
-    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
-
-
-    <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
-
-
-       <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form>
-
-
   @else
   <h4>No data could be found for the specified parameters</h4>
   @endif
@@ -1575,142 +1454,6 @@ foreach($all_students as $values){
 
 @endif
 
-
-
-
-      <div class="col-xs-3">
-      <button class="btn btn-dark " onclick="window.location.href='/report';">Back</button>
-    </div>
-
 </div>
-
-
-
-@endsection
-
-@section('pagescript')
-<script src="{{ asset('js/jquery.easing.min.js') }}" defer></script>
-<script src="{{ asset('js/jquery.easypiechart.min.js') }}" defer></script>
-
-<script>
-	$(function() {
-		$('.chart').easyPieChart({
-			easing: 'easeOutBounce',
-      scaleColor:	false,
-      trackColor:	'#e9ecef',
-      barColor: '#72b4ea',
-      lineCap:	'square',
-      lineWidth:	'20',
-      size: '160',
-      animate:{
-					duration:2000,
-					enabled:true
-				},
-			onStep: function(from, to, percent) {
-				$(this.el).find('.percent').text(Math.round(percent));
-			}
-		});
-
-	});
-	</script>
-
-<script>
-
-
-    function validatePercentage(){
-        var percentage=document.getElementById("percent").value;
-
-        if(percentage <=0 || percentage>100){
-
-            document.getElementById("messagePercentage").style.backgroundColor ='#ccd8e263';
-            document.getElementById("messagePercentage").style.color ='red';
-            document.getElementById("messagePercentage").innerHTML ='Invalid input';
-            document.getElementById("percent_btn").disabled=true;
-
-
-        }
-
-        else{
-            document.getElementById("messagePercentage").innerHTML ='';
-            document.getElementById("percent_btn").disabled=false;
-            document.getElementById("messagePercentage").style.backgroundColor ='';
-        }
-
-    }
-
-
-
-
-
-
-window.addEventListener( "pageshow", function ( event ) {
-  var historyTraversal = event.persisted ||
-                         ( typeof window.performance != "undefined" &&
-                              window.performance.navigation.type === 2 );
-  if ( historyTraversal ) {
-    // Handle page restore.
-    window.location.reload();
-  }
-});
-</script>
-
-<script type="text/javascript">
- $(document).ready(function() {
-// $('tr').each(
-     // $('tr').each(
-     //     function(){
-     //         $(this).find('td:gt(11)').hide();
-     //     });
-
-     $("#sorter2").tablesorter();
-
-
-
-  // console.log(x);
-    var table = $('#myTable1').DataTable( {
-        dom: '<"top"fl>rt<"bottom"pi>'
-    } );
-
-    var table = $('#mytableOneCourse').DataTable( {
-        dom: '<"top"fl>rt<"bottom"pi>'
-    } );
-
-
-     var table = $('#mytableDetailedinstructor').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedinstructor2').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedinstructor3').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedinstructor4').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedinstructor5').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedtech1').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedtech2').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-     var table = $('#mytableDetailedtech3').DataTable( {
-         dom: '<"top"fl>rt<"bottom"pi>'
-     } );
-
-
-});
-
-</script>
-
-@endsection
+</body>
+</html>

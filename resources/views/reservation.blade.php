@@ -11,6 +11,14 @@ VENUE RESERVATION
   .a{
     cursor:pointer;
   }
+  .form-inline label {
+  justify-content: left;
+}
+  .dropdown-menu
+ {
+   max-height: 380px;
+   overflow-y: scroll;
+  }
 </style>
 @endsection
 @section('content')
@@ -270,8 +278,8 @@ $Cweek = calendar::select('Week')->where('Date',date('j'))->where('Month',date('
 
    use App\reservation;
    
-    $stat = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->get();
-   $states = reservation::where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('rstatus','-1')->get();  
+    $stat = reservation::select('rstatus')->where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('Day','Monday')->where('Month',date('m'))->where('flag','1')->get();
+   $states = reservation::where('Week',$_GET['wid'])->where('Venue',$_GET['rid'])->where('rstatus','-1')->where('flag','1')->get();  
 
   use App\capacityvenue;
  $capacity = capacityvenue::select('capacity')->where('venue',$_GET['rid'])->where('Criteria','Lecture')->value('capacity');
@@ -553,9 +561,9 @@ $yy=$times['Year'];
 <input type="hidden" id="today{{$timed->id}}" name="ReservationDate" value="{{$today}}">
 
   <div class="form-group row">
-    <label for="inlineFormCustomSelectReason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
+    <label for="Reason{{$timed->id}}"  class="col-sm-3 col-form-label">Reason:</label>
     <div class="col-sm-8">
-   <select class="custom-select Reason" name="Reason" id="inlineFormCustomSelectReason{{$timed->id}}">
+   <select class="custom-select Reason" name="Reason" id="Reason{{$timed->id}}">
     <option value="Lecture">Lecture</option>
     <option value="Test">Test</option>
     <option value="Seminar">Seminar</option>
@@ -575,15 +583,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -723,15 +734,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -878,15 +892,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -1038,15 +1055,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -1205,15 +1225,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -1377,15 +1400,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -1556,15 +1582,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -1741,15 +1770,17 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="1" maxlength="80"></textarea>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -1933,15 +1964,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -2130,15 +2164,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -2333,15 +2370,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -2541,15 +2581,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -2755,15 +2798,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -2916,15 +2962,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -3064,15 +3113,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -3219,15 +3271,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -3379,15 +3434,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -3546,15 +3604,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -3718,15 +3779,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -3897,15 +3961,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -4082,15 +4149,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -4274,15 +4344,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -4471,15 +4544,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -4674,15 +4750,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -4882,15 +4961,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -5096,15 +5178,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -5259,15 +5344,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -5407,15 +5495,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -5562,15 +5653,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -5722,15 +5816,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -5889,15 +5986,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -6061,15 +6161,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -6240,15 +6343,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -6425,15 +6531,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -6617,15 +6726,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -6814,15 +6926,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -7017,15 +7132,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -7225,15 +7343,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -7439,15 +7560,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -7598,15 +7722,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -7746,15 +7873,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -7901,15 +8031,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -8061,15 +8194,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -8228,15 +8364,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -8400,15 +8539,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -8579,15 +8721,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -8764,15 +8909,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -8956,15 +9104,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -9153,15 +9304,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -9356,15 +9510,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -9564,15 +9721,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -9778,15 +9938,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -9937,15 +10100,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -10085,15 +10251,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -10240,15 +10409,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -10400,15 +10572,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -10567,15 +10742,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -10739,15 +10917,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -10918,15 +11099,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -11103,15 +11287,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -11295,15 +11482,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -11492,15 +11682,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -11695,15 +11888,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -11903,15 +12099,18 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
 
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+  <br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -12117,15 +12316,17 @@ $yy=$times['Year'];
 </div>
 
    <div class="form-group row">
-    <label for="FormControlTextarea1{{$timed->id}}" class="col-sm-3">Remarks:</label>
+    <label for="Remark{{$timed->id}}" class="col-sm-3">Remarks:</label>
     <div class="col-sm-8">
-    <textarea class="form-control" name="remark" id="FormControlTextarea1{{$timed->id}}" rows="1" maxlength="80"></textarea>
+    <textarea class="form-control" name="remark" id="Remark{{$timed->id}}" rows="2" maxlength="80"></textarea>
+    <span id="message{{$timed->id}}"></span>
   </div>
   </div>
   
-
-  <div class="form-group">
-     <center><button type="submit" class="btn btn-primary">SUBMIT</button></center>
+<br>
+  <div class="form-group" align="right">
+    <button type="submit" class="btn btn-primary" name="submitButton" id="{{$timed->id}}">SUBMIT</button>
+    <button class="btn btn-danger" type="button" class="close" data-dismiss="modal">CANCEL</button>
     </div>
 
      </form>
@@ -12171,4 +12372,27 @@ $yy=$times['Year'];
 </div>
 </div>
 
+@endsection
+
+@section('pagescript')
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('[name="submitButton"]').click(function(e){
+       var id = this.id,
+       reason=$('#Reason'+id).val(),
+       remark=$('#Remark'+id).val();
+       if(reason=='Others' && remark==''){
+      $('#message'+id).show();
+      var message=document.getElementById('message'+id);
+      message.style.color='red';
+      message.innerHTML="Remarks is required";
+      return false;
+       }
+       else{
+      $('#message'+id).hide();
+      return true;
+       }
+    });
+  });
+</script>
 @endsection

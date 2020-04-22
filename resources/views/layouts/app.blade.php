@@ -44,7 +44,24 @@
      @yield('style')
 </head>
 <body>
+  <?php
+    use App\system_notification;
+    //$notifications=system_notification::get();
+    if(Auth::user()->role=='Principal'){
+      $notifications=system_notification::where('flag','1')->where(function($query){$query->Where('receiver_role','tmaster')->orWhere('name',Auth::user()->name);})->get();
+                              }
+    elseif (Auth::user()->role=='tmaster') {
+    $notifications=system_notification::where('flag','1')->where(function($query){$query->Where('receiver_role','tmaster')->orWhere('name',Auth::user()->name);})->get();
+    }
+    else{
+    $notifications=system_notification::Where('name',Auth::user()->name)->where('flag','1')->get();
+    }
+
+  $total=count($notifications);
+  $i='1';
+  ?>
     <div >
+
         <nav class="navbar navbar-expand-sm navbar-dark color_navbar navbar-laravel">
             {{-- <div class=""> --}}
                 <a class="navbar-brand">
@@ -87,6 +104,27 @@
                                 @endif
                             </li> -->
                         @else
+                                  <i class="fa fa-bell" style="font-size:36px;color:#282727"></i>
+
+                        <a id="navbarDropdownNotifications" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          {{$total}}     
+                                </a>
+                                @if($total==0)
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownNotifications">
+                                  <a class="dropdown-item" href="#">You have no new notification</a>
+                                </div>
+                                @elseif($total>0)
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownNotifications">
+                                  @foreach($notifications as $notifications)
+                                <a class="dropdown-item" href="{{ route('ShowSystemNotifications',$notifications->id) }}">{{$i}}. {{$notifications->message}}</a>
+                                <?php
+                                $i=$i+1;
+                                ?>
+                                  @endforeach
+
+                                </div>
+                                @endif
+                        
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -99,6 +137,7 @@
                                     <a class="dropdown-item" href="/profile">View Profile</a>
                                      <a class="dropdown-item" href="/myreservations">My Reservations</a>
                                       <a class="dropdown-item" href="/mytests">My Tests</a>
+                                       <a class="dropdown-item" href="/temporary_timetable">Temporary Timetable</a>
                                      <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -117,7 +156,9 @@
 
 
         <main >
+          <div class="pageContentWrapper">
             @yield('content')
+          </div>
         </main>
     </div>
     @yield('pagescript')

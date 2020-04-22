@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-  My Tests
+  Temporary Timetable
 @endsection
 
 @section('style')
@@ -322,14 +322,14 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
  <div class="modal fade" id="mytest" role="dialog">
 
         <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 102%">
         <div class="modal-header">
           <b><h5 class="modal-title">Complete the Form Below</h5></b>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
   <div class="modal-body">
-        <form method="post" action="{{route('addtest')}}" onsubmit="return getdata()"  name="myForm">
+        <form method="get" action="{{ route('inserttemp_timetables') }}" onsubmit="return getdata()"  name="myForm">
   {{csrf_field()}}
 
    <div class="form-group row">
@@ -347,7 +347,7 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
   </div>
 
   <div class="form-group row">
-    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue(s):</strong></label>
+    <label for="Venue"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-7">
     <input type="text" onblur="this.value=removeSpaces(this.value); javascript:this.value=this.value.toUpperCase();" class="form-control" id="Venue" name="Venue" value="" required>
   </div>
@@ -382,17 +382,12 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
 
 
   <div class="form-group row">
-    <label for="Select"  class="col-sm-3 col-form-label"><strong>Test No:</strong></label>
+    <label for="Select"  class="col-sm-3 col-form-label"><strong>Category:</strong></label>
     <div class="col-sm-7">
    <select class="custom-select Reason" name="type" id="inlineFormCustomSelectPref">
-    <option value="">Select Test Type</option>
-    <option value="Test 1">Test 1</option>
-    <option value="Test 2">Test 2</option>
-    <option value="Test 3">Test 3</option>
-     <option value="Test 4">Test 4</option>
-     <option value="Make Up">Make Up</option>
-    <option value="Special Test 1">Special Test 1</option>
-     <option value="SpecialTest 2">Special Test 2</option>
+    <option value="">Select Category</option>
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
   </select>
   </div>
   </div>
@@ -408,149 +403,155 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
 </div>
 </div>
 <div class="tab">
-  <button class="tablinks" onclick="openInstructors(event, 'Upcoming')" id="defaultOpen"><strong>UPCOMING TESTS</strong></button>
-  <button class="tablinks" onclick="openInstructors(event, 'Previous')"><strong>PREVIOUS TESTS</strong></button>
+  <button class="tablinks" onclick="openInstructors(event, 'UPCOMING')" id="defaultOpen"><strong>UPCOMING</strong></button>
+  <button class="tablinks" onclick="openInstructors(event, 'PREVIOUS')" ><strong>PREVIOUS</strong></button>
 </div>
-<div id="Upcoming" class="tabcontent">
-    <br>
-  <h4>1. UPCOMING TESTS</h4>
-  <br>
+<div id="PREVIOUS" class="tabcontent">
+<br>
+<h2>2. Previous Temporary Timetable</h2>
+<br>
 <table class="hover table table-striped table-bordered" id="myTable">
   <thead class="thead-dark">
     <tr>
-      <th scope="col" style="color:#3490dc;"><center>S/N</center></th>
-      <th scope="col" style="color:#3490dc;"><center>VENUE(S)</center></th>
-      <th scope="col" style="color:#3490dc;"><center>TEST NO.</center></th>
-      <th scope="col" style="color:#3490dc;"><center>COURSE</center></th>
+      <th scope="col" style="color:#3490dc;width: 1px;"><center>S/N</center></th>
+      <th scope="col" style="color:#3490dc;"><center>COURSE ID</center></th>
+      <th scope="col" style="color:#3490dc;"><center>VENUE</center></th>
       <th scope="col" style="color:#3490dc;"><center>DATE</center></th>
       <th scope="col" style="color:#3490dc;"><center>TIME</center></th>
+      <th scope="col" style="color:#3490dc;"><center>CATEGORY</center></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach($previous_temp as $temp)
+    <tr>
+      <th scope="row">{{ $i }}.</th>
+      <td><center>{{$temp->course}}</center></td>
+      <td><center>{{$temp->venue}}</center></td>
+      <td><center>{{$temp->date}}</center></td>
+  <td><center>{{$temp->fromTime}} - {{$temp->toTime}}</center></td>
+      <td><center>{{$temp->category}}</center></td>
+      
+    </tr>
+    @endforeach
+  </tbody>
+</table>
+</div>
+<div id="UPCOMING" class="tabcontent">
+  <br>
+  <h2>1. Upcoming Temporary Timetable</h2>
+  <br>
+<table class="hover table table-striped table-bordered" id="myTable1">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="color:#3490dc; width: 1px"><center>S/N</center></th>
+      <th scope="col" style="color:#3490dc;"><center>COURSE ID</center></th>
+      <th scope="col" style="color:#3490dc;"><center>VENUE</center></th>
+      <th scope="col" style="color:#3490dc;"><center>DATE</center></th>
+      <th scope="col" style="color:#3490dc;"><center>TIME</center></th>
+      <th scope="col" style="color:#3490dc;"><center>CATEGORY</center></th>
       <th scope="col" style="color:#3490dc;"><center>ACTION</center></th>
     </tr>
   </thead>
   <tbody>
-
-    @foreach($mytest as $mytests)
+    @foreach($next_temp as $temp)
     <tr>
       <th scope="row">{{ $i }}.</th>
-      <td>{{$mytests->venue}}</td>
-      <td>{{$mytests->type}}</td>
-      <td>{{$mytests->course}}</td>
-      <td>{{$mytests->date}}</td>
-       <td>{{$mytests->fromTime}} - {{$mytests->toTime}}</td>
-     <td>
-      <center><a data-toggle="modal" data-target="#edit{{$mytests->id}}" role="button" aria-pressed="true" name="editC"><i class="fa fa-edit" style="font-size:30px; color: green;"></i></a>
-        <div class="modal fade" id="edit{{$mytests->id}}" role="dialog">
+      <td><center>{{$temp->course}}</center></td>
+      <td><center>{{$temp->venue}}</center></td>
+      <td><center>{{$temp->date}}</center></td>
+  <td><center>{{$temp->fromTime}} - {{$temp->toTime}}</center></td>
+      <td><center>{{$temp->category}}</center></td>
+      <td>
+        <a data-toggle="modal" data-target="#edit{{$temp->id}}" role="button" aria-pressed="true"><i class="fa fa-edit" style="font-size:30px; color: green;"></i></a>
+        <div class="modal fade" id="edit{{$temp->id}}" role="dialog">
 
         <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="width: 102%">
         <div class="modal-header">
           <b><h5 class="modal-title">Complete the Form Below</h5></b>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
 
-  <div class="modal-body">
-        <form method="get" action="{{ route('edittests') }}">
+           <div class="modal-body">
+        <form method="get" action="{{ route('edittemp') }}" >
   {{csrf_field()}}
-
-   <div class="form-group row">
-    <label for="Name{{$mytests->id}}"  class="col-sm-3 col-form-label"><strong>Name:</strong></label>
+  <div class="form-group row">
+    <label for="Name{{$temp->id}}"  class="col-sm-3 col-form-label"><strong>Name:</strong></label>
     <div class="col-sm-7">
-    <input type="text" class="form-control" id="Name{{$mytests->id}}" name="name" value="{{ Auth::user()->name }}" readonly>
+    <input type="text" class="form-control" id="Name{{$temp->id}}" name="name" value="{{ Auth::user()->name }}" readonly>
+  </div>
+  </div>
+  <br>
+  <div class="form-group row">
+    <label for="Date{{$temp->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+    <div class="col-sm-7">
+    <input type="date" min="{{$date}}"class="form-control" id="Date{{$temp->id}}" name="Date" max="2020-12-31" value="{{$temp->date}}" required>
   </div>
   </div>
 <br>
-   <div class="form-group row">
-    <label for="Date{{$mytests->id}}"  class="col-sm-3 col-form-label"><strong>Date:</strong></label>
+  <div class="form-group row">
+    <label for="Venue{{$temp->id}}"  class="col-sm-3 col-form-label"><strong>Venue:</strong></label>
     <div class="col-sm-7">
-    <input type="date" min="{{$date}}"class="form-control" id="Date{{$mytests->id}}" name="Date" max="2020-12-31" value="{{$mytests->date}}" required>
+    <input type="text" onblur="this.value=removeSpaces(this.value); javascript:this.value=this.value.toUpperCase();" class="form-control" id="Venue{{$temp->id}}" name="Venue" value="{{$temp->venue}}" required>
   </div>
   </div>
   <br>
 
   <div class="form-group row">
-    <label for="Venue{{$mytests->id}}"  class="col-sm-3 col-form-label"><strong>Venue(s):</strong></label>
-    <div class="col-sm-7">
-    <input type="text" onblur="this.value=removeSpaces(this.value); javascript:this.value=this.value.toUpperCase();" class="form-control" id="Venue{{$mytests->id}}" name="Venue" value="{{$mytests->venue}}" required>
+    <label for="inputTimeFrom{{$temp->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
+    <div class="col-sm-3">
+    <input type="time" min="07:00" max="19:00"class="form-control" id="fromTime{{$temp->id}}" name="fromTime" value="{{$temp->fromTime}}" required>
   </div>
+   <label for="inputTimeTo{{$temp->id}}"  class="col-sm-1 col-form-label"><strong>To:</strong></label>
+    <div class="col-sm-3">
+    <input type="time" min="08:00" max="20:00"class="form-control" id="toTime{{$temp->id}}" name="toTime" value="{{$temp->toTime}}" required>
+  </div>
+  <span id="messageA{{$temp->id}}"></span>
   </div>
 <br>
   <div class="form-group row">
-    <label for="inputTimeFrom{{$mytests->id}}"  class="col-sm-3 col-form-label"><strong>From:</strong></label>
-    <div class="col-sm-3">
-    <input type="time" min="07:00" max="19:00"class="form-control" id="fromTime{{$mytests->id}}" name="fromTime" value="{{$mytests->fromTime}}" required>
-  </div>
-   <label for="inputTimeTo{{$mytests->id}}"  class="col-sm-1 col-form-label"><strong>To:</strong></label>
-    <div class="col-sm-3">
-    <input type="time" min="08:00" max="20:00"class="form-control" id="toTime{{$mytests->id}}" name="toTime" value="{{$mytests->toTime}}" required>
-  </div>
-  </div>
-  <span id="messageA{{$mytests->id}}"></span>
-<br>
- 
-<div class="form-group row">
-    <label for="courseid{{$mytests->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
+    <label for="courseid{{$temp->id}}"  class="col-sm-3 col-form-label"><strong>Course ID:</strong></label>
     <div class="col-sm-7">
-   <select class="custom-select Reason" name="courseid" id="courseid{{$mytests->id}}">
-    <option value="{{$mytests->course}}">{{$mytests->course}}</option>
-    @foreach($mycourse as $mycourses)
-    @if($mycourses->course != $mytests->course)
-    <option value="{{$mycourses->course}}">{{$mycourses->course}}</option>
+   <select class="custom-select Reason" name="courseid" id="courseid{{$temp->id}}">
+    <option value="{{$temp->course}}">{{$temp->course}}</option>
+    @foreach($mycourse as $mycoursess)
+    @if($mycoursess->course != $temp->course)
+    <option value="{{$mycoursess->course}}">{{$mycoursess->course}}</option>
     @endif
     @endforeach
   </select>
-  <span id="messageB{{$mytests->id}}"></span>
   </div>
   </div>
 <br>
 
 
   <div class="form-group row">
-    <label for="Select{{$mytests->id}}"  class="col-sm-3 col-form-label"><strong>Test No:</strong></label>
+    <label for="Select{{$temp->id}}"  class="col-sm-3 col-form-label"><strong>Category:</strong></label>
     <div class="col-sm-7">
-   <select class="custom-select Reason" name="type" id="testType{{$mytests->id}}">
-    <option value="{{$mytests->type}}">{{$mytests->type}}</option>
-    @if($mytests->type!='Test 1')
-    <option value="Test 1">Test 1</option>
-    @endif
-    @if($mytests->type!='Test 2')
-    <option value="Test 2">Test 2</option>
-    @endif
-    @if($mytests->type!='Test 3')
-    <option value="Test 3">Test 3</option>
-    @endif
-    @if($mytests->type!='Test 4')
-     <option value="Test 4">Test 4</option>
-     @endif
-     @if($mytests->type!='Make Up')
-     <option value="Make Up">Make Up</option>
-     @endif
-     @if($mytests->type!='Special Test 1')
-    <option value="Special Test 1">Special Test 1</option>
-    @endif
-    @if($mytests->type!='Special Test 2')
-     <option value="Special Test 2">Special Test 2</option>
-     @endif
+   <select class="custom-select Reason" name="type" id="Select{{$temp->id}}">
+    @if($temp->category=='Lecture')
+    <option value="Lecture">Lecture</option>
+    <option value="Tutorial">Tutorial</option>
+    @else
+    <option value="Tutorial">Tutorial</option>
+  <option value="Lecture">Lecture</option>
+  @endif
   </select>
-  <span id="messageC{{$mytests->id}}"></span>
   </div>
   </div>
 <br>
-  <input type="text" name="idA" value="{{$mytests->id}}" hidden="">
-
-  <div class="form-group">
-    <center><button type="submit" class="btn btn-primary"id="buttonA{{$mytests->id}}" name="buttonA">SUBMIT</button></center>
+<input type="text" id="id{{$temp->id}}" name="idA" value="{{$temp->id}}" hidden="">
+<div class="form-group">
+    <center><button type="submit" class="btn btn-primary" name="buttonA" id="buttonA{{$temp->id}}">SUBMIT</button></center>
     </div>
-
-  </form>
-</div>
-
+</form>
 </div>
 </div>
 </div>
-        <a data-toggle="modal" data-target="#Deactivate{{$mytests->id}}" role="button" aria-pressed="true"><i class="fa fa-trash" aria-hidden="true" style="font-size:30px; color:red;"></i></a>
-        <div class="modal fade" id="Deactivate{{$mytests->id}}" role="dialog">
-
-        <div class="modal-dialog" role="document">
+</div>
+<a data-toggle="modal" data-target="#Delete{{$temp->id}}" role="button" aria-pressed="true"><i class="fa fa-trash" aria-hidden="true" style="font-size:30px; color:red;"></i></a>
+        <div class="modal fade" id="Delete{{$temp->id}}" role="dialog">
+          <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
           <b><h5 class="modal-title" style="color:red;">WARNING!!!</h5></b>
@@ -558,85 +559,30 @@ $mycourse=lecturer::select('course')->where('instructor', Auth::user()->name)->o
           </div>
 
            <div class="modal-body">
-            <h5>Are you sure you want to delete this test?</h5>
+            <h5>Are you sure you want to delete this?</h5>
             <br>
-
-<center><a class="btn btn-sm btn-danger" href="{{route('canceltest',$mytests->id)}}">Proceed</a></center>
-
+<center><a class="btn btn-sm btn-danger" href="{{ route('canceltemp',$temp->id) }}">Proceed</a></center>
 </div>
-</div>
-</div>
-</div>
-</center>
-</td>
-
+        </div>
+      </td>
     </tr>
-    <?php
-      $i=$i+1;
-      ?>
     @endforeach
-</tbody>
-</table>
-</div>
-<div id="Previous" class="tabcontent">
-    <br>
-  <h4>2. PREVIOUS TESTS</h4>
-  <br>
-  <?php
-$i=1;
-  ?>
-<table class="hover table table-striped table-bordered" id="myTable1">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col" style="color:#3490dc;">S/N</th>
-      <th scope="col" style="color:#3490dc;"><center>VENUE(S)</center></th>
-      <th scope="col" style="color:#3490dc;"><center>TEST NO.</center></th>
-      <th scope="col" style="color:#3490dc;"><center>COURSE</center></th>
-      <th scope="col" style="color:#3490dc;"><center>DATE</center></th>
-      <th scope="col" style="color:#3490dc;"><center>TIME</center></th>
-    </tr>
-  </thead>
-  <tbody>
-
-    @foreach($mytestA as $mytests)
-    <tr>
-      <th scope="row">{{ $i }}.</th>
-      <td>{{$mytests->venue}}</td>
-      <td>{{$mytests->type}}</td>
-      <td><center>{{$mytests->course}}</center></td>
-      <td><center>{{$mytests->date}}</center></td>
-       <td><center>{{$mytests->fromTime}} - {{$mytests->toTime}}</center></td>
-    </tr>
-    <?php
-      $i=$i+1;
-      ?>
-    @endforeach
-</tbody>
+  </tbody>
 </table>
 </div>
 </div>
-
-
-
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
 @endsection
 
 @section('pagescript')
-
 <script language="javascript" type="text/javascript">
 function removeSpaces(string) {
  return string.split(' ').join('');
 }
 </script>
+
 <script type="text/javascript">
  $(document).ready(function() {
-  
-  
   // console.log(x);
     var table = $('#myTable').DataTable( {
         dom: '<"top"fl>rt<"bottom"pi>'     
@@ -663,63 +609,27 @@ function getdata(){
         return false;
       }
 }
-</script>
-<script>
+
 $(document).ready(function(){
-  var a="";
-  var b="";
-  var c="";
-   $('[name="buttonA"]').click(function(e){
-    console.log(0);
+  $('[name="buttonA"]').click(function(e){
   var id = $("#"+e.target.id).val();
   let reg = e.target.id.replace(/\D/g,'');
-  var cours= $('#courseid'+reg).val();
-  var tes=$('#testType'+reg).val();
   var t1=$('#toTime'+reg).val();
   var t2=$('#fromTime'+reg).val();
-  if (cours=='') {
-    $('#messageB'+reg).show();
-    var message=document.getElementById('messageB'+reg);
-    message.style.color='red';
-    message.innerHTML="Course Id is Required";
-    a=0;
-    return false;
-  }
-  else{
-     $('#messageB'+reg).hide();
-     a=1;
-  }
-
-  if (tes==''){
-    $('#messageC'+reg).show();
-    var message=document.getElementById('messageC'+reg);
-    message.style.color='red';
-    message.innerHTML="Test Type is Required";
-    b=0;
-    return false;
-  }
-  else{
-     $('#messageC'+reg).hide();
-     b=1;
-  }
   if(t1<=t2){
     var message=document.getElementById('messageA'+reg);
     message.style.color='red';
     message.innerHTML="'To Time' cannot be less than or equal to 'From Time'";
-    c=0;
     return false;
   }
   else{
-    $('#messageA'+reg).hide();
-     c=1;
+    var message=document.getElementById('messageA'+reg);
+    message.innerHTML="";
   }
-  if(a==1 && b==1&&c==1){
-    return true;
-  }
-
   });
-});
+  });
 </script>
+
 
 <script type="text/javascript">
   function openInstructors(evt, evtName) {
