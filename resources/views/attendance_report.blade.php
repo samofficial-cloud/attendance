@@ -1653,7 +1653,7 @@ window.addEventListener( "pageshow", function ( event ) {
 
 <script type="text/javascript">
  $(document).ready(function() {
-
+// $('tr').each(
      // $('tr').each(
      //     function(){
      //         $(this).find('td:gt(11)').hide();
