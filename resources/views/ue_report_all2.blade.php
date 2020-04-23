@@ -344,8 +344,7 @@ hr {
           <th class="order">OTHER NAMES</th>
         <th>REGISTRATION NUMBER</th>
           <th>PROGRAMME</th>
-          <th>SIGNING TIME</th>
-          <th>STATUS</th>
+
       </tr>
     </thead>
 
@@ -364,43 +363,7 @@ hr {
           ?>
         <td>{{$var->reg_no}}</td>
           <td>{{$var->program}}</td>
-          <td>
-              @if($var->status==1)
-                  @if($var->validity=='VALID')
-                      {{ date("H:i",strtotime($var->datetime))}}
-                  @else
-                      <?php
 
-                      $datetime1 = new DateTime($var->courseTimeFrom);//start time
-                      $datetime2 = new DateTime(date("H:i",strtotime($var->datetime)));//end time
-                      $interval = $datetime1->diff($datetime2);
-
-
-                      if($interval->format('%h')=='0'){
-                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%i minutes')." late)";
-
-
-                      } else if ($interval->format('%h')=='1'){
-
-                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hour and %i minutes')." late)";  }
-                      else {
-
-                          echo date("H:i",strtotime($var->datetime))."  (".$interval->format('%h hours and %i minutes')." late)";
-                      }
-
-
-                      ?>
-                  @endif
-              @else
-                  N/A
-              @endif
-          </td>
-
-          <td>@if($var->status==1)
-                  PRESENT
-              @else
-                  ABSENT
-              @endif </td>
       </tr>
       @endforeach
     </tbody>

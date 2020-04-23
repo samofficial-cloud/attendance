@@ -386,8 +386,8 @@ $minimum_percentage=DB::table('camis_configuration')->where('id', 1)->value('min
 //      $all_test3 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->orderBy('name', 'asc')->get();
 
         $all_test=DB::select('EXEC all_test ?',[$course]);
-        $all_test2=DB::select('EXEC all_test ?',[$course]);
-        $all_test3=DB::select('EXEC all_test ?',[$course]);
+        $all_test2=DB::select('EXEC all_test2 ?',[$course]);
+        $all_test3=DB::select('EXEC all_test3 ?',[$course]);
         $date = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
         $date2 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
         $date3 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
@@ -1193,17 +1193,17 @@ if($request->get('sort_criteria')==1) {
         $all_test3=DB::select('EXEC all_test3Present ?',[$course]);
 
 
-        $date = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
-        $date2 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
-        $date3 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
+        $date = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
+        $date2 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
+        $date3 = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
 
-        $times = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
-        $time2s = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
-        $time3s = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
+        $times = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
+        $time2s = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
+        $time3s = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
 
-        $timee = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
-        $time2e = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
-        $time3e = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
+        $timee = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 1']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
+        $time2e = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 2']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
+        $time3e = DB::table('attendance')->where([['title', '=','student'],['category', '=','TEST'],['status', '=',1],['name', '!=','DUMMY NAME'],['test_type', '=','Test 3']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
 
 
 
@@ -1243,9 +1243,9 @@ if($request->get('sort_criteria')==1) {
 //        $all_test = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',0],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->orderBy('name', 'asc')->get();
 
         $all_test=DB::select('EXEC all_testUePresent ?',[$course]);
-        $date = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
-        $FromTime = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
-        $ToTime = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',1],['validity', '=','VALID'],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
+        $date = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',1],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('date');
+        $FromTime = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',1],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeFrom');
+        $ToTime = DB::table('attendance_ue')->where([['title', '=','student'],['status', '=',1],['name', '!=','DUMMY NAME']])->whereRaw("courseId LIKE '%$course%'")->limit(1)->value('courseTimeTo');
 
         // $all = DB::table('attendance')->select('reg_no')->where([['courseId', '=', $course],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('reg_no')->get();
         // $all_students = array();
