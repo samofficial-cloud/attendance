@@ -350,8 +350,8 @@ $minimum_percentage=DB::table('camis_configuration')->where('id', 1)->value('min
     </b>
   </center>
               </legend> </div>
-                    <p class="note" style="float: right; font-size: 15px;">Semester: <b>{{$current_semester}}</b></p>
-                <p class="note" style="font-size: 15px;">Academic year:  <b>{{$current_academic_year}}</b></p>
+                    <p class="note" style="float: right;">Semester: <b>{{$current_semester}}</b></p>
+                <p class="note">Academic year:  <b>{{$current_academic_year}}</b></p>
 
                     @foreach($program_fullAllCoursesStaff as $var)
                         @if($var->DEPTNAME=='CSE')

@@ -1116,7 +1116,7 @@ if($request->get('sort_criteria')==1) {
         // $all_students = array();
 
 
-        return View('test_report_all2')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
+        return View('test_report_all2')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse)->with('courseValue',$courseValue);
 
 
 
@@ -1155,7 +1155,7 @@ if($request->get('sort_criteria')==1) {
         // $all_students = array();
 
 
-        return View('ue_report_all2')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
+        return View('ue_report_all2')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse)->with('courseValue',$courseValue);
 
 
 
@@ -1211,7 +1211,7 @@ if($request->get('sort_criteria')==1) {
         // $all_students = array();
 
 
-        return View('test_report_all3')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
+        return View('test_report_all3')->with('all_test',$all_test)->with('all_test2',$all_test2)->with('all_test3',$all_test3)->with('date',$date)->with('date2',$date2)->with('date3',$date3)->with('course_name',$course_name)->with('program_full',$program_full)->with('timee',$timee)->with('times',$times)->with('time2e',$time2e)->with('time2s',$time2s)->with('time3e',$time3e)->with('time3s',$time3s)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse)->with('courseValue',$courseValue);
 
 
 
@@ -1250,7 +1250,7 @@ if($request->get('sort_criteria')==1) {
         // $all = DB::table('attendance')->select('reg_no')->where([['courseId', '=', $course],['title', '=','student'],['validity', '=', 'VALID']])->groupBy('reg_no')->get();
         // $all_students = array();
 
-        return View('ue_report_all3')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse);
+        return View('ue_report_all3')->with('all_test',$all_test)->with('date',$date)->with('FromTime',$FromTime)->with('ToTime',$ToTime)->with('course_name',$course_name)->with('program_full',$program_full)->with('current_academic_year',$current_academic_year)->with('current_semester',$current_semester)->with('fullCourse',$fullCourse)->with('courseValue',$courseValue);
 
 
 
@@ -1288,9 +1288,23 @@ if($request->get('sort_criteria')==1) {
 
     public function testallPDF(){
 
-        $pdf = PDF::loadView('testallpdf');
+        $pdf = PDF::loadView('testallpdf')->setPaper('a4', 'landscape');
 
         return $pdf->stream('Test All attendance.pdf');
+    }
+
+    public function testall2PDF(){
+
+        $pdf = PDF::loadView('testall2pdf');
+
+        return $pdf->stream('Absent Test Attendance.pdf');
+    }
+
+    public function testall3PDF(){
+
+        $pdf = PDF::loadView('testall3pdf')->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Present Test Attendance.pdf');
     }
 
     public function testinvalidPDF(){
@@ -1312,6 +1326,34 @@ if($request->get('sort_criteria')==1) {
         $pdf = PDF::loadView('UEAllpdf');
 
         return $pdf->stream('UE All attendance.pdf');
+    }
+
+    public function ue_reportPDF(){
+
+        $pdf = PDF::loadView('ue_reportpdf');
+
+        return $pdf->stream('UE attendance.pdf');
+    }
+
+    public function ue_report_allPDF(){
+
+        $pdf = PDF::loadView('ue_report_allpdf');
+
+        return $pdf->stream('All Student UE attendance.pdf');
+    }
+
+    public function ue_report_all2PDF(){
+
+        $pdf = PDF::loadView('ue_report_all2pdf');
+
+        return $pdf->stream('Absent Student UE attendance.pdf');
+    }
+
+    public function ue_report_all3PDF(){
+
+        $pdf = PDF::loadView('ue_report_all3pdf')->setPaper('a4', 'landscape');
+
+        return $pdf->stream('Present Student UE Attendance.pdf');
     }
 
 }

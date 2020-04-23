@@ -419,23 +419,22 @@ hr {
   ?>
 
   <br>
-   <form action="{{route('UEpdf')}}" class="form-container form-horizontal" method="get">
-                    {{csrf_field()}}
+   <form action="{{route('ue_reportPDF')}} " class="form-container form-horizontal" method="get">
+                   {{csrf_field()}}
 
-       <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
+      <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
 
-       <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
-
-         <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
-
-     <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
+      <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
 
 
-     <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+    <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
 
 
-        <center><button class="btn btn-primary" type="submit">Download</button></center>
-        </form>
+    <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
+
+
+       <center><button class="btn btn-primary" type="submit">Download</button></center>
+       </form>
 
    <br>
 
@@ -503,29 +502,26 @@ hr {
                 @endif
             </p>
         @endforeach
+<br>
 
-    </div>
-    </center>
-  {{-- <br>
-
-  <form action="{{route('classpdf')}} " class="form-container form-horizontal" method="get">
+  <form action="{{route('ue_reportPDF')}} " class="form-container form-horizontal" method="get">
                    {{csrf_field()}}
 
       <input type="text" class="form-control" id="getSelection" name="category" value="{{$_GET['category']}}" hidden>
 
       <input type="text" class="form-control" id="one_course" name="selection" value="{{$_GET['selection']}}" hidden>
 
-        <input type="text" class="form-control" id="show_all" name="checkbox" value="{{$_GET['checkbox']}}" hidden>
 
     <input type="text" class="form-control" id="inputCourse" name="course_id" value="{{$_GET['course_id']}}" hidden>
 
 
-    <input type="text" class="form-control" id="inputRegNo" name="reg_no" value="{{$_GET['reg_no']}}" hidden>
+    <input type="text" class="form-control" id="inputRegNo" name="input_name" value="{{$_GET['input_name']}}" hidden>
 
 
        <center><button class="btn btn-primary" type="submit">Download</button></center>
-       </form> --}}
-
+       </form>
+    </div>
+    </center>
 
   @else
   <h4>No data could be found for the specified parameters</h4>

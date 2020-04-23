@@ -400,11 +400,23 @@ Route::get('generate-pdf1','ReportController@testPDF')->name('testpdf');
 
 Route::get('generate-testpdf','ReportController@testallPDF')->name('testallpdf');
 
+Route::get('generate-test-absentpdf','ReportController@testall2PDF')->name('testall2pdf');
+
+Route::get('generate-test-presentpdf','ReportController@testall3PDF')->name('testall3pdf');
+
 Route::get('generate-test-all-pdf','ReportController@testinvalidPDF')->name('testinvalidpdf');
 
 Route::get('generate-UEpdf','ReportController@UEPDF')->name('UEpdf');
 
+Route::get('generate-UE-reportpdf','ReportController@ue_reportPDF')->name('ue_reportPDF');
+
 Route::get('generate-UE-Allpdf','ReportController@UEAllPDF')->name('UEAllpdf');
+
+Route::get('generate-UE-AllStudentpdf','ReportController@ue_report_allPDF')->name('ue_report_allpdf');
+
+Route::get('generate-UE-Absent-Studentpdf','ReportController@ue_report_all2PDF')->name('ue_report_all2pdf');
+
+Route::get('generate-UE-Present-Studentpdf','ReportController@ue_report_all3PDF')->name('ue_report_all3pdf');
 
 Route::get('generate-ETE-pdf','lecturesController@ETEPDF')->name('ETEpdf');
 
